@@ -6,9 +6,6 @@ class Root extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    I am world
-                </div>
                 <div id="content">
                     <div className="container-fluid">
                         <div className="row">
