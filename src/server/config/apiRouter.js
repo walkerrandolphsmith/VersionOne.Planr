@@ -14,8 +14,12 @@ export default () => {
         '/backlog',
         (req, res) => {
             v1.query({
-                from: 'Story',
-                select: ['Name', 'Number']
+                from: 'PrimaryWorkitem',
+                select: ['Name', 'Number', 'Children'],
+                page: {
+                    start: 0,
+                    size: 500
+                }
             }).then(response => {
                 res.send(response.data);
             });

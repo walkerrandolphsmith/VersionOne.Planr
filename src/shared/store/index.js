@@ -2,7 +2,7 @@ import { createStore, compose } from 'redux';
 import middlewareBuilder from './middlewareBuilder';
 import rootReducer from './rootReducer';
 
-export default function configureStore({ initialState, history }) {
+export default ({ initialState, history }) => {
     const createStoreWithMiddleware = compose(...middlewareBuilder(history))(createStore);
     const store = createStoreWithMiddleware(rootReducer, initialState);
 
@@ -14,4 +14,4 @@ export default function configureStore({ initialState, history }) {
     }
 
     return store;
-}
+};

@@ -6,16 +6,17 @@ import { seedStore } from './seedStore';
 
 export default (request, response) => {
     const location = createLocation(request.url);
-    const store = seedStore(request.url);
-
-    match({ routes, location }, (err, redirectLocation, renderProps) => {
-        if(err) {
-            return response.status(500).end('Internal server error.');
-        }
-        if(!renderProps) {
-            return response.status(404).end('Not found.');
-        }
-        const markup = getView(renderProps, store);
-        response.end(markup);
+    seedStore(request.url).then(store => {
+        console.log("I got here", store.getState());
+        match({ routes, location }, (err, redirectLocation, renderProps) => {
+            if(err) {
+                return response.status(500).end('Internal server error.');
+            }
+            if(!renderProps) {
+                return response.status(404).end('Not found.');
+            }
+            const markup = getView(renderProps, store);
+            response.end(markup);
+        });
     });
 }

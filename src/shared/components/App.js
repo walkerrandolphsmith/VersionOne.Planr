@@ -1,8 +1,6 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
-class Root extends React.Component {
+export class App extends React.Component {
     render() {
         return (
             <div>
@@ -14,20 +12,8 @@ class Root extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                 </div>
             </div>
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ },dispatch);
-}
-
-export const App = connect(mapStateToProps, mapDispatchToProps)(Root);

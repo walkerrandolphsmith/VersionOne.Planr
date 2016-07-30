@@ -1,5 +1,6 @@
 import path from 'path';
 import express from 'express';
+import expressPromise from 'express-promise';
 import cors from 'cors';
 import bodyparser from 'body-parser';
 import webpack from 'webpack';
@@ -14,6 +15,7 @@ var config = require('./../../../webpack.config');
 export default app => {
     const { nodeEnv, devPort } = env;
 
+    app.use(expressPromise());
     app.use(cors());
     app.use(bodyparser.json());
 
