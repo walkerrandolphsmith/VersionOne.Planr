@@ -17,7 +17,7 @@ export class RightPaneContainer extends React.Component {
                         </div>
                     </div>
                     <div className="content">
-                        <WorkitemDetails />
+                        <WorkitemDetails {...this.props} />
                     </div>
                 </div>
                 <div className="pane-caret" style={{top: top}}></div>
@@ -30,7 +30,8 @@ export class RightPaneContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        caretTopPosition: state.backlogStateAtom.get('caretTopPosition')
+        caretTopPosition: state.backlogStateAtom.get('caretTopPosition'),
+        workitem: state.workitemStateAtom.get('workitems').get(state.workitemStateAtom.get('selected'))
     }
 }
 

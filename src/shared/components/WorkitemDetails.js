@@ -1,9 +1,6 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { ActionCreators as WorkitemActions } from './../atoms/workitem';
 
-export class WorkitemDetailsContainer extends React.Component {
+export class WorkitemDetails extends React.Component {
 
     static defaultProps = {
         workitem: {
@@ -104,17 +101,3 @@ export class WorkitemDetailsContainer extends React.Component {
         )
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        workitem: state.workitemStateAtom.get('workitems').get(state.workitemStateAtom.get('selected'))
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-
-    }, dispatch);
-}
-
-export const WorkitemDetails = connect(mapStateToProps, mapDispatchToProps)(WorkitemDetailsContainer);
