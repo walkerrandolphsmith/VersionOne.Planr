@@ -5,12 +5,10 @@ import { connect } from 'react-redux';
 export class LandingContainer extends React.Component {
     render() {
         const wis = this.props.workitems.map(wi => {
-            const tasks = wi.get('Tasks').map(task => <div key={task}>---------->{task}</div>);
-            const tests = wi.get('Tests').map(test => <div key={test}>---------->{test}</div>);
-            return <div key={wi.get('Number')}>
-                <span>{wi.get('Number')} - {wi.get('Name')}</span>
-                <div>{tasks}</div>
-                <div>{tests}</div>
+            const children = wi.children.map(child => <div key={child}>---------->{child}</div>);
+            return <div key={wi.number}>
+                <span>{wi.number} - {wi.name}</span>
+                <div>{children}</div>
             </div>
         });
 

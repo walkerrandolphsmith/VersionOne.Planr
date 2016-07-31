@@ -1,6 +1,7 @@
 import configureStore from './../../../shared/store';
 import axios from 'axios';
 import sdk, {axiosConnector} from 'v1sdk';
+import { Records } from './../../../shared/atoms/workitem';
 
 export const seedStore = () => {
     return new Promise((resolve, reject) => {
@@ -18,10 +19,7 @@ export const seedStore = () => {
         }).then(response => {
 
             const workitems = response.data[0].reduce((workitems, workitem) => {
-                workitem.Children = workitem.Children.map(child => child._oid);
-                workitem.Tests = workitem.Children.filter(child => child.startsWith('Test:'));
-                workitem.Tasks = workitem.Children.filter(child => child.startsWith('Task:'));
-                workitems[workitem._oid] = workitem;
+                workitems[workitem._oid] = Records.createWorkitemRecord(workitem);
                 return workitems;
             }, {});
 

@@ -1,8 +1,16 @@
-import { Iterable } from 'immutable';
+import { Iterable, Map } from 'immutable';
+import { Records } from './../atoms/workitem';
 
 export default (defaultState, handlers) => (state = defaultState, action) => {
+
     if (Iterable.isIterable(defaultState)) {
-        state = defaultState.mergeDeep(state);
+        let deepState = state;
+        if(state.workitems) {
+            deepState = new Map({
+               workitems: new Map(state.workitems).map(wi => new Records.WorkitemRecord(wi))
+            });
+        }
+        state = defaultState.mergeDeep(deepState);
     }
     else if (state !== defaultState) {
         state = Object.assign({}, defaultState, state);
