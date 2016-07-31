@@ -1,6 +1,6 @@
 import configureStore from './../../../shared/store';
 import axios from 'axios';
-import sdk, {axiosConnector} from 'v1sdk';
+import sdk, { axiosConnector } from 'v1sdk';
 import { Records } from './../../../shared/atoms/workitem';
 
 export const seedStore = () => {

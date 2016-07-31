@@ -1,8 +1,13 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { WorkitemDetails } from './WorkitemDetails';
 
-export class RightPane extends React.Component {
+export class RightPaneContainer extends React.Component {
     render() {
+        const headerHeight = 63;
+        const rowHeight = 35;
+        const top = (headerHeight + rowHeight/2) + (this.props.caretTopPosition * rowHeight);
         return (
             <div className="right workitem-details">
                 <div className="pane">
@@ -15,8 +20,24 @@ export class RightPane extends React.Component {
                         <WorkitemDetails />
                     </div>
                 </div>
-                <div className="pane-caret"></div>
+                <div className="pane-caret" style={{top: top}}></div>
             </div>
         )
     }
 }
+
+
+
+function mapStateToProps(state) {
+    return {
+        caretTopPosition: state.backlogStateAtom.get('caretTopPosition')
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+
+    }, dispatch);
+}
+
+export const RightPane = connect(mapStateToProps, mapDispatchToProps)(RightPaneContainer);

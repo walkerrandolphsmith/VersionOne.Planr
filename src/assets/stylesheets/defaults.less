@@ -112,6 +112,7 @@ body {
 
       .pane-caret {
         top: 115.5px;
+        transition: top 250ms ease-out;
         clip: rect(-3px 7px 17px -3px);
         left: 0;
         opacity: 1;
@@ -121,9 +122,6 @@ body {
         -ms-transform: translateX(-50%) translateY(-50%);
         -o-transform: translateX(-50%) translateY(-50%);
         transform: translateX(-50%) translateY(-50%);
-        -webkit-transition: opacity 250ms;
-        -moz-transition: opacity 250ms;
-        transition: opacity 250ms;
 
         &:before {
           box-sizing: border-box;

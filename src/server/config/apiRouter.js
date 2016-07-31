@@ -1,6 +1,6 @@
 import express from 'express';
 import axios from 'axios';
-import sdk, {axiosConnector} from 'v1sdk';
+import sdk, { axiosConnector } from 'v1sdk';
 
 const axiosConnectedSdk = axiosConnector(axios)(sdk);
 const v1 = axiosConnectedSdk('wsmith3', 'versionone.web')
