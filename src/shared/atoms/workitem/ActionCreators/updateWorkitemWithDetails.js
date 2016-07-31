@@ -1,0 +1,1 @@
+export default workitemWithDetails => ({workitemWithDetails});

@@ -11,14 +11,25 @@ export default () => {
     const router = express.Router();
     
     router.get(
-        '/backlog',
+        '/workitem/:id',
         (req, res) => {
             v1.query({
                 from: 'PrimaryWorkitem',
-                select: ['Name', 'Number', 'Children'],
-                page: {
-                    start: 0,
-                    size: 500
+                select: [
+                    'Name',
+                    'Number',
+                    'ChangeDate',
+                    'Scope',
+                    'BlockingIssues',
+                    'ChangeSets',
+                    'ClassOfService',
+                    'Owners',
+                    'Children',
+                    'Status',
+                    'Estimate'
+                ],
+                where: {
+                    ID: req.originalUrl.split('/workitem/')[1].replace('-', ':')
                 }
             }).then(response => {
                 res.send(response.data);

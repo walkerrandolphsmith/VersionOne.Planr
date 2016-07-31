@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators as WorkitemActions } from './../atoms/workitem';
 import { Selectors as BacklogSelectors } from './../atoms/backlog';
+import { WorkitemDetails } from './WorkitemDetails';
 
 export class LandingContainer extends React.Component {
 
@@ -68,9 +69,9 @@ export class LandingContainer extends React.Component {
                                 <div className="toolbar">
                                     <div className="btn btn-primary">Add</div>
                                 </div>
-                                <div className="content">
-                                    Update the workitem here...
-                                </div>
+                            </div>
+                            <div className="content">
+                                <WorkitemDetails />
                             </div>
                         </div>
                         <div className="pane-caret"></div>
@@ -90,7 +91,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        selectWorkitem: WorkitemActions.selectWorkitem,
+        selectWorkitem: WorkitemActions.getWorkitemDetails,
         hoverWorkitem: WorkitemActions.hoverWorkitem
     }, dispatch);
 }
