@@ -17,7 +17,6 @@ export const seedStore = () => {
                 size: 50
             }
         }).then(response => {
-
             const workitems = response.data[0].reduce((workitems, workitem) => {
                 workitems[workitem._oid] = Records.createWorkitemRecord(workitem);
                 return workitems;
