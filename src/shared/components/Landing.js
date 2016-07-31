@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators as WorkitemActions } from './../atoms/workitem';
+import { Selectors as BacklogSelectors } from './../atoms/backlog';
 
 export class LandingContainer extends React.Component {
 
@@ -13,7 +14,7 @@ export class LandingContainer extends React.Component {
         const wis = this.props.workitems.map(wi => {
             const children = wi.children.map(child => <div key={child}>---------->{child}</div>);
             return <div key={wi.number} onClick={this.onClick.bind(this, wi.oid)}>
-                <span>{wi.oid} - {wi.number} - {wi.name}</span>
+                <span>{wi.isSelected ? "Y" : "N"} - {wi.oid} - {wi.number} - {wi.name}</span>
                 <div>{children}</div>
             </div>
         });
@@ -27,9 +28,8 @@ export class LandingContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.workitemStateAtom.get('selected'));
     return {
-        workitems: state.workitemStateAtom.get('workitems')
+        workitems: BacklogSelectors.getAllPrimaryWorkitems(state)
     }
 }
 
