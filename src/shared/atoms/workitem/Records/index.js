@@ -6,7 +6,8 @@ export const WorkitemRecord = new Record({
     oid: '',
     number: '',
     children: [],
-    isSelected: false
+    isSelected: false,
+    isHovered: false
 });
 
 export const createWorkitemRecord = workitem => new WorkitemRecord({

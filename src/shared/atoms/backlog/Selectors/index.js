@@ -5,7 +5,8 @@ import getAllHydratedWorkitemSelector from './getAllHydratedPrimaryWorkitems'
 export const getAllPrimaryWorkitems = createSelector(
     [
         WorkitemSelectors.getAllPrimaryWorkitems,
-        WorkitemSelectors.getSelectedWorkitem
+        WorkitemSelectors.getSelectedWorkitem,
+        WorkitemSelectors.getHoveredWorkitem
     ],
     getAllHydratedWorkitemSelector
 );

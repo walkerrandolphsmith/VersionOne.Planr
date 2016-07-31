@@ -6,16 +6,22 @@ import { Selectors as BacklogSelectors } from './../atoms/backlog';
 
 export class LandingContainer extends React.Component {
 
-    onClick(workitemOidToken) {
+    selectWorkitem(workitemOidToken) {
         this.props.selectWorkitem(workitemOidToken);
+    }
+
+    hoverWorkitem(workitemOidToken) {
+        this.props.hoverWorkitem(workitemOidToken);
     }
 
     render() {
         const wis = this.props.workitems.map(wi => {
             return (
                 <tr key={wi.number} id={wi.oid}
-                    className={`${wi.isSelected ? 'selected' : ''}`}
-                    onClick={this.onClick.bind(this, wi.oid)}>
+                    className={`${wi.isSelected ? 'selected' : ''} ${wi.isHovered ? 'hovered' : ''}`}
+                    onClick={this.selectWorkitem.bind(this, wi.oid)}
+                    onMouseEnter={this.hoverWorkitem.bind(this, wi.oid)}
+                    onMouseLeave={this.hoverWorkitem.bind(this, '')}>
                     <td></td>
                     <td className="number">{wi.number}</td>
                     <td className="name">{wi.name}</td>
@@ -84,7 +90,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        selectWorkitem: WorkitemActions.selectWorkitem
+        selectWorkitem: WorkitemActions.selectWorkitem,
+        hoverWorkitem: WorkitemActions.hoverWorkitem
     }, dispatch);
 }
 
