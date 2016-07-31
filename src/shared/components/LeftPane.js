@@ -18,6 +18,10 @@ export class LeftPaneContainer extends React.Component {
         this.props.hoverWorkitem(workitemOidToken);
     }
 
+    componentWillMount() {
+        this.props.getWorkitemDetails(0, this.props.workitems.first().oid);
+    }
+
     render() {
         let i = 0;
         const wis = this.props.workitems.map(wi => {
