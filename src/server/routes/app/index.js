@@ -7,7 +7,6 @@ import { seedStore } from './seedStore';
 export default (request, response) => {
     const location = createLocation(request.url);
     seedStore(request.url).then(store => {
-        console.log("I got here", store.getState());
         match({ routes, location }, (err, redirectLocation, renderProps) => {
             if(err) {
                 return response.status(500).end('Internal server error.');

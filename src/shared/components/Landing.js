@@ -1,11 +1,14 @@
 import React from 'react';
-export class Landing extends React.Component {
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+export class LandingContainer extends React.Component {
     render() {
-        const wis = [].map(wi => {
-            const tasks = wi.Tasks.map(task => <div key={task}>---------->{task}</div>);
-            const tests = wi.Tests.map(test => <div key={test}>---------->{test}</div>);
-            return <div key={wi.Number}>
-                <span>{wi.Number} - {wi.Name}</span>
+        const wis = this.props.workitems.map(wi => {
+            const tasks = wi.get('Tasks').map(task => <div key={task}>---------->{task}</div>);
+            const tests = wi.get('Tests').map(test => <div key={test}>---------->{test}</div>);
+            return <div key={wi.get('Number')}>
+                <span>{wi.get('Number')} - {wi.get('Name')}</span>
                 <div>{tasks}</div>
                 <div>{tests}</div>
             </div>
@@ -18,3 +21,15 @@ export class Landing extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        workitems: state.workitemStateAtom.get('workitems')
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ }, dispatch);
+}
+
+export const Landing = connect(mapStateToProps, mapDispatchToProps)(LandingContainer);
