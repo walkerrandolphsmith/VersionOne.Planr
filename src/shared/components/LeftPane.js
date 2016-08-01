@@ -7,6 +7,7 @@ import {
     Selectors as BacklogSelectors
 } from './../atoms/backlog';
 import { ChevronIcon } from './ChevronIcon';
+import { LeftToolbar } from './LeftToolbar';
 
 export class LeftPaneContainer extends React.Component {
 
@@ -43,9 +44,7 @@ export class LeftPaneContainer extends React.Component {
             <div className="left backlog">
                 <div className="pane">
                     <div className="header">
-                        <div className="toolbar">
-                            <div className="btn btn-primary">Add</div>
-                        </div>
+                        <LeftToolbar />
                     </div>
                     <div className="content">
                         <table className="grid">

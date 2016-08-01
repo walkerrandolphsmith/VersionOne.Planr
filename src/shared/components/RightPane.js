@@ -2,13 +2,25 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { WorkitemDetails } from './WorkitemDetails';
+import { RightToolbar } from './RightToolbar';
 
 export class RightPaneContainer extends React.Component {
-    render() {
-        const { number, name, assetType } = this.props.workitem;
-        const headerHeight = 63;
+
+    constructor(props, context) {
+        super(props, context);
+        const toolbarHeight = 56;
         const rowHeight = 35;
-        const top = (headerHeight + rowHeight/2) + (this.props.caretTopPosition * rowHeight);
+        const initialOffset = (toolbarHeight + rowHeight/2);
+        this.state = {
+            toolbarHeight: toolbarHeight,
+            rowHeight: rowHeight,
+            initialOffset: initialOffset
+        }
+    }
+
+    render() {
+        const { assetType } = this.props.workitem;
+        const top = this.state.initialOffset + (this.props.caretTopPosition * this.state.rowHeight);
 
         let bkColor = 'white';
 
@@ -28,10 +40,7 @@ export class RightPaneContainer extends React.Component {
             <div className="right workitem-details">
                 <div className="pane">
                     <div className="header" style={headerStyles}>
-                        <div className="toolbar">
-                            <div className="btn btn-primary">Add</div>
-                            <span>{number} {name}</span>
-                        </div>
+                        <RightToolbar {...this.props} />
                     </div>
                     <div className="content">
                         <WorkitemDetails {...this.props} />

@@ -85,10 +85,6 @@ export class WorkitemDetails extends React.Component {
 
         return (
             <div>
-                <div>{oid}</div>
-                <input type="text" onChange={this.updateName.bind(this)} value={this.state.name} />
-                <div>{name}</div>
-                <div>{number}</div>
                 <div>{changeDate}</div>
                 <div>{scope}</div>
                 <div>{classOfService}</div>
