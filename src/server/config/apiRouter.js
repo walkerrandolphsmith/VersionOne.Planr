@@ -20,19 +20,27 @@ export default () => {
                     'Number',
                     'ChangeDate',
                     'Scope',
+                    'Scope.Name',
                     'BlockingIssues',
+                    'BlockingIssues.Name',
                     'ChangeSets',
+                    'Estimate',
                     'ClassOfService',
-                    'Owners',
-                    'Children',
+                    'ClassOfService.Name',
                     'Status',
-                    'Estimate'
+                    'Status.Name',
+                    'Owners',
+                    'Owners.Name',
+                    'Owners.Avatar',
+                    'Owners.Avatar.Content',
+                    'Children'
                 ],
                 where: {
                     ID: req.originalUrl.split('/workitem/')[1].replace('-', ':')
                 }
             }).then(response => {
-                res.send(response.data);
+                const queryResults = response.data[0][0];
+                res.status(200).send(queryResults);
             });
         }
     );
