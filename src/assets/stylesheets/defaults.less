@@ -159,22 +159,62 @@ table.grid {
   tbody {
 
     tr {
+      cursor: pointer;
+
+      &.selected, &.hovered {
+        .select-arrow svg {
+          opacity: 0.5;
+        }
+      }
+
+      &.selected {
+        background-color: rgba(204,237,249,.5);
+        border-color: #73d0ee;
+
+        &:not(.hovered) {
+          td, td:first-child, td:last-child {
+            border-bottom: 1px solid #E1E2E4;
+            border-top: 1px solid #E1E2E4;
+          }
+          & + tr td {
+            border-top-color: transparent;
+          }
+        }
+      }
+
+      &.hovered {
+        td {
+          background-color: rgba(221, 226, 233, 0.5);
+          border-bottom: 1px solid #b7bcc4;
+          border-top: 1px solid #b7bcc4;
+          transition: 0.5s background-color ease-out;
+          transition: 0.5s border-color ease-out;
+        }
+        & + tr td {
+          border-top-color: transparent;
+        }
+      }
+
+      &:not(.hovered) {
+        td:first-child, td:last-child {
+          border: 1px solid transparent;
+        }
+
+        td:last-child {
+          border-bottom-right-radius: 3px;
+          border-top-right-radius: 3px;
+          border-left: 0px;
+        }
+
+        td:first-child {
+          border-bottom-left-radius: 3px;
+          border-top-left-radius: 3px;
+          border-right: 0px;
+        }
+      }
 
       td:first-child, td:last-child {
         width: 24px;
-        border: 1px solid transparent;
-      }
-
-      td:last-child {
-        border-bottom-right-radius: 3px;
-        border-top-right-radius: 3px;
-        border-left: 0px;
-      }
-
-      td:first-child {
-        border-bottom-left-radius: 3px;
-        border-top-left-radius: 3px;
-        border-right: 0px;
       }
 
       td {
@@ -199,18 +239,6 @@ table.grid {
             transition: opacity 0.25s ease-out;
           }
         }
-      }
-
-      &.selected, &.hovered {
-        .select-arrow svg {
-          opacity: 0.5;
-        }
-      }
-
-
-      &.selected {
-        background-color: rgba(204,237,249,.5);
-        border-color: #73d0ee;
       }
     }
   }
