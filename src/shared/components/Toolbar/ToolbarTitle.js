@@ -27,6 +27,14 @@ class ToolbarTitle extends React.Component {
             display: 'flex',
             alignItems: 'center',
             lineHeight: 1
+        },
+        title: {
+            wordWrap: 'break-word',
+            wordBreak: 'break-word',
+            maxWidth: '500px',
+            maxHeight: '50%',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
         }
     }
 }
