@@ -80,7 +80,6 @@ export class WorkitemDetails extends React.Component {
         } = this.state;
 
         const blockingIssuesList = blockingIssues.map(blockingIssue => <div key={blockingIssue}>{blockingIssue}</div>);
-        const ownersList = owners.map(owner => <div key={owner}>{owner}</div>);
         const testsAndTasksList = children.map(child => <div key={child}>{child}</div>);
 
         return (
@@ -91,7 +90,6 @@ export class WorkitemDetails extends React.Component {
                 <div>{estimate}</div>
                 <div>{status}</div>
                 <div>{blockingIssuesList}</div>
-                <div>{ownersList}</div>
                 <div>{testsAndTasksList}</div>
             </div>
         )
