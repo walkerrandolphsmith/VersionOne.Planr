@@ -45,5 +45,30 @@ export default () => {
         }
     );
 
+    router.get(
+        '/conversation-stream/:id',
+        (req, res) => {
+            v1.query({
+                from: 'PrimaryWorkitem',
+                select: [
+                    'MentionedInExpressions',
+                    'MentionedInExpressions.Content',
+                    'MentionedInExpressions.Author',
+                    'MentionedInExpressions.Author.Name',
+                    'MentionedInExpressions.Author.Avatar.Content',
+                    'MentionedInExpressions.AuthoredAt',
+                    'MentionedInExpressions.Mentions',
+                    'MentionedInExpressions.Mentions.Name'
+                ],
+                where: {
+                    ID: req.originalUrl.split('/conversation-stream/')[1].replace('-', ':')
+                }
+            }).then(response => {
+                const queryResults = response.data[0][0];
+                res.status(200).send(queryResults);
+            });
+        }
+    );
+
     return router;
 };

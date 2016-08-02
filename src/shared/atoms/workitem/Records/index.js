@@ -13,6 +13,7 @@ export const WorkitemRecord = new Record({
     blockingIssues: [],
     owners: [],
     children: [],
+    conversations: [],
     isSelected: false,
     isHovered: false
 });

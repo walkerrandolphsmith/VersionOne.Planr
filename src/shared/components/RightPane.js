@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { WorkitemDetails } from './WorkitemDetails';
 import { RightToolbar } from './RightToolbar';
+import { ActionCreators as BacklogActions } from './../atoms/backlog';
 
 export class RightPaneContainer extends React.Component {
 
@@ -63,7 +64,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-
+        getConversationStream: BacklogActions.getConversationStream
     }, dispatch);
 }
 

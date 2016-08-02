@@ -3,11 +3,13 @@ import { Map } from 'immutable';
 import selectWorkitem from './selectWorkitem';
 import hoverWorkitem from './hoverWorkitem';
 import updateWorkitemWithDetails from './updateWorkitemWithDetails';
+import updateWorkitemWithConversationStream from './updateWorkitemWithConversationStream';
 
 const reducer = [
     selectWorkitem,
     hoverWorkitem,
-    updateWorkitemWithDetails
+    updateWorkitemWithDetails,
+    updateWorkitemWithConversationStream
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = new Map({

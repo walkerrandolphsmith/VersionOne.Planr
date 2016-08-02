@@ -12,6 +12,7 @@ export default (i, workitemOidToken) => (dispatch, getState) => {
         .then(response => {
             const workitem = response.data;
 
+
             const owners = workitem.Owners.map((owner, i) => {
                 return {
                     oid: owner._oid,

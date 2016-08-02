@@ -4,12 +4,16 @@ import { ActivityStreamIcon, CommitStreamIcon, ConversationsIcon } from './Icons
 import { OwnersPanel } from './OwnersPanel';
 
 export class RightToolbar extends React.Component {
+
+    getConversationStream() {
+        this.props.getConversationStream(this.props.workitem.oid);
+    }
+
     render() {
         const {
            workitem
         } = this.props;
 
-        console.log(workitem.owners);
         return (
             <header>
                 <Toolbar>
@@ -20,7 +24,9 @@ export class RightToolbar extends React.Component {
                     </ToolbarGroup>
                     <ToolbarSpacer />
                     <ToolbarGroup>
-                        <ConversationsIcon />
+                        <div onClick={this.getConversationStream.bind(this)}>
+                            <ConversationsIcon />
+                        </div>
                     </ToolbarGroup>
                     <ToolbarGroup>
                         <ActivityStreamIcon />
