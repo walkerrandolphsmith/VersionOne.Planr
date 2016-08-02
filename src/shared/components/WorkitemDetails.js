@@ -80,10 +80,10 @@ export class WorkitemDetails extends React.Component {
         return (
             <div>
                 <div>{changeDate}</div>
-                <div>{scope}</div>
-                <div>{classOfService}</div>
+                <div>{scope.name}</div>
+                <div>{classOfService.name}</div>
                 <div>{estimate}</div>
-                <div>{status}</div>
+                <div>{status.name}</div>
                 <div>{blockingIssuesList}</div>
                 <div>{testsAndTasksList}</div>
             </div>

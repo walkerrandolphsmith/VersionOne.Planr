@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { WorkitemDetails } from './WorkitemDetails';
 import { RightToolbar } from './RightToolbar';
+import { RightToolbarTabs } from './RightToolbarTabs';
 
 export class RightPaneContainer extends React.Component {
 
@@ -42,6 +43,7 @@ export class RightPaneContainer extends React.Component {
                     <div className="header" style={headerStyles}>
                         <RightToolbar {...this.props} />
                     </div>
+                    <RightToolbarTabs {...this.props} />
                     <div className="content">
                         <WorkitemDetails {...this.props} />
                     </div>

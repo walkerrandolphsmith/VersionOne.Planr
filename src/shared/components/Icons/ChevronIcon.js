@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class ChevronIcon extends React.Component {
+export default class ChevronIcon extends React.Component {
     render() {
         return (
             <svg x="0px" y="0px" viewBox="-790 635.9 6 10">

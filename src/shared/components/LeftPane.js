@@ -6,7 +6,7 @@ import {
     ActionCreators as BacklogActions,
     Selectors as BacklogSelectors
 } from './../atoms/backlog';
-import { ChevronIcon } from './ChevronIcon';
+import { ChevronIcon } from './Icons';
 import { LeftToolbar } from './LeftToolbar';
 
 export class LeftPaneContainer extends React.Component {
