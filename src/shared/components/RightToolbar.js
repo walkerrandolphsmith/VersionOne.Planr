@@ -1,6 +1,6 @@
 import React from 'react';
 import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './Toolbar';
-import { MemberAvatar } from './Avatar';
+import { OwnersPanel } from './OwnersPanel';
 
 export class RightToolbar extends React.Component {
     render() {
@@ -8,13 +8,14 @@ export class RightToolbar extends React.Component {
            workitem
         } = this.props;
 
+        console.log(workitem.owners);
         return (
             <header>
                 <Toolbar>
                     <ToolbarTitle text={`${workitem.number} ${workitem.name}`}/>
                     <ToolbarSpacer />
                     <ToolbarGroup>
-                        <MemberAvatar />
+                        <OwnersPanel owners={workitem.owners} />
                     </ToolbarGroup>
                 </Toolbar>
             </header>

@@ -65,21 +65,16 @@ export class WorkitemDetails extends React.Component {
 
     render() {
         const {
-            oid,
-            assetType,
-            number,
-            name,
             scope,
             changeDate,
             classOfService,
             estimate,
             status,
             blockingIssues,
-            owners,
             children
         } = this.state;
 
-        const blockingIssuesList = blockingIssues.map(blockingIssue => <div key={blockingIssue}>{blockingIssue}</div>);
+        const blockingIssuesList = blockingIssues.map(blockingIssue => <div key={blockingIssue.oid}>{blockingIssue.name}</div>);
         const testsAndTasksList = children.map(child => <div key={child}>{child}</div>);
 
         return (
