@@ -1,6 +1,7 @@
 import express from 'express';
 import {
     getConversationStream,
+    getActivityStream,
     getWorkitemDetails
 } from './../routes/api';
 
@@ -25,6 +26,17 @@ export default () => {
             getConversationStream(workitemOidToken)
                 .then(expresssions => {
                     res.status(200).send(expresssions);
+                });
+        }
+    );
+
+    router.get(
+        '/activity-stream/:id',
+        (req, res) => {
+            const workitemOidToken = req.originalUrl.split('/activity-stream/')[1].replace('-', ':');
+            getActivityStream(workitemOidToken)
+                .then(activity => {
+                    res.status(200).send(activity);
                 });
         }
     );

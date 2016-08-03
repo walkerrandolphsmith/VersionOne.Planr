@@ -1,0 +1,1 @@
+export default (workitemOidToken, activity) => ({workitemOidToken, activity});

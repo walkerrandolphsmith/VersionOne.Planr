@@ -4,12 +4,14 @@ import selectWorkitem from './selectWorkitem';
 import hoverWorkitem from './hoverWorkitem';
 import updateWorkitemWithDetails from './updateWorkitemWithDetails';
 import updateWorkitemWithConversationStream from './updateWorkitemWithConversationStream';
+import updateWorkitemWithActivityStream from './updateWorkitemWithActivityStream';
 
 const reducer = [
     selectWorkitem,
     hoverWorkitem,
     updateWorkitemWithDetails,
-    updateWorkitemWithConversationStream
+    updateWorkitemWithConversationStream,
+    updateWorkitemWithActivityStream
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = new Map({

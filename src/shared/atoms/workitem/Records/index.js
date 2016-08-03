@@ -14,6 +14,7 @@ export const WorkitemRecord = new Record({
     owners: [],
     children: [],
     conversations: [],
+    activity: [],
     isSelected: false,
     isHovered: false
 });
