@@ -15,8 +15,7 @@ export class WorkitemDetails extends React.Component {
             status: '',
             blockingIssues: [],
             owners: [],
-            children: [],
-            conversations: []
+            children: []
         }
     };
 
@@ -36,8 +35,7 @@ export class WorkitemDetails extends React.Component {
             status: wi.status,
             blockingIssues: wi.blockingIssues,
             owners: wi.owners,
-            children: wi.children,
-            conversations: wi.conversations
+            children: wi.children
         }
     }
 
@@ -55,8 +53,7 @@ export class WorkitemDetails extends React.Component {
             status: wi.status,
             blockingIssues: wi.blockingIssues,
             owners: wi.owners,
-            children: wi.children,
-            conversations: wi.conversations
+            children: wi.children
         });
     }
 
@@ -74,19 +71,11 @@ export class WorkitemDetails extends React.Component {
             estimate,
             status,
             blockingIssues,
-            children,
-            conversations
+            children
         } = this.state;
 
         const blockingIssuesList = blockingIssues.map(blockingIssue => <div key={blockingIssue.oid}>{blockingIssue.name}</div>);
         const testsAndTasksList = children.map(child => <div key={child}>{child}</div>);
-        const conversationsStream =  conversations.map(expression => (
-            <div key={expression.oid}>
-                <div>Author: {expression.author.name}</div>
-                <div>Authored At: {expression.authorAt}</div>
-                <div>{expression.content}</div>
-            </div>
-        ));
 
         return (
             <div>
@@ -97,7 +86,6 @@ export class WorkitemDetails extends React.Component {
                 <div>{status.name}</div>
                 <div>{blockingIssuesList}</div>
                 <div>{testsAndTasksList}</div>
-                <div>{conversationsStream}</div>
             </div>
         )
     }

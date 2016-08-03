@@ -5,8 +5,22 @@ import { OwnersPanel } from './OwnersPanel';
 
 export class RightToolbar extends React.Component {
 
+    getWorkitemDetails() {
+        this.props.setTab(0);
+    }
+
     getConversationStream() {
         this.props.getConversationStream(this.props.workitem.oid);
+        this.props.setTab(1);
+    }
+
+    getActivityStream() {
+        this.props.getActivityStream(this.props.workitem.oid);
+        this.props.setTab(2);
+    }
+
+    getCommitStream() {
+        this.props.setTab(3);
     }
 
     render() {
@@ -24,15 +38,24 @@ export class RightToolbar extends React.Component {
                     </ToolbarGroup>
                     <ToolbarSpacer />
                     <ToolbarGroup>
+                        <div onClick={this.getWorkitemDetails.bind(this)}>
+                            <ConversationsIcon />
+                        </div>
+                    </ToolbarGroup>
+                    <ToolbarGroup>
                         <div onClick={this.getConversationStream.bind(this)}>
                             <ConversationsIcon />
                         </div>
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <ActivityStreamIcon />
+                        <div onClick={this.getActivityStream.bind(this)}>
+                            <ActivityStreamIcon />
+                        </div>
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <CommitStreamIcon />
+                        <div onClick={this.getCommitStream.bind(this)}>
+                            <CommitStreamIcon />
+                        </div>
                     </ToolbarGroup>
                 </Toolbar>
             </header>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { WorkitemDetails } from './WorkitemDetails';
+import { Workitem } from './Workitem';
 import { RightToolbar } from './RightToolbar';
 import { ActionCreators as BacklogActions } from './../atoms/backlog';
 
@@ -44,7 +44,7 @@ export class RightPaneContainer extends React.Component {
                         <RightToolbar {...this.props} />
                     </div>
                     <div className="content">
-                        <WorkitemDetails {...this.props} />
+                        <Workitem {...this.props} />
                     </div>
                 </div>
                 <div className="pane-caret" style={{top: top}}></div>
@@ -53,10 +53,9 @@ export class RightPaneContainer extends React.Component {
     }
 }
 
-
-
 function mapStateToProps(state) {
     return {
+        tab: state.backlogStateAtom.get('tab'),
         caretTopPosition: state.backlogStateAtom.get('caretTopPosition'),
         workitem: state.workitemStateAtom.get('workitems').get(state.workitemStateAtom.get('selected'))
     }
@@ -64,7 +63,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        getConversationStream: BacklogActions.getConversationStream
+        setTab: BacklogActions.setTab,
+        getConversationStream: BacklogActions.getConversationStream,
+        getActivityStream: BacklogActions.getActivityStream
     }, dispatch);
 }
 
