@@ -7,7 +7,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import { Provider } from 'react-redux';
 import Routes from './../shared/routes';
 import configureStore from './../shared/store';
-import './../assets/stylesheets/index.less';
+import './assets/stylesheets/index.less';
 
 const browserHistory = useRouterHistory(createBrowserHistory)({
     basename: '/'
