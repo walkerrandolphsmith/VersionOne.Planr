@@ -10,7 +10,7 @@ export class ActivityStream extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="activity-stream">
                 {this.props.workitem.activity.map((a, i) => <Activity key={i} {...a} />)}
             </div>
         )

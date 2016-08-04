@@ -1,0 +1,76 @@
+.conversation {
+  margin-bottom: 1.5em;
+  clear: both;
+
+  .header {
+    position: relative;
+    padding-left: 38px;
+    margin-bottom: 0.5em;
+
+    & > .avatar {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .when {
+      font-size: 0.857rem;
+      color: #a6a6a6;
+    }
+
+    .remove-conversation {
+      height: 12px;
+      width: 12px;
+      float: right;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: none;
+    }
+  }
+
+  .details {
+    position: relative;
+    margin-left: 38px;
+    margin-bottom: 0;
+
+    .content {
+      word-wrap: break-word;
+      white-space: pre-line;
+      padding-bottom: 1px;
+    }
+
+    .conversation-mentions {
+
+    }
+
+    .mentions {
+      margin-top: 8px;
+
+      ul {
+        margin-bottom: 0.5ex;
+        overflow: hidden;
+
+        .mentions {
+          margin-bottom: 0.5ex;
+          display: inline-block;
+          padding: 0.75ex 2ex;
+          background-color: #e6e6e6;
+          margin-right: 0.5ex;
+          border-radius: 2ex;
+          max-width: 12em;
+        }
+      }
+    }
+  }
+
+  .replies {
+
+  }
+
+  &:hover {
+    .header .remove-conversation {
+      display: block;
+    }
+  }
+}
