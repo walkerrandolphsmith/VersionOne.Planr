@@ -1,6 +1,6 @@
 import React from 'react';
-import { LeftPane } from './LeftPane';
-import { RightPane } from './RightPane';
+import { BacklogPanel } from './BacklogPanel';
+import { WorkitemPanel } from './WorkitemPanel';
 
 export class Landing extends React.Component {
     render() {
@@ -8,8 +8,8 @@ export class Landing extends React.Component {
             <div className="backlog-content-container">
                 <div className="backlog-content">
                     <div className="gutter"></div>
-                    <LeftPane {...this.props} />
-                    <RightPane {...this.props} />
+                    <BacklogPanel {...this.props} />
+                    <WorkitemPanel {...this.props} />
                     <div className="gutter"></div>
                 </div>
             </div>

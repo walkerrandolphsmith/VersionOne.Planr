@@ -1,16 +1,15 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ActionCreators as WorkitemActions } from './../atoms/workitem';
+import { ActionCreators as WorkitemActions } from './../../atoms/workitem';
 import {
     ActionCreators as BacklogActions,
     Selectors as BacklogSelectors
-} from './../atoms/backlog';
-import { ChevronIcon } from './Icons';
-import { LeftToolbar } from './LeftToolbar';
-import { StoryIcon, DefectIcon } from './Icons';
+} from './../../atoms/backlog';
+import { Actionbar } from './Actionbar';
+import { ChevronIcon, StoryIcon, DefectIcon } from './../Icons';
 
-export class LeftPaneContainer extends React.Component {
+export class BacklogPanelContainer extends React.Component {
 
     selectWorkitem({ index, oid }) {
         this.props.getWorkitemDetails(index, oid);
@@ -47,7 +46,7 @@ export class LeftPaneContainer extends React.Component {
             <div className="left backlog">
                 <div className="pane">
                     <div className="header">
-                        <LeftToolbar />
+                        <Actionbar />
                     </div>
                     <div className="content">
                         <table className="grid">
@@ -82,4 +81,4 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export const LeftPane = connect(mapStateToProps, mapDispatchToProps)(LeftPaneContainer);
+export const BacklogPanel = connect(mapStateToProps, mapDispatchToProps)(BacklogPanelContainer);

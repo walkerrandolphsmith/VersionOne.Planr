@@ -1,9 +1,9 @@
 import React from 'react';
-import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './Toolbar';
-import { ActivityStreamIcon, CommitStreamIcon, ConversationsIcon } from './Icons';
-import { OwnersPanel } from './OwnersPanel';
+import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
+import { ActivityStreamIcon, CommitStreamIcon, ConversationsIcon } from './../Icons';
+import { OwnersPanel } from './../OwnersPanel';
 
-export class RightToolbar extends React.Component {
+export class Actionbar extends React.Component {
 
     getWorkitemDetails() {
         this.props.setTab(0);
@@ -28,8 +28,18 @@ export class RightToolbar extends React.Component {
            workitem
         } = this.props;
 
+
+        let bkColor = 'white';
+
+        switch(workitem.assetType[0]) {
+            case 'Story': bkColor = '#7FB235'; break;
+            case 'Defect': bkColor = '#9F201F'; break;
+            case 'TestSet': bkColor = 'blue'; break;
+            default: bkColor = 'white';
+        }
+
         return (
-            <header>
+            <header style={{ backgroundColor: bkColor }}>
                 <Toolbar>
                     <ToolbarTitle text={`${workitem.number} ${workitem.name}`}/>
                     <ToolbarSpacer />
