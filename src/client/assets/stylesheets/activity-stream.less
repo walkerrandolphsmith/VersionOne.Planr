@@ -1,0 +1,74 @@
+.activity {
+  padding: 1rem 1rem;
+  position: relative;
+  border-top: 1px solid #dedede;
+
+  &:first-child {
+    border: none;
+  }
+
+  .time {
+    color: #a6a6a6;
+    font-size: 0.857rem;
+  }
+
+  .summary {
+    word-wrap: break-word;
+
+    .actor {
+
+    }
+
+    .verb {
+
+    }
+
+    .activity-subject {
+      padding: 0.75ex 0.25ex;
+    }
+
+    .targets {
+      list-style: none;
+      margin-left: 1.6rem;
+      padding: 0;
+
+      .target {
+        color: #a6a6a6;
+        position: relative;
+        margin-bottom: 0.5ex;
+        text-indent: 1rem;
+
+        &:before {
+          content: "";
+          width: 8px;
+          height: 8px;
+          display: inline-block;
+          vertical-align: middle;
+          border-radius: 50%;
+          background: rgba(0,100,255,0.2);
+        }
+
+        .expando {
+          display: inline-block;
+          vertical-align: top;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          border-radius: 0.5ex;
+
+          .name {
+
+          }
+
+          .verb {
+            padding-right: 5px;
+          }
+
+          .value {
+            color: #454545;
+          }
+        }
+      }
+    }
+  }
+}
