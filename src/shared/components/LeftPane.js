@@ -8,6 +8,7 @@ import {
 } from './../atoms/backlog';
 import { ChevronIcon } from './Icons';
 import { LeftToolbar } from './LeftToolbar';
+import { StoryIcon, DefectIcon } from './Icons';
 
 export class LeftPaneContainer extends React.Component {
 
@@ -26,6 +27,7 @@ export class LeftPaneContainer extends React.Component {
     render() {
         let i = 0;
         const wis = this.props.workitems.map(wi => {
+            const icon = wi.assetType[0] === 'Story' ? <StoryIcon /> : <DefectIcon />;
             return (
                 <tr key={wi.number} id={wi.oid}
                     className={`${wi.isSelected ? 'selected' : ''} ${wi.isHovered ? 'hovered' : ''}`}
@@ -33,6 +35,7 @@ export class LeftPaneContainer extends React.Component {
                     onMouseEnter={this.hoverWorkitem.bind(this, wi.oid)}
                     onMouseLeave={this.hoverWorkitem.bind(this, '')}>
                     <td></td>
+                    <td className="icon">{icon}</td>
                     <td className="number">{wi.number}</td>
                     <td className="name">{wi.name}</td>
                     <td className="select-arrow"><ChevronIcon /></td>
@@ -50,6 +53,7 @@ export class LeftPaneContainer extends React.Component {
                         <table className="grid">
                             <colgroup>
                                 <col className="spacer" />
+                                <col className="icon" />
                                 <col className="number" />
                                 <col className="name" />
                                 <col className="select-arrow" />
