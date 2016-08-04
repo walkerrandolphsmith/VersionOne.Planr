@@ -3,7 +3,7 @@ import { MemberAvatar } from './../Avatar';
 
 export class Expression extends React.Component {
     render() {
-        const { author, authorAt, content } = this.props;
+        const { author, authorAt, content, mentions } = this.props;
         return (
             <li className="conversation expanded">
                 <div className="header">
@@ -24,7 +24,7 @@ export class Expression extends React.Component {
                     </div>
                 </div>
                 <div className="details">
-                    <div className="content">{content}</div>
+                    <div className="conversation-content">{content}</div>
                     <div className="conversation-mentions">
                         <ul>
                             {}
@@ -32,13 +32,24 @@ export class Expression extends React.Component {
                     </div>
                     <div className="mentions">
                         <ul>
-                            {}
+                            {mentions.map((m, i) => <Mention key={i} {...m} />)}
                         </ul>
                     </div>
                 </div>
                 <div className="replies">
 
                 </div>
+            </li>
+        );
+    }
+}
+
+export class Mention extends React.Component {
+    render() {
+        const { oid, name, isClosed } = this.props;
+        return (
+            <li className={`mention ${isClosed}`}>
+                {name}
             </li>
         );
     }
