@@ -1,6 +1,6 @@
-import configureStore from './../../../shared/store';
-import { getBacklog } from './../api';
-import { Records } from './../../../shared/atoms/workitem';
+import { getBacklog } from './api';
+import configureStore from './../shared/store';
+import { Records } from './../shared/atoms/workitem';
 
 export const seedStore = (url) => getBacklog()
     .then(response => {

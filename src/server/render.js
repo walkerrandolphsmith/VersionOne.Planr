@@ -36,7 +36,7 @@ export const getComponentHtml = (renderProps, store) => {
     return ReactDom.renderToString(InitialComponent);
 };
 
-export const getView = (renderProps, store) => {
+export default (renderProps, store) => {
     const componentHTML = getComponentHtml(renderProps, store);
     const initialState = store.getState();
     return generateHTMLString(componentHTML, initialState)

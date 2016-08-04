@@ -3,7 +3,7 @@ import {
     getConversationStream,
     getActivityStream,
     getWorkitemDetails
-} from './../routes/api';
+} from './api';
 
 export default () => {
     const router = express.Router();

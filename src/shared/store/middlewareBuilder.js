@@ -2,7 +2,7 @@ import { applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import promiseMiddleware from './../middleware/promiseMiddleware';
-import env from './../../shared/env';
+import env from './../env';
 
 export default function middlewareBuilder(history) {
     const middleware = applyMiddleware(

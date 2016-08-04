@@ -1,5 +1,5 @@
 import express from 'express';
-import configureServer from './config/express';
+import configureServer from './app';
 import env from './../shared/env';
 
 const { host, port } = env;

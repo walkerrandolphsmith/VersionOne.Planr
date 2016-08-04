@@ -7,10 +7,10 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import { defaultRoute } from './../routes';
+import defaultRoute from './defaultRoute';
 import createApiRouter from './apiRouter';
-import env from './../../shared/env';
-var config = require('./../../../webpack.config');
+import env from './../shared/env';
+var config = require('./../../webpack.config');
 
 export default app => {
     const { nodeEnv, devPort } = env;

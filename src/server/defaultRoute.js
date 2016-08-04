@@ -1,8 +1,8 @@
 import { match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
-import routes from './../../../shared/routes';
-import { getView } from './getView';
+import render from './render';
 import { seedStore } from './seedStore';
+import routes from './../shared/routes';
 
 export default (request, response) => {
     const location = createLocation(request.url);
@@ -14,8 +14,8 @@ export default (request, response) => {
             if(!renderProps) {
                 return response.status(404).end('Not found.');
             }
-            const markup = getView(renderProps, store);
-            response.end(markup);
+            const markup = render(renderProps, store);
+            response.status(200).end(markup);
         });
     });
 }
