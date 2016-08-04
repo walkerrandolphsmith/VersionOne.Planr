@@ -14,7 +14,7 @@ export class Expression extends React.Component {
                         {author.name}
                     </span>
                     <span className="when">
-                        <time datetime={authorAt} title={authorAt}>{authorAt}</time>
+                        <time dateTime={authorAt} title={authorAt}>{authorAt}</time>
                     </span>
                     <a className="remove-conversation" title="remove"></a>
                     <div>
