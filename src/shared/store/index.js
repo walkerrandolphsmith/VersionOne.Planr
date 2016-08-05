@@ -5,9 +5,6 @@ import devTools from 'remote-redux-devtools';
 import env from './../env';
 
 export default ({ initialState, history }) => {
- if (instanceName === 'Client'){
-     debugger;
- }
     let enhancers = [createMiddlewares(history)];
     if(env.nodeEnv !== 'production') {
         enhancers = enhancers.concat([
