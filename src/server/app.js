@@ -38,7 +38,5 @@ export default app => {
     }
 
     app.use('/api', createApiRouter());
-    app.use('/', (req, res) => {
-        defaultRoute(req, res);
-    });
+    app.use('/', defaultRoute);
 };
