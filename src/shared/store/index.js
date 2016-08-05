@@ -1,8 +1,8 @@
-import { createStore, compose} from 'redux';
+import { createStore, compose } from 'redux';
 import createMiddlewares from './createMiddlewares';
 import rootReducer from './rootReducer';
 import devTools from 'remote-redux-devtools';
-import env from './../../shared/env';
+import env from './../env';
 
 export default ({ initialState, history }) => {
  if (instanceName === 'Client'){
