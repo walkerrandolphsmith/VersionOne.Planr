@@ -70,10 +70,12 @@ export class Activity extends React.Component {
 
     render() {
         const { body, headers } = this.props;
+
         const targets = body.target.map((t, i) => <Target key={i} {...t} />);
+
         return (
             <div className={`activity verb-${body.verb}`}>
-                <div className="time" title={body.time}>{body.time}</div>
+                <div className="time" title={body.time}>{body.time.split('T')[1]}</div>
                 <div className="summary">
                     <span>{body.actor.displayName} </span>
                     <span className="verb">{body.verb}</span>
