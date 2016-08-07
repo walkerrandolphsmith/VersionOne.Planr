@@ -1,4 +1,5 @@
 import React from 'react';
+import { Estimate } from './Estimate';
 
 export class WorkitemDetails extends React.Component {
 
@@ -79,14 +80,192 @@ export class WorkitemDetails extends React.Component {
 
         return (
             <div>
-                <div>{changeDate}</div>
-                <div>{scope.name}</div>
-                <div>{classOfService.name}</div>
-                <div>{estimate}</div>
-                <div>{status.name}</div>
+                <Estimate estimate={estimate} />
+
+                <div className="group">
+                    {/*
+                        Project, Iteration, Team
+                     */}
+                    <div className="attributes">
+                        <div className="attribute">
+                            <label>Project:</label>
+                            <div className="value-container">
+                                {scope.name}
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Iteration:</label>
+                            <div className="value-container">
+                                Iteration 1
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Team:</label>
+                            <div className="value-container">
+                                Imua
+                            </div>
+                        </div>
+                    </div>
+
+                    {/*
+                     Backlog Group, Epic, and Owners
+                     */}
+                    <div className="attributes">
+                        <div className="attribute">
+                            <label>Backlog Group:</label>
+                            <div className="value-container">
+                                Group
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Epic:</label>
+                            <div className="value-container">
+                                Epic Awesome
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Owners</label>
+                            <div className="value-container">
+                                Danny
+                            </div>
+                        </div>
+                    </div>
+
+                    {/*
+                     Priority, Risk, Class of Service
+                     */}
+                    <div className="attributes">
+                        <div className="attribute">
+                            <label>Priority:</label>
+                            <div className="value-container">
+                                High
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Risk:</label>
+                            <div className="value-container">
+                                huge
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Class of Service:</label>
+                            <div className="value-container">
+                                {classOfService.name}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="group">
+                    {/*
+                     Status, Tshirt Size,
+                     */}
+                    <div className="attributes">
+                        <div className="attribute">
+                            <label>Status:</label>
+                            <div className="value-container">
+                                {status.name}
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>T-Shirt Size:</label>
+                            <div className="value-container">
+                                Large
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Team:</label>
+                            <div className="value-container">
+                                Imua
+                            </div>
+                        </div>
+                    </div>
+
+                    {/*
+                     Created by, Created Date, Customer
+                     */}
+                    <div className="attributes">
+                        <div className="attribute">
+                            <label>Created By:</label>
+                            <div className="value-container">
+                                Walker
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Created Date:</label>
+                            <div className="value-container">
+                                11/20/2013
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Customer</label>
+                            <div className="value-container">
+                                Big Wigs
+                            </div>
+                        </div>
+                    </div>
+
+                    {/*
+                     Changed By, Change Date, Date Completed
+                     */}
+                    <div className="attributes">
+                        <div className="attribute">
+                            <label>Changed By:</label>
+                            <div className="value-container">
+                                Jim
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Change Date:</label>
+                            <div className="value-container">
+                                {changeDate}
+                            </div>
+                        </div>
+
+                        <div className="attribute">
+                            <label>Date Completed:</label>
+                            <div className="value-container">
+                                -
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="group">
+                    {/*
+                     Description
+                     */}
+                    <div className="attributes">
+                        <div className="description">
+                            <label>Description:</label>
+                            <div className="value-container">
+                                As a customer representative, I would like a pop-up window to appear when rolling
+                                over the customer name so that I can quickly access their pertinent information
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>Relations</div>
+
                 <div>{blockingIssuesList}</div>
                 <div>{testsAndTasksList}</div>
             </div>
         )
     }
 }
+
+/*
+
+ */
