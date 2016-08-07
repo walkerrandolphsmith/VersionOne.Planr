@@ -1,9 +1,12 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Workitem } from './../Workitem';
-import { Actionbar } from './Actionbar';
 import { ActionCreators as BacklogActions } from './../../atoms/backlog';
+import { Actionbar } from './Actionbar';
+import { WorkitemDetails } from './../WorkitemDetails';
+import { ConversationStream } from './../ConversationStream';
+import { ActivityStream } from './../ActivityStream';
+import { CommitStream } from './../CommitStream';
 
 export class WorkitemPanelContainer extends React.Component {
 
@@ -19,15 +22,27 @@ export class WorkitemPanelContainer extends React.Component {
         }
     }
 
+    getViewForTab = () => {
+        let tabView = <div></div>;
+        switch(this.props.tab) {
+            case 0: tabView = <WorkitemDetails {...this.props} />; break;
+            case 1: tabView = <ConversationStream {...this.props} />; break;
+            case 2: tabView = <ActivityStream {...this.props} />; break;
+            case 3: tabView = <CommitStream {...this.props} />; break;
+        }
+        return tabView;
+    };
+
     render() {
         const top = this.state.initialOffset + (this.props.caretTopPosition * this.state.rowHeight);
+        const tabView = this.getViewForTab();
 
         return (
             <div className="right workitem-details">
                 <div className="pane">
                     <Actionbar {...this.props} />
                     <div className="content">
-                        <Workitem {...this.props} />
+                        {tabView}
                     </div>
                 </div>
                 <div className="pane-caret" style={{top: top}}></div>
