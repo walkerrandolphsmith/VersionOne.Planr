@@ -1,0 +1,98 @@
+@width: ~"100% - 100px";
+
+.progress-section {
+    padding: 25px;
+    display: inline-block;
+    width: 200px;
+    height: 84px;
+}
+
+.card {
+    float: right;
+    display: inline-block;
+    vertical-align: top;
+    background-color: rgba(255,255,255,.2);
+    cursor: context-menu;
+    transition: .3s all ease-out;
+}
+
+.summary {
+    padding: 10px;
+    line-height: 1em;
+    word-spacing: -1px;
+    min-width: 50px;
+    min-height: 84px;
+    text-align: left;
+}
+
+.value-label-pair {
+
+     & >* {
+         display: table-cell;
+         vertical-align: top;
+     }
+
+    .value, .label {
+        color: #454545;
+        text-transform: uppercase;
+    }
+
+    .value {
+        line-height: .8em;
+        font-size: 3.5em;
+        letter-spacing: -.03em;
+        font-weight: 800;
+    }
+
+    .label {
+        line-height: 1em;
+        padding: 3px 1em 0 6px;
+        max-width: 75px;
+        font-size: .857em;
+        font-weight: 600;
+    }
+}
+
+.group {
+    display: block;
+    width: 100%;
+
+    .attributes {
+        border-color: #a6a6a6;
+        border-style: dotted;
+        border-width: 0 0 0 2px;
+        padding-left: .5em;
+        margin-bottom: 1em;
+        display: inline-block;
+        vertical-align: top;
+        min-width: 33%;
+        max-width: 33%;
+
+        &.description {
+            max-width: 100%;
+        }
+
+        .attribute {
+            margin-bottom: 8px;
+
+            label, .value-container {
+                vertical-align: top;
+            }
+
+            label {
+                font-size: 12px;
+                color: #634c47;
+                line-height: 1.2em;
+                text-transform: uppercase;
+                min-width: 100px;
+                max-width: 100px;
+            }
+
+            .value-container {
+                display: inline-block;
+                font-size: 12px;
+                width: calc(@width)
+            }
+        }
+    }
+}
