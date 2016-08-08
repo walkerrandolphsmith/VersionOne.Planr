@@ -5,6 +5,7 @@ export const WorkitemRecord = new Record({
     assetType: '',
     number: '',
     name: '',
+    description: '',
     scope: '',
     changeDate: '',
     classOfService: '',
@@ -25,6 +26,7 @@ export const createWorkitemRecord = wi => new WorkitemRecord({
     assetType: wi._oid.split(':'),
     number: wi.Number,
     name: wi.Name,
+    description: wi.Description,
     changeDate: wi.ChangeDate,
     estimate: wi.Estimate,
     //Single Value Relations

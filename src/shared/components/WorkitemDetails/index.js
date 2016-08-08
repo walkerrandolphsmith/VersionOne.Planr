@@ -9,6 +9,7 @@ export class WorkitemDetails extends React.Component {
             assetType: '',
             number: '',
             name: '',
+            description: '',
             scope: '',
             changeDate: '',
             classOfService: '',
@@ -29,6 +30,7 @@ export class WorkitemDetails extends React.Component {
             assetType: wi.assetType,
             number: wi.number,
             name: wi.name,
+            description: wi.description,
             scope: wi.scope,
             changeDate: wi.changeDate,
             classOfService: wi.classOfService,
@@ -47,6 +49,7 @@ export class WorkitemDetails extends React.Component {
             assetType: wi.assetType,
             number: wi.number,
             name: wi.name,
+            description: wi.description,
             scope: wi.scope,
             changeDate: wi.changeDate,
             classOfService: wi.classOfService,
@@ -66,6 +69,7 @@ export class WorkitemDetails extends React.Component {
 
     render() {
         const {
+            description,
             scope,
             changeDate,
             classOfService,
@@ -249,10 +253,7 @@ export class WorkitemDetails extends React.Component {
                     <div className="attributes">
                         <div className="description">
                             <label>Description:</label>
-                            <div className="value-container">
-                                As a customer representative, I would like a pop-up window to appear when rolling
-                                over the customer name so that I can quickly access their pertinent information
-                            </div>
+                            <div className="value-container" dangerouslySetInnerHTML={{ __html: description }}></div>
                         </div>
                     </div>
                 </div>

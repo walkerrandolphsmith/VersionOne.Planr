@@ -7,6 +7,7 @@ export default oid => {
         select: [
             'Name',
             'Number',
+            'Description',
             'ChangeDate',
             'Scope',
             'Scope.Name',
