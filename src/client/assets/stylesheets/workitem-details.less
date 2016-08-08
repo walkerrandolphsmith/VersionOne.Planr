@@ -1,3 +1,5 @@
+@width: ~"100% - 100px";
+
 .progress-section {
     padding: 25px;
     display: inline-block;
@@ -64,6 +66,11 @@
         display: inline-block;
         vertical-align: top;
         min-width: 33%;
+        max-width: 33%;
+
+        &.description {
+            max-width: 100%;
+        }
 
         .attribute {
             margin-bottom: 8px;
@@ -84,6 +91,7 @@
             .value-container {
                 display: inline-block;
                 font-size: 12px;
+                width: calc(@width)
             }
         }
     }

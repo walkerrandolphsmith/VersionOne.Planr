@@ -284,8 +284,8 @@ export class WorkitemDetails extends React.Component {
                     {/*
                      Description
                      */}
-                    <div className="attributes">
-                        <div className="description">
+                    <div className="attributes description">
+                        <div>
                             <label>Description:</label>
                             <div className="value-container" dangerouslySetInnerHTML={{ __html: description }}></div>
                         </div>
