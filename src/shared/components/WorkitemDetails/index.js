@@ -114,10 +114,10 @@ export class WorkitemDetails extends React.Component {
         return (
             <div>
                 <div className="progress-section">
-                    <ProgressBar actual={90} showGoal={true} goal={10} label="task and test"/>
+                    <ProgressBar actual={90} showGoal={false} goal={10} label="Task Summary"/>
                 </div>
                 <div className="progress-section">
-                    <ProgressBar actual={30} showGoal={false} goal={10} label="other"/>
+                    <ProgressBar actual={30} showGoal={true} goal={10} label="Test Summary"/>
                 </div>
                 <Estimate estimate={estimate} />
                 <div className="group">
