@@ -122,7 +122,7 @@ export class WorkitemDetails extends React.Component {
                 <Estimate estimate={estimate} />
                 <div className="group">
                     {/*
-                        Project, Iteration, Team
+                        Project, Iteration
                      */}
                     <div className="attributes">
                         <div className="attribute">
@@ -138,26 +138,31 @@ export class WorkitemDetails extends React.Component {
                                 {iteration.name}
                             </div>
                         </div>
+                    </div>
 
+                    {/*
+                     Team, Backlog Group
+                     */}
+                    <div className="attributes">
                         <div className="attribute">
                             <label>Team:</label>
                             <div className="value-container">
                                 {team.name}
                             </div>
                         </div>
-                    </div>
 
-                    {/*
-                     Backlog Group, Epic, and Owners
-                     */}
-                    <div className="attributes">
                         <div className="attribute">
                             <label>Backlog Group:</label>
                             <div className="value-container">
                                 Group
                             </div>
                         </div>
+                    </div>
 
+                    {/*
+                     Epic, Status
+                     */}
+                    <div className="attributes">
                         <div className="attribute">
                             <label>Epic:</label>
                             <div className="value-container">
@@ -166,15 +171,17 @@ export class WorkitemDetails extends React.Component {
                         </div>
 
                         <div className="attribute">
-                            <label>Owners</label>
+                            <label>Status:</label>
                             <div className="value-container">
-                                Danny
+                                {status.name}
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <div className="group">
                     {/*
-                     Priority, Risk, Class of Service
+                     Priority, Class of Service
                      */}
                     <div className="attributes">
                         <div className="attribute">
@@ -185,44 +192,9 @@ export class WorkitemDetails extends React.Component {
                         </div>
 
                         <div className="attribute">
-                            <label>Risk:</label>
-                            <div className="value-container">
-                                risk
-                            </div>
-                        </div>
-
-                        <div className="attribute">
                             <label>Class of Service:</label>
                             <div className="value-container">
                                 {classOfService.name}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="group">
-                    {/*
-                     Status, Tshirt Size,
-                     */}
-                    <div className="attributes">
-                        <div className="attribute">
-                            <label>Status:</label>
-                            <div className="value-container">
-                                {status.name}
-                            </div>
-                        </div>
-
-                        <div className="attribute">
-                            <label>T-Shirt Size:</label>
-                            <div className="value-container">
-                                Large
-                            </div>
-                        </div>
-
-                        <div className="attribute">
-                            <label>Other:</label>
-                            <div className="value-container">
-                                think of used field
                             </div>
                         </div>
                     </div>
@@ -244,13 +216,6 @@ export class WorkitemDetails extends React.Component {
                                 {createDate}
                             </div>
                         </div>
-
-                        <div className="attribute">
-                            <label>Customer</label>
-                            <div className="value-container">
-                                FAAAP
-                            </div>
-                        </div>
                     </div>
 
                     {/*
@@ -268,13 +233,6 @@ export class WorkitemDetails extends React.Component {
                             <label>Change Date:</label>
                             <div className="value-container">
                                 {changeDate}
-                            </div>
-                        </div>
-
-                        <div className="attribute">
-                            <label>Date Completed:</label>
-                            <div className="value-container">
-                                -
                             </div>
                         </div>
                     </div>
