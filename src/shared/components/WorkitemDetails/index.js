@@ -11,7 +11,14 @@ export class WorkitemDetails extends React.Component {
             name: '',
             description: '',
             scope: '',
+            iteration: '',
+            team: '',
+            epic: '',
             changeDate: '',
+            changedBy: '',
+            createDate: '',
+            createdBy: '',
+            priority: '',
             classOfService: '',
             estimate: '',
             status: '',
@@ -32,7 +39,14 @@ export class WorkitemDetails extends React.Component {
             name: wi.name,
             description: wi.description,
             scope: wi.scope,
+            iteration: wi.iteration,
+            team: wi.team,
+            epic: wi.epic,
             changeDate: wi.changeDate,
+            changedBy: wi.changedBy,
+            createDate: wi.createDate,
+            createdBy: wi.createDate,
+            priority: wi.priority,
             classOfService: wi.classOfService,
             estimate: wi.estimate,
             status: wi.status,
@@ -51,7 +65,14 @@ export class WorkitemDetails extends React.Component {
             name: wi.name,
             description: wi.description,
             scope: wi.scope,
+            iteration: wi.iteration,
+            team: wi.team,
+            epic: wi.epic,
             changeDate: wi.changeDate,
+            changedBy: wi.changedBy,
+            createDate: wi.createDate,
+            createdBy: wi.createDate,
+            priority: wi.priority,
             classOfService: wi.classOfService,
             estimate: wi.estimate,
             status: wi.status,
@@ -71,7 +92,14 @@ export class WorkitemDetails extends React.Component {
         const {
             description,
             scope,
+            epic,
+            iteration,
+            team,
             changeDate,
+            changedBy,
+            createDate,
+            createdBy,
+            priority,
             classOfService,
             estimate,
             status,
@@ -85,7 +113,6 @@ export class WorkitemDetails extends React.Component {
         return (
             <div>
                 <Estimate estimate={estimate} />
-
                 <div className="group">
                     {/*
                         Project, Iteration, Team
@@ -101,14 +128,14 @@ export class WorkitemDetails extends React.Component {
                         <div className="attribute">
                             <label>Iteration:</label>
                             <div className="value-container">
-                                Iteration 1
+                                {iteration.name}
                             </div>
                         </div>
 
                         <div className="attribute">
                             <label>Team:</label>
                             <div className="value-container">
-                                Imua
+                                {team.name}
                             </div>
                         </div>
                     </div>
@@ -127,7 +154,7 @@ export class WorkitemDetails extends React.Component {
                         <div className="attribute">
                             <label>Epic:</label>
                             <div className="value-container">
-                                Epic Awesome
+                                {epic.name}
                             </div>
                         </div>
 
@@ -146,14 +173,14 @@ export class WorkitemDetails extends React.Component {
                         <div className="attribute">
                             <label>Priority:</label>
                             <div className="value-container">
-                                High
+                                {priority.name}
                             </div>
                         </div>
 
                         <div className="attribute">
                             <label>Risk:</label>
                             <div className="value-container">
-                                huge
+                                risk
                             </div>
                         </div>
 
@@ -186,9 +213,9 @@ export class WorkitemDetails extends React.Component {
                         </div>
 
                         <div className="attribute">
-                            <label>Team:</label>
+                            <label>Other:</label>
                             <div className="value-container">
-                                Imua
+                                think of used field
                             </div>
                         </div>
                     </div>
@@ -200,21 +227,21 @@ export class WorkitemDetails extends React.Component {
                         <div className="attribute">
                             <label>Created By:</label>
                             <div className="value-container">
-                                Walker
+                                {createdBy.name}
                             </div>
                         </div>
 
                         <div className="attribute">
                             <label>Created Date:</label>
                             <div className="value-container">
-                                11/20/2013
+                                {createDate}
                             </div>
                         </div>
 
                         <div className="attribute">
                             <label>Customer</label>
                             <div className="value-container">
-                                Big Wigs
+                                FAAAP
                             </div>
                         </div>
                     </div>
@@ -226,7 +253,7 @@ export class WorkitemDetails extends React.Component {
                         <div className="attribute">
                             <label>Changed By:</label>
                             <div className="value-container">
-                                Jim
+                                {changedBy.name}
                             </div>
                         </div>
 
@@ -266,7 +293,3 @@ export class WorkitemDetails extends React.Component {
         )
     }
 }
-
-/*
-
- */

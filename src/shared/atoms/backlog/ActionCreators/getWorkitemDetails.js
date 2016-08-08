@@ -12,6 +12,52 @@ export default (i, workitemOidToken) => (dispatch, getState) => {
         .then(response => {
             const workitem = response.data;
 
+            const scope = {
+                oid: workitem.Scope._oid,
+                name: workitem['Scope.Name']
+            };
+
+            const iteration = {
+                oid: workitem.Timebox._oid,
+                name: workitem['Timebox.Name']
+            };
+
+            const team = {
+                oid: workitem.Team._oid,
+                name: workitem['Team.Name']
+            };
+
+            const epic = {
+                oid: workitem.Super._oid,
+                name: workitem['Super.Name']
+            };
+
+            const changedBy = {
+                oid: workitem.ChangedBy._oid,
+                name: workitem['ChangedBy.Name']
+            };
+
+            const createdBy = {
+                oid: workitem.CreatedBy._oid,
+                name: workitem['CreatedBy.Name']
+            };
+
+            const priority = {
+                oid: workitem.Priority._oid,
+                name: workitem['Priority.Name']
+            };
+
+            const classOfService = {
+                oid: workitem.ClassOfService._oid,
+                name: workitem['ClassOfService.Name']
+            };
+
+            const blockingIssues = workitem.BlockingIssues.map((blockingIssue, i) => {
+                return {
+                    oid: blockingIssue._oid,
+                    name: workitem['BockingIssues.Name'][i]
+                }
+            });
 
             const owners = workitem.Owners.map((owner, i) => {
                 return {
@@ -21,28 +67,17 @@ export default (i, workitemOidToken) => (dispatch, getState) => {
                 };
             });
 
-            const blockingIssues = workitem.BlockingIssues.map((blockingIssue, i) => {
-                return {
-                    oid: blockingIssue._oid,
-                    name: workitem['BockingIssues.Name'][i]
-                }
-            });
-
-            const classOfService = {
-                oid: workitem.ClassOfService._oid,
-                name: workitem['ClassOfService.Name']
-            };
-
-            const scope = {
-                oid: workitem.Scope._oid,
-                name: workitem['Scope.Name']
-            };
-
-            let workitemWithDetails = WorkitemRecords.createWorkitemRecord(workitem);
-            workitemWithDetails = workitemWithDetails.set('owners', owners);
-            workitemWithDetails = workitemWithDetails.set('scope', scope);
-            workitemWithDetails = workitemWithDetails.set('classOfService', classOfService);
-            workitemWithDetails = workitemWithDetails.set('blockingIssues', blockingIssues);
+            const workitemWithDetails = WorkitemRecords.createWorkitemRecord(workitem)
+                .set('scope', scope)
+                .set('iteration', iteration)
+                .set('team', team)
+                .set('epic', epic)
+                .set('changedBy', changedBy)
+                .set('createdBy', createdBy)
+                .set('priority', priority)
+                .set('classOfService', classOfService)
+                .set('blockingIssues', blockingIssues)
+                .set('owners', owners);
 
             dispatch(WorkitemActions.updateWorkitemWithDetails(workitemWithDetails));
         })
