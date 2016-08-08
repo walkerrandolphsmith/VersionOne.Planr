@@ -24,7 +24,7 @@ export class ProgressBar extends React.Component {
 
         const goalStyle = {
             left: `${goal}px`,
-            display: showGoal ? 'block' : 'none'
+            backgroundColor: showGoal ? 'red' : 'transparent'
         };
 
         return (
