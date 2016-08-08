@@ -5,5 +5,9 @@ export default {
     apiHost: process.env.API_HOST || 'localhost',
     apiPort: process.env.API_PORT || 3002,
     isBrowser: process.browser,
-    nodeEnv: process.env.NODE_ENV
+    nodeEnv: process.env.NODE_ENV,
+    v1Host: process.env.V1Host,
+    v1Instance: process.env.V1Instance,
+    v1User: process.env.V1User,
+    v1Password: process.env.V1Password
 };

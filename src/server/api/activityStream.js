@@ -1,7 +1,6 @@
-import getV1 from './V1Server';
+import v1 from './../../shared/lib/V1Server';
 
 export default oid => {
-    const v1 = getV1();
     return v1
         .getActivityStream(oid)
         .then(response => {
