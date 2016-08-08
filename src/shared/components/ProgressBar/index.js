@@ -12,8 +12,11 @@ export class ProgressBar extends React.Component {
         const {
             actual,
             showGoal,
-            goal
+            goal,
+            label
         } = this.props;
+
+        const labelContainer = label ? <span>{label}</span> : null;
 
         const progressStyle = {
             width: `${actual}%`
@@ -26,6 +29,7 @@ export class ProgressBar extends React.Component {
 
         return (
             <div className="progress-bar-container">
+                {labelContainer}
                 <div className="progress-bar">
                     <div className="progress" style={progressStyle}>
 
