@@ -35,6 +35,7 @@ export const createWorkitemRecord = wi => new WorkitemRecord({
     name: wi.Name,
     description: wi.Description,
     changeDate: wi.ChangeDate,
+    createDate: wi.CreateDate,
     estimate: wi.Estimate,
     //Single Value Relations
     scope: wi.Scope? wi.Scope._oid : '',

@@ -32,6 +32,11 @@ export default (i, workitemOidToken) => (dispatch, getState) => {
                 name: workitem['Super.Name']
             };
 
+            const status = {
+                oid: workitem.Status._oid,
+                name: workitem['Status.Name']
+            };
+
             const changedBy = {
                 oid: workitem.ChangedBy._oid,
                 name: workitem['ChangedBy.Name']
@@ -72,6 +77,7 @@ export default (i, workitemOidToken) => (dispatch, getState) => {
                 .set('iteration', iteration)
                 .set('team', team)
                 .set('epic', epic)
+                .set('status', status)
                 .set('changedBy', changedBy)
                 .set('createdBy', createdBy)
                 .set('priority', priority)
@@ -82,6 +88,7 @@ export default (i, workitemOidToken) => (dispatch, getState) => {
             dispatch(WorkitemActions.updateWorkitemWithDetails(workitemWithDetails));
         })
         .catch(error => {
-
+            console.log("<--------------()-------------->");
+            console.log(error);
         });
 }
