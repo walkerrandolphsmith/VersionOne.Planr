@@ -1,6 +1,7 @@
 import React from 'react';
 import { Estimate } from './Estimate';
 import { ProgressBar } from './../ProgressBar';
+import { OwnersPanel } from './../OwnersPanel';
 
 export class WorkitemDetails extends React.Component {
 
@@ -104,6 +105,7 @@ export class WorkitemDetails extends React.Component {
             classOfService,
             estimate,
             status,
+            owners,
             blockingIssues,
             children
         } = this.state;
@@ -119,6 +121,7 @@ export class WorkitemDetails extends React.Component {
                 <div className="progress-section">
                     <ProgressBar actual={30} showGoal={true} goal={10} label="Test Summary"/>
                 </div>
+                <OwnersPanel owners={owners} />
                 <Estimate estimate={estimate} />
                 <div className="group">
                     {/*

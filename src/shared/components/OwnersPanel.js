@@ -27,14 +27,14 @@ export class OwnersPanel extends React.Component {
         const styles = {
             display: 'inline-block',
             position: 'relative',
-            width: '200px',
-            height: '100%'
+            width: '180px',
+            verticalAlign: 'top'
         };
 
         const leftShift = this.state.isHovered ? 36 : 20;
 
         const ownersList = owners.map((owner, i) => (
-            <div key={owner.oid} style={{position: 'absolute', left: `${i * leftShift}px`, zIndex: i, top: '25%'}}>
+            <div key={owner.oid} className="progress-section" style={{position: 'absolute', left: `${i * leftShift}px`, zIndex: i, top: '25%'}}>
                 <MemberAvatar url={owner.avatar} />
             </div>
         ));

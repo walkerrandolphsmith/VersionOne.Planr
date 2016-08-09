@@ -1,7 +1,6 @@
 import React from 'react';
 import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
 import { ActivityStreamIcon, CommitStreamIcon, ConversationsIcon } from './../Icons';
-import { OwnersPanel } from './../OwnersPanel';
 
 export class Actionbar extends React.Component {
 
@@ -42,10 +41,6 @@ export class Actionbar extends React.Component {
             <header style={{ backgroundColor: bkColor }}>
                 <Toolbar>
                     <ToolbarTitle text={`${workitem.number} ${workitem.name}`}/>
-                    <ToolbarSpacer />
-                    <ToolbarGroup>
-                        <OwnersPanel owners={workitem.owners} />
-                    </ToolbarGroup>
                     <ToolbarSpacer />
                     <ToolbarGroup>
                         <div onClick={this.getWorkitemDetails.bind(this)}>
