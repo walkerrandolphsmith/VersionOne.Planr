@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon src/server/index.js",
+    "start": "cross-env NODE_ENV=development nodemon -r dotenv/config src/server/index.js",
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --ui bdd -r specUtils/*.js --recursive src/**/*.spec.js"
   },
   "keywords": [],
@@ -54,6 +54,7 @@
     "chai": "^3.5.0",
     "cross-env": "^2.0.0",
     "css-loader": "^0.23.1",
+    "dotenv": "^2.0.0",
     "expect": "^1.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
