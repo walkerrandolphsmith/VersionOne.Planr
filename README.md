@@ -15,21 +15,19 @@ For example `git commit -m "This closes #34, and closes #23"`
 
 `npm test` will run the unit tests. Wallaby is also supported.
 
+### Configure
+Create a `.env` file in the root of the application that contains valid environment varaibles to connect to VersionOne instance:
+
+```
+V1Host=builds.versionone.net
+V1Instance=PR_16.0.13.14860
+V1User=admin
+V1Password=admin
+```
+
 ### Run
 
 `npm start` will start the web server, however the following environment variables will need valid values:
-
-1. V1Host
-2. V1Instance
-3. V1User
-4. V1Password
-
-Edit the npm script, `start` with the environment variables for your instance.
-
-example:
-```
-"start": "cross-env NODE_ENV=development V1Host=v1host.com V1Instance=v1prod V1User=admin V1Password=admin nodemon src/server/index.js",
-```
 
 
 [ci]: https://travis-ci.org/walkerrandolphsmith/VersionOne.Planr
