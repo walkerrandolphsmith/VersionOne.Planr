@@ -1,1 +1,0 @@
-export { default as getBacklog } from './backlog';

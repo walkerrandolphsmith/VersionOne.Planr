@@ -1,5 +1,16 @@
-import { getBacklog } from './api';
 import { Records } from './../shared/atoms/workitem';
+import v1 from './../shared/lib/V1Server';
+
+const getBacklog = () => {
+    return v1.query({
+        from: 'Workitem',
+        select: ['Name', 'Number', 'Children'],
+        page: {
+            start: 0,
+            size: 50
+        }
+    })
+};
 
 export default (url) => getBacklog()
     .then(response => {
