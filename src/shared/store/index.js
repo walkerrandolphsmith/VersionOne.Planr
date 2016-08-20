@@ -6,12 +6,6 @@ import env from './../env';
 
 export default ({ initialState, history }) => {
     let enhancers = [createMiddlewares(history)];
-    if(env.nodeEnv !== 'production') {
-        enhancers = enhancers.concat([
-            typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f,
-            devTools()
-        ]);
-    }
     const store = createStore(rootReducer, initialState, compose(...enhancers));
 
     if(module.hot) {
