@@ -1,0 +1,32 @@
+[
+  {
+    "reason": "Create an epict tree populated with stories and defects",
+    "username": "admin",
+    "password": "admin",
+    "commands": [
+      {
+        "command": "create",
+        "assetType": "Epic",
+        "attributes": {
+          "Name": "Root Epic"
+        }
+      },
+      {
+        "command": "create",
+        "assetType": "Epic",
+        "attributes": {
+          "Name": "Child A Epic",
+          "Parent": "{{Root Epic}}"
+        }
+      },
+      {
+        "command": "create",
+        "assetType": "Epic",
+        "attributes": {
+          "Name": "Child B Epic",
+          "Parent": "{{Root Epic}}"
+        }
+      }
+    ]
+  }
+]
