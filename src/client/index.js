@@ -1,10 +1,10 @@
 const injectTouchTapEvent = require('react-tap-event-plugin');
 import React from 'react';
 import ReactDom from 'react-dom';
-import createBrowserHistory from 'history/lib/createBrowserHistory'
-import { Router, useRouterHistory } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
-import { Provider } from 'react-redux';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+import {Router, useRouterHistory} from 'react-router';
+import {syncHistoryWithStore} from 'react-router-redux';
+import {Provider} from 'react-redux';
 import Routes from './../shared/routes';
 import configureStore from './../shared/store';
 import './assets/stylesheets/index.less';

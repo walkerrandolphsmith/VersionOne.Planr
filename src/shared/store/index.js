@@ -1,14 +1,14 @@
-import { createStore, compose } from 'redux';
+import {createStore, compose} from 'redux';
 import createMiddlewares from './createMiddlewares';
 import rootReducer from './rootReducer';
-import devTools from 'remote-redux-devtools';
-import env from './../env';
 
-export default ({ initialState, history }) => {
-    let enhancers = [createMiddlewares(history)];
+export default ({initialState, history}) => {
+    const enhancers = [createMiddlewares(history)].concat([
+        typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
+    ]);
     const store = createStore(rootReducer, initialState, compose(...enhancers));
 
-    if(module.hot) {
+    if (module.hot) {
         module.hot.accept('./rootReducer', () => {
             const nextReducer = require('./rootReducer').default;
             store.replaceReducer(nextReducer);
