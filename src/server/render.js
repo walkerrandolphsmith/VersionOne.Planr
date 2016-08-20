@@ -1,7 +1,4 @@
 import React from 'react';
-import ReactDom from 'react-dom/server';
-import { RouterContext } from 'react-router';
-import { Provider } from 'react-redux';
 
 export const generateHTMLString = (componentHTML, initialState) => `
     <!doctype html>
@@ -27,17 +24,8 @@ export const generateHTMLString = (componentHTML, initialState) => `
     </html>
 `;
 
-export const getComponentHtml = (renderProps, store) => {
-    const InitialComponent = (
-        <Provider store={store}>
-            <RouterContext {...renderProps} />
-        </Provider>
-    );
-    return ReactDom.renderToString(InitialComponent);
-};
-
 export default (renderProps, store) => {
-    const componentHTML = getComponentHtml(renderProps, store);
+    const componentHTML = '';
     const initialState = store.getState();
     return generateHTMLString(componentHTML, initialState)
 };
