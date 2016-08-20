@@ -2,8 +2,22 @@ import axios from 'axios';
 import { ActionCreators as WorkitemActions } from './../../workitem';
 
 export default (workitemOidToken) => (dispatch, getState) => {
-    axios
-        .get(`/api/conversation-stream/${workitemOidToken.replace(':', '-')}`)
+    axios.post('/api/query/', {
+            from: 'PrimaryWorkitem',
+            select: [
+                'MentionedInExpressions',
+                'MentionedInExpressions.Content',
+                'MentionedInExpressions.Author',
+                'MentionedInExpressions.Author.Name',
+                'MentionedInExpressions.Author.Avatar.Content',
+                'MentionedInExpressions.AuthoredAt',
+                'MentionedInExpressions.Mentions',
+                'MentionedInExpressions.Mentions.Name'
+            ],
+            where: {
+                ID: workitemOidToken
+            }
+        })
         .then(response => {
             const workitem = response.data;
 

@@ -1,45 +1,21 @@
 import express from 'express';
-import {
-    getConversationStream,
-    getActivityStream,
-    getWorkitemDetails
-} from './api';
+import v1 from './../shared/lib/V1Server';
 
 export default () => {
     const router = express.Router();
-    
-    router.get(
-        '/workitem/:id',
-        (req, res) => {
-            const workitemOidToken = req.originalUrl.split('/workitem/')[1].replace('-', ':');
-            getWorkitemDetails(workitemOidToken)
-                .then(workitem => {
-                    res.status(200).send(workitem);
-                });
-        }
-    );
 
-    router.get(
-        '/conversation-stream/:id',
-        (req, res) => {
-            const workitemOidToken = req.originalUrl.split('/conversation-stream/')[1].replace('-', ':');
-            getConversationStream(workitemOidToken)
-                .then(expresssions => {
-                    res.status(200).send(expresssions);
-                });
-        }
-    );
+    router.get('/activitystream', (req, res) => {
+        const oid = req.originalUrl.split('/activitystream/')[1].replace('-', ':');
+        v1.getActivityStream(oid).then(response => {
+            res.status(200).send(response.data);
+        });
+    });
 
-    router.get(
-        '/activity-stream/:id',
-        (req, res) => {
-            const workitemOidToken = req.originalUrl.split('/activity-stream/')[1].replace('-', ':');
-            getActivityStream(workitemOidToken)
-                .then(activity => {
-                    res.status(200).send(activity);
-                });
-        }
-    );
+    router.post('/query', (req, res) => {
+        v1.query(req.body).then(response => {
+            res.status(200).send(response.data[0][0]);
+        });
+    });
 
     return router;
 };
