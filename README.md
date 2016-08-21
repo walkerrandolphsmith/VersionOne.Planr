@@ -23,6 +23,7 @@ V1Host=builds.versionone.net
 V1Instance=PR_16.0.13.14860
 V1User=admin
 V1Password=admin
+NODE_ENV=development
 ```
 
 ### Run
