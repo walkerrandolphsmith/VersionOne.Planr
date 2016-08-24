@@ -1,5 +1,5 @@
 import express from 'express';
-import v1 from './../shared/lib/V1Server';
+import v1 from './V1Server';
 
 export default () => {
     const router = express.Router();

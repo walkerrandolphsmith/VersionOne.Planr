@@ -1,5 +1,5 @@
 import { Records } from './../shared/atoms/workitem';
-import v1 from './../shared/lib/V1Server';
+import v1 from './V1Server';
 
 export default (url) => v1.query({
         from: 'PrimaryWorkitem',
