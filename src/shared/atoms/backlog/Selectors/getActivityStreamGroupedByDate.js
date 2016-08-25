@@ -14,12 +14,9 @@ const groupBy= pred => l => l.map(a => {
 }, {});
 
 export default state => {
-    const workitem = state.backlogStateAtom
-        .get('workitems')
-        .get(state.backlogStateAtom.get('selected'));
+    const workitem = state.backlogStateAtom.workitems[state.backlogStateAtom.selected];
 
-    //Remove attributes not set on creation. Maybe a new selector
-    const activity = workitem.activity.map((activity) => {
+    const activity = (workitem.activity || []).map((activity) => {
         if(activity.body.verb === 'Created'){
             activity.body.target = activity.body.target.filter((target) => target.newValue !== '');
         }

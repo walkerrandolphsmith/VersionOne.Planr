@@ -1,4 +1,9 @@
-export default state => state
-        .backlogStateAtom
-        .get('workitems')
-        .filter((workitem) => ['Story', 'Defect', 'TestSet'].includes(workitem.assetType[0]));
+export default state => {
+    const workitems = [];
+    for(var wi in state.backlogStateAtom.workitems) {
+        if(['Story', 'Defect', 'TestSet'].includes(state.backlogStateAtom.workitems[wi].assetType[0])){
+            workitems.push(state.backlogStateAtom.workitems[wi]);
+        }
+    }
+    return workitems;
+}

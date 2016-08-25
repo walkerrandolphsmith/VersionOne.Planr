@@ -1,1 +1,1 @@
-export default state => state.backlogStateAtom.get('selected');
+export default state => state.backlogStateAtom.selected;

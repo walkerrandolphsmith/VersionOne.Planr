@@ -1,1 +1,1 @@
-export default state => state.backlogStateAtom.get('hovered');
+export default state => state.backlogStateAtom.hovered;

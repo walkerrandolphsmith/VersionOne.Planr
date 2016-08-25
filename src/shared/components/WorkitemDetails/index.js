@@ -5,89 +5,19 @@ import { OwnersPanel } from './../OwnersPanel';
 
 export class WorkitemDetails extends React.Component {
 
-    static defaultProps = {
-        workitem: {
-            oid: '',
-            assetType: '',
-            number: '',
-            name: '',
-            description: '',
-            scope: '',
-            iteration: '',
-            team: '',
-            epic: '',
-            changeDate: '',
-            changedBy: '',
-            createDate: '',
-            createdBy: '',
-            priority: '',
-            classOfService: '',
-            estimate: '',
-            status: '',
-            blockingIssues: [],
-            owners: [],
-            children: []
-        }
-    };
-
-
     constructor(props, context) {
         super(props, context);
-        const wi = props.workitem;
-        this.state = {
-            oid: wi.oid,
-            assetType: wi.assetType,
-            number: wi.number,
-            name: wi.name,
-            description: wi.description,
-            scope: wi.scope,
-            iteration: wi.iteration,
-            team: wi.team,
-            epic: wi.epic,
-            changeDate: wi.changeDate,
-            changedBy: wi.changedBy,
-            createDate: wi.createDate,
-            createdBy: wi.createdBy,
-            priority: wi.priority,
-            classOfService: wi.classOfService,
-            estimate: wi.estimate,
-            status: wi.status,
-            blockingIssues: wi.blockingIssues,
-            owners: wi.owners,
-            children: wi.children
-        }
+        const wi = props.workitem || {};
+        this.state = wi;
     }
 
     componentWillReceiveProps(nextProps) {
         const wi = nextProps.workitem;
-        this.setState({
-            oid: wi.oid,
-            assetType: wi.assetType,
-            number: wi.number,
-            name: wi.name,
-            description: wi.description,
-            scope: wi.scope,
-            iteration: wi.iteration,
-            team: wi.team,
-            epic: wi.epic,
-            changeDate: wi.changeDate,
-            changedBy: wi.changedBy,
-            createDate: wi.createDate,
-            createdBy: wi.createdBy,
-            priority: wi.priority,
-            classOfService: wi.classOfService,
-            estimate: wi.estimate,
-            status: wi.status,
-            blockingIssues: wi.blockingIssues,
-            owners: wi.owners,
-            children: wi.children
-        });
+        this.setState(wi);
     }
 
     updateName(event) {
-        const newName = event.target.value;
-        this.setState({ name: newName });
-        //this.props.updateWorkitem('name', newName);
+
     }
 
     render() {

@@ -4,8 +4,6 @@ import createLocation from 'history/lib/createLocation';
 import v1 from './V1Server';
 import configureStore from './../shared/store';
 import routes from './../shared/routes';
-import { Records } from './../shared/atoms/backlog';
-
 
 const getInitialState = (url) => v1.query({
     from: 'PrimaryWorkitem',
@@ -16,8 +14,26 @@ const getInitialState = (url) => v1.query({
     }
 })
 .then(response => {
-    const workitems = response.data[0].reduce((workitems, workitem) => {
-        workitems[workitem._oid] = Records.createWorkitemRecord(workitem);
+    const workitems = response.data[0].reduce((workitems, wi) => {
+        const workitem = {
+            oid: wi._oid,
+            assetType: wi._oid.split(':'),
+            number: wi.Number,
+            name: wi.Name,
+            description: wi.Description,
+            changeDate: wi.ChangeDate,
+            createDate: wi.CreateDate,
+            estimate: wi.Estimate,
+            //Single Value Relations
+            scope: wi.Scope? wi.Scope._oid : '',
+            status: wi.Status ? wi.Status._oid : '',
+            classOfService: wi.ClassOfService ? wi.ClassOfService._oid : '',
+            //Multivalue relation
+            blockingIssues: wi.BlockingIssues ? wi.BlockingIssues.map(bi => bi._oid) : [],
+            Owners: wi.Owners ? wi.Owners.map(bi => bi._oid) : [],
+            children: wi.Children.map(child => child._oid)
+        };
+        workitems[wi._oid] = workitem;
         return workitems;
     }, {});
 

@@ -1,1 +1,1 @@
-export default (workitemOidToken, conversations) => ({workitemOidToken, conversations});
+export default (workitemOidToken, workitem) => ({workitemOidToken, workitem});

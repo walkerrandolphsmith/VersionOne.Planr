@@ -1,5 +1,8 @@
-export default (workitems, selectedWorkitem, hoveredWorkitem) => workitems.map(wi => wi.mergeDeep({
-    isSelected: wi.oid === selectedWorkitem,
-    isHovered: wi.oid === hoveredWorkitem
-}));
+export default (workitems, selectedWorkitem, hoveredWorkitem) => {
+    for(var wi in workitems) {
+        workitems[wi].isSelected = workitems[wi].oid === selectedWorkitem;
+        workitems[wi].isHovered = workitems[wi].oid === hoveredWorkitem
+    }
+    return workitems;
+}
 

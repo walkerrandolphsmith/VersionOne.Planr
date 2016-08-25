@@ -51,11 +51,36 @@ export class WorkitemPanelContainer extends React.Component {
     }
 }
 
+const firstOrDefault = (wi) => ({
+    oid: wi.oid || '',
+    assetType: wi.assetType || [],
+    number: wi.number || '',
+    name: wi.name || '',
+    description: wi.description || '',
+    estimate: wi.estimate || '',
+    changeDate: wi.changeDate || '',
+    createDate: wi.createDate || '',
+    scope: wi.scope || {},
+    iteration: wi.iteration || {},
+    team: wi.team || {},
+    epic: wi.epic || {},
+    changedBy: wi.changedBy || {},
+    createdBy: wi.createdBy || {},
+    priority: wi.priority || {},
+    classOfService: wi.classOfService || {},
+    status: wi.status || {},
+    blockingIssues: wi.blockingIssues || [],
+    owners: wi.owners || [],
+    children: wi.children || [],
+    activity: wi.activity || [],
+    conversations: wi.conversations || []
+});
+
 function mapStateToProps(state) {
     return {
-        tab: state.backlogStateAtom.get('tab'),
-        caretTopPosition: state.backlogStateAtom.get('caretTopPosition'),
-        workitem: state.backlogStateAtom.get('workitems').get(state.backlogStateAtom.get('selected'))
+        tab: state.backlogStateAtom.tab,
+        caretTopPosition: state.backlogStateAtom.caretTopPosition,
+        workitem: firstOrDefault(state.backlogStateAtom.workitems[state.backlogStateAtom.selected])
     }
 }
 
