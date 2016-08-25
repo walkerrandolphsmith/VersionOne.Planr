@@ -1,3 +1,5 @@
+@exapndoWidth: ~"100% - 20px";
+
 .day {
     padding: 0.1ex 1em;
     color: #808080;
@@ -61,6 +63,7 @@
         }
 
         .expando {
+          max-width: calc(@exapndoWidth);
           display: inline-block;
           vertical-align: top;
           white-space: nowrap;
