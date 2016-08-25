@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ActionCreators as WorkitemActions } from './../../workitem';
+import { updateWorkitemWithConversationStream } from './index';
 
 export default (workitemOidToken) => (dispatch, getState) => {
     axios.post('/api/query/', {
@@ -46,7 +46,7 @@ export default (workitemOidToken) => (dispatch, getState) => {
                 }
             });
 
-            dispatch(WorkitemActions.updateWorkitemWithConversationStream(workitemOidToken, conversations));
+            dispatch(updateWorkitemWithConversationStream(workitemOidToken, conversations));
         })
         .catch(error => {
 

@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { ActionCreators as WorkitemActions } from './../../workitem';
+import { updateWorkitemWithActivityStream } from './index';
 
 export default (workitemOidToken) => (dispatch, getState) => {
     axios
         .get(`/api/activitystream/${workitemOidToken.replace(':', '-')}`)
         .then(response => {
             const activity = response.data;
-            dispatch(WorkitemActions.updateWorkitemWithActivityStream(workitemOidToken, activity));
+            dispatch(updateWorkitemWithActivityStream(workitemOidToken, activity));
         })
         .catch(error => {
             

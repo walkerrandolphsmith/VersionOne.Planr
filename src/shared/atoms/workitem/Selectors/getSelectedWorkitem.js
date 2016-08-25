@@ -1,1 +1,0 @@
-export default state => state.workitemStateAtom.get('selected');

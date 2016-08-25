@@ -1,12 +1,17 @@
 import { createSelector } from 'reselect';
-import { Selectors as WorkitemSelectors } from './../../workitem';
-import getAllHydratedWorkitemSelector from './getAllHydratedPrimaryWorkitems'
+import getAllHydratedWorkitemSelector from './getAllHydratedPrimaryWorkitems';
+import getSelectedWorkitemSelector from './getSelectedWorkitem';
+import getHoveredWorkitemSelector from './getHoveredWorkitem';
+import getAllPrimaryWorkitemsSelector from './getAllPrimaryWorkitems';
+import getActivityStreamGroupedByDateSelector from './getActivityStreamGroupedByDate';
+
+export const getActivityStreamGroupedByDate = getActivityStreamGroupedByDateSelector;
 
 export const getAllPrimaryWorkitems = createSelector(
     [
-        WorkitemSelectors.getAllPrimaryWorkitems,
-        WorkitemSelectors.getSelectedWorkitem,
-        WorkitemSelectors.getHoveredWorkitem
+        getAllPrimaryWorkitemsSelector,
+        getSelectedWorkitemSelector,
+        getHoveredWorkitemSelector
     ],
     getAllHydratedWorkitemSelector
 );

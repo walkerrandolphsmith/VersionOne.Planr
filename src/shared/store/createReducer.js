@@ -1,5 +1,5 @@
 import { Iterable, Map } from 'immutable';
-import { Records } from './../atoms/workitem';
+import { Records } from './../atoms/backlog';
 
 export default (defaultState, handlers) => (state = defaultState, action) => {
 

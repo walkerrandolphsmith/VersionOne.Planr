@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Selectors as WorkitemSelectors } from './../../atoms/workitem';
+import { Selectors } from './../../atoms/backlog';
 import { Activity } from './Activity';
 
 export class _ActivityStream extends React.Component {
@@ -37,7 +37,7 @@ export class _ActivityStream extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        activityGroupedByDate: WorkitemSelectors.getActivityStreamGroupedByDate(state)
+        activityGroupedByDate: Selectors.getActivityStreamGroupedByDate(state)
     }
 }
 

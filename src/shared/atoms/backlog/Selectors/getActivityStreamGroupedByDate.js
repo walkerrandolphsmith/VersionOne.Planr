@@ -14,9 +14,9 @@ const groupBy= pred => l => l.map(a => {
 }, {});
 
 export default state => {
-    const workitem = state.workitemStateAtom
+    const workitem = state.backlogStateAtom
         .get('workitems')
-        .get(state.workitemStateAtom.get('selected'));
+        .get(state.backlogStateAtom.get('selected'));
 
     //Remove attributes not set on creation. Maybe a new selector
     const activity = workitem.activity.map((activity) => {

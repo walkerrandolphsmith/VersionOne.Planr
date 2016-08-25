@@ -1,11 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ActionCreators as WorkitemActions } from './../../atoms/workitem';
-import {
-    ActionCreators as BacklogActions,
-    Selectors as BacklogSelectors
-} from './../../atoms/backlog';
+import { ActionCreators, Selectors } from './../../atoms/backlog';
 import { Actionbar } from './Actionbar';
 import { ChevronIcon, StoryIcon, DefectIcon } from './../Icons';
 
@@ -70,14 +66,14 @@ export class BacklogPanelContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        workitems: BacklogSelectors.getAllPrimaryWorkitems(state)
+        workitems: Selectors.getAllPrimaryWorkitems(state)
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        getWorkitemDetails: BacklogActions.getWorkitemDetails,
-        hoverWorkitem: WorkitemActions.hoverWorkitem
+        getWorkitemDetails: ActionCreators.getWorkitemDetails,
+        hoverWorkitem: ActionCreators.hoverWorkitem
     }, dispatch);
 }
 

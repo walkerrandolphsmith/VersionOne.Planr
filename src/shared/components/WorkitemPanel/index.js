@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ActionCreators as BacklogActions } from './../../atoms/backlog';
+import { ActionCreators } from './../../atoms/backlog';
 import { Actionbar } from './Actionbar';
 import { WorkitemDetails } from './../WorkitemDetails';
 import { ConversationStream } from './../ConversationStream';
@@ -55,16 +55,12 @@ function mapStateToProps(state) {
     return {
         tab: state.backlogStateAtom.get('tab'),
         caretTopPosition: state.backlogStateAtom.get('caretTopPosition'),
-        workitem: state.workitemStateAtom.get('workitems').get(state.workitemStateAtom.get('selected'))
+        workitem: state.backlogStateAtom.get('workitems').get(state.backlogStateAtom.get('selected'))
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        setTab: BacklogActions.setTab,
-        getConversationStream: BacklogActions.getConversationStream,
-        getActivityStream: BacklogActions.getActivityStream
-    }, dispatch);
+    return bindActionCreators(ActionCreators, dispatch);
 }
 
 export const WorkitemPanel = connect(mapStateToProps, mapDispatchToProps)(WorkitemPanelContainer);

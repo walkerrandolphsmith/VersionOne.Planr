@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { ActionCreators as WorkitemActions } from './../../workitem';
-import { Records as WorkitemRecords } from './../../workitem';
+import { selectWorkitem, updateWorkitemWithDetails } from './index';
+import { createWorkitemRecord } from './../Records';
 
 import { setCaretPosition } from './index';
 
 export default (i, workitemOidToken) => (dispatch, getState) => {
     dispatch(setCaretPosition(i));
-    dispatch(WorkitemActions.selectWorkitem(workitemOidToken));
+    dispatch(selectWorkitem(workitemOidToken));
     axios.post('/api/query/', {
             from: 'PrimaryWorkitem',
             select: [
@@ -109,7 +109,7 @@ export default (i, workitemOidToken) => (dispatch, getState) => {
                 };
             });
 
-            const workitemWithDetails = WorkitemRecords.createWorkitemRecord(workitem)
+            const workitemWithDetails = createWorkitemRecord(workitem)
                 .set('scope', scope)
                 .set('iteration', iteration)
                 .set('team', team)
@@ -122,7 +122,7 @@ export default (i, workitemOidToken) => (dispatch, getState) => {
                 .set('blockingIssues', blockingIssues)
                 .set('owners', owners);
 
-            dispatch(WorkitemActions.updateWorkitemWithDetails(workitemWithDetails));
+            dispatch(updateWorkitemWithDetails(workitemWithDetails));
         })
         .catch(error => {
             console.log("<--------------()-------------->");

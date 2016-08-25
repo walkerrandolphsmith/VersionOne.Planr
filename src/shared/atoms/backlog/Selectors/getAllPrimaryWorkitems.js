@@ -1,4 +1,4 @@
 export default state => state
-        .workitemStateAtom
+        .backlogStateAtom
         .get('workitems')
         .filter((workitem) => ['Story', 'Defect', 'TestSet'].includes(workitem.assetType[0]));

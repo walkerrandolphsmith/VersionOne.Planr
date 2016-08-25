@@ -1,4 +1,4 @@
-import { Records } from './../shared/atoms/workitem';
+import { Records } from './../shared/atoms/backlog';
 import v1 from './V1Server';
 
 export default (url) => v1.query({
@@ -17,7 +17,7 @@ export default (url) => v1.query({
 
         const initialState = {
             routing: undefined,
-            workitemStateAtom: {
+            backlogStateAtom: {
                 workitems: workitems
             }
         };
