@@ -1,34 +1,28 @@
-import _ from 'lodash';
 import * as actions from './../Actions';
 
-const setCaretPosition = (state, payload) => {
-    const newState = _.cloneDeep(state);
-    newState.caretTopPosition= payload.offset;
-    return newState;
-};
+const setCaretPosition = (state, payload) => ({
+    ...state,
+    caretTopPosition: payload.offset
+});
 
-const setTab = (state, payload) => {
-    const newState = _.cloneDeep(state);
-    newState.tab = payload.tabKey;
-    return newState;
-};
+const setTab = (state, payload) => ({
+    ...state,
+    tab: payload.tabKey
+});
 
-const selectWorkitem = (state, payload) => {
-    const newState = _.cloneDeep(state);
-    newState.selected = payload.workitemOidToken;
-    return newState;
-};
+const selectWorkitem = (state, payload) => ({
+    ...state,
+    selected: payload.workitemOidToken
+});
 
-const hoverWorkitem = (state, payload) => {
-    const newState = _.cloneDeep(state);
-    newState.hovered = payload.workitemOidToken;
-    return newState;
-};
+const hoverWorkitem = (state, payload) => ({
+    ...state,
+    hovered: payload.workitemOidToken
+});
 
 const updateWorkitemWithDetails = (state, payload) => {
-    const newState = _.cloneDeep(state);
     const wi = payload.workitemWithDetails;
-    const workitem = newState.workitems[payload.workitemWithDetails._oid];
+    const workitem = state.workitems[payload.workitemWithDetails._oid];
 
     workitem.scope = {
         oid: wi.Scope._oid,
@@ -89,12 +83,11 @@ const updateWorkitemWithDetails = (state, payload) => {
             avatar: wi['Owners.Avatar.Content'][i]
         };
     });
-    newState.workitems[payload.workitemWithDetails._oid] = workitem;
-    return newState;
+    state.workitems[payload.workitemWithDetails._oid] = workitem;
+    return { ...state };
 };
 
 const updateWorkitemWithConversationStream = (state, payload) => {
-    let newState = _.cloneDeep(state);
     const workitem = payload.workitem;
     const conversations = workitem.MentionedInExpressions.map((expression, i) => {
         const mentions = [];
@@ -120,15 +113,14 @@ const updateWorkitemWithConversationStream = (state, payload) => {
             mentions: mentions
         }
     });
+    state.workitems[payload.workitemOidToken].conversations = conversations;
 
-    newState.workitems[payload.workitemOidToken].conversations = conversations;
-    return newState;
+    return { ...state }
 };
 
 const updateWorkitemWithActivityStream = (state, payload) => {
-    const newState = _.cloneDeep(state);
-    newState.workitems[payload.workitemOidToken].activity = payload.activity;
-    return newState;
+    state.workitems[payload.workitemOidToken].activity = payload.activity;
+    return { ...state };
 };
 
 const handlers = {
