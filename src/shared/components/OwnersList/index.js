@@ -1,7 +1,7 @@
 import React from 'react';
-import { MemberAvatar } from './Avatar';
+import { MemberAvatar } from './../Avatar';
 
-export class OwnersPanel extends React.Component {
+export class OwnersList extends React.Component {
 
     static defaultProps = {
         owners: []
