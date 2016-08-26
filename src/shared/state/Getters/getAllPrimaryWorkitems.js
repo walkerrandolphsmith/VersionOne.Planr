@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 const hoveredWISelector = state => state.backlogStateAtom.hovered;
-const selectedWISelector = state => state.backlogStateAtom.hovered;
+const selectedWISelector = state => state.backlogStateAtom.selected;
 const workitemsSelector = state => state.backlogStateAtom.workitems;
 
 const primaryWorkitemsSelector = createSelector(
@@ -24,10 +24,12 @@ export default createSelector(
         hoveredWISelector
     ],
     (workitems, selectedWorkitem, hoveredWorkitem) => {
+        const hyrdatedWorkitems = [];
         for (var wi in workitems) {
             workitems[wi].isSelected = workitems[wi].oid === selectedWorkitem;
-            workitems[wi].isHovered = workitems[wi].oid === hoveredWorkitem
+            workitems[wi].isHovered = workitems[wi].oid === hoveredWorkitem;
+            hyrdatedWorkitems.push(workitems[wi]);
         }
-        return workitems;
+        return hyrdatedWorkitems;
     }
 );
