@@ -10,7 +10,7 @@ const success = createAction(
 
 export const getActivityStream = (workitemOidToken) => (dispatch, getState) => {
     axios
-        .get(`/api/activitystream/${workitemOidToken.replace(':', '-')}`)
+        .get(`/api/activitystream/${workitemOidToken}`)
         .then(response => {
             const activity = response.data;
             dispatch(success(workitemOidToken, activity));

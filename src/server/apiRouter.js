@@ -4,7 +4,8 @@ import v1 from './V1Server';
 const router = express.Router();
 
 router.get('/activitystream/:id', (req, res) => {
-    const oid = req.originalUrl.split('/activitystream/')[1].replace('-', ':');
+    console.log(req.originalUrl);
+    const oid = req.originalUrl.split('/activitystream/')[1];
     v1.getActivityStream(oid).then(response => {
         res.status(200).send(response.data);
     });
