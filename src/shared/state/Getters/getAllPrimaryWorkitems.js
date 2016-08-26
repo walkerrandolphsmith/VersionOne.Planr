@@ -1,9 +1,33 @@
-export default state => {
-    const workitems = [];
-    for(var wi in state.backlogStateAtom.workitems) {
-        if(['Story', 'Defect', 'TestSet'].includes(state.backlogStateAtom.workitems[wi].assetType[0])){
-            workitems.push(state.backlogStateAtom.workitems[wi]);
+import { createSelector } from 'reselect';
+
+const hoveredWISelector = state => state.backlogStateAtom.hovered;
+const selectedWISelector = state => state.backlogStateAtom.hovered;
+const workitemsSelector = state => state.backlogStateAtom.workitems;
+
+const primaryWorkitemsSelector = createSelector(
+    [workitemsSelector],
+    (workitems) => {
+        const primaryWorkitems = [];
+        for(var wi in workitems) {
+            if(['Story', 'Defect', 'TestSet'].includes(workitems[wi].assetType[0])){
+                primaryWorkitems.push(workitems[wi]);
+            }
         }
+        return primaryWorkitems;
     }
-    return workitems;
-}
+);
+
+export default createSelector(
+    [
+        primaryWorkitemsSelector,
+        selectedWISelector,
+        hoveredWISelector
+    ],
+    (workitems, selectedWorkitem, hoveredWorkitem) => {
+        for (var wi in workitems) {
+            workitems[wi].isSelected = workitems[wi].oid === selectedWorkitem;
+            workitems[wi].isHovered = workitems[wi].oid === hoveredWorkitem
+        }
+        return workitems;
+    }
+);
