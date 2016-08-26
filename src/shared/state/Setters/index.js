@@ -5,6 +5,7 @@ import hoverWorkitem from './hoverWorkitem';
 import setWorkitemDetails from './workitemDetails';
 import setConversationStream from './conversationStream';
 import setActivityStream from './activityStream';
+import setEpic from './setEpic';
 
 const handlers = [
     setCaret,
@@ -13,7 +14,8 @@ const handlers = [
     hoverWorkitem,
     setWorkitemDetails,
     setConversationStream,
-    setActivityStream
+    setActivityStream,
+    setEpic
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
@@ -21,7 +23,8 @@ const DEFAULT_STATE = {
     tab: 0,
     workitems: {},
     selected: '',
-    hovered: ''
+    hovered: '',
+    epic: ''
 };
 
 export default (state = DEFAULT_STATE, action = {}) => {
