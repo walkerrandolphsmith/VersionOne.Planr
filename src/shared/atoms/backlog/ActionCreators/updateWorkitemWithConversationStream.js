@@ -1,1 +1,0 @@
-export default (workitemOidToken, workitem) => ({workitemOidToken, workitem});

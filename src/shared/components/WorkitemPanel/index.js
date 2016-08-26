@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ActionCreators } from './../../atoms/backlog';
+import { ActionCreators } from './../../state';
 import { Actionbar } from './Actionbar';
 import { WorkitemDetails } from './../WorkitemDetails';
 import { ConversationStream } from './../ConversationStream';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ActionCreators, Selectors } from './../../atoms/backlog';
+import { ActionCreators, Selectors } from './../../state';
 import { Actionbar } from './Actionbar';
 import { ChevronIcon, StoryIcon, DefectIcon } from './../Icons';
 

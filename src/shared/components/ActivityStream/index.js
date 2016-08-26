@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Selectors } from './../../atoms/backlog';
+import { Selectors } from './../../state';
 import { Activity } from './Activity';
 
 export class _ActivityStream extends React.Component {
