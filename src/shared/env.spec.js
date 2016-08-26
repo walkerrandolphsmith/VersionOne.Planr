@@ -1,4 +1,4 @@
-import env from './env';
+import * as env from './env';
 
 describe('./shared/env', function() {
     describe('when loading env', () => {

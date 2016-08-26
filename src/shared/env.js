@@ -1,14 +1,10 @@
-export default {
-    host: process.env.HOST || 'localhost',
-    port: process.env.PORT || 3000,
-    devHost: process.env.DEV_HOST || 'localhost',
-    devPort: process.env.DEV_PORT || 3001,
-    apiHost: process.env.API_HOST || 'localhost',
-    apiPort: process.env.API_PORT || 3002,
-    isBrowser: process.browser,
-    nodeEnv: process.env.NODE_ENV,
-    v1Host: process.env.V1Host,
-    v1Instance: process.env.V1Instance,
-    v1User: process.env.V1User,
-    v1Password: process.env.V1Password
-};
+export const host = process.env.HOST || 'localhost';
+export const port = process.env.PORT || 3000;
+export const devHost = process.env.DEV_HOST || 'localhost';
+export const devPort = process.env.DEV_PORT || 3001;
+export const isBrowser = process.browser;
+export const nodeEnv = process.env.NODE_ENV;
+export const v1Host = process.env.V1Host;
+export const v1Instance = process.env.V1Instance;
+export const v1User = process.env.V1User;
+export const v1Password = process.env.V1Password;

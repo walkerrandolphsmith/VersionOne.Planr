@@ -9,10 +9,8 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import defaultRoute from './defaultRoute';
 import v1 from './V1Server';
-import env from './../shared/env';
+import { nodeEnv, host, port, devHost, devPort } from './../shared/env';
 var config = require('./../../webpack.config');
-
-const { nodeEnv, host, port, devHost, devPort } = env;
 
 const logger = (err) => {
     if(err) {
