@@ -8,7 +8,7 @@ import WebpackDevServer from 'webpack-dev-server';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import defaultRoute from './defaultRoute';
-import apiRouter from './apiRouter';
+import v1 from './V1Server';
 import env from './../shared/env';
 var config = require('./../../webpack.config');
 
@@ -42,7 +42,19 @@ if(nodeEnv === 'development') {
     new WebpackDevServer(webpack(config), config.devServer).listen(devPort, devHost, logger);
 }
 
-app.use('/api', apiRouter);
+app.get('/api/activitystream/:id', (req, res) => {
+    const oid = req.originalUrl.split('/activitystream/')[1];
+    v1.getActivityStream(oid).then(response => {
+        res.status(200).send(response.data);
+    });
+});
+
+app.post('/api/query', (req, res) => {
+    v1.query(req.body).then(response => {
+        res.status(200).send(response.data[0][0]);
+    });
+});
+
 app.use('/', defaultRoute);
 
 export default app;
