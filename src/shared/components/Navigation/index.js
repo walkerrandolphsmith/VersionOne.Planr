@@ -24,8 +24,8 @@ class EpicLookup extends React.Component {
     }
 
     select(result) {
-        const { text, rightIcon, leftIcon, classNames, oid } = result;
-        this.props.setEpic(oid);
+        const { text, oid } = result;
+        this.props.setEpic({ name: text, oid: oid });
         this.setState({ isOpen: false })
     }
 
@@ -74,7 +74,7 @@ export class _Navigation extends React.Component {
                     <ToolbarSpacer />
                     <ToolbarGroup>
                         <div className="epic-lineage">
-                            {epic}
+                            {epic.name}
                         </div>
                     </ToolbarGroup>
                     <ToolbarGroup>

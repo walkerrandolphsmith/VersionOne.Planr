@@ -6,7 +6,7 @@ const SET_WORKITEMS_ACTION = 'SET_WORKITEMS_ACTION';
 
 const selectEpic = createAction(
     SET_EPIC_ACTION,
-    (epicOidToken) => ({ epicOidToken })
+    (epic) => ({ epic })
 );
 
 const success = createAction(
@@ -14,8 +14,8 @@ const success = createAction(
     (workitems) => ({ workitems })
 );
 
-export const setEpic = (epicOidToken) => (dispatch, getState) => {
-    dispatch(selectEpic(epicOidToken));
+export const setEpic = (epic) => (dispatch, getState) => {
+    dispatch(selectEpic(epic));
     axios
         .post('/api/query', {
             'from': 'PrimaryWorkitem',
@@ -24,7 +24,7 @@ export const setEpic = (epicOidToken) => (dispatch, getState) => {
                 'Number'
             ],
             'where': {
-                'SuperMeAndUp': epicOidToken
+                'SuperMeAndUp': epic.oid
             }
         })
         .then((response) => {
@@ -37,7 +37,7 @@ export const setEpic = (epicOidToken) => (dispatch, getState) => {
 };
 
 const reducer = (state, payload) => {
-    state.epic = payload.epicOidToken;
+    state.epic = payload.epic;
     return { ...state };
 };
 
