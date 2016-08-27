@@ -18,21 +18,16 @@ class EpicLookup extends React.Component {
     }
 
     search(query) {
-        console.log(query);
         this.props.lookupEpic(query);
-        this.setState({ isOpen: query.length > 0 });
     }
 
     select(result) {
-        const { text, oid } = result;
-        this.props.setEpic({ name: text, oid: oid });
-        this.setState({ isOpen: false })
+        this.props.setEpic({ name: result.text, oid: result.oid });
     }
 
     render() {
         return (
             <Lookup {...this.props}
-                isOpen={this.state.isOpen}
                 placeholder="Epic:123"
                 width={400}
                 results={this.state.results}

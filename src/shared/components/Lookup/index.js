@@ -3,7 +3,6 @@ import ResultItem from './ResultItem';
 
 export class Lookup extends Component {
     static propTypes = {
-        isOpen: PropTypes.bool,
         placeholder: PropTypes.string,
         results: PropTypes.array,
         classNames: PropTypes.string,
@@ -17,37 +16,43 @@ export class Lookup extends Component {
     };
 
     static defaultProps = {
-        isOpen: false,
         placeholder: '',
         results: [],
         classNames: '',
         width: 800,
-        inputStyles: {
-
-        },
+        inputStyles: {},
         listStyles: {
             width: 500,
             padding: 10
         },
-        resultStyles: {
-
-        },
+        resultStyles: {},
         onChange: () => {},
         onFocus: () => {},
         select: () => {}
     };
 
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            isOpen: false
+        }
+    }
+
     onChange(event) {
         this.props.onChange(event.target.value);
+        this.setState({ isOpen: event.target.value.length > 0 });
     }
 
     onFocus(event) {
         this.props.onFocus()
     }
 
+    selectCallback() {
+        this.setState({ isOpen: false });
+    }
+
     render() {
         const {
-            isOpen,
             placeholder,
             results,
             select,
@@ -57,6 +62,8 @@ export class Lookup extends Component {
             resultStyles,
             width
         } = this.props;
+
+        const { isOpen } = this.state;
 
         const finalInputStyles = Object.assign({
             WebkitAppearance: 'none',
@@ -92,7 +99,12 @@ export class Lookup extends Component {
         });
 
         const resultItems = results.map(
-            (result, i) => <ResultItem key={i} result={result} select={select} styles={finalItemStyles} />
+            (result, i) => <ResultItem key={i}
+                                       result={result}
+                                       select={select}
+                                       selectCallback={this.selectCallback.bind(this)}
+                                       styles={finalItemStyles}
+            />
         );
 
         return (

@@ -24,6 +24,8 @@ export default class ResultItem extends Component {
 
     onClick() {
         this.props.select(this.props.result);
+        this.props.selectCallback();
+    }
     }
 
     render() {
