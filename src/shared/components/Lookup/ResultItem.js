@@ -27,8 +27,12 @@ export default class ResultItem extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            isHovered: false
+            isHovered: props.isHovered
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({ isHovered: nextProps.isHovered });
     }
 
     onClick() {

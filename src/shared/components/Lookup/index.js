@@ -33,7 +33,7 @@ export class Lookup extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = { isOpen: false }
+        this.state = { isOpen: false, hovered: -1 }
     }
 
     componentDidMount() {
@@ -45,8 +45,12 @@ export class Lookup extends Component {
     }
 
     handleKeyPress(event) {
-        const handleUp = () => { };
-        const handleDown = () => { };
+        const handleUp = () => {
+            this.setState({ hovered: this.state.hovered - 1 });
+        };
+        const handleDown = () => {
+            this.setState({ hovered: this.state.hovered + 1 });
+        };
         const handleEnter = () => { };
         const handleEscape = () => {
             this.setState({ isOpen: false });
@@ -89,7 +93,7 @@ export class Lookup extends Component {
             width
         } = this.props;
 
-        const { isOpen } = this.state;
+        const { isOpen, hovered } = this.state;
 
         const finalInputStyles = Object.assign({
             WebkitAppearance: 'none',
@@ -127,6 +131,7 @@ export class Lookup extends Component {
         const resultItems = results.map(
             (result, i) => <ResultItem key={i}
                                        result={result}
+                                       isHovered={hovered === i}
                                        select={select}
                                        selectCallback={this.selectCallback.bind(this)}
                                        styles={finalItemStyles}
