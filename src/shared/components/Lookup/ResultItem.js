@@ -4,6 +4,7 @@ import { EpicIcon } from './../Icons';
 export default class ResultItem extends Component {
     static propTypes = {
         result: PropTypes.object,
+        isHovered: PropTypes.bool,
         select: PropTypes.func,
         classNames: PropTypes.string,
         styles: PropTypes.object
@@ -13,6 +14,7 @@ export default class ResultItem extends Component {
         result: {
             text: ''
         },
+        isHovered: false,
         select: () => {
 
         },
@@ -22,10 +24,24 @@ export default class ResultItem extends Component {
         }
     };
 
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            isHovered: false
+        }
+    }
+
     onClick() {
         this.props.select(this.props.result);
         this.props.selectCallback();
     }
+
+    onMouseEnter() {
+        this.setState({ isHovered: true });
+    }
+
+    onMouseLeave() {
+        this.setState({ isHovered: false });
     }
 
     render() {
@@ -36,8 +52,8 @@ export default class ResultItem extends Component {
         } = this.props;
 
         const {
-            text
-        } = result;
+            isHovered
+        } = this.state;
 
         const { width, padding } = styles;
         const sidesWidth = 20;
@@ -80,12 +96,17 @@ export default class ResultItem extends Component {
         };
 
         return (
-            <div style={finalParentStyles} className={`result ${classNames}`} onClick={this.onClick.bind(this)}>
+            <div style={finalParentStyles}
+                 className={`result ${isHovered ? 'hovered' : ''} ${classNames}`}
+                 onClick={this.onClick.bind(this)}
+                 onMouseEnter={this.onMouseEnter.bind(this)}
+                 onMouseLeave={this.onMouseLeave.bind(this)}
+            >
                 <div style={leftStyles}>
                     <EpicIcon />
                 </div>
                 <div style={middleStyles}>
-                    {text}
+                    {result.text}
                 </div>
             </div>
         );
