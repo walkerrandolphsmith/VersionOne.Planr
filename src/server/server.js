@@ -49,7 +49,7 @@ app.get('/api/activitystream/:id', (req, res) => {
 
 app.post('/api/query', (req, res) => {
     v1.query(req.body).then(response => {
-        res.status(200).send(response.data[0][0]);
+        res.status(200).send(response.data);
     });
 });
 

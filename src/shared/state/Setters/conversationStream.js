@@ -26,7 +26,7 @@ export const getConversationStream = (workitemOidToken) => (dispatch, getState) 
             }
         })
         .then(response => {
-            const workitem = response.data;
+            const workitem = response.data[0][0];
             dispatch(success(workitemOidToken, workitem));
         })
         .catch(error => {
