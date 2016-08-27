@@ -33,8 +33,34 @@ export class Lookup extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            isOpen: false
+        this.state = { isOpen: false }
+    }
+
+    componentDidMount() {
+        window.addEventListener('keydown', this.handleKeyPress.bind(this));
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('keydown', this.handleKeyPress);
+    }
+
+    handleKeyPress(event) {
+        const handleUp = () => { };
+        const handleDown = () => { };
+        const handleEnter = () => { };
+        const handleEscape = () => {
+            this.setState({ isOpen: false });
+        };
+
+        const keyPressMap = {
+            38: handleUp,
+            40: handleDown,
+            13: handleEnter,
+            27: handleEscape
+        };
+
+        if(keyPressMap[event.which]) {
+            keyPressMap[event.which]();
         }
     }
 
