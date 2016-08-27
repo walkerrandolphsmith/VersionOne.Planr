@@ -38,20 +38,8 @@ class EpicLookup extends React.Component {
 }
 
 export class _Navigation extends React.Component {
-
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            epic: this.props.epic
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({ epic: nextProps.epic });
-    }
-
     render() {
-        const { epic } = this.state;
+        const { epic } = this.props;
         return (
             <header className="navigation">
                 <Toolbar>
