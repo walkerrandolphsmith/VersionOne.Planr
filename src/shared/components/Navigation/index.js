@@ -6,17 +6,6 @@ import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './../Toolbar
 import { Lookup } from './../Lookup';
 
 class EpicLookup extends React.Component {
-    constructor(props, context){
-        super(props, context);
-        this.state = {
-            results: props.epicLookupResults || []
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({ results: nextProps.epicLookupResults });
-    }
-
     search(query) {
         this.props.lookupEpic(query);
     }
@@ -26,11 +15,12 @@ class EpicLookup extends React.Component {
     }
 
     render() {
+        const { epicLookupResults } = this.props;
         return (
             <Lookup {...this.props}
                 placeholder="Epic:123"
                 width={400}
-                results={this.state.results}
+                results={epicLookupResults}
                 select={this.select.bind(this)}
                 onChange={this.search.bind(this)}
                 inputStyles={{
@@ -43,7 +33,7 @@ class EpicLookup extends React.Component {
                     backgroundColor: 'white'
                 }}
             />
-        )
+        );
     }
 }
 
