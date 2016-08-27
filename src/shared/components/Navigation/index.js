@@ -3,6 +3,54 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
 import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
+import { Lookup } from './../Lookup';
+
+class EpicLookup extends React.Component {
+    constructor(props, context){
+        super(props, context);
+        this.state = {
+            results: props.epicLookupResults || []
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({ results: nextProps.epicLookupResults });
+    }
+
+    search(query) {
+        console.log(query);
+        this.props.lookupEpic(query);
+        this.setState({ isOpen: query.length > 0 });
+    }
+
+    select(result) {
+        const { text, rightIcon, leftIcon, classNames, oid } = result;
+        this.props.setEpic(oid);
+        this.setState({ isOpen: false })
+    }
+
+    render() {
+        return (
+            <Lookup {...this.props}
+                isOpen={this.state.isOpen}
+                placeholder="Epic:123"
+                width={400}
+                results={this.state.results}
+                select={this.select.bind(this)}
+                onChange={this.search.bind(this)}
+                inputStyles={{
+                    border: 'none'
+                }}
+                listStyles={{
+                    position: 'absolute',
+                    right: '30px',
+                    zIndex: 99999,
+                    backgroundColor: 'white'
+                }}
+            />
+        )
+    }
+}
 
 export class _Navigation extends React.Component {
 
@@ -15,11 +63,6 @@ export class _Navigation extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({ epic: nextProps.epic });
-    }
-
-    setEpic(event) {
-        const epicOidToken = event.target.value;
-        this.props.setEpic(epicOidToken);
     }
 
     render() {
@@ -35,19 +78,13 @@ export class _Navigation extends React.Component {
                         </div>
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <div className="access-token">
-                            <input type="text" placeholder="Access Token" />
+                        <div className="epic-lookup">
+                            <EpicLookup {...this.props} />
                         </div>
                     </ToolbarGroup>
                     <ToolbarGroup>
                         <div className="epic-lookup">
-                            <input
-                                type="text"
-                                ref="epic"
-                                placeholder="Epic:1234"
-                                value={epic}
-                                onChange={this.setEpic.bind(this)}
-                            />
+
                         </div>
                     </ToolbarGroup>
                 </Toolbar>
@@ -57,9 +94,9 @@ export class _Navigation extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state', state.backlogStateAtom.epic);
     return {
-        epic: state.backlogStateAtom.epic
+        epic: state.backlogStateAtom.epic,
+        epicLookupResults: state.backlogStateAtom.epicLookupResults
     }
 }
 
@@ -68,4 +105,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export const Navigation = connect(mapStateToProps, mapDispatchToProps)(_Navigation);
-

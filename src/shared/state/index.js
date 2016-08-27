@@ -8,7 +8,7 @@ import { setCaret } from './Setters/setCaret';
 import { setTab } from './Setters/setTab';
 import { getWorkitemDetails } from './Setters/workitemDetails';
 import { setEpic } from './Setters/setEpic';
-
+import { lookupEpic } from './Setters/lookupEpic';
 
 
 
@@ -22,6 +22,7 @@ export const ActionCreators = {
     setCaret,
     setTab,
     getWorkitemDetails,
-    setEpic
+    setEpic,
+    lookupEpic
 };
 export { default as Reducer } from './Setters';

@@ -6,6 +6,7 @@ import setWorkitemDetails from './workitemDetails';
 import setConversationStream from './conversationStream';
 import setActivityStream from './activityStream';
 import setEpic from './setEpic';
+import lookupEpic from './lookupEpic';
 
 const handlers = [
     setCaret,
@@ -15,7 +16,8 @@ const handlers = [
     setWorkitemDetails,
     setConversationStream,
     setActivityStream,
-    setEpic
+    setEpic,
+    lookupEpic
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
@@ -24,7 +26,8 @@ const DEFAULT_STATE = {
     workitems: {},
     selected: '',
     hovered: '',
-    epic: ''
+    epic: '',
+    epicLookupResults: []
 };
 
 export default (state = DEFAULT_STATE, action = {}) => {
