@@ -46,10 +46,14 @@ export class Lookup extends Component {
 
     handleKeyPress(event) {
         const handleUp = () => {
-            this.setState({ hovered: this.state.hovered - 1 });
+            const max = this.props.results.length;
+            const nextHovered = (this.state.hovered + max - 1) % max;
+            this.setState({ hovered: nextHovered });
         };
         const handleDown = () => {
-            this.setState({ hovered: this.state.hovered + 1 });
+            const max = this.props.results.length;
+            const nextHovered = (this.state.hovered + 1) % max;
+            this.setState({ hovered: nextHovered });
         };
         const handleEnter = () => { };
         const handleEscape = () => {
