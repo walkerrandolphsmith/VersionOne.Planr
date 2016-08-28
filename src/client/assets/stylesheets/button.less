@@ -2,10 +2,10 @@
     display: inline-block;
     zoom: 1;
     *display: inline;
-    background-color: #ffffff;
+    background-color: #00a9e0;
     border-radius: 6px;
     border: 0;
-    color: #474c54;
+    color: #ffffff;
     transition: 0.5s all linear;
     font-weight: 600;
     text-transform: capitalize;
@@ -15,14 +15,33 @@
     line-height: 32px;
     cursor: pointer;
 
-    &:hover {
-        background-color: #474c54;
-        color: #ffffff;
-        text-decoration: none;
+    span {
+        height: 100%;
+        vertical-align: top;
+        display: inline-block;
+    }
 
-        a {
-            color: #ffffff;
+    .quick-action {
+        padding-left: 1em;
+        padding-right: 0.8em;
+    }
+
+    .all-actions {
+        border-left: thin solid rgba(255,255,255,.5);
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+
+        svg {
+            fill: #ffffff;
+            width: 6px;
+            height: 100%;
+            transform: rotate(90deg);
         }
+    }
+
+    &:hover {
+        background-color: shade(#00a9e0, 35%);
+        text-decoration: none;
     }
 
     &.disabled, &[disabled] {

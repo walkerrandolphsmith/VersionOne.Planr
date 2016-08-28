@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 
-export class Button extends Component {
+export default class Button extends Component {
     static propTypes = {
         text: PropTypes.string.isRequired,
         onClick: PropTypes.func
