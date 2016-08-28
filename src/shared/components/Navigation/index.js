@@ -11,7 +11,7 @@ class EpicLookup extends React.Component {
     }
 
     select(result) {
-        this.props.setEpic({ name: result.text, oid: result.oid });
+        this.props.setEpic({ name: result.text, oid: result.oid, scope: result.scope });
     }
 
     render() {

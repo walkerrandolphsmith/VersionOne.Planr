@@ -11,15 +11,22 @@ const success = createAction(
 export const lookupEpic = (query) => (dispatch, getState) => {
     axios
         .post('/api/query', {
-            "from":"Epic",
-            "select":["Name","AssetType"],
-            "filter":["AssetState!='Closed'"],
-            "find":`${query}*`
+            'from': 'Epic',
+            'select': [
+                'Name',
+                'Scope',
+                'AssetType'
+            ],
+            'filter': [
+                "AssetState!='Closed'"
+            ],
+            'find': `${query}*`
         })
         .then((response) => {
             const epics = response.data[0].map(epic => ({
                 oid: epic._oid,
-                text: epic.Name
+                text: epic.Name,
+                scope: epic.Scope._oid
             }));
             dispatch(success(epics));
         })
