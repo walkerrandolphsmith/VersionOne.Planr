@@ -1,0 +1,47 @@
+.button {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 0;
+    color: #474c54;
+    transition: 0.5s all linear;
+    font-weight: 600;
+    text-transform: capitalize;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    height: 32px;
+    line-height: 32px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #474c54;
+        color: #ffffff;
+        text-decoration: none;
+
+        a {
+            color: #ffffff;
+        }
+    }
+
+    &.disabled, &[disabled] {
+        box-shadow: none ! important;
+        color: lighten(#ffffff, -35%);
+        text-shadow: none;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            box-shadow: none ! important;
+            color: lighten(#ffffff, -35%);
+            text-shadow: none;
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
