@@ -53,6 +53,13 @@ app.post('/api/query', (req, res) => {
     });
 });
 
+app.post('/api/create', (req, res) => {
+    const { assetType, assetData } = req.body;
+    v1.create(assetType, assetData).then(response => {
+        res.status(200).send(response.data);
+    });
+});
+
 app.use('/', defaultRoute);
 
 export default app;

@@ -43,7 +43,7 @@ export class BacklogPanelContainer extends React.Component {
             <div className="left backlog">
                 <div className="pane">
                     <div className="header">
-                        <Actionbar />
+                        <Actionbar {...this.props} />
                     </div>
                     <div className="content">
                         <table className="grid">
@@ -74,7 +74,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         getWorkitemDetails: ActionCreators.getWorkitemDetails,
-        hoverWorkitem: ActionCreators.hoverWorkitem
+        hoverWorkitem: ActionCreators.hoverWorkitem,
+        addWorkitem: ActionCreators.addWorkitem
     }, dispatch);
 }
 

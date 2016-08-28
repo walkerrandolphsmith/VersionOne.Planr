@@ -7,6 +7,7 @@ import setConversationStream from './conversationStream';
 import setActivityStream from './activityStream';
 import setEpic from './setEpic';
 import lookupEpic from './lookupEpic';
+import addWorkitem from './addWorkitem';
 
 const handlers = [
     setCaret,
@@ -17,7 +18,8 @@ const handlers = [
     setConversationStream,
     setActivityStream,
     setEpic,
-    lookupEpic
+    lookupEpic,
+    addWorkitem
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
