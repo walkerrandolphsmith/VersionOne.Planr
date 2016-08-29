@@ -17,7 +17,8 @@ export const updateWorkitem = ({ oid, assetData }) => (dispatch, getState) => {
         .then((response) => {
             const workitem = getState().backlogStateAtom.workitems[oid];
             for(let attribute in workitem) {
-                workitem[attribute] = assetData[attribute];
+                workitem[attribute] = assetData[attribute]
+                ? assetData[attribute] : workitem[attribute];
             }
             dispatch(success(workitem));
         })
@@ -29,7 +30,7 @@ export const updateWorkitem = ({ oid, assetData }) => (dispatch, getState) => {
 const reducer = (state, payload) => {
     state.workitems[payload.workitem.oid] = payload.workitem;
     const newWorkitems = {};
-    for(let oid in workitems) {
+    for(let oid in state.workitems) {
         newWorkitems[oid] = state.workitems[oid]
     }
     state.workitems = newWorkitems;
