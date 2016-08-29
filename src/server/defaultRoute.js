@@ -8,6 +8,9 @@ import routes from './../shared/routes';
 const getInitialState = (url) => v1.query({
     from: 'PrimaryWorkitem',
     select: ['Name', 'Number', 'AssetType', 'Children'],
+    filter: [
+        "AssetState!='Closed'"
+    ],
     page: {
         start: 0,
         size: 50

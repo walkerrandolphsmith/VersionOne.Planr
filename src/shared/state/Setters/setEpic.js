@@ -24,6 +24,9 @@ export const setEpic = (epic) => (dispatch, getState) => {
                 'Number',
                 'AssetType'
             ],
+            'filter': [
+                "AssetState!='Closed'"
+            ],
             'where': {
                 'SuperMeAndUp': epic.oid
             }
