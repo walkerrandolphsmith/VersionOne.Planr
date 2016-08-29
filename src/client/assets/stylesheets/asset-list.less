@@ -20,7 +20,7 @@ table.grid {
                 border-color: #73d0ee;
 
                 &:not(:hover) {
-                    td, td:first-child, td:last-child {
+                    td, td.spacer, td:last-child {
                         border-bottom: 1px solid #E1E2E4;
                         border-top: 1px solid #E1E2E4;
                     }
@@ -44,7 +44,7 @@ table.grid {
             }
 
             &:not(:hover) {
-                td:first-child, td:last-child {
+                td.spacer, td:last-child {
                     border: 1px solid transparent;
                 }
 
@@ -54,14 +54,14 @@ table.grid {
                     border-left: 0px;
                 }
 
-                td:first-child {
+                td.spacer {
                     border-bottom-left-radius: 3px;
                     border-top-left-radius: 3px;
                     border-right: 0px;
                 }
             }
 
-            td:first-child, td:last-child {
+            td.spacer, td:last-child {
                 width: 24px;
             }
 
