@@ -1,4 +1,5 @@
 import React from 'react';
+import { EditIcon } from './../Icons';
 
 export class TestList extends React.Component {
 
@@ -11,7 +12,7 @@ export class TestList extends React.Component {
                   >
                     <td className="number">{test.number}</td>
                     <td className="name">{test.name}</td>
-                    <td className="edit-icon">i</td>
+                    <td className="edit-icon"><EditIcon /></td>
                 </tr>
             )
         });
