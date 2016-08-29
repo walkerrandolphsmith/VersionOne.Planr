@@ -26,6 +26,10 @@ V1Password=admin
 NODE_ENV=development
 ```
 
+then run:
+
+```npm install```
+
 ### Run
 
 `npm start` will start the web server, however the following environment variables will need valid values:
