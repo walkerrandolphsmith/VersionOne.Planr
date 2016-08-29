@@ -1,7 +1,6 @@
 import setCaret from './setCaret';
 import setTab from './setTab';
 import selectWorkitem from './selectWorkitem';
-import hoverWorkitem from './hoverWorkitem';
 import setWorkitemDetails from './workitemDetails';
 import setConversationStream from './conversationStream';
 import setActivityStream from './activityStream';
@@ -14,7 +13,6 @@ const handlers = [
     setCaret,
     setTab,
     selectWorkitem,
-    hoverWorkitem,
     setWorkitemDetails,
     setConversationStream,
     setActivityStream,
@@ -29,7 +27,6 @@ const DEFAULT_STATE = {
     tab: 0,
     workitems: {},
     selected: '',
-    hovered: '',
     epic: '',
     epicLookupResults: []
 };

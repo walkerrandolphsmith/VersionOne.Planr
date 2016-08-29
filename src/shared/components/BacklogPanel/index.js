@@ -11,10 +11,6 @@ export class BacklogPanelContainer extends React.Component {
         this.props.getWorkitemDetails(index, oid);
     }
 
-    hoverWorkitem(workitemOidToken) {
-        this.props.hoverWorkitem(workitemOidToken);
-    }
-
     componentWillMount() {
         const oid = this.props.workitems[Object.keys(this.props.workitems)[0]].oid;
         this.props.getWorkitemDetails(0, oid);
@@ -26,10 +22,8 @@ export class BacklogPanelContainer extends React.Component {
             const icon = wi.assetType === 'Story' ? <StoryIcon /> : <DefectIcon />;
             return (
                 <tr key={wi.number} id={wi.oid}
-                    className={`${wi.isSelected ? 'selected' : ''} ${wi.isHovered ? 'hovered' : ''}`}
-                    onClick={this.selectWorkitem.bind(this, {index: i++, oid: wi.oid })}
-                    onMouseEnter={this.hoverWorkitem.bind(this, wi.oid)}
-                    onMouseLeave={this.hoverWorkitem.bind(this, '')}>
+                    className={`${wi.isSelected ? 'selected' : ''}`}
+                    onClick={this.selectWorkitem.bind(this, {index: i++, oid: wi.oid })}>
                     <td></td>
                     <td className="icon">{icon}</td>
                     <td className="number">{wi.number}</td>
@@ -74,7 +68,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         getWorkitemDetails: ActionCreators.getWorkitemDetails,
-        hoverWorkitem: ActionCreators.hoverWorkitem,
         addStory: ActionCreators.addStory,
         addDefect: ActionCreators.addDefect
     }, dispatch);

@@ -9,7 +9,7 @@ table.grid {
         tr {
             cursor: pointer;
 
-            &.selected, &.hovered {
+            &.selected, &:hover {
                 .select-arrow svg {
                     opacity: 0.5;
                 }
@@ -19,7 +19,7 @@ table.grid {
                 background-color: rgba(204,237,249,.5);
                 border-color: #73d0ee;
 
-                &:not(.hovered) {
+                &:not(:hover) {
                     td, td:first-child, td:last-child {
                         border-bottom: 1px solid #E1E2E4;
                         border-top: 1px solid #E1E2E4;
@@ -30,7 +30,7 @@ table.grid {
                 }
             }
 
-            &.hovered {
+            &:hover {
                 td {
                     background-color: rgba(221, 226, 233, 0.5);
                     border-bottom: 1px solid #b7bcc4;
@@ -43,7 +43,7 @@ table.grid {
                 }
             }
 
-            &:not(.hovered) {
+            &:not(:hover) {
                 td:first-child, td:last-child {
                     border: 1px solid transparent;
                 }
