@@ -5,6 +5,7 @@ import setWorkitemDetails from './workitemDetails';
 import setConversationStream from './conversationStream';
 import setActivityStream from './activityStream';
 import setEpic from './setEpic';
+import unSetEpic from './unSetEpic';
 import lookupEpic from './lookupEpic';
 import addWorkitem from './addWorkitem';
 import updateWorkitem from './updateWorkitem';
@@ -18,6 +19,7 @@ const handlers = [
     setConversationStream,
     setActivityStream,
     setEpic,
+    unSetEpic,
     lookupEpic,
     addWorkitem,
     updateWorkitem,

@@ -1,4 +1,22 @@
 .lookup {
+    position: relative;
+
+    .selected {
+        position: absolute;
+        left: 1px;
+        top: 1px;
+        background: lightgray;
+        border-radius: 3px;
+        padding: 1px;
+
+        span {
+            padding: 5px;
+        }
+
+        .un-select {
+            cursor: pointer;
+        }
+    }
 
     .result {
         transition: background-color .125s;

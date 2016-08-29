@@ -7,6 +7,7 @@ import { setCaret } from './Setters/setCaret';
 import { setTab } from './Setters/setTab';
 import { getWorkitemDetails } from './Setters/workitemDetails';
 import { setEpic } from './Setters/setEpic';
+import { unSetEpic } from './Setters/unSetEpic';
 import { lookupEpic } from './Setters/lookupEpic';
 import { addStory, addDefect } from './Setters/addWorkitem';
 import { updateWorkitem } from './Setters/updateWorkitem';
@@ -22,6 +23,7 @@ export const ActionCreators = {
     setTab,
     getWorkitemDetails,
     setEpic,
+    unSetEpic,
     lookupEpic,
     addStory,
     addDefect,

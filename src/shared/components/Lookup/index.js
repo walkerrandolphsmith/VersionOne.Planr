@@ -12,7 +12,8 @@ export class Lookup extends Component {
         resultStyles: PropTypes.object,
         onChange: PropTypes.func,
         onFocus: PropTypes.func,
-        select: PropTypes.func
+        select: PropTypes.func,
+        deSelect: PropTypes.func
     };
 
     static defaultProps = {
@@ -28,7 +29,8 @@ export class Lookup extends Component {
         resultStyles: {},
         onChange: () => {},
         onFocus: () => {},
-        select: () => {}
+        select: () => {},
+        deSelect: () => {}
     };
 
     constructor(props, context) {
@@ -85,9 +87,11 @@ export class Lookup extends Component {
 
     render() {
         const {
+            selected,
             placeholder,
             results,
             select,
+            deSelect,
             classNames,
             inputStyles,
             listStyles,
@@ -140,9 +144,16 @@ export class Lookup extends Component {
             />
         );
 
+        const isResultSelected = selected ? 'block' : 'none';
+
         return (
             <div className={`lookup ${classNames}`} ref="lookup">
-                <input style={finalInputStyles}
+                <span className="selected" style={{ display: isResultSelected }}>
+                    <span>{selected}</span>
+                    <span className="un-select" onClick={deSelect}>x</span>
+                </span>
+                <input disabled={selected}
+                       style={finalInputStyles}
                        type="text"
                        placeholder={placeholder}
                        onKeyDown={this.handleKeyPress.bind(this)}

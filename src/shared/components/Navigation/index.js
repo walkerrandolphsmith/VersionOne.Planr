@@ -14,10 +14,16 @@ class EpicLookup extends React.Component {
         this.props.setEpic({ name: result.text, oid: result.oid, scope: result.scope });
     }
 
+    deSelect() {
+        this.props.unSetEpic();
+    }
+
     render() {
-        const { epicLookupResults } = this.props;
+        const { epicLookupResults, epic } = this.props;
         return (
             <Lookup {...this.props}
+                selected={epic.name}
+                deSelect={this.deSelect.bind(this)}
                 placeholder="Epic:123"
                 width={400}
                 results={epicLookupResults}
@@ -45,11 +51,6 @@ export class _Navigation extends React.Component {
                 <Toolbar>
                     <ToolbarTitle text={'VersionOne.Planr'}/>
                     <ToolbarSpacer />
-                    <ToolbarGroup>
-                        <div className="epic-lineage">
-                            {epic.name}
-                        </div>
-                    </ToolbarGroup>
                     <ToolbarGroup>
                         <div className="epic-lookup">
                             <EpicLookup {...this.props} />
