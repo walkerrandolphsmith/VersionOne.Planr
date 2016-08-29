@@ -124,6 +124,12 @@ const reducer = (state, payload) => {
             avatar: wi['Owners.Avatar.Content'][i]
         };
     });
+
+    workitem.description = wi.Description;
+    workitem.changeDate = wi.ChangeDate;
+    workitem.createDate = wi.CreateDate;
+    workitem.estimate = wi.Estimate;
+
     state.workitems[payload.workitemWithDetails._oid] = workitem;
     return { ...state };
 };
