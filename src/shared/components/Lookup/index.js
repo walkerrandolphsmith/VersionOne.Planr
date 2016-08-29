@@ -36,14 +36,6 @@ export class Lookup extends Component {
         this.state = { isOpen: false, hovered: -1 }
     }
 
-    componentDidMount() {
-        window.addEventListener('keydown', this.handleKeyPress.bind(this));
-    }
-
-    componentWillUnmount(){
-        window.removeEventListener('keydown', this.handleKeyPress);
-    }
-
     handleKeyPress(event) {
         const handleUp = () => {
             const max = this.props.results.length;
@@ -153,6 +145,7 @@ export class Lookup extends Component {
                 <input style={finalInputStyles}
                        type="text"
                        placeholder={placeholder}
+                       onKeyDown={this.handleKeyPress.bind(this)}
                        onChange={this.onChange.bind(this)}
                        onFocus={this.onFocus.bind(this)}
                 />

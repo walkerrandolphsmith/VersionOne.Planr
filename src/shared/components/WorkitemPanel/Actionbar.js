@@ -1,5 +1,6 @@
 import React from 'react';
-import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
+import { Toolbar, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
+import { WorkitemTitle } from './WorkitemTitle';
 import { ActivityStreamIcon, CommitStreamIcon, ConversationsIcon } from './../Icons';
 
 const isActive = (tab, current) => tab === current ? 'active' : '';
@@ -25,12 +26,12 @@ export class Actionbar extends React.Component {
     }
 
     render() {
-        const { workitem, tab } = this.props;
+        const { workitem, tab, updateWorkitem } = this.props;
 
         return (
             <header className={workitem.assetType}>
                 <Toolbar>
-                    <ToolbarTitle text={`${workitem.number} ${workitem.name}`}/>
+                    <WorkitemTitle name={workitem.name} number={workitem.number} oid={workitem.oid} updateWorkitem={updateWorkitem} />
                     <ToolbarSpacer />
                     <ToolbarGroup>
                         <div className={isActive(tab, 0)} onClick={this.getWorkitemDetails.bind(this)}>
