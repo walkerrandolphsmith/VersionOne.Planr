@@ -46,7 +46,11 @@ export const getWorkitemDetails = (i, workitemOidToken) => (dispatch, getState) 
                 'Owners.Name',
                 'Owners.Avatar',
                 'Owners.Avatar.Content',
-                'Children'
+                'Children',
+                'Children.Name',
+                'Children.Number',
+                'Children.AssetType',
+                'Children.AssetState'
             ],
             where: {
                 ID: workitemOidToken
@@ -125,10 +129,22 @@ const reducer = (state, payload) => {
         };
     });
 
+    workitem.children = wi.Children.map((child, i) => {
+        //debugger;
+        return {
+            oid: child._oid,
+            assetType: wi['Children.AssetType'][i],
+            assetState: wi['Children.AssetState'][i],
+            name: wi['Children.Name'][i],
+            number: wi['Children.Number'][i]
+        };
+    });
+
     workitem.description = wi.Description;
     workitem.changeDate = wi.ChangeDate;
     workitem.createDate = wi.CreateDate;
     workitem.estimate = wi.Estimate;
+    workitem.tests = workitem.children.filter(child => child.assetType === 'Test' && child.assetState == 'Active');
 
     state.workitems[payload.workitemWithDetails._oid] = workitem;
     return { ...state };

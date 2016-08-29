@@ -3,6 +3,7 @@ import { Estimate } from './Estimate';
 import { Description } from './Description';
 import { ProgressBar } from './../ProgressBar';
 import { OwnersList } from './../OwnersList';
+import { TestList } from './TestList';
 
 export class WorkitemDetails extends React.Component {
 
@@ -36,10 +37,8 @@ export class WorkitemDetails extends React.Component {
             owners,
             blockingIssues,
             children,
+            tests
         } = this.state;
-
-        const blockingIssuesList = blockingIssues.map(blockingIssue => <div key={blockingIssue.oid}>{blockingIssue.name}</div>);
-        const testsAndTasksList = children.map(child => <div key={child}>{child}</div>);
 
         return (
             <div>
@@ -171,10 +170,8 @@ export class WorkitemDetails extends React.Component {
 
                 <Description oid={oid} description={description} {...this.props} />
 
-                <div>Relations</div>
+                <TestList tests={tests} />
 
-                <div>{blockingIssuesList}</div>
-                <div>{testsAndTasksList}</div>
             </div>
         )
     }

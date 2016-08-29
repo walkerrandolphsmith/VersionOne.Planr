@@ -73,7 +73,8 @@ const firstOrDefault = (wi) => ({
     owners: wi.owners || [],
     children: wi.children || [],
     activity: wi.activity || [],
-    conversations: wi.conversations || []
+    conversations: wi.conversations || [],
+    tests: wi.tests || []
 });
 
 function mapStateToProps(state) {
