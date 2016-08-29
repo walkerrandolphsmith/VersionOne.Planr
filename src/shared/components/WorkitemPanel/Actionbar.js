@@ -30,7 +30,7 @@ export class Actionbar extends React.Component {
 
         let bkColor = 'white';
 
-        switch(workitem.assetType[0]) {
+        switch(workitem.assetType) {
             case 'Story': bkColor = '#7FB235'; break;
             case 'Defect': bkColor = '#9F201F'; break;
             case 'TestSet': bkColor = 'blue'; break;

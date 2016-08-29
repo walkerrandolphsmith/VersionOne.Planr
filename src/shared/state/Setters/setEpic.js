@@ -21,7 +21,8 @@ export const setEpic = (epic) => (dispatch, getState) => {
             'from': 'PrimaryWorkitem',
             'select': [
                 'Name',
-                'Number'
+                'Number',
+                'AssetType'
             ],
             'where': {
                 'SuperMeAndUp': epic.oid
@@ -46,7 +47,7 @@ const setEpicReducer = (state, payload) => {
     state.workitems = payload.workitems.reduce((map, workitem) => {
         map[workitem._oid] = {
             oid: workitem._oid,
-            assetType: workitem._oid.split(':'),
+            assetType: workitem.AssetType,
             number: workitem.Number,
             name: workitem.Name
         };

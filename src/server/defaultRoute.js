@@ -7,7 +7,7 @@ import routes from './../shared/routes';
 
 const getInitialState = (url) => v1.query({
     from: 'PrimaryWorkitem',
-    select: ['Name', 'Number', 'Children'],
+    select: ['Name', 'Number', 'AssetType', 'Children'],
     page: {
         start: 0,
         size: 50
@@ -17,7 +17,7 @@ const getInitialState = (url) => v1.query({
     const workitems = response.data[0].reduce((workitems, wi) => {
         const workitem = {
             oid: wi._oid,
-            assetType: wi._oid.split(':'),
+            assetType: wi.AssetType,
             number: wi.Number,
             name: wi.Name,
             description: wi.Description,

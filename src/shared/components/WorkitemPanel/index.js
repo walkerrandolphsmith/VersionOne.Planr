@@ -53,7 +53,7 @@ export class WorkitemPanelContainer extends React.Component {
 
 const firstOrDefault = (wi) => ({
     oid: wi.oid || '',
-    assetType: wi.assetType || [],
+    assetType: wi.assetType || '',
     number: wi.number || '',
     name: wi.name || '',
     description: wi.description || '',

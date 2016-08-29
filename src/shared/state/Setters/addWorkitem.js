@@ -23,7 +23,7 @@ const addWorkitem = (name, assetType, dispatch, getState) => {
             const workitem = {
                 oid: response.data.id.split(':', 2).join(':'),
                 name: response.data.Attributes.Name.value,
-                assetType: response.data.id.split(':')
+                assetType: assetType
             };
 
             axios.post('/api/query', {

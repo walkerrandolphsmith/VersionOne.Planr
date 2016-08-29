@@ -23,7 +23,7 @@ export class BacklogPanelContainer extends React.Component {
     render() {
         let i = 0;
         const wis = this.props.workitems.map(wi => {
-            const icon = wi.assetType[0] === 'Story' ? <StoryIcon /> : <DefectIcon />;
+            const icon = wi.assetType === 'Story' ? <StoryIcon /> : <DefectIcon />;
             return (
                 <tr key={wi.number} id={wi.oid}
                     className={`${wi.isSelected ? 'selected' : ''} ${wi.isHovered ? 'hovered' : ''}`}
