@@ -2,6 +2,8 @@ import React from 'react';
 import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
 import { ActivityStreamIcon, CommitStreamIcon, ConversationsIcon } from './../Icons';
 
+const isActive = (tab, current) => tab === current ? 'active' : '';
+
 export class Actionbar extends React.Component {
 
     getWorkitemDetails() {
@@ -23,42 +25,30 @@ export class Actionbar extends React.Component {
     }
 
     render() {
-        const {
-           workitem
-        } = this.props;
-
-
-        let bkColor = 'white';
-
-        switch(workitem.assetType) {
-            case 'Story': bkColor = '#7FB235'; break;
-            case 'Defect': bkColor = '#9F201F'; break;
-            case 'TestSet': bkColor = 'blue'; break;
-            default: bkColor = 'white';
-        }
+        const { workitem, tab } = this.props;
 
         return (
-            <header style={{ backgroundColor: bkColor }}>
+            <header className={workitem.assetType}>
                 <Toolbar>
                     <ToolbarTitle text={`${workitem.number} ${workitem.name}`}/>
                     <ToolbarSpacer />
                     <ToolbarGroup>
-                        <div onClick={this.getWorkitemDetails.bind(this)}>
+                        <div className={isActive(tab, 0)} onClick={this.getWorkitemDetails.bind(this)}>
                             <ConversationsIcon />
                         </div>
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <div onClick={this.getConversationStream.bind(this)}>
+                        <div className={isActive(tab, 1)} onClick={this.getConversationStream.bind(this)}>
                             <ConversationsIcon />
                         </div>
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <div onClick={this.getActivityStream.bind(this)}>
+                        <div className={isActive(tab, 2)} onClick={this.getActivityStream.bind(this)}>
                             <ActivityStreamIcon />
                         </div>
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <div onClick={this.getCommitStream.bind(this)}>
+                        <div className={isActive(tab, 3)} onClick={this.getCommitStream.bind(this)}>
                             <CommitStreamIcon />
                         </div>
                     </ToolbarGroup>

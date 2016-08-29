@@ -9,7 +9,7 @@ const primaryWorkitemsSelector = createSelector(
     (workitems) => {
         const primaryWorkitems = [];
         for(var wi in workitems) {
-            if(['Story', 'Defect', 'TestSet'].includes(workitems[wi].assetType)){
+            if(['Story', 'Defect'].includes(workitems[wi].assetType)){
                 primaryWorkitems.push(workitems[wi]);
             }
         }
