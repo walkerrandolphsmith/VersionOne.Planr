@@ -34,11 +34,17 @@ export const setEpic = (epic) => (dispatch, getState) => {
         })
         .then((response) => {
             const workitems = response.data[0];
-            dispatch(success(workitems));
-            dispatch(getWorkitemDetails(0, workitems[0]._oid));
+            if (workitems.length > 0) {
+                dispatch(success(workitems));
+                dispatch(getWorkitemDetails(0, workitems[0]._oid));
+            }
+            else {
+                dispatch(success(workitems));
+                //TODO: what do we want to do when no WI found for epic???
+            }
         })
         .catch(err => {
-            console.log('failure')
+            console.log('failure', err)
         });
 };
 
@@ -48,7 +54,9 @@ const reducer = (state, payload) => {
 };
 
 const setEpicReducer = (state, payload) => {
-    state.selected = payload.workitems[0]._oid;
+    if(payload.workitems.length > 0)
+        state.selected = payload.workitems[0]._oid;
+
     state.workitems = payload.workitems.reduce((map, workitem) => {
         map[workitem._oid] = {
             oid: workitem._oid,

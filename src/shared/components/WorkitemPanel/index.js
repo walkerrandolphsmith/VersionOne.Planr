@@ -37,8 +37,10 @@ export class WorkitemPanelContainer extends React.Component {
         const top = this.state.initialOffset + (this.props.caretTopPosition * this.state.rowHeight);
         const tabView = this.getViewForTab();
 
+        let hideIfEmpty = this.props.workitem.oid == "" ? 'hidden' : '';
+
         return (
-            <div className="right workitem-details">
+            <div className={`right workitem-details ${hideIfEmpty}`} >
                 <div className="pane">
                     <Actionbar {...this.props} />
                     <div className="content">
@@ -51,31 +53,34 @@ export class WorkitemPanelContainer extends React.Component {
     }
 }
 
-const firstOrDefault = (wi) => ({
-    oid: wi.oid || '',
-    assetType: wi.assetType || '',
-    number: wi.number || '',
-    name: wi.name || '',
-    description: wi.description || '',
-    estimate: wi.estimate || '',
-    changeDate: wi.changeDate || '',
-    createDate: wi.createDate || '',
-    scope: wi.scope || {},
-    iteration: wi.iteration || {},
-    team: wi.team || {},
-    epic: wi.epic || {},
-    changedBy: wi.changedBy || {},
-    createdBy: wi.createdBy || {},
-    priority: wi.priority || {},
-    classOfService: wi.classOfService || {},
-    status: wi.status || {},
-    blockingIssues: wi.blockingIssues || [],
-    owners: wi.owners || [],
-    children: wi.children || [],
-    activity: wi.activity || [],
-    conversations: wi.conversations || [],
-    tests: wi.tests || []
-});
+const firstOrDefault = (wi) => {
+    wi = wi || {};
+    return {
+        oid: wi.oid || '',
+        assetType: wi.assetType || '',
+        number: wi.number || '',
+        name: wi.name || '',
+        description: wi.description || '',
+        estimate: wi.estimate || '',
+        changeDate: wi.changeDate || '',
+        createDate: wi.createDate || '',
+        scope: wi.scope || {},
+        iteration: wi.iteration || {},
+        team: wi.team || {},
+        epic: wi.epic || {},
+        changedBy: wi.changedBy || {},
+        createdBy: wi.createdBy || {},
+        priority: wi.priority || {},
+        classOfService: wi.classOfService || {},
+        status: wi.status || {},
+        blockingIssues: wi.blockingIssues || [],
+        owners: wi.owners || [],
+        children: wi.children || [],
+        activity: wi.activity || [],
+        conversations: wi.conversations || [],
+        tests: wi.tests || []
+    };
+};
 
 function mapStateToProps(state) {
     return {
