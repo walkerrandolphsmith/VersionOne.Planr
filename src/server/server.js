@@ -63,7 +63,7 @@ app.post('/api/create', (req, res) => {
 app.post('/api/update', (req, res) => {
     const { oidToken, assetData } = req.body;
     v1.update(oidToken, assetData).then(response => {
-        res.status(200).send(response);
+        res.status(200).send(response.data);
     });
 });
 

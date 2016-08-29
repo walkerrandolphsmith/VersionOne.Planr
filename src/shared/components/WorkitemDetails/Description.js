@@ -25,8 +25,6 @@ export class Description extends React.Component {
     }
 
     toggleEditingDescription() {
-        //WIP don't return early when updating works.
-        return;
         const tryingToSave = this.state.isEditing;
         const descriptionChanged = this.state.newDescription !== this.state.description;
         if(tryingToSave && descriptionChanged) {
@@ -59,13 +57,15 @@ export class Description extends React.Component {
             onChange={this.handleEditorChange.bind(this)}
         />;
 
+        const editLabel = this.state.isEditing ? 'Save' : 'Edit';
+
         return (
             <div className="group">
                 <div className="attributes description">
                     <div>
                         <label>Description:</label>
                             <span onClick={this.toggleEditingDescription.bind(this)}>
-                                {this.state.isEditing ? 'Save' : 'Edit'}
+                                {editLabel}
                             </span>
                         {descriptionMarkup}
                     </div>

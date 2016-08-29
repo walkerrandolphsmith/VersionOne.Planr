@@ -15,7 +15,11 @@ export const updateWorkitem = ({ oid, assetData }) => (dispatch, getState) => {
             assetData: assetData
         })
         .then((response) => {
-            //wip
+            const workitem = getState().backlogStateAtom.workitems[oid];
+            for(let attribute in workitem) {
+                workitem[attribute] = assetData[attribute];
+            }
+            dispatch(success(workitem));
         })
         .catch(err => {
             console.log('failure')
@@ -23,7 +27,12 @@ export const updateWorkitem = ({ oid, assetData }) => (dispatch, getState) => {
 };
 
 const reducer = (state, payload) => {
-    //state.epic = payload.epic;
+    state.workitems[payload.workitem.oid] = payload.workitem;
+    const newWorkitems = {};
+    for(let oid in workitems) {
+        newWorkitems[oid] = state.workitems[oid]
+    }
+    state.workitems = newWorkitems;
     return { ...state };
 };
 
