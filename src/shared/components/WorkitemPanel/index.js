@@ -23,14 +23,14 @@ export class WorkitemPanelContainer extends React.Component {
     }
 
     getViewForTab = () => {
-        let tabView = <div></div>;
-        switch(this.props['currentDetailsTab']) {
-            case 0: tabView = <WorkitemDetails {...this.props} />; break;
-            case 1: tabView = <ConversationStream {...this.props} />; break;
-            case 2: tabView = <ActivityStream {...this.props} />; break;
-            case 3: tabView = <CommitStream {...this.props} />; break;
-        }
-        return tabView;
+        const ComponentMap = {
+            0: <WorkitemDetails {...this.props} />,
+            1: <ConversationStream {...this.props} />,
+            2: <ActivityStream {...this.props} />,
+            3: <CommitStream {...this.props} />
+        };
+
+        return ComponentMap[this.props['currentDetailsTab']] || <WorkitemDetails {...this.props} />;
     };
 
     render() {
