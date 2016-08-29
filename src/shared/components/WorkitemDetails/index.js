@@ -27,9 +27,9 @@ export class WorkitemDetails extends React.Component {
             epic,
             iteration,
             team,
-            changeDate,
+            formattedChangeDate,
             changedBy,
-            createDate,
+            formattedCreateDate,
             createdBy,
             priority,
             classOfService,
@@ -144,7 +144,7 @@ export class WorkitemDetails extends React.Component {
                         <div className="attribute">
                             <label>Created Date:</label>
                             <div className="value-container">
-                                {createDate}
+                                {formattedCreateDate}
                             </div>
                         </div>
                     </div>
@@ -163,7 +163,7 @@ export class WorkitemDetails extends React.Component {
                         <div className="attribute">
                             <label>Change Date:</label>
                             <div className="value-container">
-                                {changeDate}
+                                {formattedChangeDate}
                             </div>
                         </div>
                     </div>
