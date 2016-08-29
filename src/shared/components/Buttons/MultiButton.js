@@ -13,14 +13,16 @@ export default class MultiButton extends Component {
         classNames: PropTypes.string,
         styles: PropTypes.object,
         text: PropTypes.string.isRequired,
-        onClick: PropTypes.func
+        onClick: PropTypes.func,
+        isDisabled: PropTypes.bool
     };
 
     static defaultProps = {
         children: [],
         classNames: '',
         styles: {},
-        onClick: () => { console.log("I was not override"); }
+        onClick: () => { console.log("I was not override"); },
+        isDisabled: false
     };
 
     constructor(props, context) {
@@ -59,23 +61,30 @@ export default class MultiButton extends Component {
         const anchor = event.currentTarget;
         const position = anchor.getBoundingClientRect();
 
-        this.setState({
-            isShown: !this.state.isShown,
-            top: position.bottom,
-            left: position.right - magicWidthOfContainer
-        });
+        if (!this.props.isDisabled) {
+            this.setState({
+                isShown: !this.state.isShown,
+                top: position.bottom,
+                left: position.right - magicWidthOfContainer
+            });
+        }
     }
 
+    onClick() {
+        if (!this.props.isDisabled) {
+            this.props.onClick();
+        }
+    }
 
     render() {
         const {
             text,
-            onClick
+            isDisabled
         } = this.props;
 
         return (
-            <div className="multi-button button" ref="multi-button">
-                <span className="quick-action" onClick={onClick}>{text}</span>
+            <div className={`multi-button button ${isDisabled ? 'disabled' : ''}`} ref="multi-button">
+                <span className="quick-action" onClick={this.onClick.bind(this)}>{text}</span>
                 <span className="all-actions" onClick={this.openOptions.bind(this)}>
                     <ChevronIcon />
                 </span>

@@ -32,7 +32,6 @@
         padding-right: 0.5em;
 
         svg {
-            fill: #ffffff;
             width: 6px;
             height: 100%;
             transform: rotate(90deg);
@@ -45,7 +44,8 @@
     }
 
     &.disabled, &[disabled] {
-        box-shadow: none ! important;
+        background: #e6e6e6;
+        box-shadow: none;
         color: lighten(#ffffff, -35%);
         text-shadow: none;
 
@@ -54,14 +54,22 @@
         }
 
         &:hover {
-            box-shadow: none ! important;
-            color: lighten(#ffffff, -35%);
+            box-shadow: none;
+            color: #ffffff;
             text-shadow: none;
         }
     }
 
     &:focus {
         outline: none;
+    }
+}
+
+.multi-button {
+    &:not(.disabled) {
+        .svg-icon {
+            fill: #ffffff;
+        }
     }
 }
 

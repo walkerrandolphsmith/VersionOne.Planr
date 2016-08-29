@@ -64,7 +64,8 @@ export class BacklogPanelContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        workitems: Selectors.getAllPrimaryWorkitems(state)
+        workitems: Selectors.getAllPrimaryWorkitems(state),
+        epic: state.backlogStateAtom.epic
     }
 }
 
