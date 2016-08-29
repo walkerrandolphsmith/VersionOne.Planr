@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
+import { getWorkitemDetails } from './workitemDetails';
 
 const SET_EPIC_ACTION = 'SET_EPIC_ACTION';
 const SET_WORKITEMS_ACTION = 'SET_WORKITEMS_ACTION';
@@ -34,6 +35,7 @@ export const setEpic = (epic) => (dispatch, getState) => {
         .then((response) => {
             const workitems = response.data[0];
             dispatch(success(workitems));
+            dispatch(getWorkitemDetails(0, workitems[0]._oid));
         })
         .catch(err => {
             console.log('failure')
