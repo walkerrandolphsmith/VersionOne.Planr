@@ -10,7 +10,6 @@ export class WorkitemTitle extends React.Component {
 
     save(e){
         const newName = e.target.innerText;
-        console.log('save ', e, ' value', newName);
         if(newName != this.props.name){
 
             this.props.updateWorkitem({
@@ -29,7 +28,7 @@ export class WorkitemTitle extends React.Component {
                 e.target.innerText = this.props.name;
                 break;
             case ENTER:
-                this.save(e);
+                e.target.blur();
                 e.preventDefault();
                 break;
         }
