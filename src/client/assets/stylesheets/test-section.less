@@ -1,0 +1,18 @@
+.test-section {
+
+}
+
+@inputWidth: ~"100% - 50px";
+
+.test-template {
+    label {
+        display: inline-block;
+        width: 50px;
+        text-transform: capitalize;
+    }
+
+    input {
+        display: inline-block;
+        width: calc(@inputWidth);
+    }
+}

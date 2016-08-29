@@ -3,7 +3,7 @@ import { Estimate } from './Estimate';
 import { Description } from './Description';
 import { ProgressBar } from './../ProgressBar';
 import { OwnersList } from './../OwnersList';
-import { TestList } from './TestList';
+import { TestSection } from './TestSection';
 
 export class WorkitemDetails extends React.Component {
 
@@ -19,6 +19,7 @@ export class WorkitemDetails extends React.Component {
     }
 
     render() {
+
         const {
             oid,
             description,
@@ -52,7 +53,7 @@ export class WorkitemDetails extends React.Component {
                 <Estimate estimate={estimate} />
                 <div className="group">
                     {/*
-                        Project, Iteration
+                     Project, Iteration
                      */}
                     <div className="attributes">
                         <div className="attribute">
@@ -169,8 +170,7 @@ export class WorkitemDetails extends React.Component {
                 </div>
 
                 <Description oid={oid} description={description} {...this.props} />
-
-                <TestList tests={tests} />
+                <TestSection tests={tests} {...this.props} />
 
             </div>
         )

@@ -8,6 +8,7 @@ import setEpic from './setEpic';
 import lookupEpic from './lookupEpic';
 import addWorkitem from './addWorkitem';
 import updateWorkitem from './updateWorkitem';
+import addTest from './addTest';
 
 const handlers = [
     setCaret,
@@ -19,7 +20,8 @@ const handlers = [
     setEpic,
     lookupEpic,
     addWorkitem,
-    updateWorkitem
+    updateWorkitem,
+    addTest
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
