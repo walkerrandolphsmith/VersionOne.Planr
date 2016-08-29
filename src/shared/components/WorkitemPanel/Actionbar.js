@@ -7,22 +7,26 @@ const isActive = (tab, current) => tab === current ? 'active' : '';
 
 export class Actionbar extends React.Component {
 
+    static defaultProps = {
+        tabType: 'currentDetailsTab'
+    };
+
     getWorkitemDetails() {
-        this.props.setTab(0);
+        this.props.setTab(this.props.tabType, 0);
     }
 
     getConversationStream() {
         this.props.getConversationStream(this.props.workitem.oid);
-        this.props.setTab(1);
+        this.props.setTab(this.props.tabType, 1);
     }
 
     getActivityStream() {
         this.props.getActivityStream(this.props.workitem.oid);
-        this.props.setTab(2);
+        this.props.setTab(this.props.tabType, 2);
     }
 
     getCommitStream() {
-        this.props.setTab(3);
+        this.props.setTab(this.props.tabType, 3);
     }
 
     render() {

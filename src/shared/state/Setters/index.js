@@ -26,7 +26,8 @@ const handlers = [
 
 const DEFAULT_STATE = {
     caretTopPosition: 0,
-    tab: 0,
+    currentDetailsTab: 0,
+    currentTestsTab: 0,
     workitems: {},
     selected: '',
     epic: '',

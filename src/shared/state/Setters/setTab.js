@@ -4,12 +4,12 @@ const ACTION = 'SET_TAB';
 
 export const setTab = createAction(
     ACTION,
-    tabKey => ({tabKey})
+    (tabType, tabIndex) => ({ tabType, tabIndex })
 );
 
 const reducer = (state, payload) => ({
     ...state,
-    tab: payload.tabKey
+    [payload.tabType]: payload.tabIndex
 });
 
 export default {

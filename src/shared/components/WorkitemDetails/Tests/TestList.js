@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditIcon } from './../Icons';
+import { EditIcon } from './../../Icons';
 
 export class TestList extends React.Component {
 

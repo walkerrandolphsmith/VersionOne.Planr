@@ -24,7 +24,7 @@ export class WorkitemPanelContainer extends React.Component {
 
     getViewForTab = () => {
         let tabView = <div></div>;
-        switch(this.props.tab) {
+        switch(this.props['currentDetailsTab']) {
             case 0: tabView = <WorkitemDetails {...this.props} />; break;
             case 1: tabView = <ConversationStream {...this.props} />; break;
             case 2: tabView = <ActivityStream {...this.props} />; break;
@@ -84,7 +84,8 @@ const firstOrDefault = (wi) => {
 
 function mapStateToProps(state) {
     return {
-        tab: state.backlogStateAtom.tab,
+        currentTestsTab: state.backlogStateAtom.currentTestsTab,
+        currentDetailsTab: state.backlogStateAtom.currentDetailsTab,
         caretTopPosition: state.backlogStateAtom.caretTopPosition,
         workitem: firstOrDefault(state.backlogStateAtom.workitems[state.backlogStateAtom.selected])
     }

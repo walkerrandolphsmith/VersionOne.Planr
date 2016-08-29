@@ -3,7 +3,7 @@ import { Estimate } from './Estimate';
 import { Description } from './Description';
 import { ProgressBar } from './../ProgressBar';
 import { OwnersList } from './../OwnersList';
-import { TestSection } from './TestSection';
+import { TestSection } from './Tests';
 
 export class WorkitemDetails extends React.Component {
 
