@@ -46,9 +46,15 @@ export class WorkitemTitle extends React.Component {
 
         return (
             <div style={containerStyle} className={`toolbar-title ${className}`} >
-                <h1 style={titleStyle}>{number} <span contentEditable="true"
-                                                        onBlur={this.save.bind(this)}
-                                                        onKeyDown={this.saveOrCancel.bind(this)}>{name}</span>
+                <h1 style={titleStyle}>
+                    <span className="number">
+                        {number}
+                    </span>
+                    <span contentEditable="true"
+                          onBlur={this.save.bind(this)}
+                          onKeyDown={this.saveOrCancel.bind(this)}>
+                        {name}
+                    </span>
                 </h1>
                 <span className={`toolbar-divider ${className}`}></span>
             </div>
@@ -65,7 +71,6 @@ export class WorkitemTitle extends React.Component {
             wordWrap: 'break-word',
             wordBreak: 'break-word',
             maxWidth: '500px',
-            maxHeight: '50%',
             overflow: 'hidden',
             textOverflow: 'ellipsis'
         }

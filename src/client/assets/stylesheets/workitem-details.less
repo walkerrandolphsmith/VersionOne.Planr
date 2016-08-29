@@ -2,9 +2,14 @@
 
 .workitem-details {
     [contenteditable=true]{
+        padding: 0 8px 5px 8px;
+        transition: 1.0s all linear;
+
         &:hover {
-            background-color: crimson;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-bottom: rgba(255, 255, 255, 0.5);
             cursor: pointer;
+            transition: 0.3s all linear;
         }
     }
 }
