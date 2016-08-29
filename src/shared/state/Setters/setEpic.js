@@ -40,7 +40,6 @@ export const setEpic = (epic) => (dispatch, getState) => {
             }
             else {
                 dispatch(success(workitems));
-                //TODO: what do we want to do when no WI found for epic???
             }
         })
         .catch(err => {
