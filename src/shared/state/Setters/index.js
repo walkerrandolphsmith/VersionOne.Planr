@@ -8,6 +8,7 @@ import setActivityStream from './activityStream';
 import setEpic from './setEpic';
 import lookupEpic from './lookupEpic';
 import addWorkitem from './addWorkitem';
+import updateWorkitem from './updateWorkitem';
 
 const handlers = [
     setCaret,
@@ -19,7 +20,8 @@ const handlers = [
     setActivityStream,
     setEpic,
     lookupEpic,
-    addWorkitem
+    addWorkitem,
+    updateWorkitem
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {

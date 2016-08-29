@@ -64,6 +64,8 @@ export const generateHTMLString = (componentHTML, initialState) => `
       </head>
       <body>
         <div id="app"><div>${componentHTML}</div></div>
+        <div id="container"></div>
+        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>

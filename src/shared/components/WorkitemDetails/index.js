@@ -1,5 +1,6 @@
 import React from 'react';
 import { Estimate } from './Estimate';
+import { Description } from './Description';
 import { ProgressBar } from './../ProgressBar';
 import { OwnersList } from './../OwnersList';
 
@@ -16,12 +17,9 @@ export class WorkitemDetails extends React.Component {
         this.setState(wi);
     }
 
-    updateName(event) {
-
-    }
-
     render() {
         const {
+            oid,
             description,
             scope,
             epic,
@@ -37,7 +35,7 @@ export class WorkitemDetails extends React.Component {
             status,
             owners,
             blockingIssues,
-            children
+            children,
         } = this.state;
 
         const blockingIssuesList = blockingIssues.map(blockingIssue => <div key={blockingIssue.oid}>{blockingIssue.name}</div>);
@@ -171,17 +169,7 @@ export class WorkitemDetails extends React.Component {
                     </div>
                 </div>
 
-                <div className="group">
-                    {/*
-                     Description
-                     */}
-                    <div className="attributes description">
-                        <div>
-                            <label>Description:</label>
-                            <div className="value-container" dangerouslySetInnerHTML={{ __html: description }}></div>
-                        </div>
-                    </div>
-                </div>
+                <Description oid={oid} description={description} {...this.props} />
 
                 <div>Relations</div>
 

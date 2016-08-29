@@ -10,6 +10,7 @@ import { getWorkitemDetails } from './Setters/workitemDetails';
 import { setEpic } from './Setters/setEpic';
 import { lookupEpic } from './Setters/lookupEpic';
 import { addStory, addDefect } from './Setters/addWorkitem';
+import { updateWorkitem } from './Setters/updateWorkitem';
 
 
 export const Selectors = selectors;
@@ -25,6 +26,7 @@ export const ActionCreators = {
     setEpic,
     lookupEpic,
     addStory,
-    addDefect
+    addDefect,
+    updateWorkitem
 };
 export { default as Reducer } from './Setters';
