@@ -23,7 +23,7 @@ export const updateWorkitem = ({ oid, assetData }) => (dispatch, getState) => {
             dispatch(success(workitem));
         })
         .catch(err => {
-            console.log('failure')
+            console.log('failure', err)
         });
 };
 
