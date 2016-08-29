@@ -9,7 +9,7 @@ import { setTab } from './Setters/setTab';
 import { getWorkitemDetails } from './Setters/workitemDetails';
 import { setEpic } from './Setters/setEpic';
 import { lookupEpic } from './Setters/lookupEpic';
-import { addWorkitem } from './Setters/addWorkitem';
+import { addStory, addDefect } from './Setters/addWorkitem';
 
 
 export const Selectors = selectors;
@@ -24,6 +24,7 @@ export const ActionCreators = {
     getWorkitemDetails,
     setEpic,
     lookupEpic,
-    addWorkitem
+    addStory,
+    addDefect
 };
 export { default as Reducer } from './Setters';

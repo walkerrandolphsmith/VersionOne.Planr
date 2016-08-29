@@ -75,7 +75,8 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         getWorkitemDetails: ActionCreators.getWorkitemDetails,
         hoverWorkitem: ActionCreators.hoverWorkitem,
-        addWorkitem: ActionCreators.addWorkitem
+        addStory: ActionCreators.addStory,
+        addDefect: ActionCreators.addDefect
     }, dispatch);
 }
 

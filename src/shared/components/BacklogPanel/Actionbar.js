@@ -4,14 +4,17 @@ import { MultiButton } from './../Buttons';
 
 export class Actionbar extends React.Component {
     render() {
-        const { addWorkitem } = this.props;
+        const { addStory, addDefect } = this.props;
         return (
             <header>
                 <Toolbar>
                     <ToolbarTitle text={'Backlog'}/>
                     <ToolbarSpacer />
                     <ToolbarGroup>
-                        <MultiButton text="Add" onClick={addWorkitem}/>
+                        <MultiButton text="Add" onClick={addStory}>
+                            <div onClick={addStory}>Story</div>
+                            <div onClick={addDefect}>Defect</div>
+                        </MultiButton>
                     </ToolbarGroup>
                 </Toolbar>
             </header>

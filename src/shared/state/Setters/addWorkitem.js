@@ -8,11 +8,11 @@ const success = createAction(
     (workitem) => ({ workitem })
 );
 
-export const addWorkitem = (name) => (dispatch, getState) => {
+const addWorkitem = (name, assetType, dispatch, getState) => {
     const epic = getState().backlogStateAtom.epic;
     axios
         .post('/api/create', {
-            assetType: 'Story',
+            assetType: assetType,
             assetData: {
                 Name: 'I created you',
                 Scope: epic.scope,
@@ -27,7 +27,7 @@ export const addWorkitem = (name) => (dispatch, getState) => {
             };
 
             axios.post('/api/query', {
-                'from': 'Story',
+                'from': assetType,
                 'select': [
                     'Number'
                 ],
@@ -47,6 +47,14 @@ export const addWorkitem = (name) => (dispatch, getState) => {
         .catch(err => {
             console.log('failure')
         });
+};
+
+export const addStory = (name) => (dispatch, getState) => {
+    addWorkitem(name, 'Story', dispatch, getState);
+};
+
+export const addDefect = (name) => (dispatch, getState) => {
+    addWorkitem(name, 'Defect', dispatch, getState);
 };
 
 const reducer = (state, payload) => {
