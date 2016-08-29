@@ -14,7 +14,7 @@ const addWorkitem = (name, assetType, dispatch, getState) => {
         .post('/api/create', {
             assetType: assetType,
             assetData: {
-                Name: 'I created you',
+                Name: `New ${assetType}`,
                 Scope: epic.scope,
                 Super: epic.oid
             }
