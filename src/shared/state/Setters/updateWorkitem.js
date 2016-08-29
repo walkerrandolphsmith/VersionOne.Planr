@@ -28,11 +28,7 @@ export const updateWorkitem = ({ oid, assetData }) => (dispatch, getState) => {
 
 const reducer = (state, payload) => {
     state.workitems[payload.workitem.oid] = payload.workitem;
-    const newWorkitems = {};
-    for(let oid in state.workitems) {
-        newWorkitems[oid] = state.workitems[oid]
-    }
-    state.workitems = newWorkitems;
+    state.workitems = {...state.workitems}; //to trigger reselect
     return { ...state };
 };
 
