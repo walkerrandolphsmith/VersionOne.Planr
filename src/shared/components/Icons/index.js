@@ -7,3 +7,4 @@ export { default as StoryIcon } from './StoryIcon';
 export { default as DefectIcon } from './DefectIcon';
 export { default as WorkitemIcon } from './WorkitemIcon';
 export { default as DeleteIcon } from './DeleteIcon';
+export { default as DetailsIcon } from './DetailsIcon';

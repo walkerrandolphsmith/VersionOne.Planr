@@ -1,7 +1,7 @@
 import React from 'react';
 import { Toolbar, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
 import { WorkitemTitle } from './WorkitemTitle';
-import { ActivityStreamIcon, CommitStreamIcon, ConversationsIcon } from './../Icons';
+import { DetailsIcon, ActivityStreamIcon, CommitStreamIcon, ConversationsIcon } from './../Icons';
 
 const isActive = (tab, current) => tab === current ? 'active' : '';
 
@@ -37,7 +37,7 @@ export class Actionbar extends React.Component {
                     <ToolbarSpacer />
                     <ToolbarGroup>
                         <div className={isActive(tab, 0)} onClick={this.getWorkitemDetails.bind(this)}>
-                            <ConversationsIcon />
+                            <DetailsIcon />
                         </div>
                     </ToolbarGroup>
                     <ToolbarGroup>

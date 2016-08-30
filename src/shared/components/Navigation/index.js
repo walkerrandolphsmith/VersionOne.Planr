@@ -56,11 +56,6 @@ export class _Navigation extends React.Component {
                             <EpicLookup {...this.props} />
                         </div>
                     </ToolbarGroup>
-                    <ToolbarGroup>
-                        <div className="epic-lookup">
-
-                        </div>
-                    </ToolbarGroup>
                 </Toolbar>
             </header>
         );
