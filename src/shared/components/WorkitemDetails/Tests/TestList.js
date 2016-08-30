@@ -1,20 +1,13 @@
 import React from 'react';
 import { EditIcon } from './../../Icons';
+import { TestListRow } from './TestListRow'
 
 export class TestList extends React.Component {
-
     render() {
+        let { updateWorkitem } = this.props;
         let i = 0;
         const tests = this.props.tests.map(test => {
-            return (
-                <tr key={test.number} id={test.oid}
-                    className={`${test.isSelected ? 'selected' : ''} ${test.isHovered ? 'hovered' : ''}`}
-                  >
-                    <td className="number">{test.number}</td>
-                    <td className="name">{test.name}</td>
-                    <td className="edit-icon"><EditIcon /></td>
-                </tr>
-            )
+            return ( <TestListRow key={test.number} updateWorkitem={updateWorkitem} {...test}/> )
         });
 
         return (

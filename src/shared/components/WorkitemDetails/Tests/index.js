@@ -7,21 +7,21 @@ import { SimpleTemplate } from './SimpleTemplate';
 export class TestSection extends React.Component {
 
     getViewForTab() {
-        const TempalteTypeMap = {
+        const TemplateTypeMap = {
             0: <BddTemplate {...this.props} />,
             1: <SimpleTemplate {...this.props} />
         };
-        return TempalteTypeMap[this.props['currentTestsTab']] || <SimpleTemplate {...this.props} />;
+        return TemplateTypeMap[this.props['currentTestsTab']] || <SimpleTemplate {...this.props} />;
     }
 
     render() {
-        const { tests } = this.props;
+        const { tests, updateWorkitem } = this.props;
         const template = this.getViewForTab();
         return (
             <div className="test-section">
                 <Actionbar {...this.props} />
                 {template}
-                <TestList tests={tests} />
+                <TestList updateWorkitem={updateWorkitem} tests={tests} />
             </div>
         )
     }
