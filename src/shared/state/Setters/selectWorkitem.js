@@ -4,11 +4,12 @@ const ACTION = 'SELECT_WORKITEM';
 
 export const selectWorkitem = createAction(
     ACTION,
-    workitemOidToken => ({workitemOidToken})
+    (index, workitemOidToken) => ({ index, workitemOidToken })
 );
 
 const reducer = (state, payload) => ({
     ...state,
+    caretTopPosition: payload.index,
     selected: payload.workitemOidToken
 });
 

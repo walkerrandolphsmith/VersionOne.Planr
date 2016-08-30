@@ -1,7 +1,5 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
-import { setCaret } from './setCaret';
-import { selectWorkitem } from './selectWorkitem';
 
 const ACTION = 'GET_WORKITEM_DETAILS';
 
@@ -10,9 +8,7 @@ const success = createAction(
     workitemWithDetails => ({workitemWithDetails})
 );
 
-export const getWorkitemDetails = (i, workitemOidToken) => (dispatch, getState) => {
-    dispatch(setCaret(i));
-    dispatch(selectWorkitem(workitemOidToken));
+export const getWorkitemDetails = (workitemOidToken) => (dispatch) => {
     axios.post('/api/query/', {
             from: 'PrimaryWorkitem',
             select: [

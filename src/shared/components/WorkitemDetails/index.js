@@ -9,17 +9,25 @@ export class WorkitemDetails extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-        const wi = props.workitem || {};
+        const wi = props.workitem;
         this.state = wi;
+    }
+
+    componentWillMount() {
+        if (this.state.oid) {
+            this.props.getWorkitemDetails(this.state.oid);
+        }
     }
 
     componentWillReceiveProps(nextProps) {
         const wi = nextProps.workitem;
+        if(this.state.oid !== nextProps.workitem.oid) {
+            this.props.getWorkitemDetails(nextProps.workitem.oid);
+        }
         this.setState(wi);
     }
 
     render() {
-
         const {
             oid,
             description,

@@ -8,15 +8,14 @@ import { ChevronIcon, StoryIcon, DefectIcon } from './../Icons';
 export class BacklogPanelContainer extends React.Component {
 
     selectWorkitem({ index, oid }) {
-        this.props.getWorkitemDetails(index, oid);
+        this.props.selectWorkitem(index, oid);
     }
 
     componentWillMount() {
-        var oid = null;
         if (this.props.workitems.length > 0) {
-            oid = this.props.workitems[Object.keys(this.props.workitems)[0]].oid;
+            const oid = this.props.workitems[Object.keys(this.props.workitems)[0]].oid;
+            this.props.selectWorkitem(0, oid);
         }
-        this.props.getWorkitemDetails(0, oid);
     }
 
     render() {
@@ -70,11 +69,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        getWorkitemDetails: ActionCreators.getWorkitemDetails,
-        addStory: ActionCreators.addStory,
-        addDefect: ActionCreators.addDefect
-    }, dispatch);
+    return bindActionCreators(ActionCreators, dispatch);
 }
 
 export const BacklogPanel = connect(mapStateToProps, mapDispatchToProps)(BacklogPanelContainer);

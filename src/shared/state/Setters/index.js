@@ -1,4 +1,3 @@
-import setCaret from './setCaret';
 import setTab from './setTab';
 import selectWorkitem from './selectWorkitem';
 import setWorkitemDetails from './workitemDetails';
@@ -12,7 +11,6 @@ import updateWorkitem from './updateWorkitem';
 import addTest from './addTest';
 
 const handlers = [
-    setCaret,
     setTab,
     selectWorkitem,
     setWorkitemDetails,

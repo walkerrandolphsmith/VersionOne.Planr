@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ActionCreators } from './../../state';
+import { ActionCreators, Selectors } from './../../state';
 import { Actionbar } from './Actionbar';
 import { WorkitemDetails } from './../WorkitemDetails';
 import { ConversationStream } from './../ConversationStream';
@@ -87,7 +87,8 @@ function mapStateToProps(state) {
         currentTestsTab: state.backlogStateAtom.currentTestsTab,
         currentDetailsTab: state.backlogStateAtom.currentDetailsTab,
         caretTopPosition: state.backlogStateAtom.caretTopPosition,
-        workitem: firstOrDefault(state.backlogStateAtom.workitems[state.backlogStateAtom.selected])
+        workitem: firstOrDefault(state.backlogStateAtom.workitems[state.backlogStateAtom.selected]),
+        workitems: Selectors.getAllPrimaryWorkitems(state)
     }
 }
 
