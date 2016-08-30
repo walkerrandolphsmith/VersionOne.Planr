@@ -35,7 +35,11 @@ export class Lookup extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = { isOpen: false, hovered: -1 }
+        this.state = {
+            query: '',
+            isOpen: false,
+            hovered: -1
+        }
     }
 
     handleKeyPress(event) {
@@ -53,7 +57,7 @@ export class Lookup extends Component {
 
         const handleEnter = () => {
             this.props.select(this.props.results[this.state.hovered]);
-            this.setState({ isOpen: false });
+            this.setState({ query: '', isOpen: false });
         };
 
         const handleEscape = () => {
@@ -73,8 +77,12 @@ export class Lookup extends Component {
     }
 
     onChange(event) {
-        this.props.onChange(event.target.value);
-        this.setState({ isOpen: event.target.value.length > 0 });
+        const query = event.target.value;
+        this.props.onChange(query);
+        this.setState({
+            query: query,
+            isOpen: event.target.value.length > 0
+        });
     }
 
     onFocus(event) {
@@ -82,7 +90,7 @@ export class Lookup extends Component {
     }
 
     selectCallback() {
-        this.setState({ isOpen: false });
+        this.setState({ query: '', isOpen: false });
     }
 
     render() {
@@ -99,7 +107,7 @@ export class Lookup extends Component {
             width
         } = this.props;
 
-        const { isOpen, hovered } = this.state;
+        const { query, isOpen, hovered } = this.state;
 
         const finalInputStyles = Object.assign({
             WebkitAppearance: 'none',
@@ -152,7 +160,8 @@ export class Lookup extends Component {
                     <span className="selected-label">{selected}</span>
                     <span className="un-select" onClick={deSelect}>x</span>
                 </span>
-                <input disabled={selected}
+                <input value={query}
+                       disabled={selected}
                        style={finalInputStyles}
                        type="text"
                        placeholder={placeholder}
