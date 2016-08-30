@@ -23,7 +23,7 @@ export class TestListRow extends React.Component {
                 <tr id={oid} className={`${isSelected ? 'selected' : ''}`}>
                     <td className="number">{number}</td>
                     <td>
-                        <TextArea defaultValue={name} updateValue={this.updateName.bind(this)} />
+                        <TextArea value={name} updateValue={this.updateName.bind(this)} />
                     </td>
                     <td className="delete-icon">
                         <span onClick={this.onClick.bind(this)}>
