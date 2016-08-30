@@ -34,7 +34,7 @@ export class BddTemplate extends React.Component {
                 <input id="when" name="when" type="text" onChange={this.onChange.bind(this, 'when')} />
                 <label htmlFor="then">Then:</label>
                 <input id="then" name="then" type="text" onChange={this.onChange.bind(this, 'then')} />
-                <Button text="Save" onClick={this.onClick.bind(this)} />
+                <Button text="Add" onClick={this.onClick.bind(this)} />
             </div>
         )
     }
