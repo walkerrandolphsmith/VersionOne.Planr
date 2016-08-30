@@ -11,10 +11,6 @@ For example `git commit -m "This closes #34, and closes #23"`
 
 ##Development
 
-### Test
-
-`npm test` will run the unit tests. Wallaby is also supported.
-
 ### Configure
 Create a `.env` file in the root of the application that contains valid environment varaibles to connect to VersionOne instance:
 
@@ -33,6 +29,10 @@ then run:
 ### Run
 
 `npm start` will start the web server, however the following environment variables will need valid values:
+
+### Test
+
+`npm test` will run the unit tests. Wallaby is also supported.
 
 
 [ci]: https://travis-ci.org/walkerrandolphsmith/VersionOne.Planr
