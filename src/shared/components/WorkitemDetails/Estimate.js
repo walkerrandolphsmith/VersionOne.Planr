@@ -1,4 +1,5 @@
 import React from 'react';
+import { Input } from '../Inputs'
 
 export class Estimate extends React.Component {
 
@@ -6,35 +7,25 @@ export class Estimate extends React.Component {
         estimate: 0
     };
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            estimate: props.estimate
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            estimate: nextProps.estimate
+    updateEstimate(newValue){
+        this.props.updateWorkitem({
+            oid: this.props.workitem.oid,
+            assetData: {
+                estimate: newValue
+            }
         });
     }
 
-    update(event) {
-        const estimate = event.target.value;
-        this.setState({ estimate: estimate });
-        //this.props.updateWorkitem('name', newName);
-    }
-
     render() {
-        const {
-            estimate
-        } = this.state;
-
+        const { estimate } = this.props.workitem;
         return (
             <div className="card summary estimate">
                 <div className="value-label-pair">
                     <div className="value">
-                        {estimate}
+                        <Input
+                            value={estimate}
+                            updateValue={this.updateEstimate.bind(this)}
+                        />
                     </div>
                     <div className="label">
                         Pts.

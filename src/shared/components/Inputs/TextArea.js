@@ -4,12 +4,13 @@ import AbstractInput from './AbstractInput';
 
 export default class TextArea extends AbstractInput {
     render() {
-        const { value } = this.props;
+        const { value } = this.state;
         return (
             <Textarea onBlur={this.save.bind(this)}
                       onKeyDown={this.saveOrCancel.bind(this)}
-                      className="name"
-                      defaultValue={value} />
+                      onChange={this.handleChange.bind(this)}
+                      value={value}
+            />
         );
     }
 }

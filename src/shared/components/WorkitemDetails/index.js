@@ -7,24 +7,17 @@ import { TestSection } from './Tests';
 
 export class WorkitemDetails extends React.Component {
 
-    constructor(props, context) {
-        super(props, context);
-        const wi = props.workitem;
-        this.state = wi;
-    }
-
     componentWillMount() {
-        if (this.state.oid) {
-            this.props.getWorkitemDetails(this.state.oid);
+        if (this.props.workitem.oid) {
+            this.props.getWorkitemDetails(this.props.workitem.oid);
         }
     }
 
     componentWillReceiveProps(nextProps) {
         const wi = nextProps.workitem;
-        if(this.state.oid !== nextProps.workitem.oid) {
+        if(this.props.workitem.oid !== nextProps.workitem.oid) {
             this.props.getWorkitemDetails(nextProps.workitem.oid);
         }
-        this.setState(wi);
     }
 
     render() {
@@ -47,12 +40,12 @@ export class WorkitemDetails extends React.Component {
             blockingIssues,
             children,
             tests
-        } = this.state;
+        } = this.props.workitem;
 
         return (
             <div>
                 <OwnersList owners={owners} />
-                <Estimate estimate={estimate} />
+                <Estimate {...this.props} />
                 <div className="group">
                     {/*
                      Project, Iteration

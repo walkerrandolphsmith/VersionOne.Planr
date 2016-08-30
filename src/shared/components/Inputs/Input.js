@@ -3,12 +3,14 @@ import AbstractInput from './AbstractInput';
 
 export default class Input extends AbstractInput {
     render() {
-        const { value } = this.props;
+        const { value } = this.state;
         return (
-            <input defaultValue={value}
-                   placeholder="-"
+            <input placeholder="-"
                    onBlur={this.save.bind(this)}
-                   onKeyDown={this.saveOrCancel.bind(this)} />
+                   onKeyDown={this.saveOrCancel.bind(this)}
+                   onChange={this.handleChange.bind(this)}
+                   value={value}
+            />
         );
     }
 }
