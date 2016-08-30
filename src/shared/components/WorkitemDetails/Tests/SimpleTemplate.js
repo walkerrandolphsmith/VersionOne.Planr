@@ -17,15 +17,25 @@ export class SimpleTemplate extends React.Component {
     };
 
     onClick() {
+        this.save();
+    }
+
+    save(){
         let { name } = this.state;
         this.props.addTest(name);
+    }
+
+    onKeyDown(e){
+        if(e.which == 13){
+            this.save();
+        }
     }
 
     render() {
         return (
             <div>
-                <label for="name">Name:</label>
-                <input id="name" name="name" type="text" onChange={this.onChange.bind(this)} />
+                <label htmlFor="name">Name:</label>
+                <input id="name" name="name" type="text" onKeyDown={this.onKeyDown.bind(this)} onChange={this.onChange.bind(this)} />
             </div>
         )
     }
