@@ -4,11 +4,10 @@ import { TestListRow } from './TestListRow'
 
 export class TestList extends React.Component {
     render() {
-        let { updateWorkitem } = this.props;
-        let i = 0;
-        const tests = this.props.tests.map(test => {
-            return ( <TestListRow key={test.number} updateWorkitem={updateWorkitem} {...test}/> )
-        });
+        const { updateWorkitem, deleteTest } = this.props;
+        const tests = this.props.tests.map(test => (
+            <TestListRow key={test.number} updateWorkitem={updateWorkitem} deleteTest={deleteTest} {...test}/>
+        ));
 
         return (
             <div className="tests-table">

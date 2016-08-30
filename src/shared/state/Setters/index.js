@@ -9,6 +9,7 @@ import lookupEpic from './lookupEpic';
 import addWorkitem from './addWorkitem';
 import updateWorkitem from './updateWorkitem';
 import addTest from './addTest';
+import deleteTest from './deleteTest';
 
 const handlers = [
     setTab,
@@ -21,7 +22,8 @@ const handlers = [
     lookupEpic,
     addWorkitem,
     updateWorkitem,
-    addTest
+    addTest,
+    deleteTest
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {

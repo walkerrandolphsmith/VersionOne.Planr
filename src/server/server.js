@@ -67,6 +67,12 @@ app.post('/api/update', (req, res) => {
     });
 });
 
+app.post('/api/executeOperation', (req, res) => {
+    const { oidToken, operationName } = req.body;
+    v1.executeOperation(oidToken, operationName).then(response => {
+        res.status(200).send(response.data);
+    });
+});
 
 app.use('/', defaultRoute);
 

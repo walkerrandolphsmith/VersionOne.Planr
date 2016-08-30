@@ -11,6 +11,7 @@ import { lookupEpic } from './Setters/lookupEpic';
 import { addStory, addDefect } from './Setters/addWorkitem';
 import { updateWorkitem } from './Setters/updateWorkitem';
 import { addTest } from './Setters/addTest';
+import { deleteTest } from './Setters/deleteTest';
 
 export const Selectors = selectors;
 
@@ -26,6 +27,7 @@ export const ActionCreators = {
     addStory,
     addDefect,
     updateWorkitem,
-    addTest
+    addTest,
+    deleteTest
 };
 export { default as Reducer } from './Setters';
