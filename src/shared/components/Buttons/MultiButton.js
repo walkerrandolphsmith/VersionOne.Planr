@@ -33,6 +33,10 @@ export default class MultiButton extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({ isShown: nextProps.isOpen });
+    }
+
     componentWillMount() {
         const mountNode = document.createElement('div');
         mountNode.className  = 'MultiButtonOptions';
