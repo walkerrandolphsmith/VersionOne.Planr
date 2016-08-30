@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Selectors } from './../../state';
 import { Activity } from './Activity';
+import { ActionCreators } from './../../state';
 
 export class _ActivityStream extends React.Component {
     static defaultProps = {
@@ -10,6 +11,10 @@ export class _ActivityStream extends React.Component {
             activityGroupedByDate: {}
         }
     };
+
+    componentWillMount() {
+        this.props.getActivityStream(this.props.workitem.oid);
+    }
 
     render() {
         const groups = this.props.activityGroupedByDate;
@@ -42,9 +47,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-
-    }, dispatch);
+    return bindActionCreators(ActionCreators, dispatch);
 }
 
 export const ActivityStream = connect(mapStateToProps, mapDispatchToProps)(_ActivityStream);

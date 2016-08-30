@@ -21,7 +21,6 @@ export class Actionbar extends React.Component {
     }
 
     getActivityStream() {
-        this.props.getActivityStream(this.props.workitem.oid);
         this.props.setTab(this.props.tabType, 2);
     }
 
