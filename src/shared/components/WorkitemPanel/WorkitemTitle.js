@@ -1,37 +1,18 @@
 import React from 'react';
-
-const ESCAPE = 27,
-      ENTER = 13;
+import { Input } from './../Inputs';
 
 export class WorkitemTitle extends React.Component {
     static defaultProps = {
         style: {}
     };
 
-    save(e){
-        const newName = e.target.innerText;
-        if(newName != this.props.name){
-
-            this.props.updateWorkitem({
-                oid: this.props.oid,
-                assetData: {
-                    name: newName
-                }
-            });
-
-        }
-    }
-
-    saveOrCancel(e){
-        switch(e.which){
-            case ESCAPE:
-                e.target.innerText = this.props.name;
-                break;
-            case ENTER:
-                e.target.blur();
-                e.preventDefault();
-                break;
-        }
+    updateName(newValue){
+        this.props.updateWorkitem({
+            oid: this.props.oid,
+            assetData: {
+                name: newValue
+            }
+        });
     }
 
     render() {
@@ -50,11 +31,7 @@ export class WorkitemTitle extends React.Component {
                     <span className="number">
                         {number}
                     </span>
-                    <span contentEditable="true"
-                          onBlur={this.save.bind(this)}
-                          onKeyDown={this.saveOrCancel.bind(this)}>
-                        {name}
-                    </span>
+                    <Input value={name} updateValue={this.updateName.bind(this)}/>
                 </h1>
                 <span className={`toolbar-divider ${className}`}></span>
             </div>
