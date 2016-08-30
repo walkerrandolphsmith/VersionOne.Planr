@@ -149,7 +149,7 @@ export class Lookup extends Component {
         return (
             <div className={`lookup ${classNames}`} ref="lookup">
                 <span className="selected" style={{ display: isResultSelected }}>
-                    <span>{selected}</span>
+                    <span className="selected-label">{selected}</span>
                     <span className="un-select" onClick={deSelect}>x</span>
                 </span>
                 <input disabled={selected}

@@ -1,20 +1,41 @@
+@selectedWidth: ~"100% - 40px";
+
 .lookup {
     position: relative;
 
     .selected {
+        display: inline-block;
         position: absolute;
         left: 1px;
-        top: 1px;
+        top: 2px;
         background: lightgray;
         border-radius: 3px;
         padding: 1px;
+        height: 21px;
+        max-width: 250px;
 
         span {
-            padding: 5px;
+            padding: 0 5px;
+        }
+
+        .selected-label {
+            margin-right: 0;
+            display: inline-block;
+            max-width: calc(@selectedWidth);
+            vertical-align: top;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .un-select {
             cursor: pointer;
+            width: 40px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            padding: 0;
+            height: 20px;
         }
     }
 
