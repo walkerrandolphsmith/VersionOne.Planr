@@ -1,5 +1,4 @@
 import React from 'react';
-import { EditIcon } from './../../Icons';
 import { TestListRow } from './TestListRow'
 
 export class TestList extends React.Component {
@@ -15,7 +14,7 @@ export class TestList extends React.Component {
                     <colgroup>
                         <col className="number" />
                         <col className="name" />
-                        <col className="edit-icon" />
+                        <col className="delete-icon" />
                     </colgroup>
                     <tbody>
                     {tests}

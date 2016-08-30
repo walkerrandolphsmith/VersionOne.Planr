@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditIcon } from './../../Icons';
+import { DeleteIcon } from './../../Icons';
 import Textarea from 'react-textarea-autosize';
 
 const ESCAPE = 27, ENTER = 13;
@@ -32,8 +32,12 @@ export class TestListRow extends React.Component {
         }
     }
 
+    onClick() {
+        this.props.deleteTest(this.props.oid);
+    }
+
     render() {
-        let { name, number, oid, isSelected} = this.props;
+        const { name, number, oid, isSelected} = this.props;
             return (
                 <tr id={oid} className={`${isSelected ? 'selected' : ''}`}>
                     <td className="number">{number}</td>
@@ -43,7 +47,11 @@ export class TestListRow extends React.Component {
                                   className="name"
                                   defaultValue={name}></Textarea>
                     </td>
-                    <td className="edit-icon"><EditIcon /></td>
+                    <td className="delete-icon">
+                        <span onClick={this.onClick.bind(this)}>
+                            <DeleteIcon />
+                        </span>
+                    </td>
                 </tr>
             );
     }

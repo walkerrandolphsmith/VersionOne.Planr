@@ -39,4 +39,16 @@
         width:100%;
         vertical-align: top;
     }
+
+    tr {
+        .fa-remove {
+            color: lightgray;
+            opacity: 0;
+            transition: opacity 0.25s ease-out;
+        }
+        &:hover .fa-remove {
+            color: black;
+            opacity: 0.5;
+        }
+    }
 }

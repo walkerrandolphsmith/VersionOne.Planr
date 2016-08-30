@@ -6,4 +6,4 @@ export { default as EpicIcon } from './EpicIcon';
 export { default as StoryIcon } from './StoryIcon';
 export { default as DefectIcon } from './DefectIcon';
 export { default as WorkitemIcon } from './WorkitemIcon';
-export { default as EditIcon } from './EditIcon';
+export { default as DeleteIcon } from './DeleteIcon';
