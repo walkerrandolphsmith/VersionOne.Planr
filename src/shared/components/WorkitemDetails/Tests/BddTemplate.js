@@ -21,7 +21,7 @@ export class BddTemplate extends React.Component {
 
     onClick() {
         let { given, when, then } = this.state;
-        const testName = `GIVEN ${given} WHEN ${when} THEN ${then}`;
+        const testName = `Given ${given} When ${when} Then ${then}`;
         this.props.addTest(testName);
     }
 
