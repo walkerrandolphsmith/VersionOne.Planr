@@ -28,7 +28,7 @@ export class Actionbar extends React.Component {
     }
 
     render() {
-        const { workitem, tab, updateWorkitem } = this.props;
+        const { workitem, currentDetailsTab:tab, updateWorkitem } = this.props;
 
         return (
             <header className={workitem.assetType}>
