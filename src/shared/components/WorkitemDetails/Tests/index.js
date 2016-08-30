@@ -14,14 +14,19 @@ export class TestSection extends React.Component {
         return TemplateTypeMap[this.props['currentTestsTab']] || <SimpleTemplate {...this.props} />;
     }
 
+    getListOrMessage(updateWorkitem, tests) {
+        return tests.length > 0 ? <TestList updateWorkitem={updateWorkitem} tests={tests} /> : <div className="empty-test-list">No tests have been added</div>
+    }
+
     render() {
         const { tests, updateWorkitem } = this.props;
         const template = this.getViewForTab();
+        const testList = this.getListOrMessage(updateWorkitem, tests);
         return (
             <div className="test-section">
                 <Actionbar {...this.props} />
                 {template}
-                <TestList updateWorkitem={updateWorkitem} tests={tests} />
+                {testList}
             </div>
         )
     }
