@@ -20,9 +20,19 @@ export class BddTemplate extends React.Component {
     };
 
     onClick() {
+        this.save();
+    }
+
+    save(){
         let { given, when, then } = this.state;
         const testName = `Given ${given} When ${when} Then ${then}`;
         this.props.addTest(testName);
+    }
+
+    onKeyDown(e){
+        if(e.which == 13){
+            this.save();
+        }
     }
 
     render() {
@@ -33,7 +43,7 @@ export class BddTemplate extends React.Component {
                 <label htmlFor="when">When:</label>
                 <input id="when" name="when" type="text" onChange={this.onChange.bind(this, 'when')} />
                 <label htmlFor="then">Then:</label>
-                <input id="then" name="then" type="text" onChange={this.onChange.bind(this, 'then')} />
+                <input id="then" name="then" type="text" onKeyDown={this.onKeyDown.bind(this)} onChange={this.onChange.bind(this, 'then')} />
                 <Button text="Add" onClick={this.onClick.bind(this)} />
             </div>
         )
