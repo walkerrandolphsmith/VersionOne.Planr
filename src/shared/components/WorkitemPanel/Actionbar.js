@@ -16,7 +16,6 @@ export class Actionbar extends React.Component {
     }
 
     getConversationStream() {
-        this.props.getConversationStream(this.props.workitem.oid);
         this.props.setTab(this.props.tabType, 1);
     }
 
