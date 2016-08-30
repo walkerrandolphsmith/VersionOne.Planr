@@ -8,10 +8,27 @@
         display: inline-block;
         width: 50px;
         text-transform: capitalize;
+        float:left; //How to do this better?
+        margin-top:2px; //ditto
     }
 
-    input {
-        display: inline-block;
+    textarea {
         width: calc(@inputWidth);
+    }
+}
+
+.test-form, .tests-table{
+    textarea {
+        border:none;
+        resize: none;
+        &:focus{
+            outline:0;
+        }
+    }
+}
+
+.tests-table{
+    textarea{
+        width:100%;
     }
 }

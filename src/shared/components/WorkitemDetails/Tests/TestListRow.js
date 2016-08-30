@@ -1,12 +1,13 @@
 import React from 'react';
 import { EditIcon } from './../../Icons';
+import Textarea from 'react-textarea-autosize';
 
 const ESCAPE = 27, ENTER = 13;
 
 export class TestListRow extends React.Component {
 
     save(e){
-        const newName = e.target.innerText;
+        const newName = e.target.value;
         if(newName != this.props.name){
 
             this.props.updateWorkitem({
@@ -22,7 +23,7 @@ export class TestListRow extends React.Component {
     saveOrCancel(e){
         switch(e.which){
             case ESCAPE:
-                e.target.innerText = this.props.name;
+                e.target.value = this.props.name;
                 break;
             case ENTER:
                 e.target.blur();
@@ -34,14 +35,14 @@ export class TestListRow extends React.Component {
     render() {
         let { name, number, oid, isSelected} = this.props;
             return (
-                <tr id={oid}
-                    className={`${isSelected ? 'selected' : ''}`}
-                >
+                <tr id={oid} className={`${isSelected ? 'selected' : ''}`}>
                     <td className="number">{number}</td>
-                    <td contentEditable="true"
-                        onBlur={this.save.bind(this)}
-                        onKeyDown={this.saveOrCancel.bind(this)}
-                        className="name">{name}</td>
+                    <td>
+                        <Textarea onBlur={this.save.bind(this)}
+                                  onKeyDown={this.saveOrCancel.bind(this)}
+                                  className="name"
+                                  defaultValue={name}></Textarea>
+                    </td>
                     <td className="edit-icon"><EditIcon /></td>
                 </tr>
             );

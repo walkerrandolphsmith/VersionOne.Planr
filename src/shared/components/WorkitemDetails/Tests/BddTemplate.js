@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from './../../Buttons'
-
+import Textarea from 'react-textarea-autosize';
+const ENTER = 13;
 export class BddTemplate extends React.Component {
 
     constructor(props, context) {
@@ -30,8 +31,15 @@ export class BddTemplate extends React.Component {
     }
 
     onKeyDown(e){
-        if(e.which == 13){
+        if(e.which == ENTER){
             this.save();
+            e.preventDefault();
+        }
+    }
+
+    preventEnter(e){
+        if(e.which == ENTER){
+            e.preventDefault();
         }
     }
 
@@ -40,15 +48,21 @@ export class BddTemplate extends React.Component {
             <div className="test-form">
                 <p>
                     <label htmlFor="given">Given:</label>
-                    <input id="given" name="given" type="text" onChange={this.onChange.bind(this, 'given')} />
+                    <Textarea id="given" name="given" type="text"
+                              onKeyDown={this.preventEnter.bind(this)}
+                              onChange={this.onChange.bind(this, 'given')} />
                 </p>
                 <p>
                     <label htmlFor="when">When:</label>
-                    <input id="when" name="when" type="text" onChange={this.onChange.bind(this, 'when')} />
+                    <Textarea id="when" name="when" type="text"
+                              onKeyDown={this.preventEnter.bind(this)}
+                              onChange={this.onChange.bind(this, 'when')} />
                 </p>
                 <p>
                     <label htmlFor="then">Then:</label>
-                    <input id="then" name="then" type="text" onKeyDown={this.onKeyDown.bind(this)} onChange={this.onChange.bind(this, 'then')} />
+                    <Textarea id="then" name="then" type="text"
+                              onKeyDown={this.onKeyDown.bind(this)}
+                              onChange={this.onChange.bind(this, 'then')} />
                 </p>
                 <Button text="Add" onClick={this.onClick.bind(this)} />
             </div>
