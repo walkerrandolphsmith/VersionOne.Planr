@@ -33,7 +33,7 @@ export class SimpleTemplate extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="test-form">
                 <label htmlFor="name">Name:</label>
                 <input id="name" name="name" type="text" onKeyDown={this.onKeyDown.bind(this)} onChange={this.onChange.bind(this)} />
             </div>

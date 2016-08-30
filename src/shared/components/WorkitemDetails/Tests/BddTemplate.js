@@ -37,7 +37,7 @@ export class BddTemplate extends React.Component {
 
     render() {
         return (
-            <div className="bdd-form">
+            <div className="test-form">
                 <p>
                     <label htmlFor="given">Given:</label>
                     <input id="given" name="given" type="text" onChange={this.onChange.bind(this, 'given')} />
