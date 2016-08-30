@@ -25,7 +25,7 @@ class EpicLookup extends React.Component {
                 selected={epic.name}
                 deSelect={this.deSelect.bind(this)}
                 placeholder="Epic:123"
-                width={400}
+                width={252}
                 results={epicLookupResults}
                 select={this.select.bind(this)}
                 onChange={this.search.bind(this)}
@@ -34,7 +34,7 @@ class EpicLookup extends React.Component {
                 }}
                 listStyles={{
                     position: 'absolute',
-                    right: '30px',
+                    right: '0px',
                     zIndex: 99999,
                     backgroundColor: 'white'
                 }}
