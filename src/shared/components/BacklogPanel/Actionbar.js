@@ -3,7 +3,7 @@ import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup } from './../Toolbar
 import { MultiButton } from './../Buttons';
 
 function ancestorHasClass(element, classname) {
-    if(!element.className)
+    if(!element.className || typeof element.className !== 'string')
         return false;
     else
         return element.className.split(' ').indexOf(classname) >= 0
