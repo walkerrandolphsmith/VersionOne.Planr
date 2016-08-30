@@ -38,9 +38,17 @@
         }
     }
 
+    &:focus {
+        outline: none;
+    }
+
     &:hover {
         background-color: shade(#00a9e0, 35%);
         text-decoration: none;
+    }
+
+    &:not(.disabled) {
+        .all-actions svg { fill: #ffffff; }
     }
 
     &.disabled, &[disabled] {
@@ -57,18 +65,6 @@
             box-shadow: none;
             color: #ffffff;
             text-shadow: none;
-        }
-    }
-
-    &:focus {
-        outline: none;
-    }
-}
-
-.multi-button {
-    &:not(.disabled) {
-        .svg-icon {
-            fill: #ffffff;
         }
     }
 }
