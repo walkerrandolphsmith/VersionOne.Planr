@@ -11,7 +11,7 @@ table.grid {
 
             &.selected, &:hover {
                 .select-arrow svg,
-                .delete-icon svg {
+                .fa-remove {
                     opacity: 0.5;
                 }
             }
@@ -89,13 +89,15 @@ table.grid {
                 }
 
                 &.select-arrow,
-                &.delete-icon {
+                &.fa-remove {
                     padding-top: 5px;
-                    svg {
+                }
+
+                &.select-arrow svg,
+                .fa-remove {
                         width: 10px;
                         opacity: 0;
                         transition: opacity 0.25s ease-out;
-                    }
                 }
             }
         }
