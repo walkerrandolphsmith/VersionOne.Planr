@@ -1,7 +1,6 @@
 import React from 'react';
 import { Estimate } from './Estimate';
 import { Description } from './Description';
-import { ProgressBar } from './../ProgressBar';
 import { OwnersList } from './../OwnersList';
 import { TestSection } from './Tests';
 
@@ -24,21 +23,11 @@ export class WorkitemDetails extends React.Component {
         const {
             oid,
             description,
-            scope,
-            epic,
             iteration,
-            team,
-            formattedChangeDate,
-            changedBy,
-            formattedCreateDate,
-            createdBy,
             priority,
             classOfService,
-            estimate,
             status,
             owners,
-            blockingIssues,
-            children,
             tests
         } = this.props.workitem;
 
