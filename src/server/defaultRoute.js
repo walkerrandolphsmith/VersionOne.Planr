@@ -33,7 +33,7 @@ const getInitialState = (url) => v1.query({
             classOfService: wi.ClassOfService ? wi.ClassOfService._oid : '',
             //Multivalue relation
             blockingIssues: wi.BlockingIssues ? wi.BlockingIssues.map(bi => bi._oid) : [],
-            Owners: wi.Owners ? wi.Owners.map(bi => bi._oid) : [],
+            owners: wi.Owners ? wi.Owners.map(bi => bi._oid) : [],
             children: wi.Children.map(child => child._oid)
         };
         workitems[wi._oid] = workitem;
