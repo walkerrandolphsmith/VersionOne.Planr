@@ -7,7 +7,6 @@ import { WorkitemDetails } from './../WorkitemDetails';
 import { ConversationStream } from './../ConversationStream';
 import { ActivityStream } from './../ActivityStream';
 import { CommitStream } from './../CommitStream';
-import { Loading } from './Loading';
 
 export class WorkitemPanelContainer extends React.Component {
 
@@ -80,9 +79,7 @@ const firstOrDefault = (wi) => {
 };
 
 function mapStateToProps(state) {
-    console.log(state.backlogStateAtom.isLoading);
     return {
-        isLoading: state.backlogStateAtom.isLoading,
         currentTestsTab: state.backlogStateAtom.currentTestsTab,
         currentDetailsTab: state.backlogStateAtom.currentDetailsTab,
         caretTopPosition: state.backlogStateAtom.caretTopPosition,
