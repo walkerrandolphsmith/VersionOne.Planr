@@ -1,14 +1,14 @@
 import React from 'react';
 import { Estimate } from './Estimate';
-import { Description } from './Description';
 import { OwnersList } from './../OwnersList';
-import { TestSection } from './Tests';
+import { Dropdown } from './../Dropdown';
 
 export class Footer extends React.Component {
 
-    static defaultProps = {
-        defaultValue: '-'
-    };
+    onClick(i) {
+        const relatedAsset = this.props.workitem.statuses[i];
+        this.props.setStatus(relatedAsset);
+    }
 
     render() {
         const { defaultValue:val } = this.props;
@@ -17,7 +17,8 @@ export class Footer extends React.Component {
             priority,
             classOfService,
             status,
-            owners
+            owners,
+            statuses
         } = this.props.workitem;
 
         return (
@@ -31,7 +32,7 @@ export class Footer extends React.Component {
                         <div className="attribute">
                             <label>Status:</label>
                             <div className="value-container">
-                                {status.name || val}
+                                <Dropdown selectedOption={status.name} options={statuses} onClick={this.onClick.bind(this)} />
                             </div>
                         </div>
                         <div className="attribute">

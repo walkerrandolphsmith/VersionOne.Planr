@@ -14,6 +14,7 @@ export const getWorkitemDetails = (workitemOidToken) => (dispatch) => {
             select: [
                 'Number',
                 'Name',
+                'AssetType',
                 'Description',
                 'Scope',
                 'Scope.Name',
@@ -46,15 +47,32 @@ export const getWorkitemDetails = (workitemOidToken) => (dispatch) => {
                 'Children.Name',
                 'Children.Number',
                 'Children.AssetType',
-                'Children.AssetState'
+                'Children.AssetState',
+                "Scope.Scheme.SelectedValues",
+                "Scope.Scheme.SelectedValues.Name"//Set of lists types in scheme
             ],
             where: {
                 ID: workitemOidToken
             }
         })
         .then(response => {
-            const workitem = response.data[0][0];
-            dispatch(success(workitem));
+            let workitem = response.data[0][0];
+            axios.post('/api/query', {
+                from: `${workitem.AssetType}Status`,
+                select: [
+                    'SelectedInSchemes'
+                ]
+            }).then(nestedResponse => {
+                const allStatuses = nestedResponse.data[0];
+                workitem = formatWorkitem(workitem);
+                const visibleStatuses = workitem.visibleListsTypesValues.filter((value, i) => allStatuses.find(status => status._oid === value.oid));
+                workitem.statuses = workitem.statuses.concat(visibleStatuses);
+                dispatch(success(workitem));
+            }).catch(err => {
+                //Even if we fail to get statuses we still want to update other details
+                workitem = formatWorkitem(workitem);
+                dispatch(success(workitem));
+            });
         })
         .catch(error => {
 
@@ -62,8 +80,24 @@ export const getWorkitemDetails = (workitemOidToken) => (dispatch) => {
 };
 
 const reducer = (state, payload) => {
-    const wi = payload.workitemWithDetails;
-    const workitem = state.workitems[payload.workitemWithDetails._oid];
+    state.workitems[payload.workitemWithDetails.oid] = payload.workitemWithDetails;
+    state.workitems = { ...state.workitems };
+    return { ...state };
+};
+
+export default {
+    [ACTION]: reducer
+};
+
+
+const formatWorkitem = (wi) => {
+    const workitem = {};
+    workitem.oid = wi._oid;
+    workitem.name = wi.Name;
+    workitem.number = wi.Number;
+    workitem.assetType = wi.AssetType;
+    workitem.description = wi.Description;
+    workitem.estimate = wi.Estimate;
 
     workitem.scope = {
         oid: wi.Scope._oid,
@@ -73,11 +107,6 @@ const reducer = (state, payload) => {
     workitem.iteration = {
         oid: wi.Timebox._oid,
         name: wi['Timebox.Name']
-    };
-
-    workitem.team = {
-        oid: wi.Team._oid,
-        name: wi['Team.Name']
     };
 
     workitem.epic = {
@@ -90,15 +119,7 @@ const reducer = (state, payload) => {
         name: wi['Status.Name']
     };
 
-    workitem.changedBy = {
-        oid: wi.ChangedBy._oid,
-        name: wi['ChangedBy.Name']
-    };
-
-    workitem.createdBy = {
-        oid: wi.CreatedBy._oid,
-        name: wi['CreatedBy.Name']
-    };
+    workitem.statuses = [{ oid: 'NULL', name: '-' }];
 
     workitem.priority = {
         oid: wi.Priority._oid,
@@ -126,7 +147,6 @@ const reducer = (state, payload) => {
     });
 
     workitem.children = wi.Children.map((child, i) => {
-        //debugger;
         return {
             oid: child._oid,
             assetType: wi['Children.AssetType'][i],
@@ -136,17 +156,12 @@ const reducer = (state, payload) => {
         };
     });
 
-    workitem.description = wi.Description;
-    workitem.changeDate = wi.ChangeDate;
-    workitem.createDate = wi.CreateDate;
-    workitem.estimate = wi.Estimate;
     workitem.tests = workitem.children.filter(child => child.assetType === 'Test' && child.assetState == 'Active');
 
-    state.workitems[payload.workitemWithDetails._oid] = workitem;
-    return { ...state };
-};
+    workitem.visibleListsTypesValues = wi['Scope.Scheme.SelectedValues'].map((status, i) => ({
+        oid: wi['Scope.Scheme.SelectedValues'][i]._oid,
+        name: wi['Scope.Scheme.SelectedValues.Name'][i]
+    }));
 
-export default {
-    [ACTION]: reducer
+    return workitem;
 };
-

@@ -68,7 +68,10 @@ const firstOrDefault = (wi) => {
         createdBy: wi.createdBy || {},
         priority: wi.priority || {},
         classOfService: wi.classOfService || {},
-        status: wi.status || {},
+        status: wi.status || {
+            oid: 'NULL',
+            name: '-'
+        },
         blockingIssues: wi.blockingIssues || [],
         owners: wi.owners || [],
         children: wi.children || [],

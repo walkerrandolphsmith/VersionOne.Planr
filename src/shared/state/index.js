@@ -12,6 +12,7 @@ import { addStory, addDefect } from './Setters/addWorkitem';
 import { updateWorkitem } from './Setters/updateWorkitem';
 import { addTest } from './Setters/addTest';
 import { deleteTest } from './Setters/deleteTest';
+import { setStatus } from './Setters/setStatus';
 
 export const Selectors = selectors;
 
@@ -28,6 +29,7 @@ export const ActionCreators = {
     addDefect,
     updateWorkitem,
     addTest,
-    deleteTest
+    deleteTest,
+    setStatus
 };
 export { default as Reducer } from './Setters';
