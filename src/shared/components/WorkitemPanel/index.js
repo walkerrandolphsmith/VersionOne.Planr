@@ -7,6 +7,7 @@ import { WorkitemDetails } from './../WorkitemDetails';
 import { ConversationStream } from './../ConversationStream';
 import { ActivityStream } from './../ActivityStream';
 import { CommitStream } from './../CommitStream';
+import { Loading } from './Loading';
 
 export class WorkitemPanelContainer extends React.Component {
 
@@ -35,17 +36,13 @@ export class WorkitemPanelContainer extends React.Component {
 
     render() {
         const top = this.state.initialOffset + (this.props.caretTopPosition * this.state.rowHeight);
-        const tabView = this.getViewForTab();
-
-        let hideIfEmpty = this.props.workitem.oid == "" ? 'hidden' : '';
+        const hideIfEmpty = this.props.workitem.oid == "" ? 'hidden' : '';
 
         return (
             <div className={`right workitem-details ${hideIfEmpty}`} >
                 <div className="pane">
                     <Actionbar {...this.props} />
-                    <div className="content">
-                        {tabView}
-                    </div>
+                    {this.getViewForTab()}
                 </div>
                 <div className="pane-caret" style={{top: top}}></div>
             </div>
@@ -83,7 +80,9 @@ const firstOrDefault = (wi) => {
 };
 
 function mapStateToProps(state) {
+    console.log(state.backlogStateAtom.isLoading);
     return {
+        isLoading: state.backlogStateAtom.isLoading,
         currentTestsTab: state.backlogStateAtom.currentTestsTab,
         currentDetailsTab: state.backlogStateAtom.currentDetailsTab,
         caretTopPosition: state.backlogStateAtom.caretTopPosition,
