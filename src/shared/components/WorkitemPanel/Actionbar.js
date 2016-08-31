@@ -1,7 +1,7 @@
 import React from 'react';
 import { Toolbar, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
 import { WorkitemTitle } from './WorkitemTitle';
-import { DetailsIcon, ActivityStreamIcon, CommitStreamIcon, ConversationsIcon } from './../Icons';
+import { DetailsIcon, ActivityStreamIcon, ConversationsIcon } from './../Icons';
 
 const isActive = (tab, current) => tab === current ? 'active' : '';
 
@@ -13,19 +13,15 @@ export class Actionbar extends React.Component {
 
     getWorkitemDetails() {
         this.props.setTab(this.props.tabType, 0);
-    }
+    };
 
     getConversationStream() {
         this.props.setTab(this.props.tabType, 1);
-    }
+    };
 
     getActivityStream() {
         this.props.setTab(this.props.tabType, 2);
-    }
-
-    getCommitStream() {
-        this.props.setTab(this.props.tabType, 3);
-    }
+    };
 
     render() {
         const { workitem, currentDetailsTab:tab, updateWorkitem } = this.props;
@@ -48,11 +44,6 @@ export class Actionbar extends React.Component {
                     <ToolbarGroup>
                         <div className={isActive(tab, 2)} onClick={this.getActivityStream.bind(this)}>
                             <ActivityStreamIcon />
-                        </div>
-                    </ToolbarGroup>
-                    <ToolbarGroup>
-                        <div className={isActive(tab, 3)} onClick={this.getCommitStream.bind(this)}>
-                            <CommitStreamIcon />
                         </div>
                     </ToolbarGroup>
                 </Toolbar>
