@@ -30,10 +30,12 @@ export const setAuthToken = ( authToken ) => (dispatch) => {
                 dispatch(push('/planr'));
             } else {
                 dispatch(invalid(authToken));
+                dispatch(push('/'));
             }
         }).catch((err)=>{
             console.log('failure', err);
             dispatch(invalid(authToken));
+            dispatch(push('/'));
         });
 };
 

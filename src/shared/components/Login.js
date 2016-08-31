@@ -4,14 +4,6 @@ import { connect } from 'react-redux';
 import { ActionCreators, Selectors } from './../state';
 
 class LoginContainer extends React.Component {
-
-    constructor(props, context){
-        super(props, context);
-        if(localStorage.getItem('authToken')){
-            props.setAuthToken(localStorage.getItem('authToken'));
-        }
-    }
-
     onKeyDown(e){
         const ENTER = 13;
         if(e.which === ENTER){

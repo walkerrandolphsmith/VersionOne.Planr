@@ -1,7 +1,17 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
 import { Navigation } from './Navigation';
+import { connect } from 'react-redux';
+import { ActionCreators, Selectors } from './../state';
 
-export class App extends React.Component {
+class AppContainer extends React.Component {
+    constructor(props, context){
+        super(props, context);
+        if(localStorage.getItem('authToken')){
+            props.setAuthToken(localStorage.getItem('authToken'));
+        }
+    }
+    
     render() {
         return (
             <div>
@@ -17,3 +27,10 @@ export class App extends React.Component {
         );
     }
 }
+
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(ActionCreators, dispatch);
+}
+
+export const App = connect(() => ({}), mapDispatchToProps)(AppContainer);
