@@ -6,7 +6,12 @@ import { TestSection } from './Tests';
 
 export class Footer extends React.Component {
 
+    static defaultProps = {
+        defaultValue: '-'
+    };
+
     render() {
+        const { defaultValue:val } = this.props;
         const {
             iteration,
             priority,
@@ -26,13 +31,13 @@ export class Footer extends React.Component {
                         <div className="attribute">
                             <label>Status:</label>
                             <div className="value-container">
-                                {status.name}
+                                {status.name || val}
                             </div>
                         </div>
                         <div className="attribute">
                             <label>Iteration:</label>
                             <div className="value-container">
-                                {iteration.name}
+                                {iteration.name || val}
                             </div>
                         </div>
                     </div>
@@ -40,13 +45,13 @@ export class Footer extends React.Component {
                         <div className="attribute">
                             <label>Priority:</label>
                             <div className="value-container">
-                                {priority.name}
+                                {priority.name || val}
                             </div>
                         </div>
                         <div className="attribute">
                             <label>Class of Service:</label>
                             <div className="value-container">
-                                {classOfService.name}
+                                {classOfService.name || val}
                             </div>
                         </div>
                     </div>
