@@ -1,7 +1,9 @@
 import axios from 'axios';
 import sdk, {axiosConnector} from 'v1sdk';
-import { v1Host, v1Instance, v1User, v1Password } from './../shared/env';
+import { v1Host, v1Instance } from './../shared/env';
 
 const axiosConnectedSdk = axiosConnector(axios)(sdk);
-export default axiosConnectedSdk(v1Host, v1Instance)
-    .withCreds(v1User, v1Password);
+export default (token)=> {
+    return axiosConnectedSdk(v1Host, v1Instance)
+        .withAccessToken(token)
+}

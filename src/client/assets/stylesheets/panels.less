@@ -1,20 +1,13 @@
-.backlog-content-container {
+.backlog-content-container, .login-content-container {
     display: flex;
-    box-flex: 1;
-    flex: 1 1 auto;
-    box-orient: vertical;
     flex-direction: column;
-    min-height: 1px;
     position: relative;
 
-    .backlog-content {
+    .backlog-content, .login-content {
         transition: min-width 0.25s ease-out;
         min-width: 920px;
         background-color: transparent;
         display: flex;
-        box-flex: 1;
-        flex: 1;
-        min-height: 1px;
         padding-top: 15px;
         position: relative;
         z-index: 0;
@@ -121,6 +114,23 @@
                     width: 14px;
                 }
             }
+        }
+    }
+}
+
+.login-content-container {
+
+    .login-content {
+        align-items: center;
+        flex-direction: column;
+
+        .auth-token {
+            background-color: rgba(255,255,255,.5);
+            border: 1px solid rgba(0,0,0,.2);
+            font-size: 1.1em;
+            padding: 1em;
+            text-align: center;
+            width: 80%;
         }
     }
 }

@@ -11,6 +11,7 @@ import updateWorkitem from './updateWorkitem';
 import addTest from './addTest';
 import deleteTest from './deleteTest';
 import setStatus from './setStatus';
+import setAuthToken from './setAuthToken';
 
 const handlers = [
     setTab,
@@ -25,10 +26,12 @@ const handlers = [
     updateWorkitem,
     addTest,
     deleteTest,
-    setStatus
+    setStatus,
+    setAuthToken
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
+    authToken: '',
     caretTopPosition: 0,
     currentDetailsTab: 0,
     currentTestsTab: 0,
@@ -39,10 +42,6 @@ const DEFAULT_STATE = {
 };
 
 export default (state = DEFAULT_STATE, action = {}) => {
-    // Merge with items populated on server
-    if(state != DEFAULT_STATE) {
-        state = Object.assign({}, DEFAULT_STATE, state);
-    }
     const { type, payload } = action;
 
     return handlers[type] ? handlers[type](state, payload) : state;

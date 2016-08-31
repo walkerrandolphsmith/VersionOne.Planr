@@ -86,7 +86,7 @@ export default class ResultItem extends Component {
             justifyContent: 'center',
             order: 1,
             flexBasis: `${sidesWidth}px`,
-            height: childrenHeight
+            minHeight: childrenHeight
         };
 
         const middleStyles = {
@@ -96,7 +96,7 @@ export default class ResultItem extends Component {
             order: 2,
             flexBasis: `${middleWidth - middleLeftOffset}px`,
             paddingLeft: `${middleLeftOffset}px`,
-            height: childrenHeight
+            minHeight: childrenHeight
         };
 
         return (

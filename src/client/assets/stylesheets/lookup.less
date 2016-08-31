@@ -8,15 +8,16 @@
     }
 
     .selected {
+        align-items: center;
         display: inline-block;
         position: absolute;
-        left: 1px;
-        top: 2px;
-        background: lightgray;
-        border-radius: 3px;
+        left: 0;
+        top: 0;
+        background: #6d09a8;
+        color: #fff;
         padding: 1px;
-        height: 21px;
-        max-width: 250px;
+        height: 100%;
+        width: 300px;
 
         span {
             padding: 0 5px;
@@ -34,16 +35,41 @@
 
         .un-select {
             cursor: pointer;
-            width: 40px;
+            width: 24px;
             display: inline-block;
             vertical-align: top;
             text-align: center;
             padding: 0;
-            height: 20px;
+            height: 24px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            position: relative;
+            transform: rotate(45deg);
+
+            &:before, &:after {
+                content: '';
+                position: absolute;
+                background-color: #fff;
+            }
+
+            &:before {
+                top: 11px;
+                left: 6px;
+                width: 13px;
+                height: 1px;
+            }
+
+            &:after {
+                left:12px;
+                top: 5px;
+                height: 13px;
+                width: 1px;
+            }
         }
     }
 
     .result {
+        line-height: 1.14;
         transition: background-color .125s;
     }
     .result.hovered {

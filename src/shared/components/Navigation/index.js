@@ -49,7 +49,7 @@ export class _Navigation extends React.Component {
         const { epic } = this.props;
         return (
             <header className="navigation">
-                <Toolbar>
+                <Toolbar className="nav-toolbar">
                     <ToolbarGroup>
                         <span className="logo"><DetailsIcon /></span>
                     </ToolbarGroup>

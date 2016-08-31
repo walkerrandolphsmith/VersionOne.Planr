@@ -18,6 +18,8 @@ const addWorkitem = (name, assetType, dispatch, getState) => {
                 Scope: epic.scope,
                 Super: epic.oid
             }
+        }, {
+            headers: { 'Authorization' : getState().backlogStateAtom.authToken}
         })
         .then((response) => {
             const workitem = {

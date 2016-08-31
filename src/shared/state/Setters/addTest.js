@@ -19,6 +19,8 @@ export const addTest = (name) => (dispatch, getState) => {
                 Name: name,
                 Parent: currentWi.oid
             }
+        }, {
+            headers: { 'Authorization' : getState().backlogStateAtom.authToken}
         })
         .then((response) => {
             const test = {
