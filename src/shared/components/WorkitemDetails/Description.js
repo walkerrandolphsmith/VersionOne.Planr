@@ -42,6 +42,10 @@ export class Description extends React.Component {
         this.setState({ isEditing: false });
     }
 
+    cancelAndClose() {
+        this.setState({ isEditing: false });
+    }
+
     toggleExpander() {
         this.setState({ isExpanded: !this.state.isExpanded });
     }
@@ -83,6 +87,12 @@ export class Description extends React.Component {
                      onClick={this.saveAndClose.bind(this)}
                 >
                     <Button text="Save" />
+                </div>
+                <div className="ghost-cancel"
+                     style={{display: isEditing && isExpanded ? 'block' : 'none'}}
+                     onClick={this.cancelAndClose.bind(this)}
+                >
+                    <Button text="Cancel" />
                 </div>
             </div>
         )

@@ -15,11 +15,20 @@
         padding-right: 5px;
     }
 
-    .ghost-save {
+    .ghost-save, .ghost-cancel {
         position: absolute;
+        z-index: 100;
+        display: block;
+    }
+
+    .ghost-save {
+        top: 27px;
+        right: 70px;
+    }
+
+    .ghost-cancel {
         top: 27px;
         right: 3px;
-        z-index: 100;
     }
 
     .field {
