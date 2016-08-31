@@ -33,12 +33,11 @@ export class WorkitemDetails extends React.Component {
 
         return (
             <div>
-                <OwnersList owners={owners} />
-                <Estimate {...this.props} />
                 <div className="group">
-                    {/*
-                     Project, Iteration
-                     */}
+                    <OwnersList owners={owners} />
+                    <Estimate label="Pts." {...this.props} />
+                </div>
+                <div className="group">
                     <div className="attributes">
                         <div className="attribute">
                             <label>Status:</label>
@@ -46,7 +45,6 @@ export class WorkitemDetails extends React.Component {
                                 {status.name}
                             </div>
                         </div>
-
                         <div className="attribute">
                             <label>Iteration:</label>
                             <div className="value-container">
@@ -54,10 +52,6 @@ export class WorkitemDetails extends React.Component {
                             </div>
                         </div>
                     </div>
-
-                    {/*
-                     Priority, Class of Service
-                     */}
                     <div className="attributes">
                         <div className="attribute">
                             <label>Priority:</label>
@@ -65,7 +59,6 @@ export class WorkitemDetails extends React.Component {
                                 {priority.name}
                             </div>
                         </div>
-
                         <div className="attribute">
                             <label>Class of Service:</label>
                             <div className="value-container">
@@ -73,12 +66,9 @@ export class WorkitemDetails extends React.Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
-
                 <Description oid={oid} description={description} {...this.props} />
                 <TestSection tests={tests} {...this.props} />
-
             </div>
         )
     }

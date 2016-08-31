@@ -1,48 +1,27 @@
 @width: ~"100% - 100px";
 
-.workitem-details {
-    [contenteditable=true]{
-        padding: 0 8px 5px 8px;
-        transition: 1.0s all linear;
+.group {
+    display: block;
+    width: 100%;
+}
 
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-bottom: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: 0.3s all linear;
-        }
-        &:focus{
-            cursor: text;
-        }
+.owners-list {
+    display: inline-block;
+    vertical-align: top;
+    width: 80%;
+    height: 55px;
+    .member-avatar {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
 
-.progress-section {
-    padding: 25px;
-    display: inline-block;
-    width: 200px;
-    height: 84px;
-}
-
-.card {
-    float: right;
+.number-label-pair {
     display: inline-block;
     vertical-align: top;
-    background-color: rgba(255,255,255,.2);
-    cursor: context-menu;
-    transition: .3s all ease-out;
-}
-
-.summary {
-    padding: 10px;
-    line-height: 1em;
-    word-spacing: -1px;
-    min-width: 50px;
-    min-height: 84px;
-    text-align: left;
-}
-
-.value-label-pair {
+    width: 20%;
+    height: 55px;
 
      & >* {
          display: table-cell;
@@ -59,6 +38,10 @@
         font-size: 3.5em;
         letter-spacing: -.03em;
         font-weight: 800;
+
+        input {
+            width: 100%;
+        }
     }
 
     .label {
@@ -70,47 +53,42 @@
     }
 }
 
-.group {
-    display: block;
-    width: 100%;
+.attributes {
+    border-color: #a6a6a6;
+    border-style: dotted;
+    border-width: 0 0 0 2px;
+    padding-left: .5em;
+    margin-bottom: 1em;
+    display: inline-block;
+    vertical-align: top;
+    min-width: 33%;
+    max-width: 33%;
 
-    .attributes {
-        border-color: #a6a6a6;
-        border-style: dotted;
-        border-width: 0 0 0 2px;
-        padding-left: .5em;
-        margin-bottom: 1em;
-        display: inline-block;
-        vertical-align: top;
-        min-width: 33%;
-        max-width: 33%;
+    &.description {
+        width: 100%;
+        max-width: 100%;
+    }
 
-        &.description {
-            width: 100%;
-            max-width: 100%;
+    .attribute {
+        margin-bottom: 8px;
+
+        label, .value-container {
+            vertical-align: top;
         }
 
-        .attribute {
-            margin-bottom: 8px;
+        label {
+            font-size: 12px;
+            color: #634c47;
+            line-height: 1.2em;
+            text-transform: uppercase;
+            min-width: 100px;
+            max-width: 100px;
+        }
 
-            label, .value-container {
-                vertical-align: top;
-            }
-
-            label {
-                font-size: 12px;
-                color: #634c47;
-                line-height: 1.2em;
-                text-transform: uppercase;
-                min-width: 100px;
-                max-width: 100px;
-            }
-
-            .value-container {
-                display: inline-block;
-                font-size: 12px;
-                width: calc(@width)
-            }
+        .value-container {
+            display: inline-block;
+            font-size: 12px;
+            width: calc(@width)
         }
     }
 }

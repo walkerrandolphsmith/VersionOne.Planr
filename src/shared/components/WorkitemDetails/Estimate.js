@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '../Inputs'
+import { AutoGrowInput } from '../Inputs'
 
 export class Estimate extends React.Component {
 
@@ -17,19 +17,18 @@ export class Estimate extends React.Component {
     }
 
     render() {
+        const { label } = this.props;
         const { estimate } = this.props.workitem;
         return (
-            <div className="card summary estimate">
-                <div className="value-label-pair">
-                    <div className="value">
-                        <Input
-                            value={estimate}
-                            updateValue={this.updateEstimate.bind(this)}
-                        />
-                    </div>
-                    <div className="label">
-                        Pts.
-                    </div>
+            <div className="number-label-pair">
+                <div className="value">
+                    <AutoGrowInput
+                        value={estimate}
+                        updateValue={this.updateEstimate.bind(this)}
+                    />
+                </div>
+                <div className="label">
+                    {label}
                 </div>
             </div>
         )
