@@ -13,6 +13,7 @@ import { updateWorkitem } from './Setters/updateWorkitem';
 import { addTest } from './Setters/addTest';
 import { deleteTest } from './Setters/deleteTest';
 import { setStatus } from './Setters/setStatus';
+import { setAuthToken } from './Setters/setAuthToken';
 
 export const Selectors = selectors;
 
@@ -30,6 +31,7 @@ export const ActionCreators = {
     updateWorkitem,
     addTest,
     deleteTest,
-    setStatus
+    setStatus,
+    setAuthToken
 };
 export { default as Reducer } from './Setters';

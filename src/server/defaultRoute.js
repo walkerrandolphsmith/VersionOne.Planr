@@ -5,49 +5,6 @@ import v1 from './V1Server';
 import configureStore from './../shared/store';
 import routes from './../shared/routes';
 
-const getInitialState = (url) => v1.query({
-    from: 'PrimaryWorkitem',
-    select: ['Name', 'Number', 'AssetType', 'Children'],
-    filter: [
-        "AssetState!='Closed'"
-    ],
-    page: {
-        start: 0,
-        size: 50
-    }
-})
-.then(response => {
-    const workitems = response.data[0].reduce((workitems, wi) => {
-        const workitem = {
-            oid: wi._oid,
-            assetType: wi.AssetType,
-            number: wi.Number,
-            name: wi.Name,
-            description: wi.Description,
-            changeDate: wi.ChangeDate,
-            createDate: wi.CreateDate,
-            estimate: wi.Estimate,
-            //Single Value Relations
-            scope: wi.Scope? wi.Scope._oid : '',
-            status: wi.Status ? wi.Status._oid : '',
-            classOfService: wi.ClassOfService ? wi.ClassOfService._oid : '',
-            //Multivalue relation
-            blockingIssues: wi.BlockingIssues ? wi.BlockingIssues.map(bi => bi._oid) : [],
-            owners: wi.Owners ? wi.Owners.map(bi => bi._oid) : [],
-            children: wi.Children.map(child => child._oid)
-        };
-        workitems[wi._oid] = workitem;
-        return workitems;
-    }, {});
-
-    return {
-        routing: undefined,
-        backlogStateAtom: {
-            workitems: workitems
-        }
-    };
-});
-
 export const generateHTMLString = (componentHTML, initialState) => `
     <!doctype html>
     <html>
@@ -76,22 +33,19 @@ export const generateHTMLString = (componentHTML, initialState) => `
 
 export default (request, response) => {
     const location = createLocation(request.url);
-    getInitialState(request.url)
-        .then(initialState => {
-            const store = configureStore({
-                initialState: initialState,
-                history: undefined
-            });
+    const store = configureStore({
+        initialState: {},
+        history: undefined
+    });
 
-            match({ routes, location }, (err, redirectLocation, renderProps) => {
-                if(err) {
-                    return response.status(500).end('Internal server error.');
-                }
-                if(!renderProps) {
-                    return response.status(404).end('Not found.');
-                }
-                const markup = generateHTMLString('', store.getState());
-                response.status(200).end(markup);
-            });
-        });
+    match({ routes, location }, (err, redirectLocation, renderProps) => {
+        if(err) {
+            return response.status(500).end('Internal server error.');
+        }
+        if(!renderProps) {
+            return response.status(404).end('Not found.');
+        }
+        const markup = generateHTMLString('', store.getState());
+        response.status(200).end(markup);
+    });
 }

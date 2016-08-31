@@ -21,6 +21,8 @@ export const lookupEpic = (query) => (dispatch, getState) => {
                 "AssetState!='Closed'"
             ],
             'find': `${query}*`
+        }, {
+            headers: { 'Authorization' : getState().backlogStateAtom.authToken }
         })
         .then((response) => {
             const epics = response.data[0].map(epic => ({
@@ -31,7 +33,7 @@ export const lookupEpic = (query) => (dispatch, getState) => {
             dispatch(success(epics));
         })
         .catch(err => {
-            console.log('failure')
+            console.log('failure', err);
         });
 };
 
@@ -43,4 +45,3 @@ const reducer = (state, payload) => {
 export default {
     [ACTION]: reducer
 };
-

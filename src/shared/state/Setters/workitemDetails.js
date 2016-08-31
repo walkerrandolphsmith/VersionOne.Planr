@@ -8,7 +8,7 @@ const success = createAction(
     workitemWithDetails => ({workitemWithDetails})
 );
 
-export const getWorkitemDetails = (workitemOidToken) => (dispatch) => {
+export const getWorkitemDetails = (workitemOidToken) => (dispatch, getState) => {
     axios.post('/api/query/', {
             from: 'PrimaryWorkitem',
             select: [
@@ -54,6 +54,8 @@ export const getWorkitemDetails = (workitemOidToken) => (dispatch) => {
             where: {
                 ID: workitemOidToken
             }
+        }, {
+            headers: { 'Authorization' : getState().backlogStateAtom.authToken}
         })
         .then(response => {
             let workitem = response.data[0][0];

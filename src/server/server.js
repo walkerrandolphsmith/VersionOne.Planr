@@ -40,36 +40,50 @@ if(nodeEnv === 'development') {
     new WebpackDevServer(webpack(config), config.devServer).listen(devPort, devHost, logger);
 }
 
+app.get('/api/validate', (req, res) => {
+    const authToken = req.header('Authorization');
+    v1(authToken).query({'from': 'Scope', 'select':['Name'], 'where':{'ID':'Scope:0'}}).then(response => {
+        res.status(200).send();
+    }).catch(response => {
+        res.status(401).send();
+    });
+});
+
 app.get('/api/activitystream/:id', (req, res) => {
     const oid = req.originalUrl.split('/activitystream/')[1];
-    v1.getActivityStream(oid).then(response => {
+    const authToken = req.header('Authorization');
+    v1(authToken).getActivityStream(oid).then(response => {
         res.status(200).send(response.data);
     });
 });
 
 app.post('/api/query', (req, res) => {
-    v1.query(req.body).then(response => {
+    const authToken = req.header('Authorization');
+    v1(authToken).query(req.body).then(response => {
         res.status(200).send(response.data);
     });
 });
 
 app.post('/api/create', (req, res) => {
     const { assetType, assetData } = req.body;
-    v1.create(assetType, assetData).then(response => {
+    const authToken = req.header('Authorization');
+    v1(authToken).create(assetType, assetData).then(response => {
         res.status(200).send(response.data);
     });
 });
 
 app.post('/api/update', (req, res) => {
     const { oidToken, assetData } = req.body;
-    v1.update(oidToken, assetData).then(response => {
+    const authToken = req.header('Authorization');
+    v1(authToken).update(oidToken, assetData).then(response => {
         res.status(200).send(response.data);
     });
 });
 
 app.post('/api/executeOperation', (req, res) => {
     const { oidToken, operationName } = req.body;
-    v1.executeOperation(oidToken, operationName).then(response => {
+    const authToken = req.header('Authorization');
+    v1(authToken).executeOperation(oidToken, operationName).then(response => {
         res.status(200).send(response.data);
     });
 });
