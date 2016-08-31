@@ -28,3 +28,28 @@ input {
         outline: 0;
     }
 }
+
+.mce-container.mce-panel {
+    background-color: #ffffff;
+    background-image: none;
+    box-sizing: border-box;
+}
+.mce-btn-group {
+    .mce-widget.mce-btn {
+        background-color: #ffffff;
+        background-image: none;
+        border: none;
+        margin: 0 1px;
+
+        &.mce-first, &.mce-last {
+            border: none;
+        }
+
+        &.mce-active, &:not(.mce-disabled):active, &.mce-active:hover {
+            background-color: #ededed;
+            background-image: none;
+            border: none;
+            box-shadow: none;
+        }
+    }
+}
