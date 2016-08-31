@@ -1,0 +1,41 @@
+.dropdown {
+    display: block;
+    border: 1px solid #000000;
+    background: #ffffff;
+    cursor: pointer;
+
+    .selected, .toggle {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .selected {
+        width: 90%;
+    }
+
+    .toggle {
+        width: 10%;
+        text-align: center;
+        border-left: 1px solid #000000;
+
+        svg {
+            width: 6px;
+            transition: transform 0.25s ease-in-out;
+            transform: rotate(180deg);
+        }
+
+        &.expanded {
+            svg { transform: rotate(90deg); }
+        }
+    }
+}
+
+.options {
+    width: 100%;
+    border: 1px solid #000000;
+    border-top: none;
+    background: #ffffff;
+    border-radius: 0 0 5px 5px;
+    transition: min-height 0.25s ease-in-out;
+    overflow: hidden;
+}
