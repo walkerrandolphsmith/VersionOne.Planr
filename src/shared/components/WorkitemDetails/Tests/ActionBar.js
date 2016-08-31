@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup } from './../../Toolbar';
+import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup, ToolbarSeparator } from './../../Toolbar';
 import { ConversationsIcon } from './../../Icons';
 
 export class Actionbar extends React.Component {
@@ -19,12 +19,13 @@ export class Actionbar extends React.Component {
                     <ToolbarSpacer />
                     <ToolbarGroup>
                         <div onClick={this.setBddTab.bind(this)}>
-                            <ConversationsIcon />
+                            <span>BDD</span>
                         </div>
                     </ToolbarGroup>
+                    <ToolbarSeparator />
                     <ToolbarGroup>
                         <div onClick={this.setSimpleTab.bind(this)}>
-                            <ConversationsIcon />
+                            <span>Simple</span>
                         </div>
                     </ToolbarGroup>
                 </Toolbar>
