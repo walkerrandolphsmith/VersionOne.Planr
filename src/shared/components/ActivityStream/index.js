@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Selectors } from './../../state';
 import { Activity } from './Activity';
 import { ActionCreators } from './../../state';
+import moment from 'moment';
 
 export class _ActivityStream extends React.Component {
     static defaultProps = {
@@ -20,10 +21,20 @@ export class _ActivityStream extends React.Component {
         const groups = this.props.activityGroupedByDate;
         let activity = [];
         for(var group in groups) {
+            const dayName = [
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+                'Sunday',
+                'Monday'
+            ][moment(new Date(group)).isoWeekday() - 1];
+
             activity.push(
                 <div key={group}>
                     <div className="day">
-                        <div className="day-name">{group}</div>
+                        <div className="day-name">{dayName}</div>
                         <span className="date">{group}</span>
                     </div>
                     <div>
@@ -33,7 +44,7 @@ export class _ActivityStream extends React.Component {
             )
         };
         return (
-            <div className="activity-stream">
+            <div className="main activity-stream">
                 {activity}
             </div>
         )
