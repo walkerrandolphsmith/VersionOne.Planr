@@ -24,8 +24,6 @@ export const getConversationStream = (workitemOidToken) => (dispatch, getState) 
             where: {
                 ID: workitemOidToken
             }
-        }, {
-            headers: { 'Authorization' : getState().backlogStateAtom.authToken}
         })
         .then(response => {
             const workitem = response.data[0][0];

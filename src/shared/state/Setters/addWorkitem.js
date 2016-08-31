@@ -18,8 +18,6 @@ const addWorkitem = (name, assetType, dispatch, getState) => {
                 Scope: epic.scope,
                 Super: epic.oid
             }
-        }, {
-            headers: { 'Authorization' : getState().backlogStateAtom.authToken}
         })
         .then((response) => {
             const workitem = {
@@ -36,8 +34,6 @@ const addWorkitem = (name, assetType, dispatch, getState) => {
                 'where': {
                     ID: workitem.oid
                 }
-            }, {
-                headers: { 'Authorization' : getState().backlogStateAtom.authToken}
             })
             .then(secondResponse => {
                 workitem.number = secondResponse.data[0][0].Number;

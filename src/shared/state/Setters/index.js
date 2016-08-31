@@ -11,7 +11,6 @@ import updateWorkitem from './updateWorkitem';
 import addTest from './addTest';
 import deleteTest from './deleteTest';
 import setStatus from './setStatus';
-import setAuthToken from './setAuthToken';
 
 const handlers = [
     setTab,
@@ -26,12 +25,10 @@ const handlers = [
     updateWorkitem,
     addTest,
     deleteTest,
-    setStatus,
-    setAuthToken
+    setStatus
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
-    authToken: '',
     caretTopPosition: 0,
     currentDetailsTab: 0,
     currentTestsTab: 0,

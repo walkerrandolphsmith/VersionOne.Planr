@@ -31,8 +31,6 @@ export const setEpic = (epic) => (dispatch, getState) => {
             'where': {
                 'SuperMeAndUp': epic.oid
             }
-        }, {
-            headers: { 'Authorization' : getState().backlogStateAtom.authToken}
         })
         .then((response) => {
             const workitems = response.data[0];

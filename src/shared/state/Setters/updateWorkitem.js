@@ -13,8 +13,6 @@ export const updateWorkitem = ({ oid, assetData }) => (dispatch, getState) => {
         .post('/api/update', {
             oidToken: oid,
             assetData: assetData
-        }, {
-            headers: { 'Authorization' : getState().backlogStateAtom.authToken}
         })
         .then((response) => {
             const workitem = getState().backlogStateAtom.workitems[oid];

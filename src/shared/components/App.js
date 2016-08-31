@@ -7,9 +7,7 @@ import { ActionCreators, Selectors } from './../state';
 class AppContainer extends React.Component {
     constructor(props, context){
         super(props, context);
-        if(localStorage.getItem('authToken')){
-            props.setAuthToken(localStorage.getItem('authToken'));
-        }
+        props.setAuthToken();
     }
     
     render() {

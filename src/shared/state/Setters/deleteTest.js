@@ -13,8 +13,6 @@ export const deleteTest = oid => (dispatch, getState) => {
         .post('/api/executeOperation', {
             oidToken: oid,
             operationName: 'Delete'
-        }, {
-            headers: { 'Authorization' : getState().backlogStateAtom.authToken}
         })
         .then(response => {
             dispatch(success(oid));
