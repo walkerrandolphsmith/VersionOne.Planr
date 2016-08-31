@@ -1,7 +1,5 @@
 import React from 'react';
-import { Estimate } from './Estimate';
 import { Description } from './Description';
-import { OwnersList } from './../OwnersList';
 import { TestSection } from './Tests';
 import { Footer } from './Footer';
 
