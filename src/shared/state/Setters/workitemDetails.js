@@ -64,6 +64,8 @@ export const getWorkitemDetails = (workitemOidToken) => (dispatch, getState) => 
                 select: [
                     'SelectedInSchemes'
                 ]
+            }, {
+                headers: { 'Authorization' : getState().backlogStateAtom.authToken}
             }).then(nestedResponse => {
                 const allStatuses = nestedResponse.data[0];
                 workitem = formatWorkitem(workitem);

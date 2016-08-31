@@ -37,6 +37,8 @@ export const addTest = (name) => (dispatch, getState) => {
                 'where': {
                     ID: test.oid
                 }
+            }, {
+                headers: { 'Authorization' : getState().backlogStateAtom.authToken}
             })
             .then(secondResponse => {
                 test.number = secondResponse.data[0][0].Number;

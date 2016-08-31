@@ -36,6 +36,8 @@ const addWorkitem = (name, assetType, dispatch, getState) => {
                 'where': {
                     ID: workitem.oid
                 }
+            }, {
+                headers: { 'Authorization' : getState().backlogStateAtom.authToken}
             })
             .then(secondResponse => {
                 workitem.number = secondResponse.data[0][0].Number;
