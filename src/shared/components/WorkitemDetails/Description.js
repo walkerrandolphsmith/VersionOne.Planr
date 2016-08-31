@@ -1,5 +1,6 @@
 import React from 'react';
 import TinyMCE from 'react-tinymce';
+import { Button } from './../Buttons';
 
 export class Description extends React.Component {
 
@@ -25,10 +26,12 @@ export class Description extends React.Component {
         this.setState({ newDescription: newDescription });
     }
 
-    toggleEditingDescription() {
-        const tryingToSave = this.state.isEditing;
-        const descriptionChanged = this.state.newDescription !== this.state.description;
-        if(tryingToSave && descriptionChanged) {
+    edit() {
+        this.setState({ isEditing: true });
+    }
+
+    saveAndClose() {
+        if(this.state.newDescription !== this.state.description) {
             this.props.updateWorkitem({
                 oid: this.props.oid,
                 assetData: {
@@ -36,7 +39,7 @@ export class Description extends React.Component {
                 }
             });
         }
-        this.setState({ isEditing: !this.state.isEditing });
+        this.setState({ isEditing: false });
     }
 
     toggleExpander() {
@@ -57,22 +60,30 @@ export class Description extends React.Component {
         };
 
         const descriptionMarkup = !isEditing
-            ? <div dangerouslySetInnerHTML={{ __html: description }}></div>
+            ? <div
+                className="read-only"
+                onClick={this.edit.bind(this)}
+                dangerouslySetInnerHTML={{ __html: description }}
+               ></div>
             : <TinyMCE
             content={description}
             config={tinyMCEConfig}
             onChange={this.handleEditorChange.bind(this)}
         />;
 
-        const editLabel = isEditing ? 'Save' : 'Edit';
         const expander = isExpanded ? '[-]' : '[+]';
         const isExpandedClass = isExpanded ? 'expanded' : '';
         return (
             <div className="description">
                 <span className="expander" onClick={this.toggleExpander.bind(this)}>{expander}</span>
                 <label>Description:</label>
-                <span onClick={this.toggleEditingDescription.bind(this)}>{editLabel}</span>
                 <div className={`field ${isExpandedClass}`}>{descriptionMarkup}</div>
+                <div className="ghost-save"
+                     style={{display: isEditing && isExpanded ? 'block' : 'none'}}
+                     onClick={this.saveAndClose.bind(this)}
+                >
+                    <Button text="Save" />
+                </div>
             </div>
         )
     }

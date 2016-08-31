@@ -8,10 +8,18 @@
 .description {
     width: 100%;
     max-width: 100%;
+    position: relative;
 
     .expander {
         cursor: pointer;
         padding-right: 5px;
+    }
+
+    .ghost-save {
+        position: absolute;
+        top: 27px;
+        right: 3px;
+        z-index: 100;
     }
 
     .field {
@@ -21,6 +29,16 @@
 
         &.expanded {
             height: 100%;
+        }
+
+        .read-only {
+            padding: .8em;
+            border: thin dashed transparent;
+
+            &:hover {
+                cursor: pointer;
+                border-color: black;
+            }
         }
     }
 }
