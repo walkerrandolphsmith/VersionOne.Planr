@@ -40,6 +40,13 @@ export class BddTemplate extends React.Component {
 
     preventEnter(e){
         if(e.which == ENTER){
+            const elementMap = {
+                'given': () => { this.whenRef.focus(); },
+                'when': () => { this.thenRef.focus(); }
+            };
+            if(elementMap[e.target.id]) {
+                elementMap[e.target.id]();
+            }
             e.preventDefault();
         }
     }
