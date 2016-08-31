@@ -6,6 +6,7 @@ export class Description extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
+            isExpanded: true,
             isEditing: false,
             newDescription: this.props.description,
             description: this.props.description
@@ -38,38 +39,40 @@ export class Description extends React.Component {
         this.setState({ isEditing: !this.state.isEditing });
     }
 
+    toggleExpander() {
+        this.setState({ isExpanded: !this.state.isExpanded });
+    }
+
     render() {
         const {
             description,
-            isEditing
+            isEditing,
+            isExpanded
         } = this.state;
 
         const tinyMCEConfig = {
-            plugins: 'link image code',
-            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code | link image'
+            plugins: 'link image code advlist',
+            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code | link image',
+            advlist_bullet_styles: "square"
         };
 
         const descriptionMarkup = !isEditing
-            ? <div className="value-container" dangerouslySetInnerHTML={{ __html: description }}></div>
+            ? <div dangerouslySetInnerHTML={{ __html: description }}></div>
             : <TinyMCE
             content={description}
             config={tinyMCEConfig}
             onChange={this.handleEditorChange.bind(this)}
         />;
 
-        const editLabel = this.state.isEditing ? 'Save' : 'Edit';
-
+        const editLabel = isEditing ? 'Save' : 'Edit';
+        const expander = isExpanded ? '[-]' : '[+]';
+        const isExpandedClass = isExpanded ? 'expanded' : '';
         return (
-            <div className="group">
-                <div className="attributes description">
-                    <div>
-                        <label>Description:</label>
-                            <span onClick={this.toggleEditingDescription.bind(this)}>
-                                {editLabel}
-                            </span>
-                        {descriptionMarkup}
-                    </div>
-                </div>
+            <div className="description">
+                <span className="expander" onClick={this.toggleExpander.bind(this)}>{expander}</span>
+                <label>Description:</label>
+                <span onClick={this.toggleEditingDescription.bind(this)}>{editLabel}</span>
+                <div className={`field ${isExpandedClass}`}>{descriptionMarkup}</div>
             </div>
         )
     }

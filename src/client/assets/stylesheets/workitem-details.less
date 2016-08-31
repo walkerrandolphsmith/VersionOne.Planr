@@ -5,6 +5,26 @@
     width: 100%;
 }
 
+.description {
+    width: 100%;
+    max-width: 100%;
+
+    .expander {
+        cursor: pointer;
+        padding-right: 5px;
+    }
+
+    .field {
+        //transition: height 1s ease-out;
+        height: 0;
+        overflow: hidden;
+
+        &.expanded {
+            height: 100%;
+        }
+    }
+}
+
 .owners-list {
     display: inline-block;
     vertical-align: top;
@@ -63,11 +83,6 @@
     vertical-align: top;
     min-width: 33%;
     max-width: 33%;
-
-    &.description {
-        width: 100%;
-        max-width: 100%;
-    }
 
     .attribute {
         margin-bottom: 8px;
