@@ -55,7 +55,7 @@ export const addTest = (name) => (dispatch, getState) => {
 };
 
 const reducer = (state, payload) => {
-    state.workitems[state.selected].tests.push(payload.test);
+    state.workitems[state.selected].tests.unshift(payload.test);
     state.workitems = { ...state.workitems };
     return { ...state };
 };
