@@ -112,14 +112,12 @@ export class Lookup extends Component {
         const finalInputStyles = Object.assign({
             WebkitAppearance: 'none',
             boxSizing: 'border-box',
-            width: width,
-            height: '25px',
             padding: '10px',
             border: 'solid 1px #dcdcdc',
             transition: 'box-shadow 0.3s, border 0.3s'
         }, inputStyles);
 
-        const resultWidth = listStyles.width ? parseInt(listStyles.width) : 500;
+        const resultWidth = listStyles.width ? parseInt(listStyles.width) : 280;
         const resultPadding = listStyles.padding ? parseInt(listStyles.padding) : 10;
 
         const finalListStyles = Object.assign(
@@ -152,13 +150,13 @@ export class Lookup extends Component {
             />
         );
 
-        const isResultSelected = selected ? 'block' : 'none';
+        const isResultSelected = selected ? 'flex' : 'none';
 
         return (
             <div className={`lookup ${classNames}`} ref="lookup">
                 <span className="selected" style={{ display: isResultSelected }}>
                     <span className="selected-label">{selected}</span>
-                    <span className="un-select" onClick={deSelect}>x</span>
+                    <span className="un-select" onClick={deSelect}></span>
                 </span>
                 <input value={query}
                        disabled={selected}
