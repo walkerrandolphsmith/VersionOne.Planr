@@ -77,7 +77,8 @@ const firstOrDefault = (wi) => {
         children: wi.children || [],
         activity: wi.activity || [],
         conversations: wi.conversations || [],
-        tests: wi.tests || []
+        tests: wi.tests || [],
+        statuses: wi.statuses || []
     };
 };
 
