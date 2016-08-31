@@ -63,7 +63,7 @@ export class Dropdown extends Component {
             optionsStyles.minHeight = '0';
         }
 
-        const options = this.props.options.map((child, i) => <div className="option" onClick={this.onClick.bind(this, i)}>{child.name}</div>);
+        const options = this.props.options.map((child, i) => <div key={child.oid} className="option" onClick={this.onClick.bind(this, i)}>{child.name}</div>);
 
         return (
             <div className="dropdown-container" style={{ position: 'relative' }} >
