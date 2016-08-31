@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
 import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
 import { Lookup } from './../Lookup';
+import { DetailsIcon } from './../Icons';
 
 class EpicLookup extends React.Component {
     search(query) {
@@ -49,6 +50,9 @@ export class _Navigation extends React.Component {
         return (
             <header className="navigation">
                 <Toolbar>
+                    <ToolbarGroup>
+                        <span className="logo"><DetailsIcon /></span>
+                    </ToolbarGroup>
                     <ToolbarTitle text={'VersionOne.Planr'}/>
                     <ToolbarSpacer />
                     <ToolbarGroup>
