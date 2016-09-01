@@ -1,6 +1,8 @@
 import React from 'react';
 import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup, ToolbarSeparator } from './../../Toolbar';
 
+const isActive = (tab, current) => tab === current ? 'active' : '';
+
 export class Actionbar extends React.Component {
     setBddTab() {
         this.props.setTab('currentTestsTab', 0);
@@ -11,19 +13,19 @@ export class Actionbar extends React.Component {
     }
 
     render() {
+        const {currentTestsTab:tab} = this.props;
         return (
             <header id="tests-actionbar">
-                <Toolbar>
-                    <ToolbarTitle text={'Tests'}/>
+                <Toolbar style={ {height: '32px', minHeight: '32px' } }>
+                    <ToolbarTitle style={ {overflow: 'visible', maxHeight: 'initial' }} text={'Tests'}/>
                     <ToolbarSpacer />
                     <ToolbarGroup>
-                        <div onClick={this.setBddTab.bind(this)}>
+                        <div className={isActive(tab, 0)} onClick={this.setBddTab.bind(this)}>
                             <span>BDD</span>
                         </div>
                     </ToolbarGroup>
-                    <ToolbarSeparator />
                     <ToolbarGroup>
-                        <div onClick={this.setSimpleTab.bind(this)}>
+                        <div className={isActive(tab, 1)} onClick={this.setSimpleTab.bind(this)}>
                             <span>Simple</span>
                         </div>
                     </ToolbarGroup>

@@ -3,11 +3,16 @@
     fill: black;
 
     .toolbar {
-        padding-left: 0;
+        padding: 0;
     }
 
     .toolbar-group div {
         align-items: center;
         cursor: pointer;
+        padding: 0 1em;
+
+        &.active {
+            background-color: #ddd;
+        }
     }
 }
