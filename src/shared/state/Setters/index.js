@@ -45,7 +45,6 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action = {}) => {
     const { type, payload } = action;
     if(state !== DEFAULT_STATE) {
-        debugger;
         state = Object.assign({}, DEFAULT_STATE, state);
     }
     return handlers[type] ? handlers[type](state, payload) : state;
