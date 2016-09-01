@@ -8,9 +8,10 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import axios from 'axios';
 import defaultRoute from './defaultRoute';
 import v1 from './V1Server';
-import { nodeEnv, host, port, devHost, devPort } from './../shared/env';
+import { nodeEnv, host, port, devHost, devPort, v1Protocol, v1Host, v1Instance } from './../shared/env';
 var config = require('./../../webpack.config');
 
 const logger = (err) => {
@@ -57,6 +58,35 @@ app.get('/api/activitystream/:id', (req, res) => {
     const authToken = req.cookies.Authorization;
     v1(authToken).getActivityStream(oid).then(response => {
         res.status(200).send(response.data);
+    });
+});
+
+app.get('/api/conversationstream/:id', (req, res) => {
+    const oid = req.originalUrl.split('/conversationstream/')[1];
+    const authToken = req.cookies.Authorization;
+    axios.get(`${v1Protocol}://${v1Host}/${v1Instance}/Mobile.mvc/GetConversationStream?involving=${oid}`, {
+        headers: {
+            'Authorization': authToken
+        }
+    }).then(response => {
+        res.status(200).send(response.data);
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
+
+app.get('/api/conversationthread/:id', (req, res) => {
+    const oid = req.originalUrl.split('/conversationthread/')[1];
+    const authToken = req.cookies.Authorization;
+    const url = `${v1Protocol}://${v1Host}/${v1Instance}/Mobile.mvc/GetConversationThread?Oid=${oid}`;
+    axios.get(url, {
+        headers: {
+            'Authorization': authToken
+        }
+    }).then(response => {
+        res.status(200).send(response.data);
+    }).catch(err => {
+        res.status(500).send(err);
     });
 });
 

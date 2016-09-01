@@ -4,6 +4,7 @@ export const devHost = process.env.DEV_HOST || 'localhost';
 export const devPort = process.env.DEV_PORT || 3001;
 export const isBrowser = process.browser;
 export const nodeEnv = process.env.NODE_ENV;
+export const v1Protocol = process.env.V1Protocol;
 export const v1Host = process.env.V1Host;
 export const v1Instance = process.env.V1Instance;
 export const v1User = process.env.V1User;
