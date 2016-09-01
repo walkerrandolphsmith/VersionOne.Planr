@@ -44,34 +44,23 @@ export class Dropdown extends Component {
 
     render() {
         const { isShown } = this.state;
-
         const { selectedOption } = this.props;
 
-        const dropdownStyles = {
-            height: '18px'
-        };
-
-        const optionsStyles = {
-            position: 'absolute',
-            top: '18px'
-        };
-
-        if(isShown) {
-            optionsStyles.minHeight = '18px'
-        } else {
-            optionsStyles.height = '0';
-            optionsStyles.minHeight = '0';
-        }
-
-        const options = this.props.options.map((child, i) => <div key={child.oid} className="option" onClick={this.onClick.bind(this, i)}>{child.name}</div>);
+        const options = this.props.options.map((child, i) => (
+            <div key={child.oid} className="option" onClick={this.onClick.bind(this, i)}>
+                <div>{child.name}</div>
+            </div>
+        ));
 
         return (
-            <div className="dropdown-container" style={{ position: 'relative' }} >
-                <div className="dropdown" ref="dropdown"  style={dropdownStyles} onClick={this.toggle.bind(this)} >
-                    <div className="selected">{selectedOption}</div>
-                    <div className={`toggle ${isShown ? 'expanded' : ''}`}><ChevronIcon /></div>
+            <div className={`dropdown-container ${isShown ? 'expanded' : ''}`}>
+                <div className="dropdown" onClick={this.toggle.bind(this)} >
+                    <div className="selected">
+                        <div>{selectedOption}</div>
+                    </div>
+                    <div className="toggle"><ChevronIcon /></div>
                 </div>
-                <div className="options" style={optionsStyles} >
+                <div className="options">
                     {options}
                 </div>
             </div>
