@@ -31,6 +31,8 @@ const handlers = [
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
+    v1Host: '',
+    v1Protocol: '',
     caretTopPosition: 0,
     currentDetailsTab: 0,
     currentTestsTab: 0,
@@ -42,6 +44,9 @@ const DEFAULT_STATE = {
 
 export default (state = DEFAULT_STATE, action = {}) => {
     const { type, payload } = action;
-
+    if(state !== DEFAULT_STATE) {
+        debugger;
+        state = Object.assign({}, DEFAULT_STATE, state);
+    }
     return handlers[type] ? handlers[type](state, payload) : state;
 }

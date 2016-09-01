@@ -3,6 +3,7 @@ import { match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import configureStore from './../shared/store';
 import routes from './../shared/routes';
+import { v1Host, v1Protocol } from './../shared/env';
 
 export const generateHTMLString = (componentHTML, initialState) => `
     <!doctype html>
@@ -33,7 +34,13 @@ export const generateHTMLString = (componentHTML, initialState) => `
 export default (request, response) => {
     const location = createLocation(request.url);
     const store = configureStore({
-        initialState: {},
+        initialState: {
+            routing: undefined,
+            backlogStateAtom: {
+                v1Host: v1Host,
+                v1Protocol: v1Protocol
+            }
+        },
         history: undefined
     });
 
