@@ -1,5 +1,6 @@
 import React from 'react';
-import { Expression } from './Expression';
+import { StreamHeader } from './StreamHeader';
+import { Stream } from './Stream';
 
 export class ConversationStream extends React.Component {
     componentWillMount() {
@@ -8,10 +9,9 @@ export class ConversationStream extends React.Component {
 
     render() {
         return (
-            <div className="conversation-stream">
-                <ul>
-                    {this.props.conversations.map((e, i) => <Expression key={i} {...e} />)}
-                </ul>
+            <div className="main conversation-container">
+                <StreamHeader />
+                <Stream />
             </div>
         )
     }
