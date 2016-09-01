@@ -24,12 +24,19 @@ export class Actionbar extends React.Component {
     };
 
     render() {
-        const { workitem, currentDetailsTab:tab, updateWorkitem } = this.props;
+        const {
+            oid,
+            number,
+            name,
+            assetType,
+            currentDetailsTab:tab,
+            updateWorkitem
+        } = this.props;
 
         return (
-            <header className={workitem.assetType}>
+            <header className={assetType}>
                 <Toolbar>
-                    <WorkitemTitle name={workitem.name} number={workitem.number} oid={workitem.oid} updateWorkitem={updateWorkitem} />
+                    <WorkitemTitle name={name} number={number} oid={oid} updateWorkitem={updateWorkitem} />
                     <ToolbarSpacer />
                     <ToolbarGroup>
                         <div className={isActive(tab, 0)} onClick={this.getWorkitemDetails.bind(this)}>

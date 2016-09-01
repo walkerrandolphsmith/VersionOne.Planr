@@ -10,6 +10,23 @@ import { CommitStream } from './../CommitStream';
 
 export class WorkitemPanelContainer extends React.Component {
 
+    static defaultProps = {
+        oid: '',
+        assetType: '',
+        number: '',
+        name: '',
+        description: '',
+        estimate: '-',
+        scope: {},
+        epic: {},
+        status: { oid: 'NULL', name: '-' },
+        statuses: [],
+        children: [],
+        activity: [],
+        conversations: [],
+        tests: []
+    };
+
     constructor(props, context) {
         super(props, context);
         const toolbarHeight = 56;
@@ -35,7 +52,7 @@ export class WorkitemPanelContainer extends React.Component {
 
     render() {
         const top = this.state.initialOffset + (this.props.caretTopPosition * this.state.rowHeight);
-        const hideIfEmpty = this.props.workitem.oid == "" ? 'hidden' : '';
+        const hideIfEmpty = this.props.oid == "" ? 'hidden' : '';
 
         return (
             <div className={`right workitem-details ${hideIfEmpty}`} >
@@ -49,46 +66,14 @@ export class WorkitemPanelContainer extends React.Component {
     }
 }
 
-const firstOrDefault = (wi) => {
-    wi = wi || {};
-    return {
-        oid: wi.oid || '',
-        assetType: wi.assetType || '',
-        number: wi.number || '',
-        name: wi.name || '',
-        description: wi.description || '',
-        estimate: wi.estimate || '',
-        formattedChangeDate: wi.formattedChangeDate || '',
-        formattedCreateDate: wi.formattedCreateDate || '',
-        scope: wi.scope || {},
-        iteration: wi.iteration || {},
-        team: wi.team || {},
-        epic: wi.epic || {},
-        changedBy: wi.changedBy || {},
-        createdBy: wi.createdBy || {},
-        priority: wi.priority || {},
-        classOfService: wi.classOfService || {},
-        status: wi.status || {
-            oid: 'NULL',
-            name: '-'
-        },
-        blockingIssues: wi.blockingIssues || [],
-        owners: wi.owners || [],
-        children: wi.children || [],
-        activity: wi.activity || [],
-        conversations: wi.conversations || [],
-        tests: wi.tests || [],
-        statuses: wi.statuses || []
-    };
-};
-
 function mapStateToProps(state) {
+    const selectedWorkitem = state.backlogStateAtom.workitems[state.backlogStateAtom.selected];
     return {
         currentTestsTab: state.backlogStateAtom.currentTestsTab,
         currentDetailsTab: state.backlogStateAtom.currentDetailsTab,
         caretTopPosition: state.backlogStateAtom.caretTopPosition,
-        workitem: firstOrDefault(state.backlogStateAtom.workitems[state.backlogStateAtom.selected]),
-        workitems: Selectors.getAllPrimaryWorkitems(state)
+        workitems: Selectors.getAllPrimaryWorkitems(state),
+        ...selectedWorkitem
     }
 }
 

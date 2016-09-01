@@ -5,7 +5,6 @@ import { BddTemplate } from './BddTemplate';
 import { SimpleTemplate } from './SimpleTemplate';
 
 export class TestSection extends React.Component {
-
     getViewForTab() {
         const TemplateTypeMap = {
             0: <BddTemplate {...this.props} />,

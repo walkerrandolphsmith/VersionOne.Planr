@@ -2,14 +2,9 @@ import React from 'react';
 import { AutoGrowInput } from '../Inputs'
 
 export class Estimate extends React.Component {
-
-    static defaultProps = {
-        estimate: 0
-    };
-
     updateEstimate(newValue){
         this.props.updateWorkitem({
-            oid: this.props.workitem.oid,
+            oid: this.props.oid,
             assetData: {
                 estimate: newValue
             }
@@ -18,7 +13,8 @@ export class Estimate extends React.Component {
 
     render() {
         const { label } = this.props;
-        const { estimate } = this.props.workitem;
+        const estimate = this.props.estimate || '-';
+
         return (
             <div className="number-label-pair">
                 <div className="value">

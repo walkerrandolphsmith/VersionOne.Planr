@@ -1,6 +1,5 @@
 import React from 'react';
 import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup, ToolbarSeparator } from './../../Toolbar';
-import { ConversationsIcon } from './../../Icons';
 
 export class Actionbar extends React.Component {
     setBddTab() {

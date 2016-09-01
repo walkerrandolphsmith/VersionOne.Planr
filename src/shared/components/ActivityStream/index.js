@@ -8,13 +8,11 @@ import moment from 'moment';
 
 export class _ActivityStream extends React.Component {
     static defaultProps = {
-        workitem: {
-            activityGroupedByDate: {}
-        }
+        activityGroupedByDate: {}
     };
 
     componentWillMount() {
-        this.props.getActivityStream(this.props.workitem.oid);
+        this.props.getActivityStream(this.props.oid);
     }
 
     render() {

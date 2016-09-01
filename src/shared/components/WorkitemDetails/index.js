@@ -6,15 +6,14 @@ import { Footer } from './Footer';
 export class WorkitemDetails extends React.Component {
 
     componentWillMount() {
-        if (this.props.workitem.oid) {
-            this.props.getWorkitemDetails(this.props.workitem.oid);
+        if (this.props.oid) {
+            this.props.getWorkitemDetails(this.props.oid);
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        const wi = nextProps.workitem;
-        if(this.props.workitem.oid !== nextProps.workitem.oid) {
-            this.props.getWorkitemDetails(nextProps.workitem.oid);
+        if(this.props.oid !== nextProps.oid) {
+            this.props.getWorkitemDetails(nextProps.oid);
         }
     }
 
@@ -23,7 +22,7 @@ export class WorkitemDetails extends React.Component {
             oid,
             description,
             tests
-        } = this.props.workitem;
+        } = this.props;
 
         return (
             <div className="content">
