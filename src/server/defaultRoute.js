@@ -1,7 +1,6 @@
 import React from 'react';
 import { match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
-import v1 from './V1Server';
 import configureStore from './../shared/store';
 import routes from './../shared/routes';
 
