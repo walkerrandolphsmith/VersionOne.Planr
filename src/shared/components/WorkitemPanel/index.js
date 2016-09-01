@@ -42,8 +42,7 @@ export class WorkitemPanelContainer extends React.Component {
         const ComponentMap = {
             0: <WorkitemDetails {...this.props} />,
             1: <ConversationStream {...this.props} />,
-            2: <ActivityStream {...this.props} />,
-            3: <CommitStream {...this.props} />
+            2: <ActivityStream {...this.props} />
         };
 
         return ComponentMap[this.props['currentDetailsTab']] || <WorkitemDetails {...this.props} />;
