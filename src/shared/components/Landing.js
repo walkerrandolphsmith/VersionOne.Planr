@@ -9,7 +9,13 @@ export class _Landing extends React.Component {
     render() {
         return this.props.epic
             ? (<Backlog {...this.props} />)
-            : (<div className="select-epic-message"><span><DetailsIcon /></span><span className="message">Select epic</span></div>);
+            : (<div className="select-epic-message">
+                <div><DetailsIcon /></div>
+                <div>
+                    <span className="message">To begin planning search for an Epic</span>
+                    <span className="sub-message">using the search in the top right</span>
+                </div>
+               </div>);
     }
 }
 
