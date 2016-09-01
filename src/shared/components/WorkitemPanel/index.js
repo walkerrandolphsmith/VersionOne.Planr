@@ -6,7 +6,6 @@ import { Actionbar } from './Actionbar';
 import { WorkitemDetails } from './../WorkitemDetails';
 import { ConversationStream } from './../ConversationStream';
 import { ActivityStream } from './../ActivityStream';
-import { CommitStream } from './../CommitStream';
 
 export class WorkitemPanelContainer extends React.Component {
 
