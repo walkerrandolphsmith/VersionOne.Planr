@@ -1,0 +1,38 @@
+.live-preview-link, .link {
+    a {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+.live-preview-link {
+    position: relative;
+
+    .preview-container {
+        display: none;
+        position: absolute;
+        top: 16px;
+        right: 0;
+        z-index: 10000;
+        &.shown {
+            display: block;
+        }
+
+        .preview {
+            overflow: hidden;
+            width: 500px;
+            height: 500px;
+            iframe {
+                height: 500px;
+                width: 500px;
+                -moz-transform: scale(1);
+                -moz-transform-origin: 0 0;
+                -o-transform: scale(1);
+                -o-transform-origin: 0 0;
+                -webkit-transform: scale(1);
+                -webkit-transform-origin: 0 0;
+            }
+        }
+    }
+}
+

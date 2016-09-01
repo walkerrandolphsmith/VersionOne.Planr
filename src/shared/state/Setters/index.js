@@ -11,6 +11,7 @@ import updateWorkitem from './updateWorkitem';
 import addTest from './addTest';
 import deleteTest from './deleteTest';
 import setStatus from './setStatus';
+import setLinks from './links';
 
 const handlers = [
     setTab,
@@ -25,7 +26,8 @@ const handlers = [
     updateWorkitem,
     addTest,
     deleteTest,
-    setStatus
+    setStatus,
+    setLinks
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {

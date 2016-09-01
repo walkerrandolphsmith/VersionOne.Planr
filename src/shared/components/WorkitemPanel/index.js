@@ -6,6 +6,7 @@ import { Actionbar } from './Actionbar';
 import { WorkitemDetails } from './../WorkitemDetails';
 import { ConversationStream } from './../ConversationStream';
 import { ActivityStream } from './../ActivityStream';
+import { Links } from './../Links';
 
 export class WorkitemPanelContainer extends React.Component {
 
@@ -23,7 +24,8 @@ export class WorkitemPanelContainer extends React.Component {
         children: [],
         activity: [],
         conversations: [],
-        tests: []
+        tests: [],
+        links: []
     };
 
     constructor(props, context) {
@@ -42,7 +44,8 @@ export class WorkitemPanelContainer extends React.Component {
         const ComponentMap = {
             0: <WorkitemDetails {...this.props} />,
             1: <ConversationStream {...this.props} />,
-            2: <ActivityStream {...this.props} />
+            2: <ActivityStream {...this.props} />,
+            3: <Links {...this.props} />
         };
 
         return ComponentMap[this.props['currentDetailsTab']] || <WorkitemDetails {...this.props} />;

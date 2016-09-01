@@ -1,7 +1,7 @@
 import React from 'react';
 import { Toolbar, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
 import { WorkitemTitle } from './WorkitemTitle';
-import { DetailsIcon, ActivityStreamIcon, ConversationsIcon } from './../Icons';
+import { DetailsIcon, ActivityStreamIcon, ConversationsIcon, LinkIcon } from './../Icons';
 
 const isActive = (tab, current) => tab === current ? 'active' : '';
 
@@ -22,6 +22,10 @@ export class Actionbar extends React.Component {
     getActivityStream() {
         this.props.setTab(this.props.tabType, 2);
     };
+
+    getLinks() {
+        this.props.setTab(this.props.tabType, 3);
+    }
 
     render() {
         const {
@@ -51,6 +55,11 @@ export class Actionbar extends React.Component {
                     <ToolbarGroup>
                         <div className={isActive(tab, 2)} onClick={this.getActivityStream.bind(this)}>
                             <ActivityStreamIcon />
+                        </div>
+                    </ToolbarGroup>
+                    <ToolbarGroup>
+                        <div className={isActive(tab, 3)} onClick={this.getLinks.bind(this)}>
+                            <LinkIcon />
                         </div>
                     </ToolbarGroup>
                 </Toolbar>

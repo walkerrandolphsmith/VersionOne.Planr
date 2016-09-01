@@ -8,3 +8,4 @@ export { default as DefectIcon } from './DefectIcon';
 export { default as WorkitemIcon } from './WorkitemIcon';
 export { default as DeleteIcon } from './DeleteIcon';
 export { default as DetailsIcon } from './DetailsIcon';
+export { default as LinkIcon } from './LinkIcon';
