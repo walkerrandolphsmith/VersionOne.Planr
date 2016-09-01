@@ -7,7 +7,7 @@ export class Link extends React.Component {
 
         return (
             <div className="link">
-                <a href={url}>{name}</a>
+                <a href={url} target="_blank">{name}</a>
             </div>
         )
     }
