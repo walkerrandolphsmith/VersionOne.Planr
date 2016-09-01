@@ -18,7 +18,7 @@ export class TestSection extends React.Component {
         const template = this.getViewForTab();
         const testList = tests.length > 0
             ? <TestList updateWorkitem={updateWorkitem} deleteTest={deleteTest} tests={tests} />
-            : <div className="empty-test-list">No tests have been added</div>;
+            : <div className="empty-test-list">Add tests above</div>;
         return (
             <div className="test-section">
                 <Actionbar {...this.props} />
