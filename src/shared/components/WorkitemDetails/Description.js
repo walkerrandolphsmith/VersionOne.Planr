@@ -75,23 +75,22 @@ export class Description extends React.Component {
             onChange={this.handleEditorChange.bind(this)}
         />;
 
-        const expander = isExpanded ? 'fa-minus-square-o' : 'fa-plus-square-o';
         const isExpandedClass = isExpanded ? 'expanded' : '';
         return (
             <div className="description">
-                <span className="expander" onClick={this.toggleExpander.bind(this)}>
-                    <i className={`fa ${expander}`} />
-                </span>
-                <label>Description:</label>
+                <div className="expander-container">
+                    <span className={`expander ${isExpandedClass}`} onClick={this.toggleExpander.bind(this)}></span>
+                    <label>Description:</label>
+                </div>
                 <div className={`field ${isExpandedClass}`}>{descriptionMarkup}</div>
                 <div className="ghost-save"
-                     style={{display: isEditing && isExpanded ? 'block' : 'none'}}
+                     style={{display: isEditing && isExpanded ? 'inline-block' : 'none'}}
                      onClick={this.saveAndClose.bind(this)}
                 >
                     <Button text="Save" />
                 </div>
                 <div className="ghost-cancel"
-                     style={{display: isEditing && isExpanded ? 'block' : 'none'}}
+                     style={{display: isEditing && isExpanded ? 'inline-block' : 'none'}}
                      onClick={this.cancelAndClose.bind(this)}
                 >
                     <Button text="Cancel" />

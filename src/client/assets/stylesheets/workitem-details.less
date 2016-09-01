@@ -9,26 +9,57 @@
     width: 100%;
     max-width: 100%;
     position: relative;
+    text-align: right;
+
+    .expander-container {
+        text-align: left;
+    }
 
     .expander {
         cursor: pointer;
-        padding-right: 5px;
+        background-color: #b7bcc4;
+        width: 17px;
+        display: inline-block;
+        height: 17px;
+        margin-right: 3px;
+        vertical-align: text-bottom;
+        border-radius: 50%;
+        position: relative;
+
+        &:after {
+            content: '';
+            top: 8px;
+            left: 4px;
+            width: 9px;
+            height: 1px;
+            background-color: white;
+            position: absolute;
+        }
+
+        &:before {
+            content: '';
+            top: 4px;
+            left: 8px;
+            height: 9px;
+            width: 1px;
+            background-color: white;
+            position: absolute;
+        }
+
+        &.expanded {
+            &:before {
+                content: '';
+                background-color: transparent;
+            }
+        }
     }
 
     .ghost-save, .ghost-cancel {
-        position: absolute;
-        z-index: 100;
-        display: block;
+        margin-top: .2em;
     }
 
     .ghost-save {
-        top: 27px;
-        right: 70px;
-    }
-
-    .ghost-cancel {
-        top: 27px;
-        right: 3px;
+        margin-right: .2em;
     }
 
     .field {
