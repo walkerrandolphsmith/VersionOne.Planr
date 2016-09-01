@@ -1,18 +1,18 @@
 import React from 'react';
-import { BacklogPanel } from './BacklogPanel';
-import { WorkitemPanel } from './WorkitemPanel';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { ActionCreators } from './../state';
+import { Backlog } from './Backlog';
+import { DetailsIcon } from './Icons'
 
-export class Landing extends React.Component {
+export class _Landing extends React.Component {
     render() {
-        return (
-            <div className="backlog-content-container">
-                <div className="backlog-content">
-                    <div className="gutter"></div>
-                    <BacklogPanel {...this.props} />
-                    <WorkitemPanel {...this.props} />
-                    <div className="gutter"></div>
-                </div>
-            </div>
-        )
+        return this.props.epic
+            ? (<Backlog {...this.props} />)
+            : (<div className="select-epic-message"><span><DetailsIcon /></span><span className="message">Select epic</span></div>);
     }
 }
+
+const mapStateToProps = (state) => ({ epic: state.backlogStateAtom.epic });
+const mapActionsToProps = (dispatch) => bindActionCreators(ActionCreators, dispatch);
+export const Landing = connect(mapStateToProps, mapActionsToProps)(_Landing);
