@@ -16,7 +16,7 @@ export class WorkitemPanelContainer extends React.Component {
         number: '',
         name: '',
         description: '',
-        estimate: '-',
+        estimate: '',
         scope: {},
         epic: {},
         status: { oid: 'NULL', name: '-' },
