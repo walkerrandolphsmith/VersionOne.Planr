@@ -25,7 +25,7 @@ class EpicLookup extends React.Component {
             <Lookup {...this.props}
                 selected={epic.name}
                 deSelect={this.deSelect.bind(this)}
-                placeholder="Epic:123"
+                placeholder="Search for an Epic"
                 width={252}
                 results={epicLookupResults}
                 select={this.select.bind(this)}
