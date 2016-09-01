@@ -75,11 +75,13 @@ export class Description extends React.Component {
             onChange={this.handleEditorChange.bind(this)}
         />;
 
-        const expander = isExpanded ? '[-]' : '[+]';
+        const expander = isExpanded ? 'fa-minus-square-o' : 'fa-plus-square-o';
         const isExpandedClass = isExpanded ? 'expanded' : '';
         return (
             <div className="description">
-                <span className="expander" onClick={this.toggleExpander.bind(this)}>{expander}</span>
+                <span className="expander" onClick={this.toggleExpander.bind(this)}>
+                    <i className={`fa ${expander}`} />
+                </span>
                 <label>Description:</label>
                 <div className={`field ${isExpandedClass}`}>{descriptionMarkup}</div>
                 <div className="ghost-save"
