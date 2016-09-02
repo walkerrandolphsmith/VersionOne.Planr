@@ -31,21 +31,21 @@ export default class MultiButton extends Component {
         }
     }
 
-    clickOutsideButtonHandler(event) {
+    clickOutsideButtonHandler = (event) => {
         const elm = event.target;
         const isMultiButtonAncestor = ancestorHasClass(elm, 'multi-button');
         if(!isMultiButtonAncestor) {
             event.stopPropagation();
             this.setState({ isShown: false });
         }
-    }
+    };
 
     componentDidMount() {
-        window.addEventListener('click', this.clickOutsideButtonHandler.bind(this));
+        window.addEventListener('click', this.clickOutsideButtonHandler);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('click', this.clickOutsideButtonHandler.bind(this));
+        window.removeEventListener('click', this.clickOutsideButtonHandler);
     }
 
     openOptions(event) {
