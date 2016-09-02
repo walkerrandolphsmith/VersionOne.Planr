@@ -58,7 +58,7 @@ export const getWorkitemDetails = (workitemOidToken) => (dispatch, getState) => 
         .then(response => {
             let workitem = response.data[0][0];
             axios.post('/api/query', {
-                from: `${workitem.AssetType}Status`,
+                from: 'StoryStatus',
                 select: [
                     'SelectedInSchemes'
                 ]
