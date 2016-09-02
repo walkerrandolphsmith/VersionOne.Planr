@@ -18,38 +18,18 @@ export const getWorkitemDetails = (workitemOidToken) => (dispatch, getState) => 
                 'Description',
                 'Scope',
                 'Scope.Name',
-                'Timebox',
-                'Timebox.Name',
-                'Team',
-                'Team.Name',
                 'Super',
                 'Super.Name',
-                'ChangeDate',
-                'ChangedBy',
-                'ChangedBy.Name',
-                'CreateDate',
-                'CreatedBy',
-                'CreatedBy.Name',
-                'Priority',
-                'Priority.Name',
-                'ClassOfService',
-                'ClassOfService.Name',
                 'Estimate',
                 'Status',
                 'Status.Name',
-                'BlockingIssues',
-                'BlockingIssues.Name',
-                'Owners',
-                'Owners.Name',
-                'Owners.Avatar',
-                'Owners.Avatar.Content',
                 'Children',
                 'Children.Name',
                 'Children.Number',
                 'Children.AssetType',
                 'Children.AssetState',
                 "Scope.Scheme.SelectedValues",
-                "Scope.Scheme.SelectedValues.Name"//Set of lists types in scheme
+                "Scope.Scheme.SelectedValues.Name"
             ],
             where: {
                 ID: workitemOidToken
@@ -89,7 +69,6 @@ export default {
     [ACTION]: reducer
 };
 
-
 const formatWorkitem = (wi) => {
     const workitem = {};
     workitem.oid = wi._oid;
@@ -104,11 +83,6 @@ const formatWorkitem = (wi) => {
         name: wi['Scope.Name']
     };
 
-    workitem.iteration = {
-        oid: wi.Timebox._oid,
-        name: wi['Timebox.Name']
-    };
-
     workitem.epic = {
         oid: wi.Super._oid,
         name: wi['Super.Name']
@@ -120,31 +94,6 @@ const formatWorkitem = (wi) => {
     };
 
     workitem.statuses = [{ oid: 'NULL', name: 'None' }];
-
-    workitem.priority = {
-        oid: wi.Priority._oid,
-        name: wi['Priority.Name']
-    };
-
-    workitem.classOfService = {
-        oid: wi.ClassOfService._oid,
-        name: wi['ClassOfService.Name']
-    };
-
-    workitem.blockingIssues = wi.BlockingIssues.map((blockingIssue, i) => {
-        return {
-            oid: blockingIssue._oid,
-            name: wi['BockingIssues.Name'][i]
-        }
-    });
-
-    workitem.owners = wi.Owners.map((owner, i) => {
-        return {
-            oid: owner._oid,
-            name: wi['Owners.Name'][i],
-            avatar: wi['Owners.Avatar.Content'][i]
-        };
-    });
 
     workitem.children = wi.Children.map((child, i) => {
         return {
