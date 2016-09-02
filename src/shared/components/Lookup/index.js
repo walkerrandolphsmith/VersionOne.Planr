@@ -6,6 +6,7 @@ export class Lookup extends Component {
         placeholder: PropTypes.string,
         results: PropTypes.array,
         classNames: PropTypes.string,
+        resultClassNameField: PropTypes.string,
         width: PropTypes.number,
         inputStyles: PropTypes.object,
         listStyles: PropTypes.object,
@@ -20,6 +21,7 @@ export class Lookup extends Component {
         placeholder: '',
         results: [],
         classNames: '',
+        resultClassNameField: '',
         width: 800,
         inputStyles: {},
         listStyles: {
@@ -104,7 +106,8 @@ export class Lookup extends Component {
             inputStyles,
             listStyles,
             resultStyles,
-            width
+            width,
+            resultClassNameField
         } = this.props;
 
         const { query, isOpen, hovered } = this.state;
@@ -143,6 +146,7 @@ export class Lookup extends Component {
         const resultItems = results.map(
             (result, i) => <ResultItem key={i}
                                        result={result}
+                                       resultClassNameField={resultClassNameField}
                                        isHovered={hovered === i}
                                        select={select}
                                        selectCallback={this.selectCallback.bind(this)}

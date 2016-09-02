@@ -4,6 +4,7 @@ import { EpicIcon } from './../Icons';
 export default class ResultItem extends Component {
     static propTypes = {
         result: PropTypes.object,
+        resultClassNameField: PropTypes.string,
         isHovered: PropTypes.bool,
         select: PropTypes.func,
         classNames: PropTypes.string,
@@ -51,9 +52,12 @@ export default class ResultItem extends Component {
     render() {
         const {
             result,
+            resultClassNameField,
             classNames,
             styles
         } = this.props;
+        const chain = resultClassNameField.split('.');
+        const className = chain.reduce((className, c) => className[c],result);
 
         const {
             isHovered
@@ -101,7 +105,7 @@ export default class ResultItem extends Component {
 
         return (
             <div style={finalParentStyles}
-                 className={`result ${isHovered ? 'hovered' : ''} ${classNames}`}
+                 className={`result ${isHovered ? 'hovered' : ''} ${className} ${classNames}`}
                  onClick={this.onClick.bind(this)}
                  onMouseEnter={this.onMouseEnter.bind(this)}
                  onMouseLeave={this.onMouseLeave.bind(this)}

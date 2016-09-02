@@ -1,17 +1,57 @@
 .lookup {
-    &.Initiative .selected {
-        background-color: #30c6be;
-    }
-
-    &.Feature .selected {
-        background: #eaab00;
-    }
-
-    &.Sub-Feature .selected {
+    .selected {
         background: #6d09a8;
     }
+    &.Initiative {
+        .selected {
+            background-color: #30c6be;
+        }
+    }
 
-    &.Non-Functional .selected {
-        background: #767b7e;
+    &.Feature {
+        .selected {
+            background: #eaab00;
+        }
+    }
+
+    &.Sub-Feature {
+        .selected {
+            background: #6d09a8;
+        }
+    }
+
+    &.Non-Functional {
+        .selected {
+            background: #767b7e;
+        }
+    }
+}
+
+.result {
+    #epic-icon #filler {
+        fill: #6d09a8;
+    }
+    &.Initiative {
+        #epic-icon #filler {
+            fill: #30c6be;
+        }
+    }
+
+    &.Feature {
+        #epic-icon #filler {
+            fill: #eaab00;
+        }
+    }
+
+    &.Sub-Feature {
+        #epic-icon #filler {
+            fill: #6d09a8;
+        }
+    }
+
+    &.Non-Functional {
+        #epic-icon #filler {
+            fill: #767b7e;
+        }
     }
 }
