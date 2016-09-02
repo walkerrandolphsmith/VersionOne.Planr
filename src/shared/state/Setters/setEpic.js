@@ -36,7 +36,7 @@ export const setEpic = (epic) => (dispatch, getState) => {
             const workitems = response.data[0];
             if (workitems.length > 0) {
                 dispatch(success(workitems));
-                dispatch(getWorkitemDetails(0, workitems[0]._oid));
+                dispatch(getWorkitemDetails(workitems[0]._oid));
             }
             else {
                 dispatch(success(workitems));
