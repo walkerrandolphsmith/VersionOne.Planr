@@ -3,7 +3,7 @@ import { DeleteIcon } from './../Icons';
 
 export class StreamHeader extends React.Component {
     static defaultProps = {
-       url: "http://localhost/VersionOne.Web/Image.mvc/Show?imageOid=Image%3A1072"
+       url: "http://localhost/VersionOne.Web/css/images/no_avatar.png"
     };
 
     render() {
