@@ -12,7 +12,7 @@ export class Status extends React.Component {
 
         return (
             <div className="status">
-                <label>Status:</label>
+                <label>Status</label>
                 <div className="value">
                     <Dropdown selectedOption={status.name}
                               options={statuses}

@@ -80,7 +80,7 @@ export class Description extends React.Component {
             <div className="description">
                 <div className="expander-container">
                     <span className={`expander ${isExpandedClass}`} onClick={this.toggleExpander.bind(this)}></span>
-                    <label>Description:</label>
+                    <label>Description</label>
                 </div>
                 <div className={`field ${isExpandedClass}`}>{descriptionMarkup}</div>
                 <div className="ghost-save"
