@@ -12,7 +12,9 @@ class EpicLookup extends React.Component {
     }
 
     select(result) {
-        this.props.setEpic({ name: result.text, oid: result.oid, scope: result.scope });
+        this.props.setEpic({
+            name: result.text, oid: result.oid, scope: result.scope, category: result.category
+        });
     }
 
     deSelect() {
@@ -21,8 +23,10 @@ class EpicLookup extends React.Component {
 
     render() {
         const { epicLookupResults, epic } = this.props;
+        const className = epic && epic.category ? epic.category.name : '';
         return (
             <Lookup {...this.props}
+                classNames={className}
                 selected={epic.name}
                 deSelect={this.deSelect.bind(this)}
                 placeholder="Search for an Epic"

@@ -15,7 +15,9 @@ export const lookupEpic = (query) => (dispatch, getState) => {
             'select': [
                 'Name',
                 'Scope',
-                'AssetType'
+                'AssetType',
+                'Category',
+                'Category.Name'
             ],
             'filter': [
                 "AssetState!='Closed'"
@@ -26,7 +28,11 @@ export const lookupEpic = (query) => (dispatch, getState) => {
             const epics = response.data[0].map(epic => ({
                 oid: epic._oid,
                 text: epic.Name,
-                scope: epic.Scope._oid
+                scope: epic.Scope._oid,
+                category: {
+                    oid: epic.Category._oid,
+                    name: epic['Category.Name']
+                }
             }));
             dispatch(success(epics));
         })
