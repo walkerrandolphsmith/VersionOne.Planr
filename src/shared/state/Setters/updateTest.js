@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
 
-const ACTION = 'UPDATE_WORKITEM';
+const ACTION = 'UPDATE_TEST';
 
 const success = createAction(
     ACTION,
