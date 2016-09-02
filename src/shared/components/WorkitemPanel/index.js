@@ -70,6 +70,7 @@ export class WorkitemPanelContainer extends React.Component {
 function mapStateToProps(state) {
     const selectedWorkitem = state.backlogStateAtom.workitems[state.backlogStateAtom.selected];
     return {
+        currentUser: state.backlogStateAtom.currentUser,
         v1Host: state.backlogStateAtom.v1Host,
         v1Protocol: state.backlogStateAtom.v1Protocol,
         currentTestsTab: state.backlogStateAtom.currentTestsTab,

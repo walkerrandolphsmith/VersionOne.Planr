@@ -1,20 +1,17 @@
 import React from 'react';
 import { DeleteIcon } from './../Icons';
+import { MemberAvatar } from './../Avatar';
 
 export class StreamHeader extends React.Component {
-    static defaultProps = {
-       url: "http://localhost/VersionOne.Web/css/images/no_avatar.png"
-    };
-
     render() {
-        const { url } = this.props;
+        const { currentUser:url } = this.props;
         return (
             <div className="conversation-stream-header">
                 <div>
                     <div className="conversations-start-new">
                         <div className="conversation new-conversation placeholder">
                             <div className="avatar">
-                                <img src={url} />
+                                <MemberAvatar url={url} />
                             </div>
                             <input type="text" placeholder="Start a Conversation..." />
                         </div>

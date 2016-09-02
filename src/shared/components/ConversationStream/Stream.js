@@ -93,7 +93,12 @@ class Conversation extends React.Component {
 
 export class Stream extends React.Component {
     render() {
-        const conversations = this.props.conversations.map((conversation, i) => <Conversation key={i} v1Host={this.props.v1Host} v1Protocol={this.props.v1Protocol} {...conversation} />);
+        const { v1Host, v1Protocol } = this.props;
+        const conversations = this.props.conversations.map(
+            (conversation, i) => (
+                <Conversation key={i} v1Host={v1Host} v1Protocol={v1Protocol} {...conversation} />
+            )
+        );
         return (
             <div className="conversation-stream">
                 {conversations}

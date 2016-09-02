@@ -12,6 +12,7 @@ import addTest from './addTest';
 import deleteTest from './deleteTest';
 import setStatus from './setStatus';
 import setLinks from './links';
+import setUser from './setAuthToken';
 
 const handlers = [
     setTab,
@@ -27,7 +28,8 @@ const handlers = [
     addTest,
     deleteTest,
     setStatus,
-    setLinks
+    setLinks,
+    setUser
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
@@ -39,7 +41,8 @@ const DEFAULT_STATE = {
     workitems: {},
     selected: '',
     epic: '',
-    epicLookupResults: []
+    epicLookupResults: [],
+    currentUser: ''
 };
 
 export default (state = DEFAULT_STATE, action = {}) => {

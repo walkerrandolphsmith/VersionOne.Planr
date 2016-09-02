@@ -45,10 +45,12 @@ if(nodeEnv === 'development') {
 
 app.get('/api/validate', (req, res) => {
     const authToken = req.header('Authorization') || req.cookies.Authorization;
+    const rawToken = typeof authToken == 'string' ? authToken.split(' ')[1] : "";
 
-    v1(authToken).query({'from': 'Scope', 'select':['Name'], 'where':{'ID':'Scope:0'}}).then(() => {
-        res.cookie('Authorization', authToken, { maxAge: 900000, httpOnly: false }).status(200).send();
-    }).catch(() => {
+    v1(authToken).query({'from': 'Grant', 'select':['Owner.Avatar.Content'], 'where':{'Token':rawToken}}).then(response => {
+        res.cookie('Authorization', authToken, { maxAge: 900000, httpOnly: false }).status(200).send(response.data);
+    }).catch((err) => {
+        console.log('err', err);
         res.clearCookie('Authorization').status(401).send();
     });
 });

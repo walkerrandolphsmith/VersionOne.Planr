@@ -10,8 +10,12 @@ export class ConversationStream extends React.Component {
     render() {
         return (
             <div className="main conversation-container">
-                <StreamHeader />
-                <Stream conversations={this.props.conversations} v1Host={this.props.v1Host} v1Protocol={this.props.v1Protocol} />
+                <StreamHeader currentUser={this.props.currentUser} />
+                <Stream
+                    conversations={this.props.conversations}
+                    v1Host={this.props.v1Host}
+                    v1Protocol={this.props.v1Protocol}
+                />
             </div>
         )
     }
