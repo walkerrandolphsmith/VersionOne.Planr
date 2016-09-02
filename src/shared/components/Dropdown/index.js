@@ -15,7 +15,7 @@ export class Dropdown extends Component {
         children: [],
         classNames: '',
         styles: {},
-        selectedOption: '-'
+        selectedOption: 'None'
     };
 
     constructor(props, context) {

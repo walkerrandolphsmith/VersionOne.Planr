@@ -119,7 +119,7 @@ const formatWorkitem = (wi) => {
         name: wi['Status.Name']
     };
 
-    workitem.statuses = [{ oid: 'NULL', name: '-' }];
+    workitem.statuses = [{ oid: 'NULL', name: 'None' }];
 
     workitem.priority = {
         oid: wi.Priority._oid,

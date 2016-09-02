@@ -35,7 +35,7 @@ export default class AutoGrowInput extends AbstractInput {
 
         return (
             <input style={style}
-                   placeholder="-"
+                   placeholder="--"
                    onBlur={this.save.bind(this)}
                    onKeyDown={this.saveOrCancel.bind(this)}
                    onChange={this.onChange.bind(this)}

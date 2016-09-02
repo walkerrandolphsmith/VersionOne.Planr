@@ -13,7 +13,7 @@ export class Estimate extends React.Component {
 
     render() {
         const { label } = this.props;
-        const estimate = this.props.estimate || '-';
+        const estimate = this.props.estimate;
 
         return (
             <div className="number-label-pair">

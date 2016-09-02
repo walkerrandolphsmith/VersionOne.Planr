@@ -19,7 +19,7 @@ export class WorkitemPanelContainer extends React.Component {
         estimate: '',
         scope: {},
         epic: {},
-        status: { oid: 'NULL', name: '-' },
+        status: { oid: 'NULL', name: 'None' },
         statuses: [],
         children: [],
         activity: [],
