@@ -15,6 +15,7 @@ import { deleteTest } from './Setters/deleteTest';
 import { setStatus } from './Setters/setStatus';
 import { setAuthToken } from './Setters/setAuthToken';
 import { getLinks } from './Setters/links';
+import { updateTest } from './Setters/updateTest';
 
 export const Selectors = selectors;
 
@@ -34,6 +35,7 @@ export const ActionCreators = {
     deleteTest,
     setStatus,
     setAuthToken,
-    getLinks
+    getLinks,
+    updateTest
 };
 export { default as Reducer } from './Setters';

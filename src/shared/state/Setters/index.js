@@ -13,6 +13,7 @@ import deleteTest from './deleteTest';
 import setStatus from './setStatus';
 import setLinks from './links';
 import setUser from './setAuthToken';
+import updateTest from './updateTest';
 
 const handlers = [
     setTab,
@@ -29,7 +30,8 @@ const handlers = [
     deleteTest,
     setStatus,
     setLinks,
-    setUser
+    setUser,
+    updateTest
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {

@@ -14,10 +14,10 @@ export class TestSection extends React.Component {
     }
 
     render() {
-        const { tests, updateWorkitem, deleteTest } = this.props;
+        const { tests, updateTest, deleteTest } = this.props;
         const template = this.getViewForTab();
         const testList = tests.length > 0
-            ? <TestList updateWorkitem={updateWorkitem} deleteTest={deleteTest} tests={tests} />
+            ? <TestList updateTest={updateTest} deleteTest={deleteTest} tests={tests} />
             : <div className="empty-test-list">Add tests above</div>;
         return (
             <div className="test-section">

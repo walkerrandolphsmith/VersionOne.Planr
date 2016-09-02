@@ -5,7 +5,7 @@ import { TextArea } from './../../Inputs';
 export class TestListRow extends React.Component {
 
     updateName(newValue){
-        this.props.updateWorkitem({
+        this.props.updateTest({
             oid: this.props.oid,
             assetData: {
                 name: newValue
