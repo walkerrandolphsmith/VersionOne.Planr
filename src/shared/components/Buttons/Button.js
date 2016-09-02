@@ -7,14 +7,11 @@ export default class Button extends Component {
     };
 
     static defaultProps = {
-        onClick: () => { console.log("I was not override"); }
+        onClick: () => {}
     };
 
     render() {
-        const {
-            text,
-            onClick
-        } = this.props;
+        const { text, onClick } = this.props;
 
         return (
             <button className="button" onClick={onClick}>{text}</button>

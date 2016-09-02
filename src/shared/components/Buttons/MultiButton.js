@@ -26,9 +26,15 @@ export default class MultiButton extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            isShown: false
-        }
+        this.state = { isShown: false }
+    }
+
+    componentDidMount() {
+        window.addEventListener('click', this.clickOutsideButtonHandler);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('click', this.clickOutsideButtonHandler);
     }
 
     clickOutsideButtonHandler = (event) => {
@@ -40,41 +46,26 @@ export default class MultiButton extends Component {
         }
     };
 
-    componentDidMount() {
-        window.addEventListener('click', this.clickOutsideButtonHandler);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('click', this.clickOutsideButtonHandler);
-    }
-
-    openOptions(event) {
+    openOptions = () => {
         if (!this.props.isDisabled) {
-            this.setState({
-                isShown: !this.state.isShown
-            });
+            this.setState({ isShown: !this.state.isShown });
         }
-    }
+    };
 
-    onClick() {
+    onClick = () => {
         if (!this.props.isDisabled) {
             this.props.onClick();
         }
-    }
+    };
 
     render() {
-        const {
-            text,
-            children,
-            isDisabled
-        } = this.props;
-        
+        const { text, children, isDisabled } = this.props;
         const { isShown } = this.state;
 
         return (
             <div className={`multi-button button ${isDisabled ? 'disabled' : ''}`}>
-                <span className="quick-action" onClick={this.onClick.bind(this)}>{text}</span>
-                <span className="all-actions" onClick={this.openOptions.bind(this)}>
+                <span className="quick-action" onClick={this.onClick}>{text}</span>
+                <span className="all-actions" onClick={this.openOptions}>
                     <ChevronIcon />
                      <div className={`multi-button-options ${isShown ? 'expanded' : ''}`}>
                         {children}
