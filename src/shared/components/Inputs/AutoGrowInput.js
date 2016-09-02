@@ -6,7 +6,7 @@ export default class AutoGrowInput extends AbstractInput {
 
     constructor(props, context) {
         super(props, context);
-        this.state.width = this.state.value.length * 30
+        this.state.width = (this.state.value || "-").length * 30
     }
 
     getWidth(value) {
