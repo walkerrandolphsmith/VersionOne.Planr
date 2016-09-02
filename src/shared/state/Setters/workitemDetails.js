@@ -90,7 +90,7 @@ const formatWorkitem = (wi) => {
 
     workitem.status = {
         oid: wi.Status._oid,
-        name: wi['Status.Name']
+        name: wi['Status.Name'] || 'None'
     };
 
     workitem.statuses = [{ oid: 'NULL', name: 'None' }];
