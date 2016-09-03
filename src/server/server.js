@@ -14,11 +14,11 @@ import defaultRoute from './defaultRoute';
 import { nodeEnv, host, port, devHost, devPort, apiHost, apiPort } from './../shared/env';
 var config = require('./../../webpack.config');
 
-const logger = (err) => {
+const logger = (err, message) => {
     if(err) {
         console.error(err);
     } else {
-        console.info(`==> 🌎  Listening on port ${port}. Open up http://${host}:${port}/ in your browser.`);
+        console.info(message);
     }
 };
 
@@ -34,9 +34,6 @@ const proxy = httpProxy.createProxyServer({
 });
 
 app.use('/api', (req, res) => {
-    console.log('api route proxing to api server');
-    console.log('original', req.originalUrl);
-    console.log('auth cookie', req.cookies.Authorization);
     proxy.web(req, res, { target: apiServerDomain });
 });
 //Use body parser middleware after proxying to the api server to prevent the need to buffer the http post methods
@@ -52,12 +49,17 @@ if(nodeEnv === 'development') {
     };
     app.use(webpackDevMiddleware(compiler, devServerSettings));
     app.use(webpackHotMiddleware(compiler));
-
-    new WebpackDevServer(webpack(config), config.devServer).listen(devPort, devHost, logger);
+    const successMessage = `==> 🌎  Proxying requests to WebPackDevServer on port ${devPort}.`;
+    new WebpackDevServer(webpack(config), config.devServer).listen(devPort, devHost, logger.bind(this, successMessage));
 }
 
 app.use('/', defaultRoute);
 
 export default app;
 
-app.listen(port, logger);
+const msg = `
+==> 🌎  Listening on port ${port}. \n
+       Open up http://${host}:${port}/ in your browser when bundle is valid. \n
+       Waiting on bundle to be valid ...
+`;
+app.listen(port, logger.bind(this, msg));

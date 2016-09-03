@@ -5,7 +5,7 @@ import bodyparser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import axios from 'axios';
 import v1 from './V1Server';
-import { apiHost, apiPort, v1Protocol, v1Host, v1Instance } from './../shared/env';
+import { apiPort, v1Protocol, v1Host, v1Instance } from './../shared/env';
 
 const app = express();
 
@@ -15,7 +15,6 @@ app.use(bodyparser.json());
 app.use(cookieParser());
 
 app.get('/validate', (req, res) => {
-    console.log('found');
     const authToken = req.header('Authorization') || req.cookies.Authorization;
     const rawToken = typeof authToken == 'string' ? authToken.split(' ')[1] : "";
 
@@ -79,7 +78,6 @@ app.get('/conversationthread/:id', (req, res) => {
 });
 
 app.use('/query', (req, res) => {
-    console.log('query', req.cookies.Authorization);
     const authToken = req.cookies.Authorization;
     v1(authToken).query(req.body).then(response => {
         res.status(200).send(response.data);
@@ -116,6 +114,6 @@ app.listen(apiPort, (err) => {
     if(err) {
         console.error(err);
     } else {
-        console.info(`==> 🌎  Listening on port ${apiPort}. Open up http://${apiHost}:${apiPort}/ in your browser.`);
+        console.info(`==> 🌎  API Server listening on port ${apiPort}`);
     }
 });
