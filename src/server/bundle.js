@@ -1,47 +1,29 @@
-import path from 'path';
 import Webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 var Spinner = require('cli-spinner').Spinner;
 import { devHost, devPort } from './../shared/env';
 import webpackConfig from './../../webpack.config.js';
-const mainPath = path.resolve(__dirname, '..', 'src', 'client', 'index.js');
 
 module.exports = function () {
-
-    // First we fire up Webpack an pass in the configuration we
-    // created
-    var bundleStart = null;
-    var compiler = Webpack(webpackConfig);
+    let bundleStart = null;
+    const compiler = Webpack(webpackConfig);
 
     const spinner = new Spinner('processing.. %s');
     spinner.setSpinnerString('/-\\');
 
-    // We give notice in the terminal when it starts bundling and
-    // set the time it started
-    compiler.plugin('compile', function() {
-        console.log('Bundling...');
+    compiler.plugin('compile', () => {
         spinner.start();
         bundleStart = Date.now();
     });
 
-    // We also give notice when it is done compiling, including the
-    // time it took. Nice to have
-    compiler.plugin('done', function() {
-        console.log('Bundled in ' + (Date.now() - bundleStart) + 'ms!');
+    compiler.plugin('done', () => {
+        console.log(`Bundled in ${Date.now() - bundleStart} ms!`);
         spinner.stop();
     });
 
-    var bundler = new WebpackDevServer(compiler, {
-
-        // We need to tell Webpack to serve our bundled application
-        // from the build path. When proxying:
-        // http://localhost:3000/build -> http://localhost:8080/build
+    const bundler = new WebpackDevServer(compiler, {
         publicPath: '/build/',
-
-        // Configure hot replacement
         hot: true,
-
-        // The rest is terminal configurations
         quiet: false,
         noInfo: true,
         stats: {
@@ -49,8 +31,6 @@ module.exports = function () {
         }
     });
 
-    // We fire up the development server and give notice in the terminal
-    // that we are starting the initial bundle
     bundler.listen(devPort, devHost, () => {
         console.log('Bundling project, please wait...');
     });

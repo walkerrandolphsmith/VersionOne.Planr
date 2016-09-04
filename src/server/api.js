@@ -34,7 +34,6 @@ app.get('/validate', (req, res) => {
                 .status(200)
                 .send(response.data);
         }).catch((err) => {
-            //console.log('err', err);
             res.clearCookie('Authorization').status(401).send();
         });
 });
@@ -114,6 +113,6 @@ app.listen(apiPort, (err) => {
     if(err) {
         console.error(err);
     } else {
-        console.info(`==> 🌎  API Server listening on port ${apiPort}`);
+        console.info(`==> 💻  API Server listening on port ${apiPort}`);
     }
 });
