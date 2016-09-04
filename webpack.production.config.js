@@ -1,27 +1,16 @@
+var Webpack = require('webpack');
 var path = require('path');
-var webpack = require('webpack');
 var nodeModulesPath = path.resolve(__dirname, 'node_modules');
 var buildPath = path.resolve(__dirname, 'public', 'build');
+var mainPath = path.resolve(__dirname, 'src', 'client', 'index.js');
 
-module.exports = {
-    devtool: 'inline-source-map',
-    entry: [
-        'webpack-dev-server/client?http://localhost:3001/',
-        'webpack/hot/only-dev-server',
-        './src/client'
-    ],
+var config = {
+    devtool: 'source-map',
+    entry: mainPath,
     output: {
         path: buildPath,
-        filename: 'bundle.js',
-        publicPath: '/build'
+        filename: 'bundle.js'
     },
-    resolve: {
-        modulesDirectories: ['node_modules', 'src'],
-        extensions: ['', '.js', '.jsx', '.css', '.less']
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ],
     module: {
         loaders: [
             { test: /\.jsx?$/, loaders: ['react-hot-loader', 'babel-loader'], exclude: [nodeModulesPath] },
@@ -33,3 +22,5 @@ module.exports = {
         ]
     }
 };
+
+module.exports = config;

@@ -11,28 +11,35 @@ For example `git commit -m "This closes #34, and closes #23"`
 
 ##Development
 
+### Dependencies
+Start by installing all dependencies:
+```npm install```
+
 ### Configure
-Create a `.env` file in the root of the application that contains valid environment varaibles to connect to VersionOne instance:
+Create a `.env` file in the root of the application to connect to VersionOne instance:
 
 ```
 V1Host=builds.versionone.net
 V1Instance=PR_16.0.13.14860
-V1User=admin
-V1Password=admin
-NODE_ENV=development
 ```
 
-then run:
-
-```npm install```
-
 ### Run
-
-`npm start` will start the web server, however the following environment variables will need valid values:
+Start a web server that can be reached by localhost:3000 by default.
+```npm run dev```
 
 ### Test
+Run unit tests using the cli. Wallaby is also supported.
+```npm test```
 
-`npm test` will run the unit tests. Wallaby is also supported.
+### Production
+
+## Build
+Build a production version of the application
+```npm build```
+
+## Run
+Start a web server that can be reached by localhost:3000 by default.
+```npm start```
 
 
 [ci]: https://travis-ci.org/walkerrandolphsmith/VersionOne.Planr

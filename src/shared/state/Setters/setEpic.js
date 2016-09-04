@@ -33,6 +33,7 @@ export const setEpic = (epic) => (dispatch, getState) => {
             }
         })
         .then((response) => {
+            console.log('workitems looked up for epic', response.data);
             const workitems = response.data[0];
             if (workitems.length > 0) {
                 dispatch(success(workitems));

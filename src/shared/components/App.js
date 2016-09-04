@@ -7,6 +7,7 @@ import { ActionCreators, Selectors } from './../state';
 class AppContainer extends React.Component {
     constructor(props, context){
         super(props, context);
+        if(this.props.route && this.props.route.startsWith('Story')) return;
         props.setAuthToken();
     }
     
@@ -26,9 +27,17 @@ class AppContainer extends React.Component {
     }
 }
 
+function mapStateToProps(state) {
+    const currentRoute = state.routing.locationBeforeTransitions.pathname;
+    return {
+        route: currentRoute
+    };
+
+}
+
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(ActionCreators, dispatch);
 }
 
-export const App = connect(() => ({}), mapDispatchToProps)(AppContainer);
+export const App = connect(mapStateToProps, mapDispatchToProps)(AppContainer);
