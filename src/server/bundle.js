@@ -1,6 +1,7 @@
 import path from 'path';
 import Webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+var Spinner = require('cli-spinner').Spinner;
 import { devHost, devPort } from './../shared/env';
 import webpackConfig from './../../webpack.config.js';
 const mainPath = path.resolve(__dirname, '..', 'src', 'client', 'index.js');
@@ -12,10 +13,14 @@ module.exports = function () {
     var bundleStart = null;
     var compiler = Webpack(webpackConfig);
 
+    const spinner = new Spinner('processing.. %s');
+    spinner.setSpinnerString('/-\\');
+
     // We give notice in the terminal when it starts bundling and
     // set the time it started
     compiler.plugin('compile', function() {
         console.log('Bundling...');
+        spinner.start();
         bundleStart = Date.now();
     });
 
@@ -23,6 +28,7 @@ module.exports = function () {
     // time it took. Nice to have
     compiler.plugin('done', function() {
         console.log('Bundled in ' + (Date.now() - bundleStart) + 'ms!');
+        spinner.stop();
     });
 
     var bundler = new WebpackDevServer(compiler, {

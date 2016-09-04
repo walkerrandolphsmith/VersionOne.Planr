@@ -4,7 +4,7 @@ import createLocation from 'history/lib/createLocation';
 import configureStore from './../shared/store';
 import { ActionCreators } from './../shared/state';
 import routes from './../shared/routes';
-import v1 from './../apiServer/V1Server';
+import v1 from './V1Server';
 import { v1Host, v1Protocol, v1Instance } from './../shared/env';
 
 export const generateHTMLString = (componentHTML, initialState) => `
