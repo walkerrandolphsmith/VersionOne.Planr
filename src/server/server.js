@@ -1,4 +1,4 @@
-import apiServer from './../apiServer';
+import apiServer from './api';
 import path from 'path';
 import express from 'express';
 import expressPromise from 'express-promise';

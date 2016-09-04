@@ -19,7 +19,7 @@ app.get('/validate', (req, res) => {
     const rawToken = typeof authToken == 'string' ? authToken.split(' ')[1] : "";
 
     v1(authToken)
-        .query({ 
+        .query({
             from: 'Grant',
             select: [
                 'Owner.Avatar.Content'
