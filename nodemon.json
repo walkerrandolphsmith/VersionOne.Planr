@@ -6,8 +6,9 @@
     "shared/**/*"
   ],
   "watch": [
+    ".env",
+    "package.json",
     "src/server",
-    "src/apiServer",
     "src/shared/store"
   ],
   "env": {
