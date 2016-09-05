@@ -19,6 +19,7 @@ Start by installing all dependencies:
 Create a `.env` file in the root of the application to connect to VersionOne instance:
 
 ```
+V1Protocol=http
 V1Host=builds.versionone.net
 V1Instance=PR_16.0.13.14860
 ```
@@ -31,13 +32,13 @@ Start a web server that can be reached by localhost:3000 by default.
 Run unit tests using the cli. Wallaby is also supported.
 ```npm test```
 
-### Production
+## Production
 
-## Build
+### Build
 Build a production version of the application
 ```npm build```
 
-## Run
+### Run
 Start a web server that can be reached by localhost:3000 by default.
 ```npm start```
 
