@@ -6,9 +6,9 @@ export default class Input extends AbstractInput {
         const { value } = this.state;
         return (
             <input placeholder="--"
-                   onBlur={this.save.bind(this)}
-                   onKeyDown={this.saveOrCancel.bind(this)}
-                   onChange={this.handleChange.bind(this)}
+                   onBlur={this.save}
+                   onKeyDown={this.saveOrCancel}
+                   onChange={this.handleChange}
                    value={value}
             />
         );

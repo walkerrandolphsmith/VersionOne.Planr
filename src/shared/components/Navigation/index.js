@@ -2,24 +2,24 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
-import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
+import { Toolbar, ToolbarGroup } from './../Toolbar';
 import { Lookup } from './../Lookup';
 import { LogoIcon } from './../Icons';
 
 class EpicLookup extends React.Component {
-    search(query) {
+    search = (query) => {
         this.props.lookupEpic(query);
-    }
+    };
 
-    select(result) {
+    select = (result) => {
         this.props.setEpic({
             name: result.text, oid: result.oid, scope: result.scope, category: result.category
         });
-    }
+    };
 
-    deSelect() {
+    deSelect = () => {
         this.props.unSetEpic();
-    }
+    };
 
     render() {
         const { epicLookupResults, epic } = this.props;
@@ -29,12 +29,12 @@ class EpicLookup extends React.Component {
                 classNames={className}
                 resultClassNameField={"category.name"}
                 selected={epic.name}
-                deSelect={this.deSelect.bind(this)}
+                deSelect={this.deSelect}
                 placeholder="Search for an Epic"
                 width={252}
                 results={epicLookupResults}
-                select={this.select.bind(this)}
-                onChange={this.search.bind(this)}
+                select={this.select}
+                onChange={this.search}
                 inputStyles={{
                     border: 'none'
                 }}

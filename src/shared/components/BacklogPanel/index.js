@@ -6,16 +6,15 @@ import { Actionbar } from './Actionbar';
 import { ChevronIcon, StoryIcon, DefectIcon } from './../Icons';
 
 export class BacklogPanelContainer extends React.Component {
-
-    selectWorkitem({ index, oid }) {
-        this.props.selectWorkitem(index, oid);
-    }
-
     componentWillMount() {
         if (this.props.workitems.length > 0) {
             const oid = this.props.workitems[Object.keys(this.props.workitems)[0]].oid;
             this.props.selectWorkitem(0, oid);
         }
+    }
+
+    selectWorkitem({ index, oid }) {
+        this.props.selectWorkitem(index, oid);
     }
 
     render() {

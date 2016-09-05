@@ -2,14 +2,14 @@ import React from 'react';
 import { AutoGrowInput } from '../Inputs'
 
 export class Estimate extends React.Component {
-    updateEstimate(newValue){
+    updateEstimate = (newValue) => {
         this.props.updateWorkitem({
             oid: this.props.oid,
             assetData: {
                 estimate: newValue
             }
         });
-    }
+    };
 
     render() {
         const { label } = this.props;
@@ -20,7 +20,7 @@ export class Estimate extends React.Component {
                 <div className="value">
                     <AutoGrowInput
                         value={estimate}
-                        updateValue={this.updateEstimate.bind(this)}
+                        updateValue={this.updateEstimate}
                     />
                 </div>
                 <div className="label">

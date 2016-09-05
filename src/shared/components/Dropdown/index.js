@@ -20,27 +20,21 @@ export class Dropdown extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            isShown: false
-        }
+        this.state = { isShown: false }
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            isShown: nextProps.isOpen
-        });
+        this.setState({ isShown: nextProps.isOpen });
     }
 
     onClick(i) {
         this.props.onClick(i);
-        this.setState({
-            isShown: false
-        })
+        this.setState({ isShown: false });
     }
 
-    toggle(event) {
+    toggle = (event) => {
         this.setState({ isShown: !this.state.isShown });
-    }
+    };
 
     render() {
         const { isShown } = this.state;
@@ -54,7 +48,7 @@ export class Dropdown extends Component {
 
         return (
             <div className={`dropdown-container ${isShown ? 'expanded' : ''}`}>
-                <div className="dropdown" onClick={this.toggle.bind(this)} >
+                <div className="dropdown" onClick={this.toggle} >
                     <div className="selected">
                         <div>{selectedOption}</div>
                     </div>

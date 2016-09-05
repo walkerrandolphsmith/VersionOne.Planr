@@ -2,12 +2,11 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { Navigation } from './Navigation';
 import { connect } from 'react-redux';
-import { ActionCreators, Selectors } from './../state';
+import { ActionCreators } from './../state';
 
 class AppContainer extends React.Component {
     constructor(props, context){
         super(props, context);
-        if(this.props.route && this.props.route.startsWith('Story')) return;
         props.setAuthToken();
     }
     
@@ -27,17 +26,8 @@ class AppContainer extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    const currentRoute = state.routing.locationBeforeTransitions.pathname;
-    return {
-        route: currentRoute
-    };
+const mapStateToProps = (state) => ({ });
 
-}
-
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(ActionCreators, dispatch);
-}
+const mapDispatchToProps = (dispatch) => bindActionCreators(ActionCreators, dispatch);
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(AppContainer);

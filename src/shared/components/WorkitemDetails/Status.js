@@ -2,10 +2,10 @@ import React from 'react';
 import { Dropdown } from './../Dropdown';
 
 export class Status extends React.Component {
-    onClick(i) {
+    onClick = (i) => {
         const relatedAsset = this.props.statuses[i];
         this.props.setStatus(relatedAsset);
-    }
+    };
 
     render() {
         const { status, statuses } = this.props;
@@ -16,7 +16,7 @@ export class Status extends React.Component {
                 <div className="value">
                     <Dropdown selectedOption={status.name}
                               options={statuses}
-                              onClick={this.onClick.bind(this)}
+                              onClick={this.onClick}
                     />
                 </div>
             </div>

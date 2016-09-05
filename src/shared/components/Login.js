@@ -1,32 +1,31 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ActionCreators, Selectors } from './../state';
+import { ActionCreators } from './../state';
 import { Button } from './Buttons';
 
+const ENTER = 13;
 class LoginContainer extends React.Component {
-
     constructor(props, context) {
         super(props, context);
         this.state = { token: '' }
     }
 
-    onKeyUp(e){
-        const ENTER = 13;
+    onKeyUp = (e) => {
         if(e.which === ENTER){
             this.save();
         } else {
             this.setState({ token: e.target.value });
         }
-    }
+    };
 
-    onClick() {
+    onClick = () => {
         this.save();
-    }
+    };
 
-    save() {
+    save = () => {
         this.props.setAuthToken(this.state.token);
-    }
+    };
 
     render() {
         return (
@@ -35,9 +34,9 @@ class LoginContainer extends React.Component {
                     <input name="authToken"
                            className="auth-token"
                            placeholder="Paste or type auth token"
-                           onKeyUp={this.onKeyUp.bind(this)}
+                           onKeyUp={this.onKeyUp}
                     />
-                    <Button text="Submit" onClick={this.save.bind(this)}/>
+                    <Button text="Submit" onClick={this.save} />
                 </div>
             </div>
         )

@@ -6,14 +6,29 @@ export class WorkitemTitle extends React.Component {
         style: {}
     };
 
-    updateName(newValue){
+    static defaultStyles = {
+        container: {
+            display: 'flex',
+            alignItems: 'center',
+            lineHeight: 1
+        },
+        title: {
+            wordWrap: 'break-word',
+            wordBreak: 'break-word',
+            maxWidth: '500px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+        }
+    };
+
+    updateName = (newValue) => {
         this.props.updateWorkitem({
             oid: this.props.oid,
             assetData: {
                 name: newValue
             }
         });
-    }
+    };
 
     render() {
         const {
@@ -31,25 +46,10 @@ export class WorkitemTitle extends React.Component {
                     <span className="number">
                         {number}
                     </span>
-                    <Input value={name} updateValue={this.updateName.bind(this)}/>
+                    <Input value={name} updateValue={this.updateName}/>
                 </h1>
                 <span className={`toolbar-divider ${className}`}></span>
             </div>
         );
-    }
-
-    static defaultStyles = {
-        container: {
-            display: 'flex',
-            alignItems: 'center',
-            lineHeight: 1
-        },
-        title: {
-            wordWrap: 'break-word',
-            wordBreak: 'break-word',
-            maxWidth: '500px',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis'
-        }
     }
 }

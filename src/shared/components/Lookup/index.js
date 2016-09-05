@@ -44,7 +44,7 @@ export class Lookup extends Component {
         }
     }
 
-    handleKeyPress(event) {
+    handleKeyPress = (event) => {
         const handleUp = () => {
             const max = this.props.results.length;
             const nextHovered = (this.state.hovered + max - 1) % max;
@@ -76,24 +76,24 @@ export class Lookup extends Component {
         if(keyPressMap[event.which]) {
             keyPressMap[event.which]();
         }
-    }
+    };
 
-    onChange(event) {
+    onChange = (event) => {
         const query = event.target.value;
         this.props.onChange(query);
         this.setState({
             query: query,
             isOpen: event.target.value.length > 0
         });
-    }
+    };
 
-    onFocus(event) {
-        this.props.onFocus()
-    }
+    onFocus = (event) => {
+        this.props.onFocus();
+    };
 
-    selectCallback() {
+    selectCallback = () => {
         this.setState({ query: '', isOpen: false });
-    }
+    };
 
     render() {
         const {
@@ -149,7 +149,7 @@ export class Lookup extends Component {
                                        resultClassNameField={resultClassNameField}
                                        isHovered={hovered === i}
                                        select={select}
-                                       selectCallback={this.selectCallback.bind(this)}
+                                       selectCallback={this.selectCallback}
                                        styles={finalItemStyles}
             />
         );
@@ -160,16 +160,16 @@ export class Lookup extends Component {
             <div className={`lookup ${classNames}`} ref="lookup">
                 <span className="selected" style={{ display: isResultSelected }}>
                     <span className="selected-label">{selected}</span>
-                    <span className="un-select" onClick={deSelect}></span>
+                    <span className="un-select" onClick={deSelect} />
                 </span>
                 <input value={query}
                        disabled={selected}
                        style={finalInputStyles}
                        type="text"
                        placeholder={placeholder}
-                       onKeyDown={this.handleKeyPress.bind(this)}
-                       onChange={this.onChange.bind(this)}
-                       onFocus={this.onFocus.bind(this)}
+                       onKeyDown={this.handleKeyPress}
+                       onChange={this.onChange}
+                       onFocus={this.onFocus}
                 />
                 <div style={finalListStyles}>{resultItems}</div>
             </div>

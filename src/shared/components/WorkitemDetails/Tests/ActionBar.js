@@ -1,16 +1,16 @@
 import React from 'react';
-import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup, ToolbarSeparator } from './../../Toolbar';
+import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup } from './../../Toolbar';
 
 const isActive = (tab, current) => tab === current ? 'active' : '';
 
 export class Actionbar extends React.Component {
-    setBddTab() {
+    setBddTab = () => {
         this.props.setTab('currentTestsTab', 0);
     };
 
-    setSimpleTab() {
+    setSimpleTab = () => {
         this.props.setTab('currentTestsTab', 1);
-    }
+    };
 
     render() {
         const {currentTestsTab:tab} = this.props;
@@ -20,12 +20,12 @@ export class Actionbar extends React.Component {
                     <ToolbarTitle style={ {overflow: 'visible', maxHeight: 'initial' }} text={'Tests'}/>
                     <ToolbarSpacer />
                     <ToolbarGroup>
-                        <div className={isActive(tab, 0)} onClick={this.setBddTab.bind(this)}>
+                        <div className={isActive(tab, 0)} onClick={this.setBddTab}>
                             <span>BDD</span>
                         </div>
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <div className={isActive(tab, 1)} onClick={this.setSimpleTab.bind(this)}>
+                        <div className={isActive(tab, 1)} onClick={this.setSimpleTab}>
                             <span>Simple</span>
                         </div>
                     </ToolbarGroup>

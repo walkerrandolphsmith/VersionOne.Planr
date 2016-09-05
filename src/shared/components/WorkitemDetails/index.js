@@ -4,7 +4,6 @@ import { TestSection } from './Tests';
 import { Footer } from './Footer';
 
 export class WorkitemDetails extends React.Component {
-
     componentWillMount() {
         if (this.props.oid) {
             this.props.getWorkitemDetails(this.props.oid);

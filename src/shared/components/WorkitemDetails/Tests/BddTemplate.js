@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button } from './../../Buttons'
 import Textarea from 'react-textarea-autosize';
+
 const ENTER = 13;
 export class BddTemplate extends React.Component {
-
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -20,25 +20,25 @@ export class BddTemplate extends React.Component {
         });
     };
 
-    onClick() {
+    onClick = () => {
         this.save();
-    }
+    };
 
-    save() {
+    save = () => {
         let { given, when, then } = this.state;
         const testName = `Given ${given} When ${when} Then ${then}`;
         this.props.addTest(testName);
         this.givenRef.focus();
-    }
+    };
 
-    onKeyDown(e){
+    onKeyDown = (e) => {
         if(e.which == ENTER){
             this.save();
             e.preventDefault();
         }
-    }
+    };
 
-    preventEnter(e){
+    preventEnter = (e) => {
         if(e.which == ENTER){
             const elementMap = {
                 'given': () => { this.whenRef.focus(); },
@@ -49,7 +49,7 @@ export class BddTemplate extends React.Component {
             }
             e.preventDefault();
         }
-    }
+    };
 
     render() {
         return (
@@ -59,24 +59,24 @@ export class BddTemplate extends React.Component {
                         <label htmlFor="given">Given:</label>
                         <Textarea id="given" name="given" type="text"
                                   ref={(c) => this.givenRef = c}
-                                  onKeyDown={this.preventEnter.bind(this)}
+                                  onKeyDown={this.preventEnter}
                                   onChange={this.onChange.bind(this, 'given')} />
                     </p>
                     <p>
                         <label htmlFor="when">When:</label>
                         <Textarea id="when" name="when" type="text"
                                   ref={(c) => this.whenRef = c}
-                                  onKeyDown={this.preventEnter.bind(this)}
+                                  onKeyDown={this.preventEnter}
                                   onChange={this.onChange.bind(this, 'when')} />
                     </p>
                     <p>
                         <label htmlFor="then">Then:</label>
                         <Textarea id="then" name="then" type="text"
                                   ref={(c) => this.thenRef = c}
-                                  onKeyDown={this.onKeyDown.bind(this)}
+                                  onKeyDown={this.onKeyDown}
                                   onChange={this.onChange.bind(this, 'then')} />
                     </p>
-                    <Button text="Add" onClick={this.onClick.bind(this)} />
+                    <Button text="Add" onClick={this.onClick} />
                 </div>
             </div>
         )

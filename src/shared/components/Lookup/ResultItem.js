@@ -16,38 +16,32 @@ export default class ResultItem extends Component {
             text: ''
         },
         isHovered: false,
-        select: () => {
-
-        },
+        select: () => {},
         classNames: '',
-        styles: {
-
-        }
+        styles: {}
     };
 
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            isHovered: props.isHovered
-        }
+        this.state = { isHovered: props.isHovered };
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({ isHovered: nextProps.isHovered });
     }
 
-    onClick() {
+    onClick = () => {
         this.props.select(this.props.result);
         this.props.selectCallback();
-    }
+    };
 
-    onMouseEnter() {
+    onMouseEnter = () => {
         this.setState({ isHovered: true });
-    }
+    };
 
-    onMouseLeave() {
+    onMouseLeave = () => {
         this.setState({ isHovered: false });
-    }
+    };
 
     render() {
         const {
@@ -106,9 +100,9 @@ export default class ResultItem extends Component {
         return (
             <div style={finalParentStyles}
                  className={`result ${isHovered ? 'hovered' : ''} ${className} ${classNames}`}
-                 onClick={this.onClick.bind(this)}
-                 onMouseEnter={this.onMouseEnter.bind(this)}
-                 onMouseLeave={this.onMouseLeave.bind(this)}
+                 onClick={this.onClick}
+                 onMouseEnter={this.onMouseEnter}
+                 onMouseLeave={this.onMouseLeave}
             >
                 <div style={leftStyles}>
                     <EpicIcon />
