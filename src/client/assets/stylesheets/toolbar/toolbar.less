@@ -7,29 +7,21 @@
     height: 56px;
     padding: 15px 30px 15px 30px;
 
+    .toolbar > *,
     .toolbar-group,
-    .toolbar-separator,
     .toolbar-item,
+    .toolbar-separator,
     .toolbar-spacer {
         box-sizing: border-box;
         display: flex;
         align-items: center;
         height: 56px;
+        min-height: 56px;
     }
 }
 
 
 .toolbar {
-    .toolbar-group {
-        .toolbar-separator, .toolbar-spacer, .toolbar-item {
-            display: flex;
-        }
-
-        .toolbar-separator {
-            height: 56px;
-        }
-    }
-
     .toolbar-separator {
         display: inline-block;
         margin: 0 0.3rem;
