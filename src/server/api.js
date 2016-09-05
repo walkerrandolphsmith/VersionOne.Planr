@@ -4,8 +4,15 @@ import cors from 'cors';
 import bodyparser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import axios from 'axios';
-import v1 from './V1Server';
+import sdk, { axiosConnector } from 'v1sdk';
 import { apiPort, v1Protocol, v1Host, v1Instance } from './../shared/env';
+
+const axiosConnectedSdk = axiosConnector(axios)(sdk);
+
+export const v1 = (token)=> {
+    return axiosConnectedSdk(v1Host, v1Instance)
+        .withAccessToken(token)
+};
 
 const app = express();
 
