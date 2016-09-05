@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
-import { Toolbar, ToolbarGroup } from './../Toolbar';
+import { Toolbar, ToolbarTitle, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
 import { Lookup } from './../Lookup';
 import { LogoIcon } from './../Icons';
 
@@ -53,8 +53,8 @@ export class _Navigation extends React.Component {
     render() {
         const { epic } = this.props;
         return (
-            <header className="navigation">
-                <Toolbar className="nav-toolbar">
+            <header className="navigation-actionbar">
+                <Toolbar>
                     <ToolbarGroup>
                         <span className="logo"><LogoIcon /></span>
                     </ToolbarGroup>

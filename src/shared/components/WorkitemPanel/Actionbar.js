@@ -38,7 +38,7 @@ export class Actionbar extends React.Component {
         } = this.props;
 
         return (
-            <header className={assetType}>
+            <header className={`workitem-actionbar ${assetType}`}>
                 <Toolbar>
                     <WorkitemTitle name={name} number={number} oid={oid} updateWorkitem={updateWorkitem} />
                     <ToolbarSpacer />

@@ -6,7 +6,7 @@ export class Actionbar extends React.Component {
     render() {
         const { addStory, addDefect, epic } = this.props;
         return (
-            <header>
+            <header className="backlog-actionbar">
                 <Toolbar>
                     <ToolbarTitle text={'Backlog'}/>
                     <ToolbarSpacer />

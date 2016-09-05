@@ -1,4 +1,4 @@
-#tests-actionbar {
+.tests-actionbar {
     color: black;
     fill: black;
 
@@ -7,7 +7,18 @@
     }
 
     .toolbar {
+        min-height: 32px;
+        height: 32px;
         padding: 0;
+    }
+
+    .toolbar-title {
+        overflow: visible;
+        max-height: initial;
+    }
+
+    .toolbar-separator {
+        height: 32px;
     }
 
     .toolbar-group div {

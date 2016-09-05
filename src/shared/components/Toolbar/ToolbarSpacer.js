@@ -1,13 +1,9 @@
 import React from 'react';
 
-class ToolbarSpacer extends React.Component {
+export default class ToolbarSpacer extends React.Component {
     render() {
-        const spacerStyle = {
-            flex: '1'
-        };
         return (
-            <div style={spacerStyle}></div>
+            <div className="toolbar-spacer" />
         );
     }
 }
-export default ToolbarSpacer;

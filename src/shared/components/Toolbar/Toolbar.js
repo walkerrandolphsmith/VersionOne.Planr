@@ -1,50 +1,15 @@
 import React from 'react';
 
-class Toolbar extends React.Component {
-    static defaultProps = {
-        style: {},
-        titleStyle: {},
-        itemStyle: {}
-    };
-
+export default class Toolbar extends React.Component {
     render() {
-        const {
-            children,
-            className,
-            style,
-        } = this.props;
-        const height = style.height
-            ? style.height
-            : '56px';
-
-        const toolbarStyle = Object.assign({}, Toolbar.defaultStyles.container, style, {
-            height
-        });
+        const { children, className } = this.props;
 
         return (
-            <div className={`toolbar ${className}`} style={toolbarStyle}>
+            <div className={`toolbar ${className}`}>
                 {React.Children.map(children, (child, index) => {
-                    if (!child) {
-                        return null;
-                    }
-                    const style = Object.assign({}, {height},child.props.style);
-                    return React.cloneElement(child, {
-                        key: index,
-                        style
-                    });
+                    return child ? React.cloneElement(child, { key: index }) : null;
                 })}
             </div>
         );
     }
-
-    static defaultStyles = {
-        container: {
-            boxSizing: 'border-box',
-            display: 'flex',
-            minHeight: '56px',
-            alignItems: 'center'
-        }
-    };
 }
-
-export default Toolbar;

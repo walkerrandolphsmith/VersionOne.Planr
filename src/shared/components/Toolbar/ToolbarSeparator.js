@@ -1,28 +1,10 @@
 import React from 'react';
 
-class ToolbarSeparator extends React.Component {
-    static defaultProps = {
-        style: {}
-    };
-
+export default class ToolbarSeparator extends React.Component {
     render() {
-        const {
-            className,
-            style
-        } = this.props;
-        const separatorStyle = Object.assign({}, ToolbarSeparator.defaultStyles.container, style);
+        const { className } = this.props;
         return (
-            <div className={`toolbar-separator ${className}`} style={separatorStyle}></div>
+            <div className={`toolbar-separator ${className}`} />
         );
     }
-
-    static defaultStyles = {
-        container: {
-            display: 'inline-block',
-            margin: '0 0.3rem',
-            width: '1px',
-            background: '#dde2e9'
-        }
-    };
 }
-export default ToolbarSeparator;

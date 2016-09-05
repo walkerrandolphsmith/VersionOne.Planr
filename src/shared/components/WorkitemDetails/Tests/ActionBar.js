@@ -15,9 +15,9 @@ export class Actionbar extends React.Component {
     render() {
         const {currentTestsTab:tab} = this.props;
         return (
-            <header id="tests-actionbar">
-                <Toolbar style={ {height: '32px', minHeight: '32px' } }>
-                    <ToolbarTitle style={ {overflow: 'visible', maxHeight: 'initial' }} text={'Tests'}/>
+            <header className="tests-actionbar">
+                <Toolbar>
+                    <ToolbarTitle text={'Tests'}/>
                     <ToolbarSpacer />
                     <ToolbarGroup>
                         <div className={isActive(tab, 0)} onClick={this.setBddTab}>
