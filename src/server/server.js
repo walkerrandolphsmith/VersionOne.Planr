@@ -7,19 +7,12 @@ import cors from 'cors';
 import bodyparser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import defaultRoute from './defaultRoute';
-import { nodeEnv, host, port, devHost, devPort, apiHost, apiPort } from './../shared/env';
+import * as env from './../shared/env';
+const { nodeEnv, host, port, devHost, devPort, apiHost, apiPort } = env;
 const publicPath = path.resolve(__dirname, './../../', 'public');
 
-console.log(`\nRunning ${nodeEnv} environment`);
+console.log(`\nRunning with env variables ${JSON.stringify(env, null, ' ')}`);
 console.log(`Static assets served at ${publicPath}`);
-
-const logger = (err, message) => {
-    if(err) {
-        console.error(err);
-    } else {
-        console.info(message);
-    }
-};
 
 const app = express();
 
@@ -60,5 +53,10 @@ app.use('/', defaultRoute);
 
 export default app;
 
-const msg = `==> 💻  Open up http://${host}:${port}/ in your browser when bundle is valid. \n`;
-app.listen(port, logger.bind(this, msg));
+app.listen(port, (err, message) => {
+    if(err) {
+        console.error(err);
+    } else {
+        console.info(`==> 💻  Open up http://${host}:${port}/ in your browser when bundle is valid. \n`);
+    }
+});

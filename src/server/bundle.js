@@ -12,6 +12,7 @@ module.exports = function () {
     spinner.setSpinnerString('/-\\');
 
     compiler.plugin('compile', () => {
+        console.info(`==> 💻  Webpack Dev Server listening on port ${devPort}`);
         spinner.start();
         bundleStart = Date.now();
     });
