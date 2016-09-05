@@ -1,10 +1,7 @@
 import React from 'react';
 import { match } from 'react-router';
-import createLocation from 'history/lib/createLocation';
 import configureStore from './../shared/store';
-import { ActionCreators } from './../shared/state';
 import routes from './../shared/routes';
-import v1 from './V1Server';
 import { v1Host, v1Protocol, v1Instance } from './../shared/env';
 
 export const generateHTMLString = (componentHTML, initialState) => `
@@ -32,67 +29,6 @@ export const generateHTMLString = (componentHTML, initialState) => `
       </body>
     </html>
 `;
-
-export const storyRoute = (request, response) => {
-    const authToken = request.header('Authorization') || request.cookies.Authorization;
-    const token = request.originalUrl.split('/Story/')[1];
-    const oid = 'Story:' + token;
-    if(isNaN(parseInt(token)) || typeof parseInt(token) !== "number") response.status(200).end();
-    console.log('-----------------------------');
-    console.log('-----------------------------');
-    console.log('-----------------------------');
-    console.log('-----------------------------');
-    console.log(oid);
-    console.log(authToken);
-    v1(authToken).query({
-        from: 'PrimaryWorkitem',
-        select: [
-            "Super",
-            "Super.Name",
-            "Super.Scope",
-            "Super.Category",
-            "Super.Category.Name"
-        ],
-        where: {
-            ID: oid
-        }
-    }).then(assets => {
-        console.log(assets.data[0][0]);
-        const workitem = assets.data[0][0];
-        const epic = {
-            oid: workitem.Super._oid,
-            name: workitem['Super.Name'],
-            scope: workitem['Super.Scope']._oid,
-            category: {
-                oid: workitem['Super.Category']._oid,
-                name: workitem['Super.Category.Name']
-            }
-        };
-        const workitemOidToken = workitem._oid;
-
-        const store = configureStore({
-            initialState: {
-                routing: undefined,
-                backlogStateAtom: {
-                    v1Host: v1Host,
-                    v1Protocol: v1Protocol
-                }
-            },
-            history: undefined
-        });
-
-        store.dispatch(ActionCreators.setEpic(epic));
-        store.dispatch(ActionCreators.selectWorkitem(0, workitemOidToken));
-
-        console.log('State--------------------------');
-        console.log(store.getState());
-
-        const markup = generateHTMLString('', store.getState());
-        response
-            .cookie('Authorization', authToken, { maxAge: 900000, httpOnly: false })
-            .status(200).end(markup);
-    });
-};
 
 export default (request, response) => {
     const location = request.originalUrl;
