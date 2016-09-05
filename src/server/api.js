@@ -8,11 +8,7 @@ import sdk, { axiosConnector } from 'v1sdk';
 import { apiPort, v1Protocol, v1Host, v1Instance } from './../shared/env';
 
 const axiosConnectedSdk = axiosConnector(axios)(sdk);
-
-export const v1 = (token)=> {
-    return axiosConnectedSdk(v1Host, v1Instance)
-        .withAccessToken(token)
-};
+export const v1 = (token) => axiosConnectedSdk(v1Host, v1Instance).withAccessToken(token);
 
 const app = express();
 
