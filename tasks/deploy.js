@@ -3,7 +3,7 @@ var gutil = require('gulp-util');
 var ftp = require('gulp-ftp');
 var env = require('gulp-env');
 
-gulp.task('deploy', [], () => {
+gulp.task('deploy', [], function() {
     const envVariables = env({
         file: '.env.json'
     });

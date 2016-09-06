@@ -10,6 +10,6 @@ gulp.task('build:server', shell.task([
     'babel src/shared -d dist/shared'
 ]));
 
-gulp.task('build', ['clean', 'build:client', 'build:server'], () => {
+gulp.task('build', ['clean', 'build:client', 'build:server'], function() {
 
 });
