@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute, browserHistory } from 'react-router';
 
-import { App } from './components/app';
+import { App } from './components/App';
 import { NotFound } from './components/NotFound';
 import { Landing } from './components/Landing';
 import { Login } from './components/Login';
