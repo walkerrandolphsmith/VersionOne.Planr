@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var shell = require('gulp-shell');
 var env = require('gulp-env');
 
-gulp.task('dev', ['clean'], function() {
+gulp.task('dev', ['dotenv', 'clean'], function() {
     const envVariables = env({
         file: '.env.json'
     });

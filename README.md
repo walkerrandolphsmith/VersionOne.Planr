@@ -18,14 +18,12 @@ npm install
 ```
 
 ### Configure
-Create a `.env.json` file in the root of the application to connect to VersionOne instance:
+Create a `.env` file in the root of the application to connect to VersionOne instance:
 
 ```
-{
-  "V1Protocol": "http",
-  "V1Host": "builds.versionone.net",
-  "V1Instance": "PR_16.0.13.14860"
-}
+V1Protocol=http
+V1Host=localhost
+V1Instance=VersionOne.Web
 ```
 
 ### Run
@@ -55,13 +53,11 @@ npm start
 ```
 
 ### Deploy
-Add the following keys to the `.env.json`.
+Add the following keys to the `.env` with the appropriate values.
 ```
-{
-  "FTP_HOST":
-  "FTP_USER":
-  "FTP_PASSWORD"
-}
+FTP_HOST=
+FTP_USER=
+FTP_PASSWORD=
 ```
 Then deploy the files using:
 ```
