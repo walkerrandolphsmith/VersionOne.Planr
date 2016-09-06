@@ -5,10 +5,10 @@ import bodyparser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import axios from 'axios';
 import sdk, { axiosConnector } from 'v1sdk';
-import { apiPort, v1Protocol, v1Host, v1Instance } from './../shared/env';
+import { apiPort, v1Protocol, v1Port, v1Host, v1Instance } from './../shared/env';
 
 const axiosConnectedSdk = axiosConnector(axios)(sdk);
-export const v1 = (token) => axiosConnectedSdk(v1Host, v1Instance, undefined, v1Protocol).withAccessToken(token);
+export const v1 = (token) => axiosConnectedSdk(v1Host, v1Instance, v1Port, v1Protocol).withAccessToken(token);
 
 const app = express();
 
