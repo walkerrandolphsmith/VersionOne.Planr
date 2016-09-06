@@ -1,6 +1,14 @@
 var gulp = require('gulp');
 var shell = require('gulp-shell');
+var env = require('gulp-env');
 
-gulp.task('dev', ['clean'], shell.task([
-    'nodemon -r dotenv/config src/server/index.js'
-]));
+gulp.task('dev', ['clean'], () => {
+    const envVariables = env({
+        file: '.env.json'
+    });
+    return gulp.src('package.json', {read: false})
+        .pipe(envVariables)
+        .pipe(shell([
+            'nodemon src/server/index.js'
+        ]));
+});

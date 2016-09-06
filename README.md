@@ -16,12 +16,14 @@ Start by installing all dependencies:
 ```npm install```
 
 ### Configure
-Create a `.env` file in the root of the application to connect to VersionOne instance:
+Create a `.env.json` file in the root of the application to connect to VersionOne instance:
 
 ```
-V1Protocol=http
-V1Host=builds.versionone.net
-V1Instance=PR_16.0.13.14860
+{
+  "V1Protocol": "http",
+  "V1Host": "builds.versionone.net",
+  "V1Instance": "PR_16.0.13.14860"
+}
 ```
 
 ### Run
@@ -36,10 +38,19 @@ Run unit tests using the cli. Wallaby is also supported.
 
 ### Build
 Build a production version of the application
-```npm build```
+```npm run build```
 
 ### Run
 Start a web server that can be reached by localhost:3000 by default.
+```npm start```
+
+### Deploy
+Add the following keys to the `.env.json`.
+```{
+  "FTP_HOST":
+  "FTP_USER":
+  "FTP_PASSWORD"
+}```
 ```npm start```
 
 
