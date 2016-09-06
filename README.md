@@ -13,7 +13,9 @@ For example `git commit -m "This closes #34, and closes #23"`
 
 ### Dependencies
 Start by installing all dependencies:
-```npm install```
+```
+npm install
+```
 
 ### Configure
 Create a `.env.json` file in the root of the application to connect to VersionOne instance:
@@ -28,30 +30,43 @@ Create a `.env.json` file in the root of the application to connect to VersionOn
 
 ### Run
 Start a web server that can be reached by localhost:3000 by default.
-```npm run dev```
+```
+npm run dev
+```
 
 ### Test
 Run unit tests using the cli. Wallaby is also supported.
-```npm test```
+```
+npm test
+```
 
 ## Production
 
 ### Build
 Build a production version of the application
-```npm run build```
+```
+npm run build
+```
 
 ### Run
 Start a web server that can be reached by localhost:3000 by default.
-```npm start```
+```
+npm start
+```
 
 ### Deploy
 Add the following keys to the `.env.json`.
-```{
+```
+{
   "FTP_HOST":
   "FTP_USER":
   "FTP_PASSWORD"
-}```
-```npm start```
+}
+```
+Then deploy the files using:
+```
+npm deploy
+```
 
 
 [ci]: https://travis-ci.org/walkerrandolphsmith/VersionOne.Planr
