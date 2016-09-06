@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config src/server/index.js",
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --ui bdd -r specUtils/*.js --recursive src/**/*.spec.js",
-    "build": "NODE_ENV=production webpack -p --config webpack.production.config.js",
-    "start": "NODE_ENV=production node src/server/index.js"
+    "build:client": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
+    "build:server": "cross-env NODE_ENV=production babel src/server -d dist/",
+    "build": "npm run build:client && npm run build:server",
+    "start": "cross-env NODE_ENV=production node src/server/index.js"
   },
   "keywords": [],
   "author": "",
