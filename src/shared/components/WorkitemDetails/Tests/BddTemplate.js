@@ -26,6 +26,16 @@ export class BddTemplate extends React.Component {
 
     save = () => {
         let { given, when, then } = this.state;
+        if(!given) {
+            this.givenRef.focus();
+            return;
+        } else if(!when) {
+            this.whenRef.focus();
+            return;
+        } else if(!then) {
+            this.thenRef.focus();
+            return;
+        }
         const testName = `Given ${given} When ${when} Then ${then}`;
         this.props.addTest(testName);
         this.givenRef.focus();
