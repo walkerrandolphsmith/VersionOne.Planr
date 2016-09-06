@@ -4,7 +4,7 @@ const {
 } = process.env;
 
 export const isBrowser = process.browser;
-export const nodeEnv = NODE_ENV;
+export const nodeEnv = NODE_ENV || 'production';
 export const host = HOST || DEFAULT_HOST;
 export const port = PORT || 3000;
 export const devHost = DEV_HOST || DEFAULT_HOST;
