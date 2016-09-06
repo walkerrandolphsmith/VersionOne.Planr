@@ -4,7 +4,6 @@ var env = require('gulp-env');
 
 gulp.task('test', ['clean'], function() {
     const envVariables = env({
-        file: '.env.json',
         vars: {
             NODE_ENV: 'test'
         }
