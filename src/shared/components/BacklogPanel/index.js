@@ -26,10 +26,12 @@ export class BacklogPanelContainer extends React.Component {
                 <tr key={wi.number} id={wi.oid}
                     className={`${wi.isSelected ? 'selected' : ''}`}
                     onClick={this.selectWorkitem.bind(this, {index: i, oid: wi.oid })}>
-                    <td className="spacer"></td>
+                    <td className="spacer" />
                     <td className="icon">{icon}</td>
                     <td className="number">{wi.number}</td>
-                    <td className="name">{wi.name}</td>
+                    <td className="name">
+                        <div>{wi.name}</div>
+                    </td>
                     <td className="select-arrow"><ChevronIcon /></td>
                 </tr>
             )
