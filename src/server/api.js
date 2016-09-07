@@ -7,6 +7,7 @@ import axios from 'axios';
 import sdk, { axiosConnector } from 'v1sdk';
 import { apiPort, v1Protocol, v1Port, v1Host, v1Instance } from './../shared/env';
 
+const rootUrl = `${v1Protocol}://${v1Host}:${v1Port}/${v1Instance}/`;
 const axiosConnectedSdk = axiosConnector(axios)(sdk);
 export const v1 = (token) => axiosConnectedSdk(v1Host, v1Instance, v1Port, v1Protocol).withAccessToken(token);
 
@@ -52,7 +53,7 @@ app.get('/activitystream/:id', (req, res) => {
 app.get('/conversationstream/:id', (req, res) => {
     const oid = req.originalUrl.split('/conversationstream/')[1];
     const authToken = req.cookies.Authorization;
-    const url = `${v1Protocol}://${v1Host}/${v1Instance}/Mobile.mvc/GetConversationStream?involving=${oid}`;
+    const url = `${rootUrl}/Mobile.mvc/GetConversationStream?involving=${oid}`;
     axios.get(url, {
         headers: {
             'Authorization': authToken
@@ -67,7 +68,7 @@ app.get('/conversationstream/:id', (req, res) => {
 app.get('/conversationthread/:id', (req, res) => {
     const oid = req.originalUrl.split('/conversationthread/')[1];
     const authToken = req.cookies.Authorization;
-    const url = `${v1Protocol}://${v1Host}/${v1Instance}/Mobile.mvc/GetConversationThread?Oid=${oid}`;
+    const url = `${rootUrl}/Mobile.mvc/GetConversationThread?Oid=${oid}`;
     axios.get(url, {
         headers: {
             'Authorization': authToken
@@ -117,5 +118,6 @@ app.listen(apiPort, (err) => {
         console.error(err);
     } else {
         console.info(`==> 💻  API Server listening on port ${apiPort}`);
+        console.info(`==> 💻  Connected to VersionOne instance ${rootUrl}`);
     }
 });
