@@ -3,7 +3,7 @@ import { match } from 'react-router';
 import { v1 } from './api';
 import configureStore from './../shared/store';
 import routes from './../shared/routes';
-import { v1Host, v1Protocol, v1Instance, host, port } from './../shared/env';
+import * as env from './../shared/env';
 
 export const generateHTMLString = (componentHTML, initialState) => `
     <!doctype html>
@@ -35,9 +35,7 @@ const getInitialState = () => ({
     initialState: {
         routing: undefined,
         backlogStateAtom: {
-            v1Host: v1Host,
-            v1Protocol: v1Protocol,
-            v1Instance, v1Instance
+            ...env
         }
     },
     history: undefined

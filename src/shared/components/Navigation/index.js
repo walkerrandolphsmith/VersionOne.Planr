@@ -51,12 +51,13 @@ class EpicLookup extends React.Component {
 
 export class _Navigation extends React.Component {
     render() {
-        const { epic } = this.props;
+        const { epic, packageNumber } = this.props;
         return (
             <header className="navigation">
                 <Toolbar className="nav-toolbar">
                     <ToolbarGroup>
                         <span className="logo"><LogoIcon /></span>
+                        <span className="version-number">{packageNumber}</span>
                     </ToolbarGroup>
                     <ToolbarGroup>
                         <div className="epic-lookup">
@@ -71,6 +72,7 @@ export class _Navigation extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        packageNumber: state.backlogStateAtom.packageNumber,
         epic: state.backlogStateAtom.epic,
         epicLookupResults: state.backlogStateAtom.epicLookupResults
     }

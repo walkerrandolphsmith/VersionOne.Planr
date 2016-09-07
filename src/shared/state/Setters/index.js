@@ -37,8 +37,10 @@ const handlers = [
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
-    v1Host: '',
     v1Protocol: '',
+    v1Host: '',
+    v1Instance: '',
+    packageNumber: '0.0.0.0000',
     caretTopPosition: 0,
     currentDetailsTab: 0,
     currentTestsTab: 0,
