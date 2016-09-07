@@ -14,6 +14,7 @@ import setStatus from './setStatus';
 import setLinks from './links';
 import setUser from './setAuthToken';
 import updateTest from './updateTest';
+import setCaret from './setCaret';
 
 const handlers = [
     setTab,
@@ -31,7 +32,8 @@ const handlers = [
     setStatus,
     setLinks,
     setUser,
-    updateTest
+    updateTest,
+    setCaret
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {

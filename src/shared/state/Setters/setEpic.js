@@ -33,7 +33,6 @@ export const setEpic = (epic) => (dispatch, getState) => {
             }
         })
         .then((response) => {
-            console.log('workitems looked up for epic', response.data);
             const workitems = response.data[0];
             if (workitems.length > 0) {
                 dispatch(success(workitems));
@@ -54,7 +53,7 @@ const reducer = (state, payload) => {
 };
 
 const setEpicReducer = (state, payload) => {
-    if(payload.workitems.length > 0)
+    if(payload.workitems.length > 0 && !state.selected)
         state.selected = payload.workitems[0]._oid;
 
     state.workitems = payload.workitems.reduce((map, workitem) => {

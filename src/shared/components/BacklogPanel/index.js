@@ -9,22 +9,23 @@ export class BacklogPanelContainer extends React.Component {
     componentWillMount() {
         if (this.props.workitems.length > 0) {
             const oid = this.props.workitems[Object.keys(this.props.workitems)[0]].oid;
-            this.props.selectWorkitem(0, oid);
+            this.props.setCaret(0);
+            this.props.selectWorkitem(oid);
         }
     }
 
     selectWorkitem({ index, oid }) {
-        this.props.selectWorkitem(index, oid);
+        this.props.setCaret(index);
+        this.props.selectWorkitem(oid);
     }
 
     render() {
-        let i = 0;
-        const wis = this.props.workitems.map(wi => {
+        const wis = this.props.workitems.map((wi, i) => {
             const icon = wi.assetType === 'Story' ? <StoryIcon /> : <DefectIcon />;
             return (
                 <tr key={wi.number} id={wi.oid}
                     className={`${wi.isSelected ? 'selected' : ''}`}
-                    onClick={this.selectWorkitem.bind(this, {index: i++, oid: wi.oid })}>
+                    onClick={this.selectWorkitem.bind(this, {index: i, oid: wi.oid })}>
                     <td className="spacer"></td>
                     <td className="icon">{icon}</td>
                     <td className="number">{wi.number}</td>
