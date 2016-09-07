@@ -26,17 +26,19 @@ export default createSelector(
         const hyrdatedWorkitems = [];
         for (var wi in workitems) {
             workitems[wi].isSelected = workitems[wi].oid === selectedWorkitem;
-            workitems[wi].tests = (workitems[wi].tests || []).sort((current, next) => {
-                if(current.oid === next.oid) {
-                    return 0;
-                } else if(current.oid > next.oid) {
-                    return -1;
-                } else {
-                    return 1;
-                }
-            });
+            workitems[wi].tests = (workitems[wi].tests || []).sort(sortByNewest);
             hyrdatedWorkitems.push(workitems[wi]);
         }
+
         return hyrdatedWorkitems;
     }
 );
+const sortByNewest = (current, next) => {
+    if(current.oid === next.oid) {
+        return 0;
+    } else if(current.oid > next.oid) {
+        return -1;
+    } else {
+        return 1;
+    }
+};
