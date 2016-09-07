@@ -10,6 +10,8 @@ export const unSetEpic = createAction(
 const reducer = (state, payload) => {
     state.epic = '';
     state.selected = '';
+    state.currentDetailsTab = 0;
+    state.currentTestsTab = 0;
     return { ...state };
 };
 
