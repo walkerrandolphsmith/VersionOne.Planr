@@ -33,6 +33,7 @@ export default createSelector(
         return hyrdatedWorkitems;
     }
 );
+
 const sortByNewest = (current, next) => {
     if(current.oid === next.oid) {
         return 0;
