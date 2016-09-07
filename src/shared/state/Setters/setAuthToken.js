@@ -20,7 +20,9 @@ export const setAuthToken = ( authToken ) => (dispatch) => {
             if(response.status === 200) {
                 const avatar = response.data[0][0]['Owner.Avatar.Content'];
                 dispatch(success(avatar));
-                dispatch(push('/planr'));
+                if(authToken) {
+                    dispatch(push('/planr'));
+                }
             } else {
                 dispatch(push('/'));
             }

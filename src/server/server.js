@@ -6,7 +6,7 @@ import expressPromise from 'express-promise';
 import cors from 'cors';
 import bodyparser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import defaultRoute from './defaultRoute';
+import defaultRoute, { storyRoute } from './defaultRoute';
 import * as env from './../shared/env';
 const { nodeEnv, host, port, devHost, devPort, apiHost, apiPort } = env;
 const publicPath = path.resolve(__dirname, './../../', 'public');
@@ -49,6 +49,8 @@ proxy.on('error', function(e) {
     console.log('Could not connect to proxy, please try again...');
 });
 
+app.use('/Defect/:id', storyRoute);
+app.use('/Story/:id', storyRoute);
 app.use('/', defaultRoute);
 
 export default app;
