@@ -9,13 +9,11 @@ export class BacklogPanelContainer extends React.Component {
     componentWillMount() {
         if (this.props.workitems.length > 0) {
             const oid = this.props.workitems[Object.keys(this.props.workitems)[0]].oid;
-            this.props.setCaret(0);
             this.props.selectWorkitem(oid);
         }
     }
 
     selectWorkitem({ index, oid }) {
-        this.props.setCaret(index);
         this.props.selectWorkitem(oid);
     }
 

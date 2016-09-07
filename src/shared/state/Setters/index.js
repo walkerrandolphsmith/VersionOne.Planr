@@ -14,7 +14,6 @@ import setStatus from './setStatus';
 import setLinks from './links';
 import setUser from './setAuthToken';
 import updateTest from './updateTest';
-import setCaret from './setCaret';
 
 const handlers = [
     setTab,
@@ -32,8 +31,7 @@ const handlers = [
     setStatus,
     setLinks,
     setUser,
-    updateTest,
-    setCaret
+    updateTest
 ].reduce((output, handler) => Object.assign(output, handler), {});
 
 const DEFAULT_STATE = {
@@ -41,7 +39,6 @@ const DEFAULT_STATE = {
     v1Host: '',
     v1Instance: '',
     packageNumber: '0.0.0.0000',
-    caretTopPosition: 0,
     currentDetailsTab: 0,
     currentTestsTab: 0,
     workitems: {},

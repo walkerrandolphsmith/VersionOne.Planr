@@ -10,21 +10,12 @@ export class _Story extends Landing {
             this.props.setEpic(this.props.epic);
         }
     }
-
-    componentWillReceiveProps(nextProps) {
-        const { selected } = this.props;
-        const index = nextProps.workitems.findIndex(wi => wi.oid === selected);
-        if(index > -1) {
-            this.props.setCaret(index);
-        }
-    }
 }
 
 const mapStateToProps = (state) => ({
     epic: state.backlogStateAtom.epic,
     workitems: Selectors.getAllPrimaryWorkitems(state),
-    selected: state.backlogStateAtom.selected,
-    caretPosition: state.backlogStateAtom.caretPosition
+    selected: state.backlogStateAtom.selected
 });
 const mapActionsToProps = (dispatch) => bindActionCreators(ActionCreators, dispatch);
 export const Story = connect(mapStateToProps, mapActionsToProps)(_Story);

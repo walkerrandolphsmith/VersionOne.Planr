@@ -3,7 +3,6 @@ import * as selectors from './Getters';
 import { getActivityStream } from './Setters/activityStream';
 import { getConversationStream } from './Setters/conversationStream';
 import { selectWorkitem } from './Setters/selectWorkitem';
-import { setCaret } from './Setters/setCaret';
 import { setTab } from './Setters/setTab';
 import { getWorkitemDetails } from './Setters/workitemDetails';
 import { setEpic } from './Setters/setEpic';
@@ -24,7 +23,6 @@ export const ActionCreators = {
     getActivityStream,
     getConversationStream,
     selectWorkitem,
-    setCaret,
     setTab,
     getWorkitemDetails,
     setEpic,

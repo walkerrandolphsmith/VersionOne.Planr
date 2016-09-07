@@ -25,7 +25,8 @@ export class WorkitemPanelContainer extends React.Component {
         activity: [],
         conversations: [],
         tests: [],
-        links: []
+        links: [],
+        caretTopPosition: 0
     };
 
     constructor(props, context) {
@@ -75,7 +76,7 @@ function mapStateToProps(state) {
         v1Protocol: state.backlogStateAtom.v1Protocol,
         currentTestsTab: state.backlogStateAtom.currentTestsTab,
         currentDetailsTab: state.backlogStateAtom.currentDetailsTab,
-        caretTopPosition: state.backlogStateAtom.caretTopPosition,
+        caretTopPosition: Selectors.getCaretPosition(state),
         workitems: Selectors.getAllPrimaryWorkitems(state),
         ...selectedWorkitem
     }
