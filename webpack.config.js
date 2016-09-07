@@ -13,7 +13,7 @@ module.exports = {
     output: {
         path: buildPath,
         filename: 'bundle.js',
-        publicPath: '/build'
+        publicPath: '/build/'
     },
     resolve: {
         modulesDirectories: ['node_modules', 'src'],
