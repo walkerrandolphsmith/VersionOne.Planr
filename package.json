@@ -10,8 +10,7 @@
     "build:client": "gulp build:client",
     "build:server": "gulp build:server",
     "build": "gulp build",
-    "start": "gulp start",
-    "deploy": "gulp deploy"
+    "start": "gulp start"
   },
   "keywords": [],
   "author": "",
@@ -72,11 +71,9 @@
     "gulp": "^3.9.1",
     "gulp-dotenv": "^0.2.1",
     "gulp-env": "^0.4.0",
-    "gulp-ftp": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-rm": "^1.0.1",
     "gulp-shell": "^0.5.2",
-    "gulp-util": "^3.0.7",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
     "mocha": "^2.3.4",
