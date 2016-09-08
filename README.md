@@ -22,12 +22,29 @@ Create a `.env` file in the root of the application to connect to VersionOne ins
 
 ```
 V1Protocol=http
+V1Port=80
 V1Host=localhost
 V1Instance=VersionOne.Web
 ```
 
-Note `V1AccessToken=<your-access-token>` can be added to the `.env` file to
-bypass cookie expiration in development mode.
+`V1AccessToken=Bearer <your-access-token>` can bypass cookie expiration in development.
+
+#### All Configuration Options
+```
+V1Protocol=       //VersionOne instance's protocol
+V1Port=           //VersionOne instance's port
+V1Host=           //VersionOne instance's host
+V1Instance=       //VersionOne instance's name
+V1AccessToken=    //VersionOne instance's access token (non-production only)
+HOST=             //webserver host
+PORT=             //webserver port
+DEV_HOST=         //webpack dev server host
+DEV_PORT=         //webpack dev server port
+API_HOST=         //api server host
+API_PORT=         //api server port
+NODE_ENV=         //node environment
+VERSION_NUMBER=   //application version number
+```
 
 
 ### Run
