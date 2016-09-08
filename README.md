@@ -26,6 +26,10 @@ V1Host=localhost
 V1Instance=VersionOne.Web
 ```
 
+Note `V1AccessToken=<your-access-token>` can be added to the `.env` file to
+bypass cookie expiration in development mode.
+
+
 ### Run
 Start a web server that can be reached by localhost:3000 by default.
 ```
