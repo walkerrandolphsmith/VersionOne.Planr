@@ -73,18 +73,6 @@ Start a web server that can be reached by localhost:3000 by default.
 npm start
 ```
 
-### Deploy
-Add the following keys to the `.env` with the appropriate values.
-```
-FTP_HOST=
-FTP_USER=
-FTP_PASSWORD=
-```
-Then deploy the files using:
-```
-npm deploy
-```
-
 
 [ci]: https://travis-ci.org/walkerrandolphsmith/VersionOne.Planr
 [ci-badge]: https://img.shields.io/travis/walkerrandolphsmith/VersionOne.Planr.svg
