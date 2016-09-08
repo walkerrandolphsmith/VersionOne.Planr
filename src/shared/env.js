@@ -1,6 +1,6 @@
 const DEFAULT_HOST = 'localhost';
 const {
-    PACKAGE_NUMBER,
+    VERSION_NUMBER,
     NODE_ENV,
     HOST, PORT,
     DEV_HOST, DEV_PORT,
@@ -10,7 +10,7 @@ const {
 
 export const isBrowser = process.browser;
 export const nodeEnv = NODE_ENV || 'production';
-export const packageNumber = PACKAGE_NUMBER;
+export const versionNumber = VERSION_NUMBER;
 export const host = HOST || DEFAULT_HOST;
 export const port = PORT || 3000;
 export const devHost = DEV_HOST || DEFAULT_HOST;
