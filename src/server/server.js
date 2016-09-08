@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser';
 import defaultRoute, { storyRoute } from './defaultRoute';
 import * as env from './../shared/env';
 const { nodeEnv, host, port, devHost, devPort, apiHost, apiPort } = env;
-const publicPath = path.resolve(__dirname, './../../', 'public');
+const publicPath = path.resolve(__dirname, './../../', 'dist', 'public');
 
 console.log(`\nRunning with env variables ${JSON.stringify(env, null, ' ')}`);
 console.log(`Static assets served at ${publicPath}`);
