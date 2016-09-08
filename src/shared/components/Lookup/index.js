@@ -171,7 +171,7 @@ export class Lookup extends Component {
                        onChange={this.onChange}
                        onFocus={this.onFocus}
                 />
-                <div style={finalListStyles}>{resultItems}</div>
+                <div style={finalListStyles} className="results-list">{resultItems}</div>
             </div>
         );
     }
