@@ -10,7 +10,7 @@
     "build:client": "gulp build:client",
     "build:server": "gulp build:server",
     "build": "gulp build",
-    "start": "node -r dotenv/config dist/server/server.js"
+    "start": "node -r dotenv/config dist/server/index.js"
   },
   "keywords": [],
   "author": "",
