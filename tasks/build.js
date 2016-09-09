@@ -2,13 +2,14 @@ var gulp = require('gulp');
 var shell = require('gulp-shell');
 var env = require('gulp-env');
 
-gulp.task('build:client', function() {
-    const envVariables = env({
-        file: '.env.json',
-        vars: {
-            NODE_ENV: 'production'
-        }
-    });
+const envVariables = env({
+    file: '.env.json',
+    vars: {
+        NODE_ENV: 'production'
+    }
+});
+
+gulp.task('build:client', ['dotenv'], function() {
     return gulp.src('package.json', {read: false})
         .pipe(envVariables)
         .pipe(shell([
@@ -16,13 +17,7 @@ gulp.task('build:client', function() {
         ]));
 });
 
-gulp.task('build:server', function() {
-    const envVariables = env({
-        file: '.env.json',
-        vars: {
-            NODE_ENV: 'production'
-        }
-    });
+gulp.task('build:server', ['dotenv'], function() {
     return gulp.src('package.json', {read: false})
         .pipe(envVariables)
         .pipe(shell([
