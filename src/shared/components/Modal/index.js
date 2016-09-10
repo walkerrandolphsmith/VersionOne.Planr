@@ -6,7 +6,7 @@ import {
 
 function ancestorHasClass(element, classname) {
     if(!element.className || typeof element.className !== 'string')
-        return false;
+        return element.parentNode && ancestorHasClass(element.parentNode, classname);
     else
         return element.className.split(' ').indexOf(classname) >= 0
             ? true
@@ -41,13 +41,15 @@ export class Modal extends Component {
     static propTypes = {
         classNames: PropTypes.string,
         children: PropTypes.node,
-        isOpen: PropTypes.bool
+        isOpen: PropTypes.bool,
+        onRequestClose: PropTypes.func
     };
 
     static defaultProps = {
         classNames: '',
         children: [],
-        isOpen: false
+        isOpen: false,
+        onRequestClose: () => {}
     };
 
     constructor(props, context) {
@@ -94,10 +96,11 @@ export class Modal extends Component {
 
     clickOutsideModalHandler = (event) => {
         const elm = event.target;
-        const isMultiButtonAncestor = ancestorHasClass(elm, 'modal');
+        //Pass in a collection of targets and don't hard code info.
+        const isMultiButtonAncestor = ancestorHasClass(elm, 'planr-modal') || ancestorHasClass(elm, 'info');
         if(!isMultiButtonAncestor) {
             event.stopPropagation();
-            this.setState({ isShown: false });
+            this.props.onRequestClose();
         }
     };
 

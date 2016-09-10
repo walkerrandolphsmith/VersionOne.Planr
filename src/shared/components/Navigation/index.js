@@ -60,11 +60,15 @@ class InfoModal extends React.Component {
         this.setState({ isOpen: !this.state.isOpen });
     };
 
+    closeModal = () => {
+        this.setState({ isOpen: false});
+    };
+
     render() {
         const { versionNumber, versionOneInstance } = this.props;
         return (
             <span className="info" onClick={this.toggleInfoMenu}>
-                <Modal isOpen={this.state.isOpen}>
+                <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
                     <div className="info-modal">
                          <Toolbar className="info-actionbar">
                              <ToolbarTitle text={'Information'}/>
