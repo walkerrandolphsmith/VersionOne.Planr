@@ -2,8 +2,8 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
-import { Toolbar, ToolbarGroup, ToolbarTitle, ToolbarSpacer } from './../Toolbar';
-import { Modal } from './../Modal';
+import { Toolbar, ToolbarGroup } from './../Toolbar';
+import { Modal, ModalHeader } from './../Modal';
 import { Lookup } from './../Lookup';
 import { LogoIcon, DeleteIcon } from './../Icons';
 
@@ -70,13 +70,7 @@ class InfoModal extends React.Component {
             <span className="info" onClick={this.openModal}>
                 <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
                     <div className="info-modal">
-                         <Toolbar className="info-actionbar">
-                             <ToolbarTitle text={'Information'}/>
-                             <ToolbarSpacer />
-                             <ToolbarGroup className="close-modal">
-                                 <DeleteIcon onClick={this.closeModal} />
-                             </ToolbarGroup>
-                        </Toolbar>
+                        <ModalHeader className="info-actionbar" title="Information" requestClose={this.closeModal} />
                         <div className="info-content">
                             <div>
                                 <label>Version Number:</label>
