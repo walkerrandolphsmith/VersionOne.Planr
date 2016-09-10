@@ -2,10 +2,10 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
-import { Toolbar, ToolbarGroup, ToolbarTitle } from './../Toolbar';
+import { Toolbar, ToolbarGroup, ToolbarTitle, ToolbarSpacer } from './../Toolbar';
 import { Modal } from './../Modal';
 import { Lookup } from './../Lookup';
-import { LogoIcon } from './../Icons';
+import { LogoIcon, DeleteIcon } from './../Icons';
 
 class EpicLookup extends React.Component {
     search = (query) => {
@@ -56,8 +56,8 @@ class InfoModal extends React.Component {
         this.state = { isOpen: false };
     }
 
-    toggleInfoMenu = () => {
-        this.setState({ isOpen: !this.state.isOpen });
+    openModal = () => {
+        this.setState({ isOpen: true });
     };
 
     closeModal = () => {
@@ -67,11 +67,15 @@ class InfoModal extends React.Component {
     render() {
         const { versionNumber, versionOneInstance } = this.props;
         return (
-            <span className="info" onClick={this.toggleInfoMenu}>
+            <span className="info" onClick={this.openModal}>
                 <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
                     <div className="info-modal">
                          <Toolbar className="info-actionbar">
                              <ToolbarTitle text={'Information'}/>
+                             <ToolbarSpacer />
+                             <ToolbarGroup className="close-modal">
+                                 <DeleteIcon onClick={this.closeModal} />
+                             </ToolbarGroup>
                         </Toolbar>
                         <div className="info-content">
                             <div>

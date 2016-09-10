@@ -28,9 +28,8 @@ class ModalPopup extends Component {
 
     render() {
         const { classNames, children } = this.props;
-        const isOpen = this.props.isOpen ? 'open' : '';
         return (
-            <div className={`modal-container ${isOpen} ${classNames}`}>
+            <div className={`modal-container ${classNames}`}>
                 {children}
             </div>
         );
@@ -62,11 +61,12 @@ export class Modal extends Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({ isOpen: nextProps.isOpen });
+        this.state.mountNode.className = `modal ${this.state.isOpen ? 'open' : ''}`;
     }
 
     componentWillMount() {
         const mountNode = document.createElement('div');
-        mountNode.className  = 'planr-modal';
+        mountNode.className  = 'modal';
         document.body.appendChild(mountNode);
         this.setState({ mountNode: mountNode });
     }
@@ -96,9 +96,8 @@ export class Modal extends Component {
 
     clickOutsideModalHandler = (event) => {
         const elm = event.target;
-        //Pass in a collection of targets and don't hard code info.
-        const isMultiButtonAncestor = ancestorHasClass(elm, 'planr-modal') || ancestorHasClass(elm, 'info');
-        if(!isMultiButtonAncestor) {
+        const shouldClose = !ancestorHasClass(elm, 'modal-container') || ancestorHasClass(elm, 'close-modal');
+        if(shouldClose) {
             event.stopPropagation();
             this.props.onRequestClose();
         }
