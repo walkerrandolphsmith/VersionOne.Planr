@@ -12,9 +12,13 @@
         width: 167px;
     }
 
-    .version-number {
-        transform: translate(-45px, 11px);
-        font-size: 10px;
+    .info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 50px;
+        cursor: pointer;
     }
 
     .nav-toolbar {
@@ -41,4 +45,14 @@
 
 .container-fluid {
     margin-top: 60px;
+}
+
+.info-modal {
+    .info-content {
+        padding: 20px;
+
+        label {
+            margin-right: 5px;
+        }
+    }
 }

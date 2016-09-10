@@ -2,7 +2,8 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
-import { Toolbar, ToolbarGroup } from './../Toolbar';
+import { Toolbar, ToolbarGroup, ToolbarTitle } from './../Toolbar';
+import { Modal } from './../Modal';
 import { Lookup } from './../Lookup';
 import { LogoIcon } from './../Icons';
 
@@ -49,15 +50,50 @@ class EpicLookup extends React.Component {
     }
 }
 
+class InfoModal extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = { isOpen: false };
+    }
+
+    toggleInfoMenu = () => {
+        this.setState({ isOpen: !this.state.isOpen });
+    };
+
+    render() {
+        const { versionNumber, versionOneInstance } = this.props;
+        return (
+            <span className="info" onClick={this.toggleInfoMenu}>
+                <Modal isOpen={this.state.isOpen}>
+                    <div className="info-modal">
+                         <Toolbar className="info-actionbar">
+                             <ToolbarTitle text={'Information'}/>
+                        </Toolbar>
+                        <div className="info-content">
+                            <div>
+                                <label>Version Number:</label>
+                                <span className="version-number">{versionNumber}</span>
+                            </div>
+                            <div>
+                                <label>VersionOne Instance:</label>
+                                <span className="versionone-instance">{versionOneInstance}</span>
+                            </div>
+                        </div>
+                    </div>
+                </Modal>
+            i</span>
+        )
+    }
+}
+
 export class _Navigation extends React.Component {
     render() {
-        const { epic, versionNumber } = this.props;
         return (
             <header className="navigation">
                 <Toolbar className="nav-toolbar">
                     <ToolbarGroup>
                         <span className="logo"><LogoIcon /></span>
-                        <span className="version-number">{versionNumber}</span>
+                        <InfoModal {...this.props} />
                     </ToolbarGroup>
                     <ToolbarGroup>
                         <div className="epic-lookup">
@@ -71,7 +107,10 @@ export class _Navigation extends React.Component {
 }
 
 function mapStateToProps(state) {
+    const { v1Protocol, v1Port, v1Host, v1Instance } = state.backlogStateAtom;
+    const versionOneInstance = `${v1Protocol}://${v1Host}:${v1Port}/${v1Instance}`;
     return {
+        versionOneInstance: versionOneInstance,
         versionNumber: state.backlogStateAtom.versionNumber,
         epic: state.backlogStateAtom.epic,
         epicLookupResults: state.backlogStateAtom.epicLookupResults
