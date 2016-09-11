@@ -1,20 +1,36 @@
 import React from 'react';
 
+class Verb extends React.Component {
+    render() {
+        const { oldValue } = this.props;
+
+        let icon = { name: 'downRightArrow', value: '&#8627;' };
+        if(oldValue) {
+            icon = { name: 'doubleRightArrow', value: '&raquo;' };
+        } else {
+            icon = { name: 'longRightArrow', value: '&#x27f6;' };
+        }
+
+        return (
+            <span className={`verb ${icon.name}`} dangerouslySetInnerHTML={{__html: icon.value }} />
+        )
+    }
+}
+
 
 class Target extends React.Component {
     render() {
-        const { name, verb, newValue, summary } = this.props;
+        const { name, verb, newValue, summary, oldValue } = this.props;
         let valueToDisplay = verb === 'SetLongValue' ? summary : newValue;
         if(valueToDisplay instanceof Object) {
             valueToDisplay = valueToDisplay.displayName;
         }
-        const icon = this.props.oldValue ? 'angle-double-right' : 'long-arrow-right';
 
         return (
             <li className="target">
                 <div className="expando">
                     <span className="name">{name}</span>
-                    <span className="verb"><i className={`fa fa-${icon}`}></i></span>
+                    <Verb oldValue={oldValue} />
                     <span className="value">{valueToDisplay}</span>
                 </div>
             </li>

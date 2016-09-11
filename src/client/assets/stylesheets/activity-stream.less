@@ -51,6 +51,8 @@
         position: relative;
         margin-bottom: 0.5ex;
         text-indent: 1rem;
+        display: flex;
+        align-items: center;
 
         &:before {
           content: "";
@@ -71,12 +73,24 @@
           text-overflow: ellipsis;
           border-radius: 0.5ex;
 
+          span {
+              vertical-align: middle;
+          }
+
           .name {
 
           }
 
           .verb {
-            padding-right: 5px;
+              padding: 0 10px;
+
+              &.longRightArrow {
+                  font-size: 1em;
+              }
+
+              &.doubleRightArrow {
+                  font-size: 1.5em;
+              }
           }
 
           .value {

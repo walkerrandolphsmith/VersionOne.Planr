@@ -71,9 +71,7 @@ class Conversation extends React.Component {
                     </div>
                     <div className="replies">
                         <div className="summary">
-                            <div className="expand">
-                                <i className="fa fa-exchange" />
-                            </div>
+                            <div className="expand" dangerouslySetInnerHTML={{__html: '&#x21C5;'}} />
                             <span className="total">
                                     {`${totalReplies} earlier replies`}
                                 </span>
