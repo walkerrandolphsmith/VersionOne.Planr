@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAction } from  'redux-actions';
-import _ from 'lodash';
 
 const ACTION = 'DELETE_TEST';
 
@@ -22,7 +21,12 @@ export const deleteTest = oid => (dispatch, getState) => {
 };
 
 const reducer = (state, payload) => {
-    const parent = _.find(state.workitems, (wi)=> wi.tests && wi.tests.find((t)=> t.oid === payload.oid));
+    let parent = null;
+    for(let oidToken in state.workitems) {
+        const workitem = state.workitems[oidToken];
+        parent = (workitem.tests || []).find(t => t.oid === payload.oid) ? workitem : parent;
+        if(parent) break;
+    }
     parent.tests = parent.tests.filter((t)=> t.oid !== payload.oid);
     state.workitems = {...state.workitems};
     return {...state};
