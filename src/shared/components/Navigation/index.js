@@ -68,6 +68,7 @@ class InfoModal extends React.Component {
         const { versionNumber, versionOneInstance } = this.props;
         return (
             <span className="info" onClick={this.openModal}>
+                <span>i</span>
                 <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
                     <div className="info-modal">
                         <ModalHeader className="info-actionbar" title="Information" requestClose={this.closeModal} />
@@ -83,7 +84,7 @@ class InfoModal extends React.Component {
                         </div>
                     </div>
                 </Modal>
-            i</span>
+            </span>
         )
     }
 }
