@@ -1,0 +1,70 @@
+
+.popover {
+    &.open {
+        .popover-container {
+            display: block;
+        }
+    }
+
+    .popover-container {
+        display: none;
+        width: 500px;
+        height: 200px;
+        position: fixed;
+        top: 60px;
+        border: 1px solid black;
+        background: #ffffff;
+        z-index: 100000000;
+
+    }
+}
+
+.hover-popover {
+    position: relative;
+
+    .popover-container {
+        display: none;
+        position: absolute;
+        top: 40px;
+
+        &.open {
+            display: block;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            z-index:  6;
+            top: -11px;
+            left: 0px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            border-right: none;
+            border-bottom: none;
+            transform: rotate(45deg);
+            background-color: white;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -55px;
+            height: 30px;
+            width: 500px;
+            background: transparent;
+        }
+
+        & > div {
+            padding: 25px;
+            position: absolute;
+            left: -55px;
+            width: 500px;
+            height: 100px;
+            border: 1px solid black;
+            background: #ffffff;
+            color: #000000;
+        }
+    }
+}

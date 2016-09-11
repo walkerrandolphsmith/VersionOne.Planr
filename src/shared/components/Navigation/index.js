@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
 import { Toolbar, ToolbarGroup } from './../Toolbar';
-import { Modal, ModalHeader } from './../Modal';
 import { Lookup } from './../Lookup';
 import { LogoIcon, DeleteIcon } from './../Icons';
+import { HoverPopover } from './../Popover';
 
 class EpicLookup extends React.Component {
     search = (query) => {
@@ -51,41 +51,25 @@ class EpicLookup extends React.Component {
 }
 
 class InfoModal extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = { isOpen: false };
-    }
-
-    openModal = () => {
-        this.setState({ isOpen: true });
-    };
-
-    closeModal = () => {
-        this.setState({ isOpen: false});
-    };
-
     render() {
         const { versionNumber, versionOneInstance } = this.props;
+        const target = <div className="info">i</div>;
         return (
-            <span className="info" onClick={this.openModal}>
-                <span>i</span>
-                <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
-                    <div className="info-modal">
-                        <ModalHeader className="info-actionbar" title="Information" requestClose={this.closeModal} />
-                        <div className="info-content">
-                            <div>
-                                <label>Version Number:</label>
-                                <span className="version-number">{versionNumber}</span>
-                            </div>
-                            <div>
-                                <label>VersionOne Instance:</label>
-                                <span className="versionone-instance">
-                                    <a href={versionOneInstance} target="_blank">{versionOneInstance}</a>
-                                </span>
-                            </div>
+            <span className="info-button">
+                <HoverPopover className="hover-popover" target={target}>
+                    <div className="info-content">
+                        <div>
+                            <label>Version Number:</label>
+                            <span className="version-number">{versionNumber}</span>
+                        </div>
+                        <div>
+                            <label>VersionOne Instance:</label>
+                            <span className="versionone-instance">
+                                <a href={versionOneInstance} target="_blank">{versionOneInstance}</a>
+                            </span>
                         </div>
                     </div>
-                </Modal>
+                </HoverPopover>
             </span>
         )
     }
