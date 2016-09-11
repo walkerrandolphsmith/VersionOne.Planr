@@ -79,7 +79,9 @@ class InfoModal extends React.Component {
                             </div>
                             <div>
                                 <label>VersionOne Instance:</label>
-                                <span className="versionone-instance">{versionOneInstance}</span>
+                                <span className="versionone-instance">
+                                    <a href={versionOneInstance} target="_blank">{versionOneInstance}</a>
+                                </span>
                             </div>
                         </div>
                     </div>
