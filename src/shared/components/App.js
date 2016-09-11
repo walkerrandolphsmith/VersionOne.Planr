@@ -14,12 +14,8 @@ class AppContainer extends React.Component {
         return (
             <div>
                 <Navigation />
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            {this.props.children}
-                        </div>
-                    </div>
+                <div className="application-container">
+                    {this.props.children}
                 </div>
             </div>
         );
