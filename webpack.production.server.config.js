@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-const Dotenv = require('dotenv-webpack');
 var path = require('path');
 var fs = require('fs');
 
@@ -34,9 +33,6 @@ module.exports = {
     externals: nodeModules,
     plugins: [
         new webpack.IgnorePlugin(/\.(css|less)$/),
-        new Dotenv({
-            path: './.env'
-        }),
         new webpack.DefinePlugin({
             "process.env": {
                 NODE_ENV: JSON.stringify("production")
