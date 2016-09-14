@@ -14,8 +14,18 @@ export class NewLink extends React.Component {
         this.setState({ [field]: event.target.value });
     };
 
+    onEnter = (event) => {
+        if(event.which === 13
+            && this.state.name
+            && this.state.url
+            && this.state.url.startsWith('http')) {
+            this.onSubmit();
+        }
+    };
+
     onSubmit = () => {
-        this.props.addLink({ ...this.state })
+        this.props.addLink({ ...this.state });
+        this.setState({ name: '', url: '' });
     };
 
     render() {
@@ -32,7 +42,9 @@ export class NewLink extends React.Component {
                 </td>
                 <td className="url">
                     <label>Url: </label>
-                    <input onChange={this.onChange.bind(this, 'url')}
+                    <input
+                        onKeyPress={this.onEnter}
+                        onChange={this.onChange.bind(this, 'url')}
                            value={url}
                            placeholder="Add the url"
                     />
