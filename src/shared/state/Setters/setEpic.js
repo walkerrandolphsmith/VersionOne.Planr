@@ -23,14 +23,18 @@ export const setEpic = (epic) => (dispatch, getState) => {
             'select': [
                 'Name',
                 'Number',
-                'AssetType'
+                'AssetType',
+                'Order'
             ],
             'filter': [
                 "AssetState!='Closed'"
             ],
             'where': {
                 'SuperMeAndUp': epic.oid
-            }
+            },
+            'sort': [
+                '+Order'
+            ]
         })
         .then((response) => {
             const workitems = response.data[0];
