@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from './Link';
+import { NewLink } from './NewLink';
 
 export class Links extends React.Component {
     componentWillMount() {
@@ -20,6 +21,7 @@ export class Links extends React.Component {
         return (
             <div className="content">
                 <div className="main">
+                    <NewLink {...this.props} />
                     {links}
                 </div>
             </div>
