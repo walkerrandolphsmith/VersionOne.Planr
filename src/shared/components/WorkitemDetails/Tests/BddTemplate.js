@@ -22,6 +22,15 @@ export class BddTemplate extends React.Component {
 
     onClick = () => {
         this.save();
+        this.setState({
+            given: '',
+            when: '',
+            then: ''
+        });
+    };
+
+    onSaveAndNew = () => {
+        this.save();
     };
 
     save = () => {
@@ -62,6 +71,7 @@ export class BddTemplate extends React.Component {
     };
 
     render() {
+        const { given, when, then } = this.state;
         return (
             <div className="test-form-container">
                 <div className="test-form">
@@ -69,6 +79,7 @@ export class BddTemplate extends React.Component {
                         <label htmlFor="given">Given:</label>
                         <Textarea id="given" name="given" type="text"
                                   ref={(c) => this.givenRef = c}
+                                  value={given}
                                   onKeyDown={this.preventEnter}
                                   onChange={this.onChange.bind(this, 'given')} />
                     </p>
@@ -76,6 +87,7 @@ export class BddTemplate extends React.Component {
                         <label htmlFor="when">When:</label>
                         <Textarea id="when" name="when" type="text"
                                   ref={(c) => this.whenRef = c}
+                                  value={when}
                                   onKeyDown={this.preventEnter}
                                   onChange={this.onChange.bind(this, 'when')} />
                     </p>
@@ -83,10 +95,14 @@ export class BddTemplate extends React.Component {
                         <label htmlFor="then">Then:</label>
                         <Textarea id="then" name="then" type="text"
                                   ref={(c) => this.thenRef = c}
+                                  value={then}
                                   onKeyDown={this.onKeyDown}
                                   onChange={this.onChange.bind(this, 'then')} />
                     </p>
-                    <Button text="Add" onClick={this.onClick} />
+                    <div className="add-test-buttons">
+                        <Button text="Save" onClick={this.onClick} />
+                        <Button text="Save and New" onClick={this.onSaveAndNew} />
+                    </div>
                 </div>
             </div>
         )
