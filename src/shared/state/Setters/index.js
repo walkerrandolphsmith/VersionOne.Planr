@@ -45,7 +45,8 @@ const DEFAULT_STATE = {
     selected: '',
     epic: '',
     epicLookupResults: [],
-    currentUser: ''
+    currentUser: '',
+    recentlyAddedTest: false
 };
 
 export default (state = DEFAULT_STATE, action = {}) => {

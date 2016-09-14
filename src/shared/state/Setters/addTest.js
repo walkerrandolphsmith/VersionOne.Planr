@@ -8,6 +8,9 @@ const success = createAction(
     (test) => ({ test })
 );
 
+const IS_NO_LONGER_RECENT = 'IS_NO_LONGER_RECENT';
+const addedTestNoLongerRecent = createAction(IS_NO_LONGER_RECENT);
+
 export const addTest = (name) => (dispatch, getState) => {
     const state = getState().backlogStateAtom;
     const currentWi = state.workitems[state.selected];
@@ -39,10 +42,14 @@ export const addTest = (name) => (dispatch, getState) => {
             .then(secondResponse => {
                 test.number = secondResponse.data[0][0].Number;
                 dispatch(success(test));
+                setTimeout(() => {
+                    dispatch(addedTestNoLongerRecent());
+                }, 500);
             })
             .catch(err => {
                 //Dispatch success of the first response.
                 dispatch(success(test));
+                dispatch(addedTestNoLongerRecent());
             });
         })
         .catch(err => {
@@ -51,12 +58,19 @@ export const addTest = (name) => (dispatch, getState) => {
 };
 
 const reducer = (state, payload) => {
+    state.recentlyAddedTest = true;
     state.workitems[state.selected].tests.unshift(payload.test);
     state.workitems = { ...state.workitems };
     return { ...state };
 };
 
+const testNoLongerRecent = (state) => {
+    state.recentlyAddedTest = false;
+    return { ...state };
+};
+
 export default {
-    [ACTION]: reducer
+    [ACTION]: reducer,
+    [IS_NO_LONGER_RECENT]: testNoLongerRecent
 };
 

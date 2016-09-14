@@ -78,6 +78,7 @@ function mapStateToProps(state) {
         currentDetailsTab: state.backlogStateAtom.currentDetailsTab,
         caretTopPosition: Selectors.getCaretPosition(state),
         workitems: Selectors.getAllPrimaryWorkitems(state),
+        recentlyAddedTest: state.backlogStateAtom.recentlyAddedTest,
         ...selectedWorkitem
     }
 }

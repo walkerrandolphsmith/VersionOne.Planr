@@ -17,9 +17,10 @@ export class TestListRow extends React.Component {
     };
 
     render() {
-        const { name, number, oid, isSelected} = this.props;
+        const { name, number, oid, isSelected, isRecent} = this.props;
+        const className = `${isSelected ? 'selected' : ''} ${isRecent ? 'recent': ''}`;
             return (
-                <tr id={oid} className={`${isSelected ? 'selected' : ''}`}>
+                <tr id={oid} className={className}>
                     <td className="number">{number}</td>
                     <td>
                         <TextArea value={name} updateValue={this.updateName} />
