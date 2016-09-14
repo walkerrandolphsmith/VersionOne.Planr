@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from './../Buttons';
 
 export class NewLink extends React.Component {
-    
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -10,7 +9,7 @@ export class NewLink extends React.Component {
             url: ''
         }
     }
-    
+
     onChange = (field, event) => {
         this.setState({ [field]: event.target.value });
     };
@@ -23,15 +22,25 @@ export class NewLink extends React.Component {
         const { name, url } = this.state;
 
         return (
-            <div>
-                <div>
+            <tr className="new-link">
+                <td className="name">
                     <label>Name: </label>
-                    <input onChange={this.onChange.bind(this, 'name')} value={name} />
+                    <input onChange={this.onChange.bind(this, 'name')}
+                           value={name}
+                           placeholder="Add a name"
+                    />
+                </td>
+                <td className="url">
                     <label>Url: </label>
-                    <input onChange={this.onChange.bind(this, 'url')} value={url} />
-                </div>
-                <Button text="Add" onClick={this.onSubmit} />
-            </div>
-        )
+                    <input onChange={this.onChange.bind(this, 'url')}
+                           value={url}
+                           placeholder="Add the url"
+                    />
+                </td>
+                <td>
+                    <Button text="Add" onClick={this.onSubmit} />
+                </td>
+            </tr>
+        );
     }
 }

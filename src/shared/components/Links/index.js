@@ -21,8 +21,19 @@ export class Links extends React.Component {
         return (
             <div className="content">
                 <div className="main">
-                    <NewLink {...this.props} />
-                    {links}
+                    <div className="links-table">
+                        <table className="grid">
+                            <colgroup>
+                                <col className="name" />
+                                <col className="url" />
+                                <col className="delete-icon" />
+                            </colgroup>
+                            <tbody>
+                            <NewLink {...this.props} />
+                            {links}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         )
