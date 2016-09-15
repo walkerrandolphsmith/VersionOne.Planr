@@ -7,7 +7,7 @@ export class TestListRow extends React.Component {
         this.props.updateTest({
             oid: this.props.oid,
             assetData: {
-                name: newValue
+                Name: newValue
             }
         });
     };

@@ -36,7 +36,7 @@ const reducer = (state, payload) => {
         }
     }
     for(let attribute in payload.assetData) {
-        updatedTest[attribute] = payload.assetData[attribute];
+        updatedTest[attribute.toLowerCase()] = payload.assetData[attribute];
     }
 
 

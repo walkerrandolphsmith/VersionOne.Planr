@@ -25,7 +25,7 @@ export class WorkitemTitle extends React.Component {
         this.props.updateWorkitem({
             oid: this.props.oid,
             assetData: {
-                name: newValue
+                Name: newValue
             }
         });
     };

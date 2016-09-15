@@ -6,7 +6,7 @@ export class Estimate extends React.Component {
         this.props.updateWorkitem({
             oid: this.props.oid,
             assetData: {
-                estimate: newValue
+                Estimate: newValue
             }
         });
     };

@@ -34,7 +34,7 @@ export class Description extends React.Component {
             this.props.updateWorkitem({
                 oid: this.props.oid,
                 assetData: {
-                    description: this.state.newDescription
+                    Description: this.state.newDescription
                 }
             });
         }
