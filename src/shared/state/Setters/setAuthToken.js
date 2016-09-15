@@ -3,11 +3,11 @@ import axios from 'axios';
 import { push } from 'react-router-redux';
 
 const ACTION = 'SET_USER';
+
 const success = createAction(
     ACTION,
     avatar => ({ avatar })
 );
-
 
 export const setAuthToken = ( authToken ) => (dispatch) => {
     const headers = authToken ? { 'Authorization' : "Bearer ".concat(authToken) } : {};

@@ -1,6 +1,5 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
-import { V1Host, V1Instance } from './../../env';
 
 const ACTION = 'GET_CONVERSATION_STREAM';
 
