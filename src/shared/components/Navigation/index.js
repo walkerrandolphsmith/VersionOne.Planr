@@ -3,8 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
 import { Toolbar, ToolbarGroup } from './../Toolbar';
+import { Button } from './../Buttons';
 import { Lookup } from './../Lookup';
-import { LogoIcon, DeleteIcon } from './../Icons';
+import { LogoIcon } from './../Icons';
 import { HoverPopover } from './../Popover';
 
 class EpicLookup extends React.Component {
@@ -51,6 +52,10 @@ class EpicLookup extends React.Component {
 }
 
 class InfoModal extends React.Component {
+    sendFeeback = () => {
+        window.open('https://github.com/walkerrandolphsmith/VersionOne.Planr/issues');
+    };
+
     render() {
         const { versionNumber, versionOneInstance } = this.props;
         const target = <span className="info-button"><div className="info">i</div></span>;
@@ -66,6 +71,9 @@ class InfoModal extends React.Component {
                         <span className="versionone-instance">
                             <a href={versionOneInstance} target="_blank">{versionOneInstance}</a>
                         </span>
+                    </div>
+                    <div className="send-feedback">
+                        <Button text="Send Feedback" onClick={this.sendFeeback} />
                     </div>
                 </div>
             </HoverPopover>
