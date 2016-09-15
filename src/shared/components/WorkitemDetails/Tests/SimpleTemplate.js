@@ -1,4 +1,6 @@
 import React from 'react'
+import { Button } from './../../Buttons';
+import Textarea from 'react-textarea-autosize';
 
 const ENTER = 13;
 export class SimpleTemplate extends React.Component {
@@ -14,11 +16,19 @@ export class SimpleTemplate extends React.Component {
 
     onClick = () => {
         this.save();
+        this.setState({
+            name: ''
+        });
+    };
+
+    onSaveAndNew = () => {
+        this.save();
     };
 
     save = () => {
         let { name } = this.state;
         this.props.addTest(name);
+        this.nameRef.focus();
     };
 
     onKeyDown = (e) => {
@@ -32,7 +42,15 @@ export class SimpleTemplate extends React.Component {
             <div className="test-form-container">
                 <div className="test-form">
                     <label htmlFor="name">Name:</label>
-                    <input id="name" name="name" type="text" onKeyDown={this.onKeyDown} onChange={this.onChange} />
+                    <Textarea id="name" name="name" type="text"
+                              ref={(c) => this.nameRef = c}
+                              value={this.state.name}
+                              onKeyDown={this.onKeyDown}
+                              onChange={this.onChange} />
+                    <div className="add-test-buttons">
+                        <Button text="Save" onClick={this.onClick} />
+                        <Button text="Save and New" onClick={this.onSaveAndNew} />
+                    </div>
                 </div>
             </div>
         )
