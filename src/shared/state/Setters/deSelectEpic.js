@@ -2,7 +2,7 @@ import { createAction } from 'redux-actions';
 
 const ACTION = 'UN_SET_EPIC';
 
-export const unSetEpic = createAction(
+export const deSelectEpic = createAction(
     ACTION,
     () => ({})
 );

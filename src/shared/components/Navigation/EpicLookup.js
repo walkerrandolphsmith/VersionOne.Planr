@@ -7,13 +7,13 @@ export class EpicLookup extends Component {
     };
 
     select = (result) => {
-        this.props.setEpic({
+        this.props.selectEpic({
             name: result.text, oid: result.oid, scope: result.scope, category: result.category
         });
     };
 
     deSelect = () => {
-        this.props.unSetEpic();
+        this.props.deSelectEpic();
     };
 
     render() {

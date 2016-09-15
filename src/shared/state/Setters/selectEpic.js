@@ -1,22 +1,21 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
-import { getWorkitemDetails } from './workitemDetails';
 
 const SET_EPIC_ACTION = 'SET_EPIC_ACTION';
 const SET_WORKITEMS_ACTION = 'SET_WORKITEMS_ACTION';
 
-const selectEpic = createAction(
+const setEpic = createAction(
     SET_EPIC_ACTION,
     (epic) => ({ epic })
 );
 
-const success = createAction(
+const setWorkitems = createAction(
     SET_WORKITEMS_ACTION,
     (workitems) => ({ workitems })
 );
 
-export const setEpic = (epic) => (dispatch, getState) => {
-    dispatch(selectEpic(epic));
+export const selectEpic = (epic) => (dispatch, getState) => {
+    dispatch(setEpic(epic));
     axios
         .post('/api/query', {
             'from': 'PrimaryWorkitem',
@@ -39,11 +38,10 @@ export const setEpic = (epic) => (dispatch, getState) => {
         .then((response) => {
             const workitems = response.data[0];
             if (workitems.length > 0) {
-                dispatch(success(workitems));
-                dispatch(getWorkitemDetails(workitems[0]._oid));
+                dispatch(setWorkitems(workitems));
             }
             else {
-                dispatch(success(workitems));
+                dispatch(setWorkitems(workitems));
             }
         })
         .catch(err => {
@@ -51,12 +49,12 @@ export const setEpic = (epic) => (dispatch, getState) => {
         });
 };
 
-const reducer = (state, payload) => {
+const setEpicReducer = (state, payload) => {
     state.epic = payload.epic;
     return { ...state };
 };
 
-const setEpicReducer = (state, payload) => {
+const setWorkitemsReducer = (state, payload) => {
     if(payload.workitems.length > 0 && !state.selected)
         state.selected = payload.workitems[0]._oid;
 
@@ -73,7 +71,7 @@ const setEpicReducer = (state, payload) => {
 };
 
 export default {
-    [SET_EPIC_ACTION]: reducer,
-    [SET_WORKITEMS_ACTION]: setEpicReducer
+    [SET_EPIC_ACTION]: setEpicReducer,
+    [SET_WORKITEMS_ACTION]: setWorkitemsReducer
 };
 

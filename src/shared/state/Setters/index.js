@@ -3,8 +3,8 @@ import selectWorkitem from './selectWorkitem';
 import setWorkitemDetails from './workitemDetails';
 import setConversationStream from './conversationStream';
 import setActivityStream from './activityStream';
-import setEpic from './setEpic';
-import unSetEpic from './unSetEpic';
+import selectEpic from './selectEpic';
+import deSelectEpic from './deSelectEpic';
 import lookupEpic from './lookupEpic';
 import addWorkitem from './addWorkitem';
 import updateWorkitem from './updateWorkitem';
@@ -22,8 +22,8 @@ const handlers = [
     setWorkitemDetails,
     setConversationStream,
     setActivityStream,
-    setEpic,
-    unSetEpic,
+    selectEpic,
+    deSelectEpic,
     lookupEpic,
     addWorkitem,
     updateWorkitem,

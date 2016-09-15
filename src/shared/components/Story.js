@@ -7,7 +7,7 @@ import { Landing } from './Landing';
 export class _Story extends Landing {
     componentWillMount() {
         if(this.props.epic) {
-            this.props.setEpic(this.props.epic);
+            this.props.selectEpic(this.props.epic);
         }
     }
 }

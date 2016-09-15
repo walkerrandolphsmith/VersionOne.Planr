@@ -5,8 +5,8 @@ import { getConversationStream } from './Setters/conversationStream';
 import { selectWorkitem } from './Setters/selectWorkitem';
 import { setTab } from './Setters/setTab';
 import { getWorkitemDetails } from './Setters/workitemDetails';
-import { setEpic } from './Setters/setEpic';
-import { unSetEpic } from './Setters/unSetEpic';
+import { selectEpic } from './Setters/selectEpic';
+import { deSelectEpic } from './Setters/deSelectEpic';
 import { lookupEpic } from './Setters/lookupEpic';
 import { addStory, addDefect } from './Setters/addWorkitem';
 import { updateWorkitem } from './Setters/updateWorkitem';
@@ -26,8 +26,8 @@ export const ActionCreators = {
     selectWorkitem,
     setTab,
     getWorkitemDetails,
-    setEpic,
-    unSetEpic,
+    selectEpic,
+    deSelectEpic,
     lookupEpic,
     addStory,
     addDefect,
