@@ -11,10 +11,7 @@ export default class AbstractPopover extends Component {
         className: ''
     };
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = { isOpen: false }
-    }
+    state = { isOpen: false };
 
     componentWillReceiveProps(nextProps) {
         this.setState({ isOpen: nextProps.isOpen });

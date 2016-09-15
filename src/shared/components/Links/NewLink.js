@@ -2,13 +2,10 @@ import React from 'react';
 import { Button } from './../Buttons';
 
 export class NewLink extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            name: '',
-            url: ''
-        }
-    }
+    state = {
+        name: '',
+        url: ''
+    };
 
     onChange = (field, event) => {
         this.setState({ [field]: event.target.value });

@@ -6,10 +6,7 @@ import { Button } from './Buttons';
 
 const ENTER = 13;
 class LoginContainer extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = { token: '' }
-    }
+    state = { token: '' };
 
     onKeyUp = (e) => {
         if(e.which === ENTER){

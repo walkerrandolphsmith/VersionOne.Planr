@@ -18,10 +18,7 @@ export class Dropdown extends Component {
         selectedOption: 'None'
     };
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = { isShown: false }
-    }
+    state = { isShown: false };
 
     componentWillReceiveProps(nextProps) {
         this.setState({ isShown: nextProps.isOpen });

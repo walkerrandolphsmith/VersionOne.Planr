@@ -4,10 +4,7 @@ const ESCAPE = 27,
     ENTER = 13;
 
 export default class AbstractInput extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = { value: this.props.value };
-    }
+    state = { value: this.props.value };
 
     componentWillReceiveProps(nextProps){
         this.setState({ value: nextProps.value });

@@ -1,14 +1,7 @@
 import React from 'react';
 
 export class LivePreviewLink extends React.Component {
-
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            isShown: false
-        }
-    }
-
+    state = { isShown: false };
 
     onMouseEnter() {
         this.setState({ isShown: true });

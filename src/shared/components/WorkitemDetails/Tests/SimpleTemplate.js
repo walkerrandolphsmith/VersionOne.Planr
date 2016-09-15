@@ -4,10 +4,7 @@ import Textarea from 'react-textarea-autosize';
 
 const ENTER = 13;
 export class SimpleTemplate extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = { name: '' };
-    }
+    state = { name: '' };
 
     onChange = (event) => {
         const value = event.target.value;

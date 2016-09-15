@@ -4,14 +4,11 @@ import Textarea from 'react-textarea-autosize';
 
 const ENTER = 13;
 export class BddTemplate extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            given: '',
-            when: '',
-            then: ''
-        };
-    }
+    state = {
+        given: '',
+        when: '',
+        then: ''
+    };
 
     onChange(field, event) {
         const value = event.target.value;

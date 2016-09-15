@@ -35,14 +35,11 @@ export class Lookup extends Component {
         deSelect: () => {}
     };
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            query: '',
-            isOpen: false,
-            hovered: -1
-        }
-    }
+    state = {
+        query: '',
+        isOpen: false,
+        hovered: -1
+    };
 
     handleKeyPress = (event) => {
         const handleUp = () => {

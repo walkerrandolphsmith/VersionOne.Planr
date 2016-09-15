@@ -51,13 +51,10 @@ export default class Modal extends Component {
         onRequestClose: () => {}
     };
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            mountNode: null,
-            isOpen: false
-        }
-    }
+    state = {
+        mountNode: null,
+        isOpen: false
+    };
 
     componentWillReceiveProps(nextProps) {
         this.setState({ isOpen: nextProps.isOpen });

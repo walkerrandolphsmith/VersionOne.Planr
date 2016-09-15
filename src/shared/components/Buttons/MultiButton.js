@@ -24,10 +24,7 @@ export default class MultiButton extends Component {
         isDisabled: false
     };
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = { isShown: false }
-    }
+    state = { isShown: false };
 
     componentDidMount() {
         window.addEventListener('click', this.clickOutsideButtonHandler);
