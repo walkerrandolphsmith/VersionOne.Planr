@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators, Selectors } from './../../state';
 import { Actionbar } from './Actionbar';
-import { ChevronIcon, StoryIcon, DefectIcon } from './../Icons';
+import { ChevronIcon, StoryIcon, DefectIcon } from './../common/Icons';
 
 export class BacklogPanelContainer extends React.Component {
     componentWillMount() {

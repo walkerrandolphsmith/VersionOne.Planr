@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { HoverPopover } from './../Popover';
-import { Button } from './../Buttons';
+import { HoverPopover } from './../common/Popover';
+import { Button } from './../common/Buttons';
 
 export class InfoPopover extends Component {
     sendFeeback = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../state';
-import { Button } from './Buttons';
+import { Button } from './common/Buttons';
 
 const ENTER = 13;
 class LoginContainer extends React.Component {

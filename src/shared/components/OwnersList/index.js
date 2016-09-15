@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemberAvatar } from './../Avatar';
+import { MemberAvatar } from './../common/Avatar';
 
 export class OwnersList extends React.Component {
     static defaultProps = {

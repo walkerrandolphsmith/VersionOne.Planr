@@ -2,8 +2,8 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../../state';
-import { Toolbar, ToolbarGroup } from './../Toolbar';
-import { LogoIcon } from './../Icons';
+import { Toolbar, ToolbarGroup } from './../common/Toolbar';
+import { LogoIcon } from './../common/Icons';
 import { EpicLookup } from './EpicLookup';
 import { InfoPopover } from './InfoPopover';
 

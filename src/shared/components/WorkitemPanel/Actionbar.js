@@ -1,7 +1,7 @@
 import React from 'react';
-import { Toolbar, ToolbarGroup, ToolbarSpacer } from './../Toolbar';
+import { Toolbar, ToolbarGroup, ToolbarSpacer } from './../common/Toolbar';
+import { DetailsIcon, ActivityStreamIcon, ConversationsIcon, LinkIcon } from './../common/Icons';
 import { WorkitemTitle } from './WorkitemTitle';
-import { DetailsIcon, ActivityStreamIcon, ConversationsIcon, LinkIcon } from './../Icons';
 
 const isActive = (tab, current) => tab === current ? 'active' : '';
 

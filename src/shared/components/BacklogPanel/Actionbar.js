@@ -1,6 +1,6 @@
 import React from 'react';
-import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup } from './../Toolbar';
-import { MultiButton } from './../Buttons';
+import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup } from './../common/Toolbar';
+import { MultiButton } from './../common/Buttons';
 
 export class Actionbar extends React.Component {
     render() {

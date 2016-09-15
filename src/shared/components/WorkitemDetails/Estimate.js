@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutoGrowInput } from '../Inputs'
+import { AutoGrowInput } from '../common/Inputs'
 
 export class Estimate extends React.Component {
     updateEstimate = (newValue) => {

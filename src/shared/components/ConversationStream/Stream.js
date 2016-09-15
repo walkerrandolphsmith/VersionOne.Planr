@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeleteIcon } from './../Icons';
+import { DeleteIcon } from './../common/Icons';
 
 class Reply extends React.Component {
     render() {

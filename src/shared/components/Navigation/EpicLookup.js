@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Lookup } from './../Lookup';
+import { Lookup } from './../common/Lookup';
 
 export class EpicLookup extends Component {
     search = (query) => {

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from './../state';
 import { Backlog } from './Backlog';
-import { BackgroundIcon } from './Icons'
+import { BackgroundIcon } from './common/Icons'
 
 export class _Landing extends React.Component {
     render() {

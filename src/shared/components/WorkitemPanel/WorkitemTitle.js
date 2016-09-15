@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from './../Inputs';
+import { Input } from './../common/Inputs';
 
 export class WorkitemTitle extends React.Component {
     static defaultProps = {

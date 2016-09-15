@@ -1,6 +1,6 @@
 import React from 'react';
-import { DeleteIcon } from './../Icons';
-import { MemberAvatar } from './../Avatar';
+import { DeleteIcon } from './../common/Icons';
+import { MemberAvatar } from './../common/Avatar';
 
 export class StreamHeader extends React.Component {
     render() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from './../Buttons';
+import { Button } from './../common/Buttons';
 
 export class NewLink extends React.Component {
     constructor(props, context) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import TinyMCE from 'react-tinymce';
-import { Button } from './../Buttons';
+import { Button } from './../common/Buttons';
 
 export class Description extends React.Component {
     constructor(props, context) {
