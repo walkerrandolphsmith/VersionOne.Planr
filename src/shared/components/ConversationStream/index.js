@@ -7,6 +7,12 @@ export class ConversationStream extends React.Component {
         this.props.getConversationStream(this.props.oid);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(this.props.oid !== nextProps.oid) {
+            this.props.getConversationStream(nextProps.oid);
+        }
+    }
+
     render() {
         return (
             <div className="main conversation-container">

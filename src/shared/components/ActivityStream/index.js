@@ -15,6 +15,12 @@ export class _ActivityStream extends React.Component {
         this.props.getActivityStream(this.props.oid);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(this.props.oid !== nextProps.oid) {
+            this.props.getActivityStream(nextProps.oid);
+        }
+    }
+
     render() {
         const groups = this.props.activityGroupedByDate;
         let activity = [];
