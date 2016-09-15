@@ -1,6 +1,6 @@
 import React from 'react';
-import { DeleteIcon } from './../../common/Icons';
-import { TextArea } from './../../common/Inputs';
+import { DeleteIcon } from './../common/Icons';
+import { TextArea } from './../common/Inputs';
 
 export class TestListRow extends React.Component {
     updateName = (newValue) => {

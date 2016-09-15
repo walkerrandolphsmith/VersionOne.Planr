@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './../../common/Buttons';
+import { Button } from './../common/Buttons';
 import Textarea from 'react-textarea-autosize';
 
 const ENTER = 13;

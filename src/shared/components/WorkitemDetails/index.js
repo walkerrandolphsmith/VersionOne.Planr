@@ -1,6 +1,6 @@
 import React from 'react';
 import { Description } from './Description';
-import { TestSection } from './Tests';
+import { TestSection } from './../Tests';
 import { Footer } from './Footer';
 
 export class WorkitemDetails extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup } from './../../common/Toolbar';
+import { Toolbar, ToolbarTitle, ToolbarSpacer, ToolbarGroup } from './../common/Toolbar';
 
 const isActive = (tab, current) => tab === current ? 'active' : '';
 
