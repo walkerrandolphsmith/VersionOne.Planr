@@ -12,7 +12,7 @@ const IS_NO_LONGER_RECENT = 'IS_NO_LONGER_RECENT';
 const addedTestNoLongerRecent = createAction(IS_NO_LONGER_RECENT);
 
 export const addTest = (name) => (dispatch, getState) => {
-    const state = getState().backlogStateAtom;
+    const state = getState().atom;
     const currentWi = state.workitems[state.selected];
 
     axios

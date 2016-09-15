@@ -14,7 +14,7 @@ const groupBy= pred => l => l.map(a => {
 }, {});
 
 export default state => {
-    const workitem = state.backlogStateAtom.workitems[state.backlogStateAtom.selected];
+    const workitem = state.atom.workitems[state.atom.selected];
 
     const activity = (workitem.activity || []).map((activity) => {
         if(activity.body.verb === 'Created'){

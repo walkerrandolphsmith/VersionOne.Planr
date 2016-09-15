@@ -34,7 +34,7 @@ export const generateHTMLString = (componentHTML, initialState) => `
 const getInitialState = () => ({
     initialState: {
         routing: undefined,
-        backlogStateAtom: {
+        atom: {
             ...env
         }
     },
@@ -80,8 +80,8 @@ export const storyRoute = (request, response) => {
                 }
             };
 
-            storeData.initialState.backlogStateAtom.epic = epic;
-            storeData.initialState.backlogStateAtom.selected = workitemOidToken;
+            storeData.initialState.atom.epic = epic;
+            storeData.initialState.atom.selected = workitemOidToken;
 
             const store = configureStore(storeData);
             const markup = generateHTMLString('', store.getState());

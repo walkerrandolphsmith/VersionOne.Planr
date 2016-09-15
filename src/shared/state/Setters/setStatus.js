@@ -10,7 +10,7 @@ const success = createAction(
 
 export const setStatus = ({ oid, name }) => (dispatch, getState) => {
 
-    const state = getState().backlogStateAtom;
+    const state = getState().atom;
     const currentWi = state.workitems[state.selected];
 
     axios

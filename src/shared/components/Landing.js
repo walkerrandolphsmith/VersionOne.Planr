@@ -19,6 +19,6 @@ export class _Landing extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({ epic: state.backlogStateAtom.epic });
+const mapStateToProps = (state) => ({ epic: state.atom.epic });
 const mapActionsToProps = (dispatch) => bindActionCreators(ActionCreators, dispatch);
 export const Landing = connect(mapStateToProps, mapActionsToProps)(_Landing);

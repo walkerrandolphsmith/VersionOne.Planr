@@ -9,7 +9,7 @@ const success = createAction(
 );
 
 const addWorkitem = (name, assetType, dispatch, getState) => {
-    const epic = getState().backlogStateAtom.epic;
+    const epic = getState().atom.epic;
     axios
         .post('/api/create', {
             assetType: assetType,

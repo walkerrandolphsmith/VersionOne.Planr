@@ -69,16 +69,16 @@ export class WorkitemPanelContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const selectedWorkitem = state.backlogStateAtom.workitems[state.backlogStateAtom.selected];
+    const selectedWorkitem = state.atom.workitems[state.atom.selected];
     return {
-        currentUser: state.backlogStateAtom.currentUser,
-        v1Host: state.backlogStateAtom.v1Host,
-        v1Protocol: state.backlogStateAtom.v1Protocol,
-        currentTestsTab: state.backlogStateAtom.currentTestsTab,
-        currentDetailsTab: state.backlogStateAtom.currentDetailsTab,
+        currentUser: state.atom.currentUser,
+        v1Host: state.atom.v1Host,
+        v1Protocol: state.atom.v1Protocol,
+        currentTestsTab: state.atom.currentTestsTab,
+        currentDetailsTab: state.atom.currentDetailsTab,
         caretTopPosition: Selectors.getCaretPosition(state),
         workitems: Selectors.getAllPrimaryWorkitems(state),
-        recentlyAddedTest: state.backlogStateAtom.recentlyAddedTest,
+        recentlyAddedTest: state.atom.recentlyAddedTest,
         ...selectedWorkitem
     }
 }

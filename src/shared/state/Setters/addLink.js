@@ -9,7 +9,7 @@ const success = createAction(
 );
 
 export const addLink = (link) => (dispatch, getState) => {
-    const state = getState().backlogStateAtom;
+    const state = getState().atom;
     const currentWi = state.workitems[state.selected];
     axios
         .post('/api/create', {

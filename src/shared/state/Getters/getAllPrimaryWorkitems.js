@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
-const selectedWISelector = state => state.backlogStateAtom.selected;
-const workitemsSelector = state => state.backlogStateAtom.workitems;
+const selectedWISelector = state => state.atom.selected;
+const workitemsSelector = state => state.atom.workitems;
 
 const primaryWorkitemsSelector = createSelector(
     [workitemsSelector],

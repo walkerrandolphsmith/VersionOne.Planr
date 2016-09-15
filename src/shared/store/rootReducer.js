@@ -4,5 +4,5 @@ import { Reducer } from './../state';
 
 export default combineReducers({
     routing: router,
-    backlogStateAtom: Reducer
+    atom: Reducer
 });

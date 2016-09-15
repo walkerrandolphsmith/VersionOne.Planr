@@ -13,9 +13,9 @@ export class _Story extends Landing {
 }
 
 const mapStateToProps = (state) => ({
-    epic: state.backlogStateAtom.epic,
+    epic: state.atom.epic,
     workitems: Selectors.getAllPrimaryWorkitems(state),
-    selected: state.backlogStateAtom.selected
+    selected: state.atom.selected
 });
 const mapActionsToProps = (dispatch) => bindActionCreators(ActionCreators, dispatch);
 export const Story = connect(mapStateToProps, mapActionsToProps)(_Story);
