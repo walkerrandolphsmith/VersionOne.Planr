@@ -46,6 +46,14 @@ NODE_ENV=         //node environment
 VERSION_NUMBER=   //application version number
 ```
 
+#### Contributers Use:
+```
+V1Protocol=https
+V1Port=443
+V1Host=www14.v1host.com
+V1Instance=v1sdktesting
+V1AccessToken=Bearer 1.jA9m1Of4OUnAx/SCuOIGyE8DiCo=
+```
 
 ### Run
 Start a web server that can be reached by localhost:3000 by default.
