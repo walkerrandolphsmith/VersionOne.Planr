@@ -1,4 +1,4 @@
-const injectTouchTapEvent = require('react-tap-event-plugin');
+
 import React from 'react';
 import ReactDom from 'react-dom';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
@@ -24,7 +24,6 @@ const history = syncHistoryWithStore(browserHistory, store, {
     selectLocationState: (state) => state.routing
 });
 
-injectTouchTapEvent();
 const mountNode = document.getElementById('app');
 ReactDom.render(
     <Provider store={store}>
