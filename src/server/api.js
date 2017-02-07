@@ -5,7 +5,7 @@ import bodyparser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import axios from 'axios';
 import sdk, { axiosConnector } from 'v1sdk';
-import { nodeEnv, apiPort, v1Protocol, v1Port, v1Host, v1Instance } from './../shared/env';
+import { nodeEnv, apiPort, v1Protocol, v1Port, v1Host, v1Instance, v1AccessToken } from './../shared/env';
 
 const rootUrl = `${v1Protocol}://${v1Host}:${v1Port}/${v1Instance}/`;
 
@@ -19,7 +19,8 @@ const getAuthToken = (request) => {
 };
 
 const axiosConnectedSdk = axiosConnector(axios)(sdk);
-export const v1 = (token) => axiosConnectedSdk(v1Host, v1Instance, v1Port, v1Protocol).withAccessToken(token);
+const isHttps = v1Protocol === 'https';
+export const v1 = (token) => axiosConnectedSdk(v1Host, v1Instance, v1Port, isHttps).withAccessToken(token);
 
 const app = express();
 app.use(expressPromise());

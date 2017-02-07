@@ -5,7 +5,7 @@ const {
     HOST, PORT,
     DEV_HOST, DEV_PORT,
     API_HOST, API_PORT,
-    V1Protocol, V1Port, V1Host, V1Instance
+    V1Protocol, V1Port, V1Host, V1Instance, V1AccessToken
 } = process.env;
 
 export const isBrowser = process.browser;
@@ -21,3 +21,4 @@ export const v1Protocol = V1Protocol;
 export const v1Port = V1Port;
 export const v1Host = V1Host;
 export const v1Instance = V1Instance;
+export const v1AccessToken = V1AccessToken;
